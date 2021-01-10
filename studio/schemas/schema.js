@@ -6,17 +6,11 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 import category from "./documents/category";
 import product from "./documents/product";
-import vendor from "./documents/vendor";
 import productVariant from "./documents/productVariant";
-import brand from "./documents/brand";
-import social from "./documents/social";
-import ad from "./documents/ad";
-import swag from "./documents/swag";
 import page from "./documents/page";
 import route from "./documents/route";
 import siteConfig from "./documents/siteConfig";
 import person from "./documents/person";
-import popup from "./documents/popup";
 
 // Object types
 import blockContent from "./objects/blockContent";
@@ -47,13 +41,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     product,
-    popup,
-    vendor,
     category,
-    brand,
-    social,
-    ad,
-    swag,
     page,
     route,
     siteConfig,

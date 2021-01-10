@@ -1,13 +1,10 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { MdWeb, MdSettings, MdWhatshot, MdLooks } from "react-icons/md";
-import ads from "./ads";
 import categories from "./categories";
 import person from "./person";
 
 import siteSettings from "./siteSettings";
 
-import TotebagPreview from "../components/previews/banners/swag/TotebagPreview";
-import ShirtPreview from "../components/previews/banners/swag/ShirtPreview";
 import ProductPagePreview from "../components/previews/product/ProductPagePreview";
 import ProductsOverviewPreview from "../components/previews/product/ProductsOverviewPreview";
 // Hide document types that we already have a structure definition for
@@ -16,9 +13,7 @@ const hiddenDocTypes = (listItem) =>
     "category",
     "person",
     "sampleProject",
-    "vendor",
     "siteSettings",
-    "ad",
     "page",
     "product",
     "route",
@@ -29,7 +24,18 @@ export default () =>
   S.list()
     .title("Pulp Inc.")
     .items([
-      S.documentTypeListItem("product").title("Products"),
+      // S.documentTypeListItem("post").title("Posts"),
+      S.listItem()
+      .title("Pages")
+      .icon(MdWeb)
+      .child(
+        S.list()
+          .title("Pages")
+          .items([
+            S.documentTypeListItem("route").title("Routes"),
+            S.documentTypeListItem("page").title("Pages"),
+          ])
+      ),
       S.listItem()
         .title("Website")
         .icon(MdWeb)
@@ -46,11 +52,9 @@ export default () =>
                     .schemaType("siteConfig")
                     .documentId("siteConfig")
                 ),
-              S.documentTypeListItem("route").title("Routes"),
-              S.documentTypeListItem("page").title("Pages"),
+
             ])
         ),
-      ads,
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ]);
 
@@ -70,12 +74,6 @@ export const getDefaultDocumentNode = (props) => {
       S.view.component(ProductPagePreview).title("Product Page"),
     ]);
   }
-  if (schemaType === "swag") {
-    return S.document().views([
-      S.view.form(),
-      S.view.component(TotebagPreview).title("Totebag"),
-      S.view.component(ShirtPreview).title("Shirt"),
-    ]);
-  }
+
   return S.document().views([S.view.form()]);
 };

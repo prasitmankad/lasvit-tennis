@@ -58,12 +58,7 @@ export default {
         },
       ],
     },
-    {
-      name: "vendor",
-      title: "Vendor",
-      type: "reference",
-      to: { type: "vendor" },
-    },
+
     {
       name: "categories",
       title: "Categories",
