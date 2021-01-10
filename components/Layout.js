@@ -4,8 +4,6 @@ import { urlFor } from "../utils/sanity";
 
 function Layout({ children }) {
   console.log("Layout Children ==> ", children);
-  // console.log("Layout Children Exists ==> ", children.props.configData);
-  // console.log("Misspell Exists ==> ", children.props.confisgData);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
@@ -13,15 +11,15 @@ function Layout({ children }) {
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                src={urlFor(children.props.configData.logo)
+                src={urlFor(children.props.pageData.logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
                   .fit("crop")
                   .quality(80)}
                 alt={
-                  children.props.configData.logo?.alt ||
-                  `Photo of ${children.props.configData.title}`
+                  children.props.pageData.logo?.alt ||
+                  `Photo of ${children.props.pageData.title}`
                 }
               />
             </a>
@@ -65,15 +63,15 @@ function Layout({ children }) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(children.props.configData.logo)
+                  src={urlFor(children.props.pageData.logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    children.props.configData.logo?.alt ||
-                    `Photo of ${children.props.configData.title}`
+                    children.props.pageData.logo?.alt ||
+                    `Photo of ${children.props.pageData.title}`
                   }
                 />
               </a>

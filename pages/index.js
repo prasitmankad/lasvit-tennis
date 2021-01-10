@@ -8,15 +8,15 @@ const query = `*[_type == "siteConfig"][0]`;
 const pageQuery = `*[_type == "page" && title=="Home"][0]`;
 
 function IndexPage(props) {
-  const { configData, preview } = props;
+  const { pageData, preview } = props;
   const router = useRouter();
 
-  if (!router.isFallback && !configData) {
+  if (!router.isFallback && !pageData) {
     return <Error statusCode={404} />;
   }
 
   const { data: config } = usePreviewSubscription(query, {
-    initialData: configData,
+    initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
 
@@ -35,13 +35,13 @@ function IndexPage(props) {
         <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <img
-              src={urlFor(props.configData.content[0].heroImage)
+              src={urlFor(props.pageData.content[0].heroImage)
                 .auto("format")
                 .width(720)
                 .height(600)
                 .fit("crop")
                 .quality(80)}
-              alt={`Photo of ${props.configData.content[0].heading}`}
+              alt={`Photo of ${props.pageData.content[0].heading}`}
               class="object-cover object-center rounded"
             />
 
@@ -53,14 +53,14 @@ function IndexPage(props) {
           </div>
           <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 font-bold">
-              {props.configData.content[0].heading}
+              {props.pageData.content[0].heading}
             </h1>
             <h2 class="title-font sm:text-1xl text-2xl mb-4 font-medium text-gray-900">
-              {configData.tagline}
+              {pageData.tagline}
             </h2>
 
             <p class="mb-8 leading-relaxed text-gray-800">
-              {configData.siteDescription}
+              {pageData.siteDescription}
             </p>
 
             <div class="flex justify-center">
@@ -313,13 +313,13 @@ function IndexPage(props) {
 export async function getStaticProps({ params = {}, preview = false }) {
   var configData = await getClient(preview).fetch(query);
   var pageData = await getClient(preview).fetch(pageQuery);
-  configData = { ...configData, ...pageData };
+  pageData = { ...configData, ...pageData };
   // const groqData = {...configData,...pageData};
 
   return {
     props: {
       preview,
-      configData,
+      pageData,
     },
   };
 }
