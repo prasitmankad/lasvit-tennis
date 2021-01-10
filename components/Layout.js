@@ -12,7 +12,13 @@ function Layout({ children }) {
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+             
               <img
+                // class="lg:h-48 md:h-36 w-full object-cover object-center"
+                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=100"
+                alt="blog"
+              />
+               {/* <img
                 src={urlFor(children.props.pageData.logo)
                   .auto("format")
                   .width(125)
@@ -23,7 +29,7 @@ function Layout({ children }) {
                   children.props.pageData.logo?.alt ||
                   `Photo of ${children.props.pageData.title}`
                 }
-              />
+              /> */}
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -64,7 +70,13 @@ function Layout({ children }) {
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                <img
+              <img
+                // class="lg:h-48 md:h-36 w-full object-cover object-center"
+                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=80"
+                alt="blog"
+              />
+                
+                {/* <img
                   src={urlFor(children.props.pageData.logo)
                     .auto("format")
                     .width(80)
@@ -75,7 +87,7 @@ function Layout({ children }) {
                     children.props.pageData.logo?.alt ||
                     `Photo of ${children.props.pageData.title}`
                   }
-                />
+                /> */}
               </a>
             </Link>
 
