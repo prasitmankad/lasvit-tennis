@@ -20,7 +20,7 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
-  console.log("configData ==>",configData);
+  // console.log("configData ==>",configData);
 
   return (
     <>
