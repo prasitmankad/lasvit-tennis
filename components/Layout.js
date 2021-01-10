@@ -4,6 +4,8 @@ import { urlFor } from "../utils/sanity";
 
 function Layout({ children }) {
   console.log("Layout Children ==> ", children);
+  // console.log("Layout Children Exists ==> ", children.props.configData);
+  // console.log("Misspell Exists ==> ", children.props.confisgData);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">

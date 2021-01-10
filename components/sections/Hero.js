@@ -3,7 +3,7 @@ import Cta from "../Cta";
 import { PortableText, urlFor } from "../../utils/sanity";
 
 function Hero(props) {
-  const { heading, backgroundImage, tagline, ctas } = props;
+  const { heading, heroImage, tagline, ctas } = props;
 
   return (
     <div>
@@ -23,12 +23,12 @@ function Hero(props) {
           <div className="w-full h-64 md:w-1/2 lg:h-96">
             <img
               className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
-              src={urlFor(backgroundImage)
+              src={urlFor(heroImage)
                 .auto("format")
                 .width(1051)
                 .fit("crop")
                 .quality(80)}
-              alt={backgroundImage.alt}
+              alt={heroImage.alt}
             />
           </div>
         </div>
