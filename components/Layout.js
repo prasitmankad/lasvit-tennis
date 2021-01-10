@@ -13,7 +13,7 @@ function Layout({ children }) {
                 src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=100"
                 alt="blog"
               />
-              <span class="ml-3">TITLE</span>
+              {/* <span class="title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">Lasvit Tennis</span> */}
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
