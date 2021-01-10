@@ -46,7 +46,7 @@ function Layout({ children }) {
               <a class="mr-5 hover:text-gray-900 cursor-pointer">Contact Us</a>
             </Link>
           </nav>
-          <button class="font-bold inline-flex items-center bg-lvtorange border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+          {/* <button class="font-bold inline-flex items-center bg-lvtorange border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
             Ultimate Tennis Parent
             <svg
               fill="none"
@@ -59,7 +59,7 @@ function Layout({ children }) {
             >
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </button>
+          </button> */}
         </div>
       </header>
 
