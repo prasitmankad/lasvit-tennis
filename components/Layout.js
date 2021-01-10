@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
+import { urlFor } from "../utils/sanity";
 
 function Layout({ children }) {
+  console.log("Layout Children ==> ", children);
+  // console.log("Layout Children Exists ==> ", children.props.configData);
+  // console.log("Misspell Exists ==> ", children.props.confisgData);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
@@ -9,11 +13,17 @@ function Layout({ children }) {
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                // class="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=100"
-                alt="blog"
+                src={urlFor(children.props.configData.logo)
+                  .auto("format")
+                  .width(125)
+                  // .height(400)
+                  .fit("crop")
+                  .quality(80)}
+                alt={
+                  children.props.configData.logo?.alt ||
+                  `Photo of ${children.props.configData.title}`
+                }
               />
-              {/* <span class="title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">Lasvit Tennis</span> */}
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -46,17 +56,29 @@ function Layout({ children }) {
           </button>
         </div>
       </header>
+
       <main className="my-8">{children}</main>
+
       <footer class="text-gray-600 body-font">
         <div class="bg-gray-100 border-t border-gray-200">
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-500">
-              <img
-                // class="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=80"
-                alt="Lasvit Logo"
-              />
-            </a>
+            <Link href="/">
+              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                <img
+                  src={urlFor(children.props.configData.logo)
+                    .auto("format")
+                    .width(80)
+                    // .height(400)
+                    .fit("crop")
+                    .quality(80)}
+                  alt={
+                    children.props.configData.logo?.alt ||
+                    `Photo of ${children.props.configData.title}`
+                  }
+                />
+              </a>
+            </Link>
+
             <p class="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
               © 2021 Lasvit Tennis. All rights reserved.
             </p>
@@ -71,7 +93,8 @@ function Layout({ children }) {
                 >
                   Privacy Policy
                 </a>
-              </Link> // 
+              </Link>{" "}
+              //
               <Link href="/terms">
                 <a
                   href="https://lasvittennis.com/terms"

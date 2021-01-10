@@ -11,6 +11,18 @@ export default {
       title: "Site title",
     },
     {
+      name: "tagline",
+      type: "string",
+      title: "Tagline",
+      description: 'Used in page head and hero sections.'
+    },
+    {
+      name: "siteDescription",
+      type: "text",
+      title: "Site Description",
+      description: 'A short description of the website, used in page head and hero sections.'
+    },
+    {
       title: "URL",
       name: "url",
       type: "url",
@@ -22,11 +34,11 @@ export default {
       description: "Choose page to be the frontpage",
       to: { type: "page" },
     },
-    {
-      title: "Site language",
-      name: "lang",
-      type: "string",
-    },
+    // {
+    //   title: "Site language",
+    //   name: "lang",
+    //   type: "string",
+    // },
     {
       title: "Brand logo",
       description:
@@ -78,10 +90,10 @@ export default {
         },
       ],
     },
-    {
-      name: "footerText",
-      type: "simplePortableText",
-      fieldset: "footer",
-    },
+    // {
+    //   name: "footerText",
+    //   type: "simplePortableText",
+    //   fieldset: "footer",
+    // },
   ],
 };

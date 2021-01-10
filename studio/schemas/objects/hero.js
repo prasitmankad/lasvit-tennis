@@ -10,13 +10,13 @@ export default {
     },
     {
       name: "tagline",
-      type: "simplePortableText",
+      type: "string",
       title: "Tagline",
     },
     {
-      name: "backgroundImage",
+      name: "heroImage",
       type: "image",
-      title: "Background image",
+      title: "Hero Image",
       options: {
         hotspot: true,
       },
