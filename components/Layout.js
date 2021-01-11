@@ -11,20 +11,19 @@ import {
 } from "../utils/sanity";
 
 function Layout({ children }) {
+console.log("Children ->",children)
 
+const pageData = children.props.pageData;
+console.log("Page Data ->",pageData[1].logo)
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+
               {/* <img
-                // class="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=100"
-                alt="blog"
-              /> */}
-              <img
-                src={urlFor(children.props.pageData[1].logo)
+                src={urlFor(pageData[1].logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
@@ -34,7 +33,7 @@ function Layout({ children }) {
                   children.props.pageData[1].logo?.alt ||
                   `Photo of ${children.props.pageData[1].title}`
                 }
-              />
+              /> */}
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -73,14 +72,8 @@ function Layout({ children }) {
       <footer class="text-gray-600 body-font">
         <div class="bg-gray-100 border-t border-gray-200">
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            <Link href="/">
+            {/* <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                {/* <img
-                  // class="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=80"
-                  alt="blog"
-                /> */}
-
                 <img
                   src={urlFor(children.props.pageData[1].logo)
                     .auto("format")
@@ -94,7 +87,7 @@ function Layout({ children }) {
                   }
                 />
               </a>
-            </Link>
+            </Link> */}
 
             <p class="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
               © 2021 Lasvit Tennis. All rights reserved.
@@ -132,7 +125,7 @@ function Layout({ children }) {
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var settingsData = await getClient(preview).fetch(settingsQuery);
-
+console.log (settingsData)
   return {
     props: {
       preview,

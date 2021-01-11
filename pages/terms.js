@@ -45,7 +45,7 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
-  console.log("Terms Page Data => ",pageData)
+  // console.log("Terms Page Data => ",pageData)
   return (
     <>
       {/* OUR SERVICES  */}
