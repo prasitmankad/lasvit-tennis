@@ -28,6 +28,7 @@
     "react-dom": "16.14.0",
     "react-icons": "^3.11.0",
     "react-moveable": "^0.22.6",
+    "react-player": "^2.7.2",
     "resize-observer": "^1.0.0",
     "sanity-plugin-media-library": "^1.0.2"
   },

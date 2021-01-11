@@ -11,29 +11,29 @@ import {
 } from "../utils/sanity";
 
 function Layout({ children }) {
-console.log("Children ->",children)
-
-const pageData = children.props.pageData;
-console.log("Page Data ->",pageData[1].logo)
+  // console.log("Children ->", children);
+  const pageData = children.props.pageData;
+  // maybe i need to do some pre-processing here before the react component is rendered
+  // console.log("Page Data ->", pageData);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-
-              {/* <img
+              <img
                 src={urlFor(pageData[1].logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
                   .fit("crop")
-                  .quality(80)}
+                  .quality(80)
+                  .url()}
                 alt={
                   children.props.pageData[1].logo?.alt ||
                   `Photo of ${children.props.pageData[1].title}`
                 }
-              /> */}
+              />
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -66,13 +66,13 @@ console.log("Page Data ->",pageData[1].logo)
           </button> */}
         </div>
       </header>
- 
+
       <main className="my-8">{children}</main>
 
       <footer class="text-gray-600 body-font">
         <div class="bg-gray-100 border-t border-gray-200">
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            {/* <Link href="/">
+            <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
                   src={urlFor(children.props.pageData[1].logo)
@@ -87,7 +87,7 @@ console.log("Page Data ->",pageData[1].logo)
                   }
                 />
               </a>
-            </Link> */}
+            </Link>
 
             <p class="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
               © 2021 Lasvit Tennis. All rights reserved.
@@ -125,7 +125,7 @@ console.log("Page Data ->",pageData[1].logo)
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var settingsData = await getClient(preview).fetch(settingsQuery);
-console.log (settingsData)
+  console.log(settingsData);
   return {
     props: {
       preview,

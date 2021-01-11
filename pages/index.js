@@ -4,8 +4,21 @@ import { getClient, usePreviewSubscription } from "../utils/sanity";
 import ProductsPage from "../components/ProductsPage";
 import { urlFor } from "../utils/sanity";
 
-const query = `*[_type == "siteConfig"][0]`;
-const pageQuery = `*[_type == "page" && title=="Home"][0]`;
+// const query = `*[_type == "siteConfig"][0]`;
+// const pageQuery = `*[_type == "siteConfig" || (_type == "page" && title=="Home")]`;
+// *[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}
+
+const query = `*[(_type == "siteConfig" || (_type == "page" && title=="Home")) && !(_id in path('drafts.**')) ] {
+	title,
+  tagline,
+  siteDescription,
+  mainNavigation,
+  footerNavigation,
+  frontpage,
+  logo,
+  content,
+  description
+}`;
 
 function IndexPage(props) {
   const { pageData, preview } = props;
@@ -20,30 +33,25 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
-  // console.log("configData ==>",configData);
+  console.log("props =>", props);
 
   return (
     <>
-      {/* <div className="my-8">
-        <div className="mt-4">
-          <ProductsPage products={products} />
-        </div>
-      </div> */}
-
       {/* HERO SECTION */}
       <section class="text-gray-600 body-font">
         <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img
+            {/* <img
               src={urlFor(props.pageData.content[0].heroImage)
                 .auto("format")
                 .width(720)
                 .height(600)
                 .fit("crop")
-                .quality(80)}
+                .quality(80)
+                .url()}
               alt={`Photo of ${props.pageData.content[0].heading}`}
               class="object-cover object-center rounded"
-            />
+            /> */}
 
             {/* <img
               class="object-cover object-center rounded"
@@ -53,7 +61,7 @@ function IndexPage(props) {
           </div>
           <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 font-bold">
-              {props.pageData.content[0].heading}
+              {/* {props.pageData.heading} */}
             </h1>
             <h2 class="title-font sm:text-1xl text-2xl mb-4 font-medium text-gray-900">
               {pageData.tagline}
@@ -311,9 +319,9 @@ function IndexPage(props) {
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
-  var configData = await getClient(preview).fetch(query);
-  var pageData = await getClient(preview).fetch(pageQuery);
-  pageData = { ...configData, ...pageData };
+  // var configData = await getClient(preview).fetch(query);
+  var pageData = await getClient(preview).fetch(query);
+  // pageData = { ...configData, ...pageData };
   // const groqData = {...configData,...pageData};
 
   return {

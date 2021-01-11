@@ -5,9 +5,8 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 import category from "./documents/category";
-import product from "./documents/product";
-import productVariant from "./documents/productVariant";
 import page from "./documents/page";
+import post from "./documents/post";
 import route from "./documents/route";
 import siteConfig from "./documents/siteConfig";
 import person from "./documents/person";
@@ -26,10 +25,23 @@ import contactInfo from "./objects/contactInfo";
 import hero from "./objects/hero";
 import imageSection from "./objects/imageSection";
 import textSection from "./objects/textSection";
+import simpleBlockContent from "./objects/simpleBlockContent";
+import mainImage from "./objects/mainImage";
+import authorReference from "./objects/authorReference";
+import bodyPortableText from "./objects/bodyPortableText";
+import author from "./documents/author";
+import { videoEmbed } from "./objects/embeds";
+import feature from "./objects/feature";
 
 import localeString from "./locale/String";
 import localeText from "./locale/Text";
 import localeBlockContent from "./locale/BlockContent";
+import * as plugs from "./uiComposites"; // imports the Hero ui object
+import plugDefaultFields from "./uiComposites/_defaultFields"; // required for everything imported from plugs
+
+const allPlugs = Object.values(plugs).map((plug) => {
+  return { ...plug, fields: plugDefaultFields.concat(plug.fields) };
+});
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,30 +49,38 @@ export default createSchema({
   name: "default",
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    // The following are document types which will appear
-    // in the studio.
-    product,
-    category,
-    page,
-    route,
-    siteConfig,
-    person,
-    // When added to this list, object types can be used as
-    cta,
-    figure,
-    internalLink,
-    link,
-    hero,
-    imageSection,
-    textSection,
-    portableText,
-    simplePortableText,
-    contactInfo,
-    blockContent,
-    localeText,
-    localeBlockContent,
-    localeString,
-    productVariant,
-  ]),
+  types: schemaTypes
+    .concat([
+      // The following are document types which will appear
+      // in the studio.
+      category,
+      page,
+      route,
+      videoEmbed,
+      siteConfig,
+      person,
+      post,
+      mainImage,
+      author,
+      authorReference,
+      // When added to this list, object types can be used as
+      cta,
+      bodyPortableText,
+      figure,
+      internalLink,
+      link,
+      hero,
+      imageSection,
+      textSection,
+      portableText,
+      simplePortableText,
+      simpleBlockContent,
+      contactInfo,
+      blockContent,
+      localeText,
+      localeBlockContent,
+      localeString,
+      feature,
+    ])
+    .concat(allPlugs),
 });
