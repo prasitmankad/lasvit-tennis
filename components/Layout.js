@@ -67,7 +67,7 @@ function Layout({ children }) {
           </button> */}
         </div>
       </header>
-
+ 
       <main className="my-8">{children}</main>
 
       <footer class="text-gray-600 body-font">
