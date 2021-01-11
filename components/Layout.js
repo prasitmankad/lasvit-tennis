@@ -2,34 +2,39 @@ import { useState } from "react";
 import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 
+import Error from "next/error";
+import { useRouter } from "next/router";
+import {
+  getClient,
+  PortableText,
+  usePreviewSubscription,
+} from "../utils/sanity";
+
 function Layout({ children }) {
-  console.log("Layout Children ==> ", children);
-  // console.log("Layout Children Exists ==> ", children.props.configData);
-  // console.log("Misspell Exists ==> ", children.props.confisgData);
+
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-             
-              <img
+              {/* <img
                 // class="lg:h-48 md:h-36 w-full object-cover object-center"
                 src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=100"
                 alt="blog"
-              />
-               {/* <img
-                src={urlFor(children.props.pageData.logo)
+              /> */}
+              <img
+                src={urlFor(children.props.pageData[1].logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
                   .fit("crop")
                   .quality(80)}
                 alt={
-                  children.props.pageData.logo?.alt ||
-                  `Photo of ${children.props.pageData.title}`
+                  children.props.pageData[1].logo?.alt ||
+                  `Photo of ${children.props.pageData[1].title}`
                 }
-              /> */}
+              />
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -70,24 +75,24 @@ function Layout({ children }) {
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-              <img
-                // class="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=80"
-                alt="blog"
-              />
-                
                 {/* <img
-                  src={urlFor(children.props.pageData.logo)
+                  // class="lg:h-48 md:h-36 w-full object-cover object-center"
+                  src="https://cdn.sanity.io/images/psqjr0e8/production/36c6dc7e1eadc9506b6afbcd4b603f728119b63f-2288x1024.png?w=80"
+                  alt="blog"
+                /> */}
+
+                <img
+                  src={urlFor(children.props.pageData[1].logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    children.props.pageData.logo?.alt ||
-                    `Photo of ${children.props.pageData.title}`
+                    children.props.pageData[1].logo?.alt ||
+                    `Photo of ${children.props.pageData[1].title}`
                   }
-                /> */}
+                />
               </a>
             </Link>
 
@@ -123,6 +128,17 @@ function Layout({ children }) {
       </footer>
     </div>
   );
+}
+
+export async function getStaticProps({ params = {}, preview = false }) {
+  var settingsData = await getClient(preview).fetch(settingsQuery);
+
+  return {
+    props: {
+      preview,
+      settingsData,
+    },
+  };
 }
 
 export default Layout;
