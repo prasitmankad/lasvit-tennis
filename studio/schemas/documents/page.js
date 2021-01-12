@@ -31,21 +31,21 @@ export default {
         { type: "uiEmailNewsletter" },
       ],
     },
-    {
-      name: "description",
-      type: "text",
-      title: "Description",
-      description: "This description populates meta-tags on the webpage",
-      fieldset: "metadata",
-    },
-    {
-      name: "openGraphImage",
-      type: "image",
-      title: "Open Graph Image",
-      description: "Image for sharing previews on Facebook, Twitter etc.",
-      fieldset: "metadata",
-      options: { hotspot: true },
-    },
+    // {
+    //   name: "description",
+    //   type: "text",
+    //   title: "Description",
+    //   description: "This description populates meta-tags on the webpage",
+    //   fieldset: "metadata",
+    // },
+    // {
+    //   name: "openGraphImage",
+    //   type: "image",
+    //   title: "Open Graph Image",
+    //   description: "Image for sharing previews on Facebook, Twitter etc.",
+    //   fieldset: "metadata",
+    //   options: { hotspot: true },
+    // },
   ],
 
   preview: {

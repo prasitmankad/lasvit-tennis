@@ -212,7 +212,7 @@ function IndexPage(props) {
       </section>
 
       {/* RECENT BLOG POSTS */}
-      <section class="text-gray-600 body-font">
+      {/* <section class="text-gray-600 body-font">
         <div class="container px-5 py-5 mx-auto">
           <div class="flex flex-col text-center w-full mb-10">
             <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
@@ -231,9 +231,6 @@ function IndexPage(props) {
                   alt="blog"
                 />
                 <div class="p-6">
-                  {/* <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                    CATEGORY
-                  </h2> */}
                   <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
                     Shooting Stars
                   </h1>
@@ -263,7 +260,7 @@ function IndexPage(props) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CONTACT FORM */}
       <section class="text-gray-600 body-font">
