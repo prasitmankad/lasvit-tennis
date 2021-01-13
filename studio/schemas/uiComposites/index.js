@@ -6,5 +6,5 @@ export { default as uiCTA } from "./uiCTA";
 export { default as uiTeam } from "./uiTeam";
 export {default as uiFeatureList} from "./uiFeatureList";
 export {default as uiEmailNewsletter} from "./uiEmailNewsletter";
-export {default as uiPricingTable} from "./uiPricingTable";
+// export {default as uiPricingTable} from "./uiPricingTable";
 

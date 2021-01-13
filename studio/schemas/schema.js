@@ -22,7 +22,7 @@ import simplePortableText from "./objects/simplePortableText";
 import contactInfo from "./objects/contactInfo";
 
 // Landing page sections
-import hero from "./objects/hero";
+// import hero from "./objects/hero";
 import imageSection from "./objects/imageSection";
 import textSection from "./objects/textSection";
 import simpleBlockContent from "./objects/simpleBlockContent";
@@ -32,7 +32,6 @@ import bodyPortableText from "./objects/bodyPortableText";
 import author from "./documents/author";
 import { videoEmbed } from "./objects/embeds";
 import feature from "./objects/feature";
-
 import localeString from "./locale/String";
 import localeText from "./locale/Text";
 import localeBlockContent from "./locale/BlockContent";
@@ -69,7 +68,7 @@ export default createSchema({
       figure,
       internalLink,
       link,
-      hero,
+      // hero,
       imageSection,
       textSection,
       portableText,

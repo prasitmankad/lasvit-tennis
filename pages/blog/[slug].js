@@ -43,7 +43,7 @@ export async function getStaticProps({ params, preview = false }) {
   const postData = await getClient(preview).fetch(query, {
     slug: params.slug,
   });
-
+  
   return {
     props: { preview, postData },
     revalidate: 1,

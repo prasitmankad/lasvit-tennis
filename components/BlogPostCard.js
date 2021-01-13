@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { urlFor, PortableText } from "../utils/sanity";
 
-function BlogPostCard({ _id, title, mainImage, slug, excerpt }) {
+function BlogPostCard({ _id, title, postImage, slug, excerpt }) {
   return (
     <Link href={`/blog/${slug.current}`}>
       <div class="p-4 md:w-1/3">
         <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden0 cursor-pointer">
           <img
             class="h-40 rounded w-full object-cover object-center mb-6"
-            src={urlFor(mainImage)
+            src={urlFor(postImage)
               .auto("format")
               .width(720)
               .height(400)
               .fit("crop")
               .quality(80)}
-            alt={mainImage?.alt || `Photo of ${title}`}
+            alt={postImage?.alt || `Photo of ${title}`}
           />
           <div class="p-6">
             {/* <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2> */}

@@ -48,7 +48,7 @@ export default {
       description: "Subtitle for the section.",
     },
     {
-      name: "shortDescription",
+      name: "paragraph",
       type: "simpleBlockContent",
       fieldset: "settings",
       description: "Paragraph for the section. Make sure to keep it short.",

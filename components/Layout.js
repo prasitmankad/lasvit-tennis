@@ -96,7 +96,7 @@ function Layout({ children }) {
             <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
               <Link href="/privacy">
                 <a
-                  href="https://lasvittennis.com/privacy"
+                  // href="/privacy"
                   rel="noopener noreferrer"
                   class="text-gray-600 ml-1"
                   // target="_blank"
@@ -107,7 +107,7 @@ function Layout({ children }) {
               //
               <Link href="/terms">
                 <a
-                  href="https://lasvittennis.com/terms"
+                  // href="https://lasvittennis.com/terms"
                   rel="noopener noreferrer"
                   class="text-gray-600 ml-1"
                   // target="_blank"

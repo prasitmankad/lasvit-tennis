@@ -39,6 +39,13 @@ export default {
       fieldset: "descriptor",
     },
     {
+      name: "tagline",
+      type: "string",
+      title: "Tagline",
+      description: "Tagline. Appears as accented text on the hero section above the title.",
+      fieldset: "descriptor",
+    },
+    {
       name: "paragraph",
       type: "bodyPortableText",
       description: "Text for the Hero Section.",
@@ -48,16 +55,6 @@ export default {
           "Please provide a paragraph for the Hero Section."
         ).required(),
     },
-    // {
-    //   name: "design_type",
-    //   type: "string",
-    //   description: "Select the layout type of Hero Section design to show.",
-    //   fieldset: "descriptor",
-    //   options: {
-    //     layout: "radio",
-    //     list: ["Image Left", "Image Right", "Image Top"],
-    //   },
-    // },
     {
       name: "ctas",
       type: "array",

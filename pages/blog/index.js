@@ -3,9 +3,28 @@ import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
 import BlogPage from '../../components/BlogPage';
 
-const query = `//groq
-  *[_type == "post" && defined(slug.current)]
-`;
+// return posts
+// const query = `*[_type == "post" && defined(slug.current)]`;
+
+const query = `*[
+    !(_id in path('drafts.**')) &&
+    (_type == "post" && defined(slug.current) || _type == "siteConfig")
+  ]
+  {
+    _id,
+    excerpt,
+    slug,
+    postImage,
+      title,
+    tagline,
+    siteDescription,
+    mainNavigation,
+    footerNavigation,
+    frontpage,
+    logo,
+    content,
+    description
+  }`;
 
 function BlogPageContainer({ postsData, preview }) {
   const router = useRouter();
