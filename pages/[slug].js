@@ -4,9 +4,13 @@ import { useRouter } from "next/router";
 import LandingPage from "../components/LandingPage";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
 
-const settingsQuery = `*[_type == "siteConfig"][0]`;
-const query = groq`*[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}`; 
+const query = groq`*[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}`;
+const settingsQuery = `*[!(_id in path('drafts.**')) && _type == "siteConfig"][0] 
+{
+_id,title,tagline,siteDescription,mainNavigation,footerNavigation,logo,content
+}`;
 
+// have to do site settings separately coz it returns null values for some reason for this one but not for the main index.js page -- kya re
 // get page details from routes
 
 function PageContainer({ pageData, preview, slug }) {
@@ -27,10 +31,13 @@ function PageContainer({ pageData, preview, slug }) {
 export async function getStaticProps({ params = {}, preview = false }) {
   const { slug } = params;
   var { page: pageData } = await getClient(preview).fetch(query, { slug });
-  // var settingsData = await getClient().fetch(settingsQuery);
+  var settingsData = await getClient().fetch(settingsQuery);
+  var arrData = [pageData, settingsData];
+  pageData = arrData;
 
-  // pageData = { ...pageData, ...settingsData };
-  console.log("Consolidated Routes ==> ", query);
+  // pageData = Object.assign(settingsData)
+  // pageData.push(settingsData);
+  // console.log("[slug arrData] ->", arrData);
 
   return {
     props: { preview, pageData, slug },

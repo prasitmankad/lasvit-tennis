@@ -12,9 +12,9 @@ import {
 
 function Layout({ children }) {
   // console.log("Children ->", children);
-  const pageData = children.props.pageData;
+  const pagedata = children.props.pageData;
   // maybe i need to do some pre-processing here before the react component is rendered
-  // console.log("Page Data ->", pageData);
+  // console.log("Page Data ->", pagedata);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
@@ -22,16 +22,16 @@ function Layout({ children }) {
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                src={urlFor(pageData[1].logo)
+                src={urlFor(pagedata[1].logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
                   .fit("crop")
                   .quality(80)
-                  .url()}
+                  }
                 alt={
-                  children.props.pageData[1].logo?.alt ||
-                  `Photo of ${children.props.pageData[1].title}`
+                  pagedata[1].logo?.alt ||
+                  `Photo of ${pagedata[1].title}`
                 }
               />
             </a>
@@ -50,20 +50,7 @@ function Layout({ children }) {
               <a class="mr-5 hover:text-gray-900 cursor-pointer">Contact Us</a>
             </Link>
           </nav>
-          {/* <button class="font-bold inline-flex items-center bg-lvtorange border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-            Ultimate Tennis Parent
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-4 h-4 ml-1"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button> */}
+  
         </div>
       </header>
 
@@ -125,7 +112,7 @@ function Layout({ children }) {
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var settingsData = await getClient(preview).fetch(settingsQuery);
-  console.log(settingsData);
+  //console.log(settingsData);
   return {
     props: {
       preview,

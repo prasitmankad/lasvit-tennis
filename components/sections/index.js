@@ -3,6 +3,7 @@ export { default as UiHero } from "./UiHero";
 
 // SERVICES
 export { default as UiFeatureList } from "./UiFeatureList";
+export { default as TextSection } from "./TextSection";
 
 // RECENT BLOG POSTS
 // export { default as UiRecentPosts } from "./UiRecentPosts.js";

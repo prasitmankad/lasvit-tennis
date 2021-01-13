@@ -1,7 +1,7 @@
 import Error from "next/error";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
-import BlogPage from '../../components/BlogPage';
+import BlogPage from "../../components/BlogPage";
 
 // return posts
 // const query = `*[_type == "post" && defined(slug.current)]`;
@@ -41,7 +41,7 @@ function BlogPageContainer({ postsData, preview }) {
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const postsData = await getClient(preview).fetch(query);
-  console.log("Query =>", query);
+  //console.log("Query =>", query);
   return {
     props: { preview, postsData },
     revalidate: 1,
