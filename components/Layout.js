@@ -21,8 +21,8 @@ function Layout({ children }) {
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-              <img
-                src={urlFor(pagedata[1].logo)
+              {/* <img
+                src={urlFor(pagedata[pagedata.length-1].logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
@@ -30,10 +30,10 @@ function Layout({ children }) {
                   .quality(80)
                   }
                 alt={
-                  pagedata[1].logo?.alt ||
-                  `Photo of ${pagedata[1].title}`
+                  pagedata[pagedata.length-1].logo?.alt ||
+                  `Photo of ${pagedata[pagedata.length-1].title}`
                 }
-              />
+              /> */}
             </a>
           </Link>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -61,18 +61,18 @@ function Layout({ children }) {
           <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                <img
-                  src={urlFor(children.props.pageData[1].logo)
+                {/* <img
+                  src={urlFor(children.props.pageData[pagedata.length-1].logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    children.props.pageData[1].logo?.alt ||
-                    `Photo of ${children.props.pageData[1].title}`
+                    children.props.pageData[pagedata.length-1].logo?.alt ||
+                    `Photo of ${children.props.pageData[pagedata.length-1].title}`
                   }
-                />
+                /> */}
               </a>
             </Link>
 
