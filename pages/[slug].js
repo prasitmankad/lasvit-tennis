@@ -37,7 +37,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
 
   // pageData = Object.assign(settingsData)
   // pageData.push(settingsData);
-  // console.log("[slug arrData] ->", arrData);
+  console.log("[joined pageData] ->", pageData);
 
   return {
     props: { preview, pageData, slug },

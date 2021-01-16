@@ -19,7 +19,7 @@ export default {
       type: "array",
       title: "Page sections",
       of: [
-        { type: "imageSection" },
+        { type: "uiRecentPosts" },
         { type: "textSection" },
         { type: "uiHero" },
         { type: "uiFeatureList" },

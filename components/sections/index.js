@@ -5,6 +5,10 @@ export { default as UiHero } from "./UiHero";
 export { default as UiFeatureList } from "./UiFeatureList";
 export { default as TextSection } from "./TextSection";
 
+export { default as UiPlainContentBlock } from "./UiPlainContentBlock.js";
+export { default as UiTeam } from "./UiTeam.js";
+
+
 // RECENT BLOG POSTS
 // export { default as UiRecentPosts } from "./UiRecentPosts.js";
 

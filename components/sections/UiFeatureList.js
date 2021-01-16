@@ -27,7 +27,7 @@ function UiFeatureList({ _id, title, subtitle, paragraph, features }) {
               <>
                 {features.map((feature) => (
                   // <Feature {...feature} key={feature._key} />
-                  <div class="xl:w-1/4 md:w-1/2 p-4">
+                  <div key={feature._key} class="xl:w-1/4 md:w-1/2 p-4">
                     <div class="bg-gray-100 p-6 rounded-lg">
                       <img
                         class="h-40 rounded w-full object-cover object-center mb-6"

@@ -1,5 +1,5 @@
 export { default as uiHero } from "./uiHero";
-// export { default as uiContentBlock } from "./uiContentBlock";
+export { default as uiRecentPosts } from "./uiRecentPosts";
 export { default as uiPlainContentBlock } from "./uiPlainContentBlock";
 export { default as uiContact } from "./uiContact";
 export { default as uiCTA } from "./uiCTA";

@@ -17,7 +17,14 @@ const query = `*[(_type == "siteConfig" || (_type == "page" && title=="Home")) &
   frontpage,
   logo,
   content,
-  description
+  description,
+}`;
+const queryPosts = `*[_type == "post" && !(_id in path('drafts.**')) ][4] {
+	_id,
+  authors,
+  excerpt,
+  postImage,
+  title
 }`;
 
 // main page component renders
@@ -25,6 +32,7 @@ function IndexPage(props) {
   const { pageData, preview } = props;
   const router = useRouter();
 
+  console.log ("Merged PageData =>",pageData)
   if (!router.isFallback && !pageData) {
     return <Error statusCode={404} />;
   }
@@ -34,19 +42,21 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
- // console.log("props =>", props);
+  // console.log("props =>", props);
 
   return (
     <>
       <RenderSections sections={pageData[0].content} />
-
-
     </>
   );
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var pageData = await getClient(preview).fetch(query);
+  var postData = await getClient(preview).fetch(queryPosts);
+
+  pageData[0]["postData"] = postData;
+  console.log("PostData with Recent Blogs ==>", pageData);
 
   return {
     props: {
