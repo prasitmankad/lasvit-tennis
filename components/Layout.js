@@ -12,9 +12,9 @@ import {
 
 function Layout({ children }) {
   // console.log("Children ->", children);
-  const data = children.props.pageData;
+  var data = children.props.pageData;
   // maybe i need to do some pre-processing here before the react component is rendered
-  console.log("Layout Page Data ->", data);
+  // console.log("Layout Page Data ->", data);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
