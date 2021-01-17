@@ -12,9 +12,9 @@ import {
 
 function Layout({ children }) {
   // console.log("Children ->", children);
-  const pagedata = children.props.pageData;
+  const data = children.props.pageData;
   // maybe i need to do some pre-processing here before the react component is rendered
-  // console.log("Page Data ->", pagedata);
+  console.log("Layout Page Data ->", data);
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
@@ -22,7 +22,7 @@ function Layout({ children }) {
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                src={urlFor(pagedata[pagedata.length-1].logo)
+                src={urlFor(data.siteData.logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
@@ -30,8 +30,8 @@ function Layout({ children }) {
                   .quality(80)
                   }
                 alt={
-                  pagedata[pagedata.length-1].logo?.alt ||
-                  `Photo of ${pagedata[pagedata.length-1].title}`
+                  data.siteData.logo?.alt ||
+                  `Photo of ${data.siteData.title}`
                 }
               />
             </a>
@@ -62,15 +62,15 @@ function Layout({ children }) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(children.props.pageData[pagedata.length-1].logo)
+                  src={urlFor(data.siteData.logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    children.props.pageData[pagedata.length-1].logo?.alt ||
-                    `Photo of ${children.props.pageData[pagedata.length-1].title}`
+                    data.siteData.logo?.alt ||
+                    `Photo of ${data.siteData.title}`
                   }
                 />
               </a>

@@ -1,17 +1,41 @@
 import Error from "next/error";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
-import LandingPage from "../components/LandingPage";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
+import RenderSections from "../components/RenderSections";
 
-const query = groq`*[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}`;
-const settingsQuery = `*[!(_id in path('drafts.**')) && _type == "siteConfig"][0] 
-{
-_id,title,tagline,siteDescription,mainNavigation,footerNavigation,logo,content
+// const query = groq`*[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}`;
+const query = `{
+  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] 
+  {
+	title,
+  tagline,
+  siteDescription,
+  mainNavigation,
+  footerNavigation,
+  frontpage,
+  logo
+	},
+  'mainContent': *[(_type == "route" && slug.current=="about") && !(_id in path('drafts.**'))][0] {
+    page->{
+    ...,
+    content[]{
+      ...,
+      team_members[]{
+        author->{
+        _id,
+        _type,
+        bio,
+        headline,
+        image,
+        name,
+        slug
+        }
+      }
+    }
+  }
+}
 }`;
-
-// have to do site settings separately coz it returns null values for some reason for this one but not for the main index.js page -- kya re
-// get page details from routes
 
 function PageContainer({ pageData, preview, slug }) {
   const router = useRouter();
@@ -25,19 +49,23 @@ function PageContainer({ pageData, preview, slug }) {
     enabled: preview || router.query.preview !== null,
   });
 
-  return <LandingPage page={page} />;
+  return (
+    <>
+      <RenderSections sections={pageData.mainContent.page.content} />
+    </>
+  );
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const { slug } = params;
-  var { page: pageData } = await getClient(preview).fetch(query, { slug });
-  var settingsData = await getClient().fetch(settingsQuery);
-  var arrData = [pageData, settingsData];
-  pageData = arrData;
+  var  pageData  = await getClient(preview).fetch(query, { slug });
+  // var settingsData = await getClient().fetch(settingsQuery);
+  // var arrData = [pageData, settingsData];
+  // pageData = arrData;
 
   // pageData = Object.assign(settingsData)
   // pageData.push(settingsData);
-  console.log("[joined pageData] ->", pageData);
+  // console.log("[joined pageData] ->", pageData);
 
   return {
     props: { preview, pageData, slug },

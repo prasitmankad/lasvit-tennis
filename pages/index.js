@@ -4,27 +4,34 @@ import { getClient, usePreviewSubscription } from "../utils/sanity";
 import { urlFor } from "../utils/sanity";
 import RenderSections from "../components/RenderSections";
 
-// const query = `*[_type == "siteConfig"][0]`;
-// const pageQuery = `*[_type == "siteConfig" || (_type == "page" && title=="Home")]`;
-// *[_type == "siteConfig" || (_type == "route" && slug.current == $slug)][0]{page->}
-
-const query = `*[(_type == "siteConfig" || (_type == "page" && title=="Home")) && !(_id in path('drafts.**')) ] {
+const query = `{
+  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
 	title,
   tagline,
   siteDescription,
   mainNavigation,
   footerNavigation,
   frontpage,
-  logo,
-  content,
-  description,
-}`;
-const queryPosts = `*[_type == "post" && !(_id in path('drafts.**')) ][4] {
-	_id,
-  authors,
-  excerpt,
-  postImage,
-  title
+  logo
+	},
+  'mainContent': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
+    'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..3],
+    title,
+    content[]{
+      ...,
+      team_members[]{
+        author->{
+        _id,
+        _type,
+        bio,
+        headline,
+        image,
+        name,
+        slug
+        }
+      }
+    }
+}
 }`;
 
 // main page component renders
@@ -32,7 +39,6 @@ function IndexPage(props) {
   const { pageData, preview } = props;
   const router = useRouter();
 
-  console.log ("Merged PageData =>",pageData)
   if (!router.isFallback && !pageData) {
     return <Error statusCode={404} />;
   }
@@ -42,21 +48,21 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
-  // console.log("props =>", props);
+  console.log("props =>", props);
 
   return (
     <>
-      <RenderSections sections={pageData[0].content} />
+      <RenderSections sections={pageData.mainContent.content} />
     </>
   );
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var pageData = await getClient(preview).fetch(query);
-  var postData = await getClient(preview).fetch(queryPosts);
+  // var postData = await getClient(preview).fetch(queryPosts);
 
-  pageData[0]["postData"] = postData;
-  console.log("PostData with Recent Blogs ==>", pageData);
+  // pageData[0]["postData"] = postData;
+  // console.log("PostData with Recent Blogs ==>", pageData);
 
   return {
     props: {
