@@ -15,7 +15,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/color-input",
-    "media-library"
+    "media-library",
+    "@sanity/production-preview"
   ],
   "env": {
     "development": {
