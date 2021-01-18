@@ -8,5 +8,5 @@ const STUDIO_REWRITE = {
 
 module.exports = {
   rewrites: () => [STUDIO_REWRITE],
-  trailingSlash: true,
+  // trailingSlash: true,
 };

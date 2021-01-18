@@ -48,7 +48,7 @@ function IndexPage(props) {
     enabled: preview || router.query.preview !== null,
   });
 
-  console.log("props =>", props);
+  // console.log("props =>", props);
 
   return (
     <>

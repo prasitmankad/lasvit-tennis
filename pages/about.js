@@ -16,7 +16,7 @@ const query = `{
   frontpage,
   logo
 	},
-  'mainContent': *[(_type == "route" && slug.current==$slug) && !(_id in path('drafts.**'))][0] {
+  'mainContent': *[(_type == "route" && slug.current=="about") && !(_id in path('drafts.**'))][0] {
     page->{
     ...,
     content[]{
