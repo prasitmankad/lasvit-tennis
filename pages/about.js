@@ -72,15 +72,15 @@ export async function getStaticProps({ params = {}, preview = false }) {
   };
 }
 
-export async function getStaticPaths() {
-  var routes = await getClient().fetch(
-    `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
-  );
+// export async function getStaticPaths() {
+//   var routes = await getClient().fetch(
+//     `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
+//   );
 
-  return {
-    paths: routes || null,
-    fallback: true,
-  };
-}
+//   return {
+//     paths: routes || null,
+//     fallback: true,
+//   };
+// }
 
 export default PageContainer;
