@@ -43,9 +43,9 @@ function Layout({ children }) {
             <Link href="/about">
               <a class="mr-5 hover:text-gray-900 cursor-pointer">About</a>
             </Link>
-            <Link href="/blog">
+            {/* <Link href="/blog">
               <a class="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-            </Link>
+            </Link> */}
             <Link href="/contact">
               <a class="mr-5 hover:text-gray-900 cursor-pointer">Contact Us</a>
             </Link>
