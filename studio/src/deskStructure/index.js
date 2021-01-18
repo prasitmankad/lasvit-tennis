@@ -5,8 +5,6 @@ import person from "./person";
 
 import siteSettings from "./siteSettings";
 
-import ProductPagePreview from "../components/previews/product/ProductPagePreview";
-import ProductsOverviewPreview from "../components/previews/product/ProductsOverviewPreview";
 // Hide document types that we already have a structure definition for
 const hiddenDocTypes = (listItem) =>
   ![
@@ -70,8 +68,8 @@ export const getDefaultDocumentNode = (props) => {
   if (schemaType === "product") {
     return S.document().views([
       S.view.form(),
-      S.view.component(ProductsOverviewPreview).title("Products Overview"),
-      S.view.component(ProductPagePreview).title("Product Page"),
+      // S.view.component(ProductsOverviewPreview).title("Products Overview"),
+      // S.view.component(ProductPagePreview).title("Product Page"),
     ]);
   }
 
