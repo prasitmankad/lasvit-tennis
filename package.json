@@ -1,5 +1,5 @@
 {
-  "name": "sanity-template-nextjs-ecommerce",
+  "name": "sanity-lasvit-tennis",
   "version": "1.0.0",
   "private": true,
   "description": "Sanity.io and Next.js Ecommerce Starter template",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanity-io/sanity-template-nextjs-ecommerce.git"
+    "url": "git+https://github.com/prasitmankad/lasvit-tennis.git"
   },
   "dependencies": {
     "@sanity/client": "^2.1.4",
@@ -38,7 +38,7 @@
   "author": "Sanity.io <hello@sanity.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-template-nextjs-ecommerce/issues"
+    "url": "https://github.com/prasitmankad/lasvit-tennis/issues"
   },
-  "homepage": "https://github.com/sanity-io/sanity-template-nextjs-ecommerce#readme"
+  "homepage": "https://github.com/prasitmankad/lasvit-tennis#readme"
 }

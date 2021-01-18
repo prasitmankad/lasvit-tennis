@@ -1,4 +1,4 @@
-## sanity-template-nextjs-ecommerce
+## sanity-lasvit-tennis
 
 This folder contains the required metadata for using this repository as a template on sanity.io/create
 

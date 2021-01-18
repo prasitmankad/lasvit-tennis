@@ -3,7 +3,7 @@ export default {
     {
       name: "sanity-tutorials",
       options: {
-        templateRepoId: "sanity-io/sanity-template-nextjs-ecommerce",
+        templateRepoId: "sanity-io/sanity-lasvit-tennis",
       },
     },
     { name: "structure-menu" },

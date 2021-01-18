@@ -16,7 +16,7 @@ This starter comes with an intentionally sparse frontend for just products and s
 
 ## Getting started
 
-The quickest way to get up and running is to go to https://www.sanity.io/create?template=sanity-io%2Fsanity-template-nextjs-ecommerce and create a new project by following the instructions there.
+The quickest way to get up and running is to go to https://www.sanity.io/create?template=sanity-io%2Fsanity-lasvit-tennis and create a new project by following the instructions there.
 
 ## Enabling live preview
 
