@@ -17,7 +17,7 @@ function BlogPostContainer({ postData, preview }) {
     enabled: preview || router.query.preview !== null,
   });
 
-  return <></>;
+  return <>THis is a test</>;
 }
 
 export async function getStaticProps({ params, preview = false }) {
