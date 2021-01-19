@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
 import { urlFor } from "../utils/sanity";
 import RenderSections from "../components/RenderSections";
-
+import Link from "next/link";
 const query = `{
   'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
 	title,
@@ -58,14 +58,14 @@ function IndexPage(props) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(data.siteData.logo)
+                  src={urlFor(pageData.siteData.logo)
                     .auto("format")
                     .width(125)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    data.siteData.logo?.alt || `Photo of ${data.siteData.title}`
+                    pageData.siteData.logo?.alt || `Photo of ${pageData.siteData.title}`
                   }
                 />
               </a>
@@ -77,9 +77,9 @@ function IndexPage(props) {
               <Link href="/about">
                 <a class="mr-5 hover:text-gray-900 cursor-pointer">About</a>
               </Link>
-              {/* <Link href="/blog">
+              <Link href="/blog">
               <a class="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-            </Link> */}
+            </Link>
               <Link href="/contact">
                 <a class="mr-5 hover:text-gray-900 cursor-pointer">
                   Contact Us
@@ -95,15 +95,15 @@ function IndexPage(props) {
               <Link href="/">
                 <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                   <img
-                    src={urlFor(data.siteData.logo)
+                    src={urlFor(pageData.siteData.logo)
                       .auto("format")
                       .width(80)
                       // .height(400)
                       .fit("crop")
                       .quality(80)}
                     alt={
-                      data.siteData.logo?.alt ||
-                      `Photo of ${data.siteData.title}`
+                      pageData.siteData.logo?.alt ||
+                      `Photo of ${pageData.siteData.title}`
                     }
                   />
                 </a>
