@@ -9,7 +9,7 @@ const query = `{
   'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] 
   {
 	title,
-  tagline,
+  tagline, 
   siteDescription,
   mainNavigation,
   footerNavigation,
