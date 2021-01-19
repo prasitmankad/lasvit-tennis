@@ -5,7 +5,7 @@ import { getClient, usePreviewSubscription } from "../../utils/sanity";
 
 const query = groq`*[_type == "post" && slug.current == $slug][0]`;
 
-function BlogPostContainer({postData,preview}) {
+function BlogPostContainer({ postData, preview }) {
   const router = useRouter();
   if (!router.isFallback && !postData?.slug) {
     return <Error statusCode={404} />;
@@ -17,26 +17,8 @@ function BlogPostContainer({postData,preview}) {
     enabled: preview || router.query.preview !== null,
   });
 
-  const {
-    _id,
-    title,
-    mainImage,
-    excerpt,
-    body,
-    slug,
-  } = post;
-  return (
-    <BlogPostPage
-      id={_id}
-      title={title}
-      mainImage={mainImage}
-      excerpt={excerpt}
-      body={body}
-      slug={slug?.current}
-    />
-  );
+  return <></>;
 }
-
 
 export async function getStaticProps({ params, preview = false }) {
   const postData = await getClient(preview).fetch(query, {
@@ -48,7 +30,7 @@ export async function getStaticProps({ params, preview = false }) {
     revalidate: 1,
   };
 }
- 
+
 export async function getStaticPaths() {
   const paths = await getClient().fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`
