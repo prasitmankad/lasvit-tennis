@@ -6,7 +6,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 // for the section get the child author reference
 function uiTeam(props) {
   const { title, subtitle, paragraph, team_members } = props;
-  console.log("Team Members =>", team_members);
+  // console.log("Team Members =>", team_members);
   return (
     <>
       {/* TEAM BLOC */}

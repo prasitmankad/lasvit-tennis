@@ -1,22 +1,25 @@
 import Error from "next/error";
+import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
-import { urlFor } from "../utils/sanity";
 import RenderSections from "../components/RenderSections";
 import Link from "next/link";
+import { urlFor } from "../utils/sanity";
+
 const query = `{
-  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
+  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] 
+  {
 	title,
-  tagline,
+  tagline, 
   siteDescription,
   mainNavigation,
   footerNavigation,
   frontpage,
   logo
 	},
-  'mainContent': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
-    'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..3],
-    title,
+  'mainContent': *[(_type == "route" && slug.current==$slug) && !(_id in path('drafts.**'))][0] {
+    page->{
+    ...,
     content[]{
       ...,
       team_members[]{
@@ -31,20 +34,25 @@ const query = `{
         }
       }
     }
+  }
 }
 }`;
 
-// main page component renders
-function IndexPage(props) {
-  const { pageData, preview } = props;
+function PageContainer({ pageData, preview, slug }) {
   const router = useRouter();
-  // console.log("pageData =>", pageData);
 
-  if (!router.isFallback && !pageData) {
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
+  if (!pageData) {
     return <Error statusCode={404} />;
   }
 
-  const { data: config } = usePreviewSubscription(query, {
+  const { data: { page = {} } = {} } = usePreviewSubscription(query, {
+    params: { slug },
     initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
@@ -88,7 +96,7 @@ function IndexPage(props) {
             </nav>
           </div>
         </header>
-        <RenderSections sections={pageData.mainContent.content} />
+        <RenderSections sections={pageData.mainContent.page.content} />
         <footer class="text-gray-600 body-font">
           <div class="bg-gray-100 border-t border-gray-200">
             <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
@@ -145,17 +153,18 @@ function IndexPage(props) {
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
-  var pageData = await getClient(preview).fetch(query);
-  // var postData = await getClient(preview).fetch(queryPosts);
+  const { slug } = params;
+  var pageData = await getClient(preview).fetch(query, { slug });
+  // var settingsData = await getClient().fetch(settingsQuery);
+  // var arrData = [pageData, settingsData];
+  // pageData = arrData;
 
-  // pageData[0]["postData"] = postData;
-  // console.log("PostData with Recent Blogs ==>", pageData);
+  // pageData = Object.assign(settingsData)
+  // pageData.push(settingsData);
+  // console.log("[joined pageData] ->", pageData);
 
   return {
-    props: {
-      preview,
-      pageData,
-    },
+    props: { preview, pageData, slug },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every second
@@ -163,14 +172,15 @@ export async function getStaticProps({ params = {}, preview = false }) {
   };
 }
 
-// export async function getStaticPaths() {
-//   var routes = await getClient().fetch(
-//     `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
-//   );
-//   console.log("Routes =>,routes");
-//   return {
-//     paths: routes || null,
-//     fallback: true,
-//   };
-// }
-export default IndexPage;
+export async function getStaticPaths() {
+  var routes = await getClient().fetch(
+    `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
+  );
+  console.log("Routes =>,routes");
+  return {
+    paths: routes || null,
+    fallback: true,
+  };
+}
+
+export default PageContainer;
