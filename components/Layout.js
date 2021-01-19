@@ -11,10 +11,7 @@ import {
 } from "../utils/sanity";
 
 function Layout({ children }) {
-  // console.log("Children ->", children);
-  var data = children.props.pageData;
-  // maybe i need to do some pre-processing here before the react component is rendered
-  // console.log("Layout Page Data ->", data);
+
   return (
     <div className="bg-white">
       <header class="text-gray-600 body-font">
