@@ -40,7 +40,13 @@ function IndexPage(props) {
   const router = useRouter();
   // console.log("pageData =>", pageData);
 
-  if (!router.isFallback && !pageData) {
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  if (!pageData) {
     return <Error statusCode={404} />;
   }
 
@@ -80,11 +86,11 @@ function IndexPage(props) {
               <Link href="/blog">
                 <a class="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
               </Link>
-              <Link href="/contact">
+              {/* <Link href="/contact">
                 <a class="mr-5 hover:text-gray-900 cursor-pointer">
                   Contact Us
                 </a>
-              </Link>
+              </Link> */}
             </nav>
           </div>
         </header>
@@ -146,10 +152,6 @@ function IndexPage(props) {
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var pageData = await getClient(preview).fetch(query);
-  // var postData = await getClient(preview).fetch(queryPosts);
-
-  // pageData[0]["postData"] = postData;
-  // console.log("PostData with Recent Blogs ==>", pageData);
 
   return {
     props: {
@@ -163,14 +165,4 @@ export async function getStaticProps({ params = {}, preview = false }) {
   };
 }
 
-// export async function getStaticPaths() {
-//   var routes = await getClient().fetch(
-//     `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
-//   );
-//   console.log("Routes =>,routes");
-//   return {
-//     paths: routes || null,
-//     fallback: true,
-//   };
-// }
 export default IndexPage;
