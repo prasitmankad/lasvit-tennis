@@ -85,11 +85,11 @@ function BlogPageContainer({ postsData, preview }) {
           </div>
 
           <>
-            {postsData.mainContent.map((post) => (
-              <>
-                <div class="container px-5 py-10 mx-auto">
-                  <div class="flex flex-wrap -m-4">
-                    <div class="p-4 md:w-1/3">
+            <div class="flex flex-wrap -m-4">
+              {postsData.mainContent.map((post) => (
+                <>
+                  <div class="p-4 md:w-1/3">
+                    <div class="container px-5 py-10 mx-auto">
                       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img
                           src={urlFor(post.postImage)
@@ -140,9 +140,9 @@ function BlogPageContainer({ postsData, preview }) {
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
+            </div>
           </>
         </section>
 
