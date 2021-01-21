@@ -29,7 +29,7 @@ function BlogPageContainer({ postsData, preview }) {
     return <Error statusCode={404} />;
   }
 
-  console.log(postsData);
+  // console.log(postsData);
   const { data: posts } = usePreviewSubscription(query, {
     initialData: postsData,
     enabled: preview || router.query.preview !== null,
@@ -118,7 +118,7 @@ function BlogPageContainer({ postsData, preview }) {
                             )}
                           </p>
                           <div class="flex items-center flex-wrap ">
-                            <Link href={post.slug.current}>
+                            <Link href={`/blog/${post.slug.current}`}>
                               <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                                 Read More
                                 <svg
