@@ -2,8 +2,9 @@ import Error from "next/error";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
-import { PortableText, urlFor } from "../../utils/sanity";
+import { urlFor, PortableText } from "../../utils/sanity";
 import Link from "next/link";
+import ReactPlayer from 'react-player'
 
 const query = groq`{
   'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
@@ -20,7 +21,6 @@ const query = groq`{
 
 function BlogPostContainer({ postData, preview }) {
   const router = useRouter();
-  console.log("postData ->", postData);
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -37,6 +37,11 @@ function BlogPostContainer({ postData, preview }) {
     initialData: postData,
     enabled: preview || router.query.preview !== null,
   });
+
+
+  {
+    /* can't just mash together and pipe everything to render as text as there may be some images, inline icons and other crap coming through on the API response. Therefore have to go through and determin the _type and then pipe correct component -- two main types - block and mainImage, block has further distinction of marks which are html delimieters such as <strong> or <h1> etc. that need to be parsed as well.  */
+  }
 
   return (
     <>
@@ -76,30 +81,51 @@ function BlogPostContainer({ postData, preview }) {
           </nav>
         </div>
       </header>
-      {/* SECTION 1 Blog Post */}
-      <section class="text-gray-600 body-font">
-        <div class="container mx-auto flex px-5 py-10 items-center justify-center flex-col">
-          <img
-            alt={postData.mainContent.postImage?.alt || `Photo of ${postData.mainContent.title}`}
-            class="object-cover object-center h-full w-full"
-            src={urlFor(postData.mainContent.postImage)
-              .auto("format")
-              .width(1200)
-              .height(400)
-              .fit("crop")
-              .quality(80)}
-          />
 
-          <div class="text-center lg:w-5/6 w-full">
-            <div class="sm:w-4/4 sm:pl-8 sm:py-8 mt-4 pt-4 sm:mt-0 text-left sm:text-left">
-              <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                {postData.mainContent.title}
-              </h1>
-              <p class="leading-relaxed text-lg mb-4">
+      <section class="text-gray-600 body-font">
+        <div class="lg:w-4/6 mx-auto py-0">
+          <div class="container px-5 py-10 mx-auto flex flex-col">
+            <div class="rounded-xs h-500 overflow-hidden">
+              <div class="text-center mb-20 py-0">
+                <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+                  {postData.mainContent.title}
+                </h1>
+                <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+                  {postData.mainContent.excerpt && (
+                    <PortableText
+                      blocks={postData.mainContent.excerpt}
+                      className="text-gray-600"
+                    />
+                  )}
+                </p>
+              </div>
+              <img
+                alt={
+                  postData.mainContent.postImage?.alt ||
+                  `Photo of ${postData.mainContent.title}`
+                }
+                class="object-cover object-center h-full w-full"
+                src={urlFor(postData.mainContent.postImage)
+                  .auto("format")
+                  .width(800)
+                  .height(Math.floor((9 / 16) * 1000))
+                  .fit("crop")
+                  .quality(80)}
+              />
+            </div>
+            <div class="flex flex-col sm:flex-row mt-10">
+              <div class="sm:w-4/4 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 {postData.mainContent.body && (
-                  <PortableText blocks={postData.mainContent.body} className="text-gray-600" />
+                  <p class="leading-relaxed text-lg mb-4">
+                    <PortableText
+                      blocks={postData.mainContent.body}
+                      className="text-gray-600"
+                    />
+                  </p>
                 )}
-              </p>
+
+               
+              </div>
             </div>
           </div>
         </div>
@@ -162,7 +188,7 @@ export async function getStaticProps({ params, preview = false }) {
   const postData = await getClient(preview).fetch(query, {
     slug: params.slug,
   });
-
+  // console.log("postData ->", postData);
   return {
     props: { preview, postData },
     revalidate: 1,

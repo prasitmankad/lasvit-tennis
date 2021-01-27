@@ -1,3 +1,5 @@
+import React from "react";
+
 import { MdVideocam } from "react-icons/md";
 import EmbedPlayer from '../components/preview/EmbedPlayer'
 
