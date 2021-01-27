@@ -32,6 +32,7 @@
     "react-moveable": "^0.25.2",
     "react-player": "^2.8.1",
     "resize-observer": "^1.0.0",
-    "sanity-plugin-media-library": "^1.0.3"
+    "sanity-plugin-media-library": "^1.0.3",
+    "vercel": "^21.2.0"
   }
 }
