@@ -6,7 +6,7 @@ import {
   createPreviewSubscriptionHook,
 } from "next-sanity";
 
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player/lazy";
 const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
@@ -53,7 +53,6 @@ export const PortableText = createPortableTextComponent({
     types: {
       // render video block
       videoEmbed: (props) => {
-        
         // const { url } = props.node.url;
 
         if (!props.node.url) {
@@ -61,7 +60,15 @@ export const PortableText = createPortableTextComponent({
           return null;
         }
 
-        return <ReactPlayer url={props.node.url} controls />;
+        return (
+          <>
+            <div class="container px-5 py-24 mx-auto flex flex-wrap">
+              <div class="flex flex-wrap w-full">
+                    <ReactPlayer url={props.node.url} controls />
+              </div>
+            </div>
+          </>
+        );
       },
 
       // render text blocks

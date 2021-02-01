@@ -1,10 +1,11 @@
-# Sanity.io and Next.js Ecommerce Starter
+Hey Brett -- i've fixed and pushed out the last update to the blog posts to make sure the in-line videos appear properly. This (finally) completes all components of the initial site that needed to be built.
 
-This is an e-commerce *starter* that features a studio with a simple Next.js frontend.
+*action required*
+- can you please review all frontend pages to make sure the layout / design is as you expect
 
-This starter uses the [Next.js toolkit for Sanity.io](https://github.com/sanity-io/next-sanity).
+- can you review all the settings available to you in the Sanity CMS backend
 
-Note: This starter is an example of e-commerce content models and layout. It doesn't come with a full cart and fulfilmment solution. If you're interested in how to integrate Sanity with a e-commerce solution, do [join our community](https://slack.sanity.io).
+- add / modify and publish content 
 
 **Features:**
 
