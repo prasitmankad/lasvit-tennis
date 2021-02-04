@@ -2,9 +2,10 @@ import S from "@sanity/desk-tool/structure-builder";
 import { MdWeb, MdSettings, MdWhatshot, MdLooks } from "react-icons/md";
 import categories from "./categories";
 import person from "./person";
-
 import siteSettings from "./siteSettings";
 
+import PagePreview from "../previews/pagePreview";
+import PostPreview from "../previews/postPreview";
 // Hide document types that we already have a structure definition for
 const hiddenDocTypes = (listItem) =>
   ![
@@ -13,7 +14,6 @@ const hiddenDocTypes = (listItem) =>
     "sampleProject",
     "siteSettings",
     "page",
-    "product",
     "route",
     "siteConfig",
   ].includes(listItem.getId());
@@ -65,11 +65,16 @@ export const getDefaultDocumentNode = (props) => {
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   const { schemaType } = props;
-  if (schemaType === "product") {
+  if (schemaType === "post") {
     return S.document().views([
       S.view.form(),
-      // S.view.component(ProductsOverviewPreview).title("Products Overview"),
-      // S.view.component(ProductPagePreview).title("Product Page"),
+      S.view.component(PostPreview).title("Preview Mode"),
+    ]);
+  }
+  if (schemaType === "page") {
+    return S.document().views([
+      S.view.form(),
+      S.view.component(PagePreview).title("Preview Mode"),
     ]);
   }
 

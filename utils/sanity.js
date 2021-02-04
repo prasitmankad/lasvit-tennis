@@ -18,6 +18,7 @@ const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV === "production",
+  // withCredentials: true,
   /**
    * Set useCdn to `false` if your application require the freshest possible
    * data always (potentially slightly slower and a bit more expensive).
@@ -62,8 +63,8 @@ export const PortableText = createPortableTextComponent({
 
         return (
           <>
-            <div class="container px-5 py-24 mx-auto flex flex-wrap">
-              <div class="flex flex-wrap w-full">
+            <div className="container px-5 py-24 mx-auto flex flex-wrap">
+              <div className="flex flex-wrap w-full">
                     <ReactPlayer url={props.node.url} controls />
               </div>
             </div>
@@ -76,21 +77,21 @@ export const PortableText = createPortableTextComponent({
         const style = props.node.style || "normal";
         if (style == "h1") {
           return (
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               {props.children}
             </h1>
           );
         }
         if (style == "h2") {
           return (
-            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">
+            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
               {props.children}
             </h2>
           );
         }
         if (style == "h3") {
           return (
-            <h3 class="title-font font-medium text-gray-900">
+            <h3 className="title-font font-medium text-gray-900">
               {props.children}
             </h3>
           );
@@ -104,7 +105,7 @@ export const PortableText = createPortableTextComponent({
         return style === "blockquote" ? (
           <blockquote>– {props.children}</blockquote>
         ) : (
-          <p class="leading-relaxed">{props.children}</p>
+          <p className="leading-relaxed">{props.children}</p>
         );
       },
       // render code block
@@ -154,7 +155,7 @@ export const PortableText = createPortableTextComponent({
       externalLink: (props) => {
         return (
           <Link href={props.mark.url}>
-            <a class="mr-5 hover:text-gray-900 cursor-pointer">
+            <a className="mr-5 hover:text-gray-900 cursor-pointer">
               {props.children}
             </a>
           </Link>
@@ -171,8 +172,10 @@ export const sanityClient = createClient(config);
 export const previewClient = createClient({
   ...config,
   useCdn: false,
+  //withCredentials: true,
+  token: process.env.SANITY_API_TOKEN,
 });
 
 // Helper function for easily switching between normal client and preview client
-export const getClient = (usePreview) =>
+export  const getClient = (usePreview) =>
   usePreview ? previewClient : sanityClient;

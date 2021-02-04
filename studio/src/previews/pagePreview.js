@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./IframePreview.css";
-import resolveProductionUrl from "../../utils/resolveProductionUrl";
 
-export default function pagePreview(props) {
+// make sure the CORS path is set up for all addresses in manage.sanity.io - nothing but the console will tell you this shite and you will have to figure it out yourself
+
+export default function PagePreview(props) {
   const { displayed } = props.document;
   if (!displayed?.slug?.current) {
-    return <div>The page needs a slug before it can be previewed. Click generate next to the slug field to create one and wait for this pane to refresh.</div>;
+    return <div>The product needs a slug before it can be previewed.</div>;
   }
   const url =
     process.env.NODE_ENV === "production"
-      ? resolveProductionUrl(props.document)
-      : //? `../../products/${displayed?.slug?.current}?preview`
-        `http://localhost:3000//blog/${displayed?.slug?.current}?preview`;
+      ? `../../${displayed?.slug?.current}?preview`
+      : `http://localhost:3000/${displayed?.slug?.current}?preview`;
 
   return (
     <div className={styles.componentWrapper}>
