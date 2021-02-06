@@ -12,7 +12,7 @@ export default function PostPreview(props) {
     process.env.NODE_ENV === "production"
       ? `../../blog/${displayed?.slug?.current}?preview`
       : `http://localhost:3000/blog/${displayed?.slug?.current}?preview`;
-console.log ("url -> ", url)
+// console.log ("url -> ", url)
   return (
     <div className={styles.componentWrapper}>
       <div className={styles.iframeContainer}>

@@ -10,6 +10,17 @@ export default {
   ],
   fields: [
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: 'Required to generate the page unique URL. Some frontends also require this for accurate context within the overall content model to be able to show the page.',
+      validation: Rule => Rule.error('You must generate a slug so that the frontend can query and render the page.').required(),
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
+    {
       name: "title",
       type: "string",
       title: "Title",

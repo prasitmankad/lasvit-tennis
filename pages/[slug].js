@@ -7,7 +7,7 @@ import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 
 const query = `{
-  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] 
+  'siteData': *[(_type == "siteConfig")][0] 
   {
 	title,
   tagline, 
@@ -17,7 +17,8 @@ const query = `{
   frontpage,
   logo
 	},
-  'mainContent': *[(_type == "route" && slug.current==$slug) && !(_id in path('drafts.**'))][0] {
+  'mainContent': *[(_type == "route" && slug.current==$slug)][0] {
+    
     page->{
     ...,
     content[]{
@@ -51,12 +52,12 @@ function PageContainer({ pageData, preview, slug }) {
     return <Error statusCode={404} />;
   }
 
-  const { data: { page = {} } = {} } = usePreviewSubscription(query, {
+  const { data: page = {} } = usePreviewSubscription(query, {
     params: { slug },
     initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
-
+console.log("page var -> ",page)
   return (
     <>
       <div className="bg-white">
@@ -65,15 +66,15 @@ function PageContainer({ pageData, preview, slug }) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(pageData.siteData.logo)
+                  src={urlFor(page.siteData.logo)
                     .auto("format")
                     .width(125)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    pageData.siteData.logo?.alt ||
-                    `Photo of ${pageData.siteData.title}`
+                    page.siteData.logo?.alt ||
+                    `Photo of ${page.siteData.title}`
                   }
                 />
               </a>
@@ -96,22 +97,22 @@ function PageContainer({ pageData, preview, slug }) {
             </nav>
           </div>
         </header>
-        <RenderSections sections={pageData.mainContent.page.content} />
+        <RenderSections sections={page.mainContent.page.content} />
         <footer class="text-gray-600 body-font">
           <div class="bg-gray-100 border-t border-gray-200">
             <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
               <Link href="/">
                 <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                   <img
-                    src={urlFor(pageData.siteData.logo)
+                    src={urlFor(page.siteData.logo)
                       .auto("format")
                       .width(80)
                       // .height(400)
                       .fit("crop")
                       .quality(80)}
                     alt={
-                      pageData.siteData.logo?.alt ||
-                      `Photo of ${pageData.siteData.title}`
+                      page.siteData.logo?.alt ||
+                      `Photo of ${page.siteData.title}`
                     }
                   />
                 </a>
@@ -160,7 +161,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
   // pageData = arrData;
 
   // pageData = Object.assign(settingsData)
-  // pageData.push(settingsData);
+  // page.push(settingsData);
   // console.log("[joined pageData] ->", pageData);
 
   return {

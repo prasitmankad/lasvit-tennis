@@ -50,11 +50,11 @@ function IndexPage(props) {
     return <Error statusCode={404} />;
   }
 
-  const { data: config } = usePreviewSubscription(query, {
+  const { data: page } = usePreviewSubscription(query, {
     initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
-
+  console.log("page var -> ",page)
   return (
     <>
       <div className="bg-white">
