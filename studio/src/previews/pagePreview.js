@@ -13,7 +13,7 @@ export default function PagePreview(props) {
   // if (!displayed?.slug?.current) {
   //   return <div>The product needs a slug before it can be previewed.</div>;
   // }
-  console.log ('props ->', props.document.displayed.slug.current)
+  // console.log ('props ->', props.document.displayed.slug.current)
 
   const url =
     process.env.NODE_ENV === "production"

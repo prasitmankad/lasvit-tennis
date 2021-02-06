@@ -175,7 +175,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
 
 export async function getStaticPaths() {
   var routes = await getClient().fetch(
-    `*[_type == "route" && defined(slug.current)]{"params": {"slug": slug.current}}`
+    `*[_type == "page" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
   // console.log("Routes =>",routes);
   return {
