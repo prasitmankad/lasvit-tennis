@@ -124,8 +124,8 @@ function IndexPage(props) {
             </div>
           </div>
         </section>
-         {/* KEY FEATURES */}
-         <section class="text-gray-600 body-font">
+        {/* KEY FEATURES */}
+        <section class="text-gray-600 body-font">
           <div class="container px-5 py-24 mx-auto">
             <div class="text-center mb-20">
               <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
@@ -282,7 +282,6 @@ function IndexPage(props) {
                 <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                   Sign Up
                 </button>
-                
               </div>
             </div>
           </div>
@@ -292,7 +291,7 @@ function IndexPage(props) {
           <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
             <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
               <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-               Key Feature #2
+                Key Feature #2
                 <br class="hidden lg:inline-block" />
                 readymade gluten
               </h1>
@@ -304,9 +303,8 @@ function IndexPage(props) {
               </p>
               <div class="flex justify-center">
                 <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Sign Up
+                  Sign Up
                 </button>
-               
               </div>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -318,13 +316,13 @@ function IndexPage(props) {
             </div>
           </div>
         </section>
-       
+
         {/* CONTENT GALLERY */}
         <section class="text-gray-600 body-font">
           <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                Master Cleanse Reliac Heirloom
+                All the videos you would need
               </h1>
               <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
                 Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
@@ -535,51 +533,61 @@ function IndexPage(props) {
           </div>
         </section>
         {/* PAY & SIGNUP */}
-        <section class="text-gray-600 body-font">
-          <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
-            <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-              <h1 class="title-font font-medium text-3xl text-gray-900">
-                Slow-carb next level shoindcgoitch ethical authentic, poko
-                scenester
-              </h1>
-              <p class="leading-relaxed mt-4">
-                Poke slow-carb mixtape knausgaard, typewriter street art
-                gentrify hammock starladder roathse. Craies vegan tousled etsy
-                austin.
-              </p>
-            </div>
-            <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-              <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
-                Sign Up
-              </h2>
-              <div class="relative mb-4">
-                <label for="full-name" class="leading-7 text-sm text-gray-600">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="full-name"
-                  name="full-name"
-                  class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+        <section class="text-gray-600 body-font overflow-hidden">
+          <div class="container px-5 py-24 mx-auto">
+            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+              <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest">
+                  LASVIT TENNIS
+                </h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+Ready to become an Ultimate Tennis Parent?                </h1>
+                
+                <p class="leading-relaxed mb-4">
+                  Fam locavore kickstarter distillery. Mixtape chillwave tumeric
+                  sriracha taximy chia microdosing tilde DIY. XOXO fam inxigo
+                  juiceramps cornhole raw denim forage brooklyn. Everyday carry
+                  +1 seitan poutine tumeric. Gastropub blue bottle austin
+                  listicle pour-over, neutra jean.
+                </p>
+                <div class="flex border-t border-gray-200 py-2">
+                  <span class="text-gray-500">100x Videos</span>
+                  <span class="ml-auto text-gray-900">$100</span>
+                </div>
+                <div class="flex border-t border-gray-200 py-2">
+                  <span class="text-gray-500">2000 Worksheets</span>
+                  <span class="ml-auto text-gray-900">FREE</span>
+                </div>
+                <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+                  <span class="text-gray-500">Quantity</span>
+                  <span class="ml-auto text-gray-900">FREE</span>
+                </div>
+                <div class="flex">
+                  <span class="title-font font-medium text-2xl text-gray-900">
+                    $58.00 per month
+                  </span>
+                  <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    Sign Up
+                  </button>
+                  {/* <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                    <svg
+                      fill="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="w-5 h-5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                    </svg>
+                  </button> */}
+                </div>
               </div>
-              <div class="relative mb-4">
-                <label for="email" class="leading-7 text-sm text-gray-600">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
-              </div>
-              <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Button
-              </button>
-              <p class="text-xs text-gray-500 mt-3">
-                Literally you probably haven't heard of them jean shorts.
-              </p>
+              <img
+                alt="ecommerce"
+                class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                src="https://dummyimage.com/400x400"
+              />
             </div>
           </div>
         </section>

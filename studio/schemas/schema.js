@@ -10,6 +10,10 @@ import post from "./documents/post";
 import route from "./documents/route";
 import siteConfig from "./documents/siteConfig";
 import person from "./documents/person";
+// imports for course content
+import course from './documents/course';
+import course_module from './documents/course_module';
+import course_video from './documents/course_video';
 
 // Object types
 import blockContent from "./objects/blockContent";
@@ -38,6 +42,8 @@ import localeBlockContent from "./locale/BlockContent";
 import * as plugs from "./uiComposites"; // imports the Hero ui object
 import plugDefaultFields from "./uiComposites/_defaultFields"; // required for everything imported from plugs
 
+
+
 const allPlugs = Object.values(plugs).map((plug) => {
   return { ...plug, fields: plugDefaultFields.concat(plug.fields) };
 });
@@ -52,6 +58,9 @@ export default createSchema({
     .concat([
       // The following are document types which will appear
       // in the studio.
+      course,
+      course_module,
+      course_video,
       category,
       page,
       route,

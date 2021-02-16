@@ -1,19 +1,23 @@
 import S from "@sanity/desk-tool/structure-builder";
-import { MdWeb, MdSettings, MdWhatshot, MdLooks } from "react-icons/md";
-import categories from "./categories";
-import person from "./person";
-import siteSettings from "./siteSettings";
+import {
+  MdWeb,
+  MdSettings,
+  MdViewQuilt,
+  MdSchool,
+  MdVideoLibrary,
+} from "react-icons/md";
 
 import PagePreview from "../previews/pagePreview";
 import PostPreview from "../previews/postPreview";
-// Hide document types that we already have a structure definition for
+// Hide document types that we already have a structure definition for so that they don't appear in root structure but our customized structure
 const hiddenDocTypes = (listItem) =>
   ![
     "category",
     "person",
-    "sampleProject",
-    "siteSettings",
     "page",
+    "course",
+    "course_module",
+    "course_video",
     "route",
     "siteConfig",
   ].includes(listItem.getId());
@@ -22,18 +26,18 @@ export default () =>
   S.list()
     .title("Lasvit Tennis")
     .items([
-      // S.documentTypeListItem("post").title("Posts"),
       S.listItem()
-      .title("Pages")
-      .icon(MdWeb)
-      .child(
-        S.list()
-          .title("Pages")
-          .items([
-            S.documentTypeListItem("route").title("Routes"),
-            S.documentTypeListItem("page").title("Pages"),
-          ])
-      ),
+        .title("Pages")
+        .icon(MdWeb)
+        .child(
+          S.list()
+            .title("Pages")
+            .items([
+              S.documentTypeListItem("route").title("Routes"),
+              S.documentTypeListItem("page").title("Pages"),
+            ])
+        ),
+
       S.listItem()
         .title("Website")
         .icon(MdWeb)
@@ -50,10 +54,25 @@ export default () =>
                     .schemaType("siteConfig")
                     .documentId("siteConfig")
                 ),
-
             ])
         ),
+
       ...S.documentTypeListItems().filter(hiddenDocTypes),
+      S.listItem()
+        .title("Courses")
+        .icon(MdSchool)
+        .schemaType("course")
+        .child(S.documentList().title("Courses").filter('_type == "course"')),
+        S.listItem()
+        .title("Modules")
+        .icon(MdViewQuilt)
+        .schemaType("course_module")
+        .child(S.documentList().title("Course Modules").filter('_type == "course_module"')),
+        S.listItem()
+        .title("Videos")
+        .icon(MdVideoLibrary)
+        .schemaType("course_video")
+        .child(S.documentList().title("Course Videos").filter('_type == "course_video"')),
     ]);
 
 export const getDefaultDocumentNode = (props) => {
