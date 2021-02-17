@@ -44,9 +44,6 @@ export default {
         title: 'Course Cover Image',
         type: 'image',
         required: true,
-        options: {
-          hotspot: true,
-        },
         description:
           'The image should be either jpg or png. Preferably 3000 x 3000, minimum 1400 x 1400 pixels. Used on sales pages and course landing pages.'
       },

@@ -63,16 +63,24 @@ export default () =>
         .icon(MdSchool)
         .schemaType("course")
         .child(S.documentList().title("Courses").filter('_type == "course"')),
-        S.listItem()
+      S.listItem()
         .title("Modules")
         .icon(MdViewQuilt)
         .schemaType("course_module")
-        .child(S.documentList().title("Course Modules").filter('_type == "course_module"')),
-        S.listItem()
+        .child(
+          S.documentList()
+            .title("Course Modules")
+            .filter('_type == "course_module"')
+        ),
+      S.listItem()
         .title("Videos")
         .icon(MdVideoLibrary)
         .schemaType("course_video")
-        .child(S.documentList().title("Course Videos").filter('_type == "course_video"')),
+        .child(
+          S.documentList()
+            .title("Course Videos")
+            .filter('_type == "course_video"')
+        ),
     ]);
 
 export const getDefaultDocumentNode = (props) => {

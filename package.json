@@ -31,7 +31,7 @@
     "react-player": "^2.7.2",
     "react-router": "^5.2.0",
     "react-youtube": "^7.13.1",
-    "vercel": "^21.2.2"
+    "vercel": "^21.2.3"
   },
   "devDependencies": {
     "@sanity/cli": "^2.2.3",

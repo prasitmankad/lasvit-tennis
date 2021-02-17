@@ -71,10 +71,7 @@ export default {
       {
         name: 'coverArt',
         title: 'Cover art',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
+        type: 'image'
       },
     ],
     // orderings: [
