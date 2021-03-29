@@ -35,5 +35,8 @@
     "resize-observer": "^1.0.0",
     "sanity-plugin-media-library": "^1.0.5",
     "vercel": "^21.3.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }

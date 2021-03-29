@@ -49,5 +49,8 @@
   "bugs": {
     "url": "https://github.com/prasitmankad/lasvit-tennis/issues"
   },
-  "homepage": "https://github.com/prasitmankad/lasvit-tennis#readme"
+  "homepage": "https://github.com/prasitmankad/lasvit-tennis#readme",
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
 }
