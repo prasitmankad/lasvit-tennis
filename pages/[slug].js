@@ -7,7 +7,7 @@ import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 
 const query = `{
-  'siteData': *[(_type == "siteConfig")][0] 
+  'siteData': *[(_type == "globalSettings")][0] 
   {
 	title,
   tagline, 

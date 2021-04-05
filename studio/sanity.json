@@ -15,7 +15,10 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/color-input",
-    "media-library"
+    "media-library",
+    "color-list",
+    "intl-input",
+    "autocomplete-tags"
   ],
   "env": {
     "development": {

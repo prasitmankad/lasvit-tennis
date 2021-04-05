@@ -1,67 +1,67 @@
+import { RiPagesLine as icoPages } from "react-icons/ri";
+// TODO: Fix Team Member reference fail - enforce limit and make delete button work
+
 export default {
   name: "page",
   type: "document",
   title: "Page",
-  fieldsets: [
-    {
-      title: "SEO & metadata",
-      name: "metadata",
-    },
-  ],
+  icon: icoPages,
   fields: [
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      description: 'Required to generate the page unique URL. Some frontends also require this for accurate context within the overall content model to be able to show the page.',
-      validation: Rule => Rule.error('You must generate a slug so that the frontend can query and render the page.').required(),
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Page Title",
+      description:
+        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+      validation: (Rule) =>
+        Rule.error("Please fill out the required field.").required(),
+    },
+    {
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      description:
+        "Required to generate the blog post unique URL. Some frontends also require this for accurate context within the overall content model to be able to show the post.",
+      validation: (Rule) =>
+        Rule.error(
+          "You must generate a slug so that the frontend can query and render the blog post."
+        ).required(),
+      options: {
+        source: "title",
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+      },
     },
     {
       name: "content",
       type: "array",
-      title: "Page sections",
+      title: "Sections",
+      Description:
+        "Use this to construct the page layout, section by section. Each section has additional fields with information that can be configured and shown on the frontend.",
       of: [
-        { type: "uiRecentPosts" },
-        { type: "textSection" },
-        { type: "uiHero" },
-        { type: "uiFeatureList" },
-        { type: "uiPlainContentBlock" },
-        { type: "uiCTA" },
-        { type: "uiContact" },
-        { type: "uiTeam" },
-        { type: "uiEmailNewsletter" },
+        { type: "hero" },
+        { type: "pageHeading" },
+        { type: "blogRoll" },
+        { type: "contentBlock" }, // basic content block
+        // { type: "contentRoll" },
+        // { type: "faq" },
+        // { type: "featureDetail" },
+        { type: "featuredOn" },
+        { type: "featureGrid" },
+        // { type: "featureList" },
+
+        // { type: "pricingSingle" },
+        { type: "signup" },
+        { type: "siteNotice" },
+        // { type: "stats" },
+        { type: "team" },
       ],
     },
-    // {
-    //   name: "description",
-    //   type: "text",
-    //   title: "Description",
-    //   description: "This description populates meta-tags on the webpage",
-    //   fieldset: "metadata",
-    // },
-    // {
-    //   name: "openGraphImage",
-    //   type: "image",
-    //   title: "Open Graph Image",
-    //   description: "Image for sharing previews on Facebook, Twitter etc.",
-    //   fieldset: "metadata",
-    //   options: { hotspot: true },
-    // },
   ],
 
   preview: {
     select: {
       title: "title",
-      media: "openGraphImage",
     },
   },
 };

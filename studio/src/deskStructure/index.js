@@ -1,86 +1,78 @@
 import S from "@sanity/desk-tool/structure-builder";
-import {
-  MdWeb,
-  MdSettings,
-  MdViewQuilt,
-  MdSchool,
-  MdVideoLibrary,
-} from "react-icons/md";
+import { RiListSettingsLine } from "react-icons/ri";
 
 import PagePreview from "../previews/pagePreview";
 import PostPreview from "../previews/postPreview";
+import CoursePreview from "../previews/coursePreview";
+
 // Hide document types that we already have a structure definition for so that they don't appear in root structure but our customized structure
 const hiddenDocTypes = (listItem) =>
   ![
-    "category",
-    "person",
     "page",
+    "post",
     "course",
-    "course_module",
-    "course_video",
+    "module",
+    "contentItem",
     "route",
-    "siteConfig",
+    "globalSettings",
   ].includes(listItem.getId());
 
 export default () =>
   S.list()
     .title("Lasvit Tennis")
     .items([
+      //...S.documentTypeListItems().filter(hiddenDocTypes),
+
+      // Global Config
+      S.listItem()
+        .title("Global")
+        .icon(RiListSettingsLine)
+        .child(
+          S.document()
+            .title("Global")
+            .schemaType("globalSettings")
+            .documentId("globalSettings")
+        ),
+
+      // Pages
       S.listItem()
         .title("Pages")
-        .icon(MdWeb)
+        .schemaType("page")
         .child(
-          S.list()
-            .title("Pages")
-            .items([
-              S.documentTypeListItem("route").title("Routes"),
-              S.documentTypeListItem("page").title("Pages"),
-            ])
+          S.documentList().title("Static Pages").filter('_type == "page"')
         ),
 
+      // Posts
       S.listItem()
-        .title("Website")
-        .icon(MdWeb)
-        .child(
-          S.list()
-            .title("Website")
-            .items([
-              S.listItem()
-                .title("Site configuration")
-                .icon(MdSettings)
-                .child(
-                  S.document()
-                    .title("Site configuration")
-                    .schemaType("siteConfig")
-                    .documentId("siteConfig")
-                ),
-            ])
-        ),
+        .title("Blog")
+        .schemaType("post")
+        .child(S.documentList().title("Blog Posts").filter('_type == "post"')),
 
-      ...S.documentTypeListItems().filter(hiddenDocTypes),
+      // Course
       S.listItem()
         .title("Courses")
-        .icon(MdSchool)
         .schemaType("course")
-        .child(S.documentList().title("Courses").filter('_type == "course"')),
-      S.listItem()
-        .title("Modules")
-        .icon(MdViewQuilt)
-        .schemaType("course_module")
         .child(
-          S.documentList()
-            .title("Course Modules")
-            .filter('_type == "course_module"')
+          S.list()
+            .title("Course Catalog")
+            .items([
+              S.documentTypeListItem("course").title("Courses"),
+              S.documentTypeListItem("module").title("Modules"),
+              S.documentTypeListItem("contentItem").title("Content Items"),
+              S.documentTypeListItem("faq").title("FAQs"),
+
+            ])
         ),
+
+      // Team Members
       S.listItem()
-        .title("Videos")
-        .icon(MdVideoLibrary)
-        .schemaType("course_video")
+        .title("Team")
+        .schemaType("teamMember")
         .child(
-          S.documentList()
-            .title("Course Videos")
-            .filter('_type == "course_video"')
+          S.documentList().title("Team Members").filter('_type == "teamMember"')
         ),
+
+      
     ]);
 
 export const getDefaultDocumentNode = (props) => {
@@ -92,6 +84,17 @@ export const getDefaultDocumentNode = (props) => {
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   const { schemaType } = props;
+  if (props.schemaType === "default") {
+    return S.document().views(
+      Structure.getDocumentNodeViewsForSchemaType(props.schemaType)
+    );
+  }
+  if (schemaType === "course") {
+    return S.document().views([
+      S.view.form(),
+      S.view.component(CoursePreview).title("Preview Mode"),
+    ]);
+  }
   if (schemaType === "post") {
     return S.document().views([
       S.view.form(),

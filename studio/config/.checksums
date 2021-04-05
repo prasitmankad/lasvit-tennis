@@ -7,5 +7,7 @@
   "@sanity/google-maps-input": "57ae3a403ce6a070b31ec6fa1f3c8339cafa66661eaddba1d4d5ee3cc2197ec2",
   "google-maps-input": "57ae3a403ce6a070b31ec6fa1f3c8339cafa66661eaddba1d4d5ee3cc2197ec2",
   "sanity-plugin-media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-  "media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  "media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "sanity-plugin-intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb",
+  "intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb"
 }

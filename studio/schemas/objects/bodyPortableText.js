@@ -81,7 +81,7 @@ export default {
         ],
       },
       of: [
-        { type: "authorReference" },
+        { type: "teamMemberReference" },
         // { type: 'math', icon: mathInlineIcon, title: 'Inline math' }
       ],
     },

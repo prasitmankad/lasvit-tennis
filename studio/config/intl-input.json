@@ -1,0 +1,8 @@
+{
+    "idStructure": "subpath",
+    "referenceBehavior": "weak",
+    "languages": [
+        { "name": "en_us", "title": "English" },
+        { "name": "zh_cn", "title": "Chinese" }
+      ]
+}

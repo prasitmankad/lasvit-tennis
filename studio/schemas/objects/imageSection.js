@@ -13,11 +13,11 @@ export default {
       type: "string",
       title: "Label",
     },
-    {
-      name: "text",
-      type: "simplePortableText",
-      title: "Text",
-    },
+    // {
+    //   name: "text",
+    //   type: "simplePortableText",
+    //   title: "Text",
+    // },
     {
       name: "image",
       type: "figure",

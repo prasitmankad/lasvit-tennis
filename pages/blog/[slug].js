@@ -6,7 +6,7 @@ import { urlFor, PortableText } from "../../utils/sanity";
 import Link from "next/link";
 
 const query = groq`{
-  'siteData': *[(_type == "siteConfig" )][0] {
+  'siteData': *[(_type == "globalSettings" )][0] {
 	title,
   tagline,
   siteDescription,
