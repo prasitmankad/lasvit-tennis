@@ -278,14 +278,14 @@ export default {
         columns: 1,
       },
       fields: [
+        // Column 0 automagically added from busness info
+
         {
           name: "column1",
           type: "object",
           title: "Column 1 Content",
           fields: [
-            { name: "logo", type: "image", title: "Footer Logo" },
-            // Taglne automagically added from busness info
-            // { name: "tagline", type: "string", title: "Tagline" },
+            { name: "heading", type: "string", title: "Column Heading" },
             {
               name: "links",
               type: "array",
@@ -356,25 +356,7 @@ export default {
             },
           ],
         },
-        {
-          name: "column5",
-          type: "object",
-          title: "Column 5 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
+
         {
           name: "signup",
           type: "object",
