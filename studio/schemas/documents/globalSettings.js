@@ -246,21 +246,153 @@ export default {
       fieldset: "site",
     },
 
-    // {
-    //   title: "Footer navigation items",
-    //   name: "footerNavigation",
-    //   type: "array",
-    //   validation: (Rule) => [
-    //     Rule.max(10).warning("Are you sure you want more than 10 items?"),
-    //     Rule.unique().error("You have duplicate menu items"),
-    //   ],
-    //   fieldset: "footer",
-    //   of: [
-    //     {
-    //       type: "reference",
-    //       to: [{ type: "route" }],
-    //     },
-    //   ],
-    // },
+    // Footer
+
+    // Left Menu Column
+    // Logo Image
+    // Company Tagline
+    // Social[s]
+    // Icon
+    // Link (to externals)
+    // Menu Column[s] – max 4
+    // Heading Text (e.g. Company, Legal, Support etc.)
+    // Link
+    // Link Text
+    // Link Route (to existing page)
+    // Newsletter
+    // Heading
+    // Message
+    // Button Icon
+    // Button Text
+    // Button Link (to Mailerlite API, add to list)
+    // Submit success message (hidden div)
+    // Submit fail message (hidden div)
+    {
+      title: "Footer",
+      name: "footer",
+      type: "object",
+      description: "Footer details. Included at the bottom of every page.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
+      },
+      fields: [
+        {
+          name: "column1",
+          type: "object",
+          title: "Column 1 Content",
+          fields: [
+            { name: "logo", type: "image", title: "Footer Logo" },
+            // Taglne automagically added from busness info
+            // { name: "tagline", type: "string", title: "Tagline" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "post" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "column2",
+          type: "object",
+          title: "Column 2 Content",
+          fields: [
+            { name: "heading", type: "string", title: "Column Heading" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "post" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "column3",
+          type: "object",
+          title: "Column 3 Content",
+          fields: [
+            { name: "heading", type: "string", title: "Column Heading" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "post" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "column4",
+          type: "object",
+          title: "Column 4 Content",
+          fields: [
+            { name: "heading", type: "string", title: "Column Heading" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "post" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "column5",
+          type: "object",
+          title: "Column 5 Content",
+          fields: [
+            { name: "heading", type: "string", title: "Column Heading" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "post" }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "signup",
+          type: "object",
+          title: "Newsletter Signup",
+          description:
+            "Content for the newsletter signup section in the Footer.",
+          fields: [
+            {
+              name: "heading",
+              type: "string",
+              title: "Subscribe Heading Text",
+            },
+            { name: "message", type: "string", title: "Subscribe Message" },
+          ],
+        },
+        // Copyright Message automagically added to frontpage based on current year and existing business info
+        // { name: "copyright", type: "string", title: "Copyright Message" },
+      ],
+    },
   ],
 };
