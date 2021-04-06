@@ -5,7 +5,7 @@ import { urlFor } from "../utils/sanity";
 import RenderSections from "../components/RenderSections";
 import Link from "next/link";
 const query = `{
-  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
+  'siteData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	title,
   tagline,
   siteDescription,
@@ -57,6 +57,8 @@ function IndexPage(props) {
   console.log("page var -> ",page)
   return (
     <>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
       <div className="bg-white">
         <header class="text-gray-600 body-font">
           <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">

@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
@@ -6,6 +8,9 @@ module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         "accent-1": "#333",
       },
@@ -26,5 +31,8 @@ module.exports = {
       // gridTemplateRows: ["responsive"],
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };

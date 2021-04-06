@@ -133,7 +133,7 @@ export const PortableText = createPortableTextComponent({
       ),
     },
     list: (props) =>
-      // console.log("list", props) ||
+       console.log("list", props) ||
       props.type === "bullet" ? (
         <ul>{props.children}</ul>
       ) : (

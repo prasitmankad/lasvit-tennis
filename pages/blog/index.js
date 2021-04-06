@@ -5,7 +5,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 const query = `{
-  'siteData': *[(_type == "siteConfig" && !(_id in path('drafts.**')))][0] {
+  'siteData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	title,
   tagline,
   siteDescription,

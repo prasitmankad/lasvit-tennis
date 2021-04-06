@@ -43,36 +43,7 @@ export default {
       description: "Tagline. Appears as accented text on the section above the title.",
       fieldset: "descriptor",
     },
-    // {
-    //   name: "paragraph",
-    //   type: "bodyPortableText",
-    //   description: "Text for the Hero Section.",
-    //   fieldset: "descriptor",
-    //   validation: (Rule) =>
-    //     Rule.error(
-    //       "Please provide a paragraph for the Hero Section."
-    //     ).required(),
-    // },
-    // {
-    //   name: "ctas",
-    //   type: "array",
-    //   title: "Call to actions",
-    //   of: [
-    //     {
-    //       title: "Call to action",
-    //       type: "cta",
-    //     },
-    //   ],
-    // },
-    // {
-    //   name: "mainImage",
-    //   type: "mainImage",
-    //   title: "Main or  Headline Image",
-    //   description: "Image used for the hero section.",
-    //   validation: (Rule) =>
-    //     Rule.error("Please provide an image for the post.").required(),
-    //   fieldset: "descriptor",
-    // },
+
   ],
   preview: {
     select: {

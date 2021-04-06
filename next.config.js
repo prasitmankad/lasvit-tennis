@@ -9,4 +9,7 @@ const STUDIO_REWRITE = {
 module.exports = {
   rewrites: () => [STUDIO_REWRITE],
   // trailingSlash: true,
+  future: {
+    webpack5: true,
+  },
 };

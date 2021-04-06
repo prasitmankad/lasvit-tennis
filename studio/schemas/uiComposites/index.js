@@ -1,10 +1,12 @@
-export { default as uiHero } from "./uiHero";
-export { default as uiRecentPosts } from "./uiRecentPosts";
-export { default as uiPlainContentBlock } from "./uiPlainContentBlock";
-export { default as uiContact } from "./uiContact";
-export { default as uiCTA } from "./uiCTA";
-export { default as uiTeam } from "./uiTeam";
-export {default as uiFeatureList} from "./uiFeatureList";
-export {default as uiEmailNewsletter} from "./uiEmailNewsletter";
-// export {default as uiPricingTable} from "./uiPricingTable";
+// for traditional pages
+export { default as hero } from "./hero";
+export { default as featuredOn } from "./featuredOn";
+export { default as featureGrid } from "./featureGrid";
+export { default as blogRoll } from "./blogRoll";
+export { default as siteNotice } from "./siteNotice";
+export { default as team } from "./team";
+export { default as signup } from "./signup";
 
+// for other static pages
+export { default as pageHeading } from "./pageHeading";
+export { default as contentBlock } from "./contentBlock";
