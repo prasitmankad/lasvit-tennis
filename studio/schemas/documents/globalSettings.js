@@ -44,72 +44,80 @@ export default {
   fields: [
     // Company Info
     {
-      name: "title",
-      type: "string",
-      title: "Company Name",
-      fieldset: "company",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      name: "tagline",
-      type: "string",
-      title: "Tagline",
-      fieldset: "company",
-      description:
-        "1 sentence slogan or tagline used in head and hero section.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      name: "siteDescription",
-      type: "text",
-      title: "Site Description",
-      fieldset: "company",
-      description:
-        "A short description of the website, used in page head and hero sections.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      title: "Contact",
-      name: "contact",
+      title: "Company Info",
+      name: "businessInfo",
       type: "object",
-      fieldset: "company",
-      description: "Address and other contact info.",
-      // validation: (Rule) =>
-      //   Rule.warning("Please fill out the field.").required(),
-      options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
-      },
-      fields: [
-        { name: "streetNo", type: "string", title: "Street number" },
-        { name: "street", type: "string", title: "Street name" },
-        { name: "city", type: "string", title: "City" },
-        { name: "zip", type: "string", title: "Zip Code" },
-        { name: "country", type: "string", title: "Country" },
-        { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
-      ],
-    },
-
-    {
-      name: "team",
-      type: "array",
-      title: "Team Members",
-      fieldset: "company",
       description:
-        "Core team members of the company. Used on teams / about pages.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      of: [
-        {
-          type: "reference",
-          to: [{ type: "teamMember" }],
+        "Logo and business information that's reused in multiple locations through the site.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
+      },
+      fields: [{
+        name: "title",
+        type: "string",
+        title: "Company Name",
+        validation: (Rule) =>
+          Rule.warning("Please fill out the field.").required(),
+      },
+      {
+        name: "tagline",
+        type: "string",
+        title: "Tagline",
+        description:
+          "1 sentence slogan or tagline used in head and hero section.",
+        validation: (Rule) =>
+          Rule.warning("Please fill out the field.").required(),
+      },
+      {
+        name: "siteDescription",
+        type: "text",
+        title: "Site Description",
+        description:
+          "A short description of the website, used in page head and hero sections.",
+        validation: (Rule) =>
+          Rule.warning("Please fill out the field.").required(),
+      },
+      {
+        title: "Contact",
+        name: "contact",
+        type: "object",
+        description: "Address and other contact info.",
+        // validation: (Rule) =>
+        //   Rule.warning("Please fill out the field.").required(),
+        options: {
+          collapsible: true, // Makes the whole fieldset collapsible
+          collapsed: false, // Defines if the fieldset should be collapsed by default or not
+          columns: 1, // Defines a grid for the fields and how many columns it should have
         },
-      ],
-    },
+        fields: [
+          { name: "streetNo", type: "string", title: "Street number" },
+          { name: "street", type: "string", title: "Street name" },
+          { name: "city", type: "string", title: "City" },
+          { name: "zip", type: "string", title: "Zip Code" },
+          { name: "country", type: "string", title: "Country" },
+          { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
+        ],
+      },
+  
+      {
+        name: "team",
+        type: "array",
+        title: "Team Members",
+        description:
+          "Core team members of the company. Used on teams / about pages.",
+        validation: (Rule) =>
+          Rule.warning("Please fill out the field.").required(),
+        of: [
+          {
+            type: "reference",
+            to: [{ type: "teamMember" }],
+          },
+        ],
+      },
+    ]},
+
 
     // Brand Info
     {
@@ -141,7 +149,7 @@ export default {
       type: "colorlist", // required
       title: "Primary Text Color",
       fieldset: "brand",
-      description: "Used as primary text color across the site.",
+      description: "Used as primary text color across the site. Default is White #ffffff",
       validation: (Rule) =>
         Rule.warning("Please fill out the field.").required(),
       options: {

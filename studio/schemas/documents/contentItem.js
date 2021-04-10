@@ -1,20 +1,12 @@
-/*
-Type (video, audio, article, file)
-Title
-Short Description
-Parent Module[s]
-Link (for video, audio, file only)
-Tags
-{Page Design} for articles
-Thumbnail Image (for video, audio, file)
-*/
-
 import { RiKeyboardLine as icoContent } from "react-icons/ri";
+
 export default {
   name: "contentItem",
   title: "Content Item",
   type: "document",
   icon: icoContent,
+  // TODO: Field validation
+  // TODO: Conditionally Mandatory Items
   fieldsets: [
     {
       name: "details",
@@ -57,7 +49,7 @@ export default {
       description: "Required to generate the content item's unique URL.",
       validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
-        source: "title",
+        source: "contentTitle",
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
@@ -80,14 +72,11 @@ export default {
     },
     {
       name: "longDescription",
-      type: "array",
-      title: "Long Description",
-      description:
-        "5-10 longer sentences describing the feature in more detail. Shown below the main content. For articles, this is the main content.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      of: [{ type: "block" }],
+      type: "blockContent",
+      title: "Long Description.",
+      description: "A detailed or transcript for Videos. For articles, this is the Article content itself."
     },
+  
     {
       name: "tags",
       type: "tags",
@@ -99,7 +88,7 @@ export default {
       name: "modules",
       type: "array",
       title: "Modules",
-      description: "Choose module(s) to publish this module in",
+      description: "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
       of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
     },
   ],

@@ -33,20 +33,16 @@ import cta from "./objects/cta";
 import figure from "./objects/figure";
 import internalLink from "./objects/internalLink";
 import link from "./objects/link";
-import portableText from "./objects/portableText";
 import contactInfo from "./objects/contactInfo";
+import blockContent from "./objects/blockContent";
 
-import imageSection from "./objects/imageSection";
-import textSection from "./objects/textSection";
-import simpleBlockContent from "./objects/simpleBlockContent";
 import mainImage from "./objects/mainImage";
-import bodyPortableText from "./objects/bodyPortableText";
 import teamMember from "./documents/teamMember";
 import { videoEmbed } from "./objects/embeds";
 import feature from "./objects/feature";
 
-import * as plugs from "./uiComposites";
-import plugDefaultFields from "./uiComposites/_defaultFields"; // required for everything imported from plugs
+import * as plugs from "./components/pageSections";
+import plugDefaultFields from "./components/pageSections/_defaultFields"; // required for everything imported from plugs
 
 
 
@@ -77,16 +73,10 @@ export default createSchema({
       teamMember,
       // When added to this list, object types can be used as
       cta,
-      bodyPortableText,
       figure,
       internalLink,
       link,
-      // hero,
-      imageSection,
-      textSection,
-      portableText,
-      
-      simpleBlockContent,
+      blockContent,
       contactInfo,
 
       feature,

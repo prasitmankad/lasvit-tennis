@@ -96,13 +96,22 @@ export default {
         "A short description of what the article is about. This ends up on cards and summary blog pages.",
         fieldset:"content",
     }, 
+    // {
+      
+    //   // additional inline content types - internal page, post, course links, image, video
+
+    //   name: "body",
+    //   type: "array",
+    //   title: "Body",
+    //   description:
+    //     "The content for your Blog Post. Words, images, videos and other content.",
+    //   of: [{ type: "block" }],
+    //   fieldset:"content",
+    // },
     {
       name: "body",
-      type: "array",
+      type: "blockContent",
       title: "Body",
-      description:
-        "The content for your Blog Post. Words, images, videos and other content.",
-      of: [{ type: "block" }],
       fieldset:"content",
     },
     {
