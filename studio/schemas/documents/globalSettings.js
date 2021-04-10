@@ -136,6 +136,7 @@ export default {
       ],
     },
     {
+      // TODO: Align all color options
       name: "primaryTextColor",
       type: "colorlist", // required
       title: "Primary Text Color",
@@ -214,42 +215,94 @@ export default {
     },
     // Site Settings
     {
-      name: "url",
-      type: "url",
-      title: "Site Address",
-      fieldset: "site",
+      title: "Site Settings",
+      name: "siteSettings",
+      type: "object",
       description:
-        "The main site url to create canonical url links to other pages",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        "General Site Settings.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
+      },
+      fields: [
+        {
+          name: "url",
+          type: "url",
+          title: "Site Address",
+          description:
+            "The main site url to create canonical url links to other pages",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+        },
+        {
+          name: "frontpage",
+          type: "reference",
+          title: "Home Page",
+          description: "Choose the page to be the home page of the site.",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+          to: { type: "page" },
+        },
+        {
+          title: "Instagram",
+          name: "instagram",
+          type: "string",
+        },
+        {
+          title: "Facebook",
+          name: "facebook",
+          type: "string",
+        },
+        {
+          title: "Error 404 Page Message",
+          name: "error404",
+          type: "string",
+          description:"Message to show on any Error 404 Pages.",
+        },
+      ],
     },
     {
-      name: "frontpage",
-      type: "reference",
-      title: "Home Page",
-      fieldset: "site",
-      description: "Choose the page to be the home page of the site.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      to: { type: "page" },
-    },
-    {
-      title: "Instagram",
-      name: "instagram",
-      type: "string",
-      fieldset: "site",
-    },
-    {
-      title: "Facebook",
-      name: "facebook",
-      type: "string",
-      fieldset: "site",
+      title: "Header Menu",
+      name: "headerMenu",
+      type: "object",
+      description:
+        "Header details to construct the Menu. Logo and business information is pulled from the previous fields and does not need to be provided again.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
+      },
+      fields: [
+        // Column 0 automagically added from busness info
+        // object that represents
+        {
+          name: "menuItems",
+          type: "object",
+          title: "Menu Items",
+          fields: [
+            // { name: "heading", type: "string", title: "Column Heading" },
+            {
+              name: "links",
+              type: "array",
+              title: "Links",
+              of: [
+                {
+                  type: "reference",
+                  to: [{ type: "page" },{ type: "course" }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       title: "Footer",
       name: "footer",
       type: "object",
-      description: "Footer details. Included at the bottom of every page.",
+      description:
+        "Footer details. Included at the bottom of every page. Logo and business information is pulled from the previous fields and does not need to be provided again.",
       options: {
         collapsible: true,
         collapsed: true,
@@ -271,7 +324,7 @@ export default {
               of: [
                 {
                   type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
+                  to: [{ type: "page" }],
                 },
               ],
             },

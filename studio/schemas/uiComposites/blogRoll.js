@@ -4,6 +4,8 @@ export default {
   title: "Blog Roll",
 
   fieldsets: [
+    // TODO: field validation
+    
     {
       name: "basic",
       title: "Basic Settings",
@@ -54,12 +56,14 @@ export default {
       validation: (Rule) =>
         Rule.error("Please provide a title for the Hero Section.").required(),
     },
+    // TODO: Add ability to pull posts by Category / Tag
+    
     {
       
-      name: 'popularity',
+      name: 'numPosts',
       type: 'number',
       title: 'Number of Posts',
-      description: 'Enter a multiple of 3 and this many blog post cards wil lbe shown. Keep it to a small number (max 9).'
+      description: 'Enter a multiple of 3 and this many blog post cards will be shown. For main pages, keep it to a small number (max 9). Default is ** all posts **.'
     },
     
     {

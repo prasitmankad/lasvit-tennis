@@ -1,5 +1,5 @@
 import { RiPagesLine as icoPages } from "react-icons/ri";
-// TODO: Fix Team Member reference fail - enforce limit and make delete button work
+// TODO: Enforce limit and make delete button work
 
 export default {
   name: "page",
@@ -55,6 +55,7 @@ export default {
         { type: "siteNotice" },
         // { type: "stats" },
         { type: "team" },
+        { type: "login" },
       ],
     },
   ],

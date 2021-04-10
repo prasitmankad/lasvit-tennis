@@ -14,6 +14,9 @@ export default {
     },
   ],
   fields: [
+    // TODO: type button or link
+    // TODO: highlight button (to make to make it solid)
+    // TODO: field validation
     {
       title: "Title",
       name: "title",

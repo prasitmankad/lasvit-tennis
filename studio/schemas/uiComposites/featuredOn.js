@@ -5,6 +5,7 @@ export default {
   name: "featuredOn",
   title: "Featured On",
   fields: [
+    //TODO: Field Validation
     {
       name: "backgroundColor",
       type: "colorlist", // required
@@ -52,6 +53,7 @@ export default {
               type: "image",
             },
           ],
+          // TODO: Add preview so image and text can be shown
         },
       ],
     },

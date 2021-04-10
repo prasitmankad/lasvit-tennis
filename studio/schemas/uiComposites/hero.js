@@ -97,33 +97,34 @@ export default {
         "Image used in the layout e.g. hero image, feature image etc.. Other images can be included when writing the body.",
     },
 
-    {
-      title: "Image Location",
-      name: "imageLocation",
-      type: "string",
-      fieldset: "image",
-      description:
-        "Controls where the image is displayed. Used for Feature Detail layouts.",
-      //fieldset: "image",
-      options: {
-        list: [
-          { title: "None", value: "none" },
+    // {
+    //   title: "Image Location",
+    //   name: "imageLocation",
+    //   type: "string",
+    //   fieldset: "image",
+    //   description:
+    //     "Controls where the image is displayed. Used for Feature Detail layouts.",
+    //   //fieldset: "image",
+    //   options: {
+    //     list: [
+    //       { title: "None", value: "none" },
 
-          { title: "Left", value: "left" },
-          { title: "Right", value: "right" },
-          { title: "Top Center", value: "topCenter" },
-          { title: "Bottom Center", value: "bottomCenter" },
-        ], // <-- predefined values
-        //layout: 'radio' // <-- defaults to 'dropdown'
-      },
-    },
+    //       { title: "Left", value: "left" },
+    //       { title: "Right", value: "right" },
+    //       { title: "Top Center", value: "topCenter" },
+    //       { title: "Bottom Center", value: "bottomCenter" },
+    //     ], // <-- predefined values
+    //     //layout: 'radio' // <-- defaults to 'dropdown'
+    //   },
+    // },
     {
-      name: "ctas",
+      name: "buttons",
       type: "array",
-      title: "Call to actions",
+      title: "Buttons",
+      description: "Add up to 2 buttons to go to a specific internal or external page.",
       of: [
         {
-          title: "Call to action",
+          title: "Call to Action",
           type: "cta",
         },
       ],
