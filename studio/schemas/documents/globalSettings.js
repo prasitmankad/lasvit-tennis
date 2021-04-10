@@ -245,28 +245,6 @@ export default {
       type: "string",
       fieldset: "site",
     },
-
-    // Footer
-
-    // Left Menu Column
-    // Logo Image
-    // Company Tagline
-    // Social[s]
-    // Icon
-    // Link (to externals)
-    // Menu Column[s] – max 4
-    // Heading Text (e.g. Company, Legal, Support etc.)
-    // Link
-    // Link Text
-    // Link Route (to existing page)
-    // Newsletter
-    // Heading
-    // Message
-    // Button Icon
-    // Button Text
-    // Button Link (to Mailerlite API, add to list)
-    // Submit success message (hidden div)
-    // Submit fail message (hidden div)
     {
       title: "Footer",
       name: "footer",
