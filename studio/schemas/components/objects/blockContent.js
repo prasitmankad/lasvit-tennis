@@ -16,7 +16,7 @@ import {
   RiPagesLine as icoLinkBlog,
   RiMacbookLine as icoLinkCourse, 
 } from "react-icons/ri";
-import ExternalLinkRenderer from '../components/objects/ExternalLinkRenderer'
+import ExternalLinkRenderer from './ExternalLinkRenderer'
 
 export default {
   title: "Block Content",
