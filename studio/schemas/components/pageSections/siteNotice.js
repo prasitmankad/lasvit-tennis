@@ -97,13 +97,14 @@ export default {
         },
       },
       {
-        name: "ctas",
+        // TODO: Validation rule 1 MAX
+        name: "buttons",
         type: "array",
-        title: "Call to actions",
+        title: "Button",
         of: [
           {
             title: "Call to action",
-            type: "cta",
+            type: "button",
           },
         ],
       },

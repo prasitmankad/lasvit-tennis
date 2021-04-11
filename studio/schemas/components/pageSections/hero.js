@@ -124,8 +124,8 @@ export default {
       description: "Add up to 2 buttons to go to a specific internal or external page.",
       of: [
         {
-          title: "Call to Action",
-          type: "cta",
+          title: "Button",
+          type: "button",
         },
       ],
     },

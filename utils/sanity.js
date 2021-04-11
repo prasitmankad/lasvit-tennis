@@ -15,8 +15,9 @@ const config = {
    *
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: '2021-03-25', // use a UTC date string
   useCdn: process.env.NODE_ENV === "production",
   // withCredentials: true,
   /**
@@ -65,7 +66,7 @@ export const PortableText = createPortableTextComponent({
           <>
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
               <div className="flex flex-wrap w-full">
-                    <ReactPlayer url={props.node.url} controls />
+                <ReactPlayer url={props.node.url} controls />
               </div>
             </div>
           </>
@@ -133,8 +134,7 @@ export const PortableText = createPortableTextComponent({
       ),
     },
     list: (props) =>
-       console.log("list", props) ||
-      props.type === "bullet" ? (
+      console.log("list", props) || props.type === "bullet" ? (
         <ul>{props.children}</ul>
       ) : (
         <ol>{props.children}</ol>
@@ -177,5 +177,5 @@ export const previewClient = createClient({
 });
 
 // Helper function for easily switching between normal client and preview client
-export  const getClient = (usePreview) =>
+export const getClient = (usePreview) =>
   usePreview ? previewClient : sanityClient;

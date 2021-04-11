@@ -4,10 +4,10 @@ const InternalLinkRender = ({ children }) => <span>{children} 🔗</span>;
 
 export default {
   title: "Internal link to another document",
-  name: "internalLink",
+  name: "linkInternal",
   type: "reference",
   description: "Locate a document you want to link to",
-  to: [{ type: "post" }, { type: "route" }],
+  to: [{ type: "post" }, { type: "page" },{ type: "course" }],
   blockEditor: {
     icon: () => "🔗",
     render: InternalLinkRender,

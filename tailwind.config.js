@@ -1,3 +1,6 @@
+// TODO: Get colors from Sanity CMS and set here
+
+
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -14,7 +17,7 @@ module.exports = {
       colors: {
         "accent-1": "#333",
       },
-    },
+    }, 
   },
   variants: {
     extend: {

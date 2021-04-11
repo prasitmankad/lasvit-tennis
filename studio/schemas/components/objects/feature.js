@@ -1,16 +1,3 @@
-/*
-title
-subtitle
-section paragraph
-max columns
-features array
-    - feature title / name
-    - feature description
-    - feature subtitle
-    - image or icon
-    - cta
-*/
-
 export default {
   title: "Feature",
   name: "feature",

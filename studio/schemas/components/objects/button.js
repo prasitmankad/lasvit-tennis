@@ -1,6 +1,6 @@
 export default {
-  title: "Call to action",
-  name: "cta",
+  title: "Button",
+  name: "button",
   type: "object",
   validation: (Rule) =>
     Rule.custom(
@@ -17,23 +17,43 @@ export default {
     // TODO: type button or link
     // TODO: highlight button (to make to make it solid)
     // TODO: field validation
+    // TODO: consistent field descriptions
     {
-      title: "Title",
-      name: "title",
+      name: "buttonText",
       type: "string",
+      title: "Button Text",
+      description: "The text to show on the button.",
     },
     {
-      title: "Internal link",
-      description: "Use this to link between pages on the website",
+      name: "disabled",
+      type: "boolean",
+      title: "Highlight",
+      description:
+        "Highlight this button. This uses the Primary Accent Color to fill in the button.",
+    },
+    // {
+    //   // TODO: Add Icon
+    //   // TODO: Size validation
+    //   name: "icon",
+    //   type: "image",
+    //   title: "Button Icon",
+    //   description:
+    //     "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
+    // },
+    {
       name: "route",
       type: "reference",
-      to: [{ type: "route" }],
+      title: "Internal link",
+      description: "Link to existing pages on the website",
+      to: [{ type: "page" }, { type: "course" }],
       fieldset: "link",
     },
     {
-      title: "External link",
       name: "link",
       type: "url",
+      title: "External link",
+      description:
+        "Link to external pages on the internet. Enter the full URL.",
       fieldset: "link",
     },
   ],

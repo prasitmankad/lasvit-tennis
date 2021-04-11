@@ -12,28 +12,20 @@ import contentItem from "./documents/contentItem";
 import faq from "./documents/faq";
 import teamMember from "./documents/teamMember";
 
-import route from "./documents/route";
 
 // import objects
-import * as objects from "./components/objects"
-
-import cta from "./components/objects/cta";
-import figure from "./components/objects/figure";
-import internalLink from "./components/objects/internalLink";
-import link from "./components/objects/link";
 import blockContent from "./components/objects/blockContent";
-
-import mainImage from "./components/objects/mainImage";
+import button from "./components/objects/button"; 
 import { videoEmbed } from "./components/objects/embeds";
 import feature from "./components/objects/feature";
-
-
+import figure from "./components/objects/figure";
+import linkInternal from "./components/objects/linkInternal";
+import linkExternal from "./components/objects/linkExternal";
+import mainImage from "./components/objects/mainImage";
 
 // import sections / layout
 import * as plugs from "./components/pageSections";
 import plugDefaultFields from "./components/pageSections/_defaultFields"; // required for everything imported from plugs
-
-// Object types
 
 const allPlugs = Object.values(plugs).map((plug) => {
   return { ...plug, fields: plugDefaultFields.concat(plug.fields) };
@@ -43,31 +35,29 @@ const allPlugs = Object.values(plugs).map((plug) => {
 export default createSchema({
   // We name our schema
   name: "default",
-  // Then proceed to concatenate our document type
-  // to the ones provided by any plugins that are installed
+  // Then proceed to concatenate our document type to the ones provided by any plugins that are installed
   types: schemaTypes
     .concat([
-      // The following are document types which will appear
-      // in the studio.
+      // documents
+      globalSettings,
+      page,
+      post,
       course,
-      faq,
       module,
       contentItem,
-      page,
-      route,
-      videoEmbed,
-      globalSettings,
-      post,
-      mainImage,
+      faq,
       teamMember,
-      // When added to this list, object types can be used as
-      cta,
-      figure,
-      internalLink,
-      link,
-      blockContent,
 
+      // objects
+      blockContent,
+      button,
+      videoEmbed,
       feature,
+      figure,
+      linkInternal,
+      linkExternal,
+      mainImage,
+
     ])
     .concat(allPlugs),
 });

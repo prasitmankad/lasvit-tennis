@@ -56,7 +56,13 @@ export default {
       description:
         "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
     },
-
+    {
+      name: "mainImage",
+      type: "mainImage",
+      title: "Main Image",
+      description:
+        "Image used on the login page.",
+    },
   ],
   preview: {
     select: {
@@ -65,8 +71,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Feature Grid`,
-        subtitle: `Service Offerings`,
+        title: `Login Block`,
+        subtitle: `Basic Login Block`,
       };
     },
   },

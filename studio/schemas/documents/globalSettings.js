@@ -1,6 +1,7 @@
 // TODO: Google Analytics ID
 // TODO: Header / Footer config
 // TODO: Contact Info (address, phone, socials - see contactInfo object)
+// TODO: Standardise slug generation logic
 
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
@@ -122,106 +123,109 @@ export default {
         collapsed: true,
         columns: 1,
       },
-      fields: [{
-        name: "companyLogo",
-        type: "image",
-        title: "Logo",
-        description: "Used across the site wherever a company logo is required.",
-        validation: (Rule) =>
-          Rule.warning("Please fill out the field.").required(),
-        options: { hotspot: true },
-        fields: [
-          {
-            name: "alt",
-            type: "string",
-            title: "Alternative Text",
-            description: "Shown to robots and if images can't be loaded.",
-            options: {
-              isHighlighted: true,
+      fields: [
+        {
+          name: "companyLogo",
+          type: "image",
+          title: "Logo",
+          description:
+            "Used across the site wherever a company logo is required.",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+              description: "Shown to robots and if images can't be loaded.",
+              options: {
+                isHighlighted: true,
+              },
+              validation: (Rule) =>
+                Rule.warning("Please fill out the field.").required(),
             },
-            validation: (Rule) =>
-              Rule.warning("Please fill out the field.").required(),
-          },
-        ],
-      },
-      {
-        // TODO: Align all color options
-        name: "primaryTextColor",
-        type: "colorlist", // required
-        title: "Primary Text Color",
-        description:
-          "Used as primary text color across the site. Default is White #ffffff",
-        validation: (Rule) =>
-          Rule.warning("Please fill out the field.").required(),
-        options: {
-          borderradius: {
-            outer: "100%",
-            inner: "100%",
-          },
-          list: [
-            { title: "White", value: "#ffffff" },
-  
-            { title: "Pink", value: "#FF6A64" },
-            { title: "Orange", value: "#F15926" },
-            { title: "Light Teal", value: "#31E2E8" },
-            { title: "Light Teal", value: "#20C0D9" },
-            { title: "Dark Teal", value: "#01ADCA" },
-            { title: "Yellow", value: "#FFDE4E" },
-            { title: "Mid Grey", value: "#464343" },
           ],
         },
-      },
-      {
-        name: "primaryAccentColor",
-        type: "colorlist", // required
-        title: "Primary Accent Color",
-        description:
-          "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
-        validation: (Rule) =>
-          Rule.warning("Please fill out the field.").required(),
-        options: {
-          borderradius: {
-            outer: "100%",
-            inner: "100%",
+        {
+          // TODO: Align all color options
+          name: "primaryTextColor",
+          type: "colorlist", // required
+          title: "Primary Text Color",
+          description:
+            "Used as primary text color across the site. Default is White #ffffff",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "White", value: "#ffffff" },
+
+              { title: "Pink", value: "#FF6A64" },
+              { title: "Orange", value: "#F15926" },
+              { title: "Light Teal", value: "#31E2E8" },
+              { title: "Light Teal", value: "#20C0D9" },
+              { title: "Dark Teal", value: "#01ADCA" },
+              { title: "Yellow", value: "#FFDE4E" },
+              { title: "Mid Grey", value: "#464343" },
+            ],
           },
-          list: [
-            { title: "White", value: "#ffffff" },
-  
-            { title: "Pink", value: "#FF6A64" },
-            { title: "Orange", value: "#F15926" },
-            { title: "Light Teal", value: "#31E2E8" },
-            { title: "Light Teal", value: "#20C0D9" },
-            { title: "Dark Teal", value: "#01ADCA" },
-            { title: "Yellow", value: "#FFDE4E" },
-            { title: "Mid Grey", value: "#464343" },
-          ],
         },
-      },
-      {
-        name: "secondaryAccentColor",
-        type: "colorlist", // required
-        title: "Secondary Accent Color",
-        description: "Used as secondary accent color across the site.",
-        validation: (Rule) =>
-          Rule.warning("Please fill out the field.").required(),
-        options: {
-          borderradius: {
-            outer: "100%",
-            inner: "100%",
+        {
+          name: "primaryAccentColor",
+          type: "colorlist", // required
+          title: "Primary Accent Color",
+          description:
+            "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "White", value: "#ffffff" },
+
+              { title: "Pink", value: "#FF6A64" },
+              { title: "Orange", value: "#F15926" },
+              { title: "Light Teal", value: "#31E2E8" },
+              { title: "Light Teal", value: "#20C0D9" },
+              { title: "Dark Teal", value: "#01ADCA" },
+              { title: "Yellow", value: "#FFDE4E" },
+              { title: "Mid Grey", value: "#464343" },
+            ],
           },
-          list: [
-            { title: "Pink", value: "#FF6A64" },
-            { title: "Orange", value: "#F15926" },
-            { title: "Light Teal", value: "#31E2E8" },
-            { title: "Light Teal", value: "#20C0D9" },
-            { title: "Dark Teal", value: "#01ADCA" },
-            { title: "Yellow", value: "#FFDE4E" },
-            { title: "Mid Grey", value: "#464343" },
-          ],
         },
-      }],
+        {
+          name: "secondaryAccentColor",
+          type: "colorlist", // required
+          title: "Secondary Accent Color",
+          description: "Used as secondary accent color across the site.",
+          validation: (Rule) =>
+            Rule.warning("Please fill out the field.").required(),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "Pink", value: "#FF6A64" },
+              { title: "Orange", value: "#F15926" },
+              { title: "Light Teal", value: "#31E2E8" },
+              { title: "Light Teal", value: "#20C0D9" },
+              { title: "Dark Teal", value: "#01ADCA" },
+              { title: "Yellow", value: "#FFDE4E" },
+              { title: "Mid Grey", value: "#464343" },
+            ],
+          },
+        },
+      ],
     },
-    
+
     // Site Settings
     {
       title: "Site Settings",
@@ -289,15 +293,28 @@ export default {
           type: "object",
           title: "Menu Items",
           fields: [
-            // { name: "heading", type: "string", title: "Column Heading" },
             {
               name: "links",
               type: "array",
-              title: "Links",
+              title: "Page Links",
+              description: "Apppears as link to to various pages on the site.",
               of: [
                 {
                   type: "reference",
                   to: [{ type: "page" }, { type: "course" }],
+                },
+              ],
+            },
+            {
+              name: "buttons",
+              type: "array",
+              title: "Buttons",
+              description:
+                "Appears as one or more buttons to various pages on the site. Keep this to max of 2.",
+              of: [
+                {
+                  type: "button",
+                  //to: [{ type: "page" }, { type: "course" }],
                 },
               ],
             },
