@@ -1,7 +1,7 @@
 export default {
     type: "object",
-    name: "team",
-    title: "Team Members",
+    name: "contactForm",
+    title: "Contact Form",
   
     fieldsets: [
 
@@ -12,7 +12,7 @@ export default {
         type: "string",
         title: "Heading",
         description:
-          "Headings should be short & catchy, descriptive, and only a couple of words long.",
+          "Headings for this section.",
         validation: (Rule) =>
           Rule.error("Please provide a title for the Hero Section.").required(),
       },
@@ -21,14 +21,14 @@ export default {
         type: "string",
         title: "Sub-heading or Category",
         description:
-          "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+          "Sub-headings for this section - single words that break large chunks of text.",
       },
     
       {
         name: "backgroundColor",
         type: "colorlist", // required
         title: "Background Color",
-        description: "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
+        description: "Background color for accents on the contact block. Use carefully as this doesn't always work well with images.",
         validation: (Rule) =>
           Rule.warning("Please fill out the field.").required(),
         options: {
@@ -53,25 +53,11 @@ export default {
         type: "text",
         title: "Content",
         description:
-          "Description of the Team. 1-2 sentences as a lead in to the section detail.",
+          "Explanatory text to use below the heading.",
         
       },
-      // NOT NEEDED - ALREADY PULLED FROM GLOBAL DATA BUSINESS INFO
-      // {
-      //   name: "team",
-      //   type: "array",
-      //   title: "Team Members",
-      //   description:
-      //     "Team members of the company.",
-      //   validation: (Rule) =>
-      //     Rule.warning("Please fill out the field.").required(),
-      //   of: [
-      //     {
-      //       type: "reference",
-      //       to: [{ type: "teamMember" }],
-      //     },
-      //   ],
-      // },
+      
+     // other elements included by default
     ],
     preview: {
       select: {

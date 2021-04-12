@@ -5,7 +5,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 const query = `{
-  'siteData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
+  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	title,
   tagline,
   siteDescription,
@@ -43,15 +43,15 @@ function BlogPageContainer({ postsData, preview }) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(postsData.siteData.logo)
+                  src={urlFor(postsData.globalData.logo)
                     .auto("format")
                     .width(125)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    postsData.siteData.logo?.alt ||
-                    `Photo of ${postsData.siteData.title}`
+                    postsData.globalData.logo?.alt ||
+                    `Photo of ${postsData.globalData.title}`
                   }
                 />
               </a>
@@ -152,15 +152,15 @@ function BlogPageContainer({ postsData, preview }) {
               <Link href="/">
                 <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                   <img
-                    src={urlFor(postsData.siteData.logo)
+                    src={urlFor(postsData.globalData.logo)
                       .auto("format")
                       .width(80)
                       // .height(400)
                       .fit("crop")
                       .quality(80)}
                     alt={
-                      postsData.siteData.logo?.alt ||
-                      `Photo of ${postsData.siteData.title}`
+                      postsData.globalData.logo?.alt ||
+                      `Photo of ${postsData.globalData.title}`
                     }
                   />
                 </a>

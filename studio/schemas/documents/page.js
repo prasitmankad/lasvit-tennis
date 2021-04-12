@@ -46,8 +46,8 @@ export default {
         { type: "pageHeading" },
         { type: "blogRoll" },
         { type: "contentBlock" }, // basic content block
-        // { type: "contentRoll" },
-        // { type: "faq" },
+        { type: "contactForm" },
+        { type: "faq" },
         // { type: "featureDetail" },
         { type: "featuredOn" },
         { type: "featureGrid" },

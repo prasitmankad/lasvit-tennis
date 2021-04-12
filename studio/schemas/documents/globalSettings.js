@@ -93,22 +93,22 @@ export default {
             { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
           ],
         },
-
-        {
-          name: "team",
-          type: "array",
-          title: "Team Members",
-          description:
-            "Core team members of the company. Used on teams / about pages.",
-          validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
-          of: [
-            {
-              type: "reference",
-              to: [{ type: "teamMember" }],
-            },
-          ],
-        },
+        // NOT NEEDED -- WILL PULL FROM GLOBAL DOCUMENT
+        // {
+        //   name: "team",
+        //   type: "array",
+        //   title: "Team Members",
+        //   description:
+        //     "Core team members of the company. Used on teams / about pages.",
+        //   validation: (Rule) =>
+        //     Rule.warning("Please fill out the field.").required(),
+        //   of: [
+        //     {
+        //       type: "reference",
+        //       to: [{ type: "teamMember" }],
+        //     },
+        //   ],
+        // },
       ],
     },
 

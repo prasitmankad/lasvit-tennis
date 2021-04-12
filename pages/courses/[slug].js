@@ -6,7 +6,7 @@ import { urlFor, PortableText } from "../../utils/sanity";
 import Link from "next/link";
 
 const query = groq`{
-  'siteData': *[(_type == "globalSettings" )][0] {
+  'globalData': *[(_type == "globalSettings" )][0] {
 	title,
   tagline,
   siteDescription,
@@ -48,15 +48,15 @@ function BlogPostContainer({ postData, preview }) {
           <Link href="/">
             <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                src={urlFor(post.siteData.logo)
+                src={urlFor(post.globalData.logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
                   .fit("crop")
                   .quality(80)}
                 alt={
-                  post.siteData.logo?.alt ||
-                  `Photo of ${post.siteData.title}`
+                  post.globalData.logo?.alt ||
+                  `Photo of ${post.globalData.title}`
                 }
               />
             </a>
@@ -134,15 +134,15 @@ function BlogPostContainer({ postData, preview }) {
             <Link href="/">
               <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(post.siteData.logo)
+                  src={urlFor(post.globalData.logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    post.siteData.logo?.alt ||
-                    `Photo of ${post.siteData.title}`
+                    post.globalData.logo?.alt ||
+                    `Photo of ${post.globalData.title}`
                   }
                 />
               </a>

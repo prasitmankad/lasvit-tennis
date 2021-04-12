@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { PortableText, urlFor } from "../../utils/sanity";
-// add in videojs implementation
+// TODO: add in videojs implementation
 // https://videojs.com/getting-started/#videojs-cdn
+// https://github.com/vercel/next.js/tree/canary/examples/with-videojs
+// https://codepen.io/heff/pen/EarCt
+// https://github.com/mister-ben/videojs-mobile-ui#readme
 
 function sneakPeekSection(props) {
   return (

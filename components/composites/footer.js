@@ -4,6 +4,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 function footerSection(props) {
   return (
     <>
+    
       <footer className="bg-white" aria-labelledby="footerHeading">
         <h2 id="footerHeading" className="sr-only">
           Footer

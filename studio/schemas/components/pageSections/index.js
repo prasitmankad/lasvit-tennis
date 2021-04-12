@@ -10,6 +10,7 @@ export { default as signup } from "./signup";
 // for other static pages
 export { default as pageHeading } from "./pageHeading";
 export { default as contentBlock } from "./contentBlock";
+export { default as contactForm } from "./contactForm";
 
 // for login
 export { default as login } from "./login";

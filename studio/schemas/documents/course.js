@@ -1,4 +1,5 @@
 import { RiMacbookLine as icoCourses } from "react-icons/ri";
+//TODO: Pre-defaults for all fields
 
 export default {
   name: "course",
@@ -97,7 +98,8 @@ export default {
       title: "Course Content",
       name: "content",
       type: "object",
-      description: "Course content details. Course Modules are automatically included on the Landing Page.",
+      description:
+        "Course content details. Course Modules are automatically included on the Landing Page.",
       options: {
         collapsible: true,
         collapsed: true,
@@ -207,10 +209,10 @@ export default {
 
     // Price Section
     {
-      title: "Pricing",
+      title: "Pricing & Billing",
       name: "pricing",
       type: "object",
-      description: "Pricing settings for this course.",
+      description: "Pricing and billing settings for this course.",
       options: {
         collapsible: true,
         collapsed: true,
@@ -238,7 +240,26 @@ export default {
           description:
             "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
         },
-
+        {
+          name: "billingFrequency",
+          type: "string",
+          title: "Billing Frequency",
+          description:
+            "Set the billing frequency (how often the customer is charged for this Course). Also used to display on the frontend.",
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              // FUTURE: Implement frequency of monthly billing - e.g. 2, 3, 4 months etc.
+              { title: "One-off", value: "oneoff" },
+              { title: "Monthly", value: "monthly" },
+              { title: "Quarterly", value: "quarterly" },
+              { title: "Yearly", value: "yearly" },
+            ],
+          },
+        },
         {
           name: "prices",
           type: "array",

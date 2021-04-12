@@ -7,7 +7,7 @@ import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 
 const query = `{
-  'siteData': *[(_type == "globalSettings")][0] 
+  'globalData': *[(_type == "globalSettings")][0] 
   {
 	title,
   tagline, 
@@ -146,15 +146,15 @@ require('@tailwindcss/typography'),
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(page.siteData.logo)
+                  src={urlFor(page.globalData.logo)
                     .auto("format")
                     .width(125)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    page.siteData.logo?.alt ||
-                    `Photo of ${page.siteData.title}`
+                    page.globalData.logo?.alt ||
+                    `Photo of ${page.globalData.title}`
                   }
                 />
               </a>
@@ -184,15 +184,15 @@ require('@tailwindcss/typography'),
               <Link href="/">
                 <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                   <img
-                    src={urlFor(page.siteData.logo)
+                    src={urlFor(page.globalData.logo)
                       .auto("format")
                       .width(80)
                       // .height(400)
                       .fit("crop")
                       .quality(80)}
                     alt={
-                      page.siteData.logo?.alt ||
-                      `Photo of ${page.siteData.title}`
+                      page.globalData.logo?.alt ||
+                      `Photo of ${page.globalData.title}`
                     }
                   />
                 </a>

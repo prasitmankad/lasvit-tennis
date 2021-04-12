@@ -1,4 +1,4 @@
-//TODO: Icons
+//TODO: Icons for all Section Blocks
 import { RiQuestionLine as icoFAQ } from "react-icons/ri";
 
 export default {

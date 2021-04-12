@@ -1,5 +1,6 @@
 // exports all available UI partials
 
+// public
 export { default as blogRollSection } from "./hero";
 export { default as contactFormSection } from "./contactForm";
 export { default as contentBlockSection } from "./contentBlock";
@@ -18,4 +19,7 @@ export { default as sneakPeekSection } from "./sneakPeek";
 export { default as singlePriceSection } from "./singlePrice";
 export { default as modulesSection } from "./modules";
 export { default as faqSection } from "./faq";
+export { default as userProfileSection } from "./userProfile";
 
+
+// protected

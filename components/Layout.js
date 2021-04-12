@@ -19,7 +19,7 @@ function Layout({ children }) {
           <Link href="/">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
               <img
-                src={urlFor(data.siteData.logo)
+                src={urlFor(data.globalData.logo)
                   .auto("format")
                   .width(125)
                   // .height(400)
@@ -27,8 +27,8 @@ function Layout({ children }) {
                   .quality(80)
                   }
                 alt={
-                  data.siteData.logo?.alt ||
-                  `Photo of ${data.siteData.title}`
+                  data.globalData.logo?.alt ||
+                  `Photo of ${data.globalData.title}`
                 }
               />
             </a>
@@ -59,15 +59,15 @@ function Layout({ children }) {
             <Link href="/">
               <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
-                  src={urlFor(data.siteData.logo)
+                  src={urlFor(data.globalData.logo)
                     .auto("format")
                     .width(80)
                     // .height(400)
                     .fit("crop")
                     .quality(80)}
                   alt={
-                    data.siteData.logo?.alt ||
-                    `Photo of ${data.siteData.title}`
+                    data.globalData.logo?.alt ||
+                    `Photo of ${data.globalData.title}`
                   }
                 />
               </a>
