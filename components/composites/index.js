@@ -1,25 +1,25 @@
 // exports all available UI partials
 
 // public
-export { default as blogRollSection } from "./hero";
-export { default as contactFormSection } from "./contactForm";
-export { default as contentBlockSection } from "./contentBlock";
-export { default as featuredOnSection } from "./featuredOn";
-export { default as featureGridSection } from "./featureGrid";
-export { default as footerSection } from "./footer";
-export { default as headerSection } from "./header";
-export { default as heroSection } from "./hero";
-export { default as loginSection } from "./login";
-export { default as pageHeadingSection } from "./pageHeading";
-export { default as signupSection } from "./signup";
-export { default as siteNoticeSection } from "./siteNotice";
-export { default as teamSection } from "./team";
-export { default as statsSection } from "./stats";
-export { default as sneakPeekSection } from "./sneakPeek";
-export { default as singlePriceSection } from "./singlePrice";
-export { default as modulesSection } from "./modules";
-export { default as faqSection } from "./faq";
-export { default as userProfileSection } from "./userProfile";
+export { default as blogRoll } from "./hero";
+export { default as contactForm } from "./contactForm";
+export { default as contentBlock } from "./contentBlock";
+export { default as featuredOn } from "./featuredOn";
+export { default as featureGrid } from "./featureGrid";
+export { default as footer } from "./footer";
+export { default as header } from "./header";
+export { default as hero } from "./hero";
+export { default as login } from "./login";
+export { default as pageHeading } from "./pageHeading";
+export { default as signup} from "./signup";
+export { default as siteNotice } from "./siteNotice";
+export { default as team } from "./team";
+export { default as stats } from "./stats";
+export { default as sneakPeek } from "./sneakPeek";
+export { default as singlePrice } from "./singlePrice";
+export { default as modules } from "./modules";
+export { default as faq } from "./faq";
+export { default as userProfile } from "./userProfile";
 
 
 // protected

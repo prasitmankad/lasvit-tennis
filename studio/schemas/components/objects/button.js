@@ -41,21 +41,51 @@ export default {
     //     "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
     // },
     {
-      name: "route",
-      type: "reference",
-      title: "Internal link",
-      description: "Link to existing pages on the website",
-      to: [{ type: "page" }, { type: "course" }],
-      fieldset: "link",
-    },
-    {
-      name: "link",
-      type: "url",
-      title: "External link",
+      title: "Links",
+      name: "links",
+      type: "object",
       description:
-        "Link to external pages on the internet. Enter the full URL.",
-      fieldset: "link",
+        "Links to external pages.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
+      },
+      fields: [
+        {
+          name: "route",
+          type: "reference",
+          title: "Internal link",
+          description: "Link to existing pages on the website",
+          to: [{ type: "page" }, { type: "course" }],
+        },
+        {
+          name: "link",
+          type: "url",
+          title: "External link",
+          description:
+            "Link to external pages on the internet. Enter the full URL.",
+        },
+
+      ],
     },
+
+    // {
+    //   name: "route",
+    //   type: "reference",
+    //   title: "Internal link",
+    //   description: "Link to existing pages on the website",
+    //   to: [{ type: "page" }, { type: "course" }],
+    //   fieldset: "link",
+    // },
+    // {
+    //   name: "link",
+    //   type: "url",
+    //   title: "External link",
+    //   description:
+    //     "Link to external pages on the internet. Enter the full URL.",
+    //   fieldset: "link",
+    // },
   ],
   preview: {
     select: {

@@ -1,33 +1,124 @@
-import PropTypes from "prop-types";
 import { PortableText, urlFor } from "../../utils/sanity";
+import Link from "next/link";
 
-function headerSection(props) {
+function HeaderSection(props) {
+  console.log("props into HeaderSection ->  ", props);
+  const data = props.data;
+
   return (
     <>
-      <header className="relative">
-        <div className="bg-warm-gray-50">
-          <nav
-            className="relative max-w-7xl mx-auto flex items-center justify-between pt-6 px-6 xl:px-8"
-            aria-label="Global"
-          >
-            <div className="flex items-center flex-1">
-              <div className="flex items-center justify-between w-full lg:w-auto">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=teal&shade=500"
-                    alt
-                  />
-                </a>
-                <div className="-mr-2 flex items-center lg:hidden">
+      {/* This example requires Tailwind CSS v2.0+ */}
+      <div className="relative bg-white">
+        <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
+          <div>
+            <Link href="/">
+              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                <img
+                  src={urlFor(data.branding.companyLogo)
+                    .auto("format")
+                    .width(120)
+                    // .height(400)
+                    .fit("crop")
+                    .quality(80)}
+                  alt={data.branding.companyLogo?.alt || ``}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="-mr-2 -my-2 md:hidden">
+            <button
+              type="button"
+              className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open menu</span>
+              {/* Heroicon name: outline/menu */}
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
+            {/* MENU LOCATION */}
+            <nav className="flex space-x-10">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Pricing
+              </a>
+              <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Docs
+              </a>
+            </nav>
+            {/* Buttons Location */}
+            <div className="flex items-center md:ml-12">
+              {/* <a
+                href="#"
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
+                Sign in
+              </a> */}
+              <a
+                href="#"
+                className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              >
+                Sign up
+              </a>
+            </div>
+          </div>
+        </div>
+        {/*
+    Mobile menu, show/hide based on mobile menu state.
+
+    Entering: "duration-200 ease-out"
+From: "opacity-0 scale-95"
+To: "opacity-100 scale-100"
+    Leaving: "duration-100 ease-in"
+From: "opacity-100 scale-100"
+To: "opacity-0 scale-95"
+  */}
+        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+            <div className="pt-5 pb-6 px-5">
+              <div className="flex items-center justify-between">
+                <div>
+                  <Link href="/">
+                    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                      <img
+                        src={urlFor(data.branding.companyLogo)
+                          .auto("format")
+                          .width(90)
+                          // .height(400)
+                          .fit("crop")
+                          .quality(80)}
+                        alt={data.branding.companyLogo?.alt || ``}
+                      />
+                    </a>
+                  </Link>
+                </div>
+                <div className="-mr-2">
                   <button
                     type="button"
-                    className="bg-warm-gray-50 rounded-md p-2 inline-flex items-center justify-center text-warm-gray-400 hover:bg-warm-gray-100 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-teal-500"
-                    aria-expanded="false"
+                    className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                   >
-                    <span className="sr-only">Open main menu</span>
-                    {/* Heroicon name: outline/menu */}
+                    <span className="sr-only">Close menu</span>
+                    {/* Heroicon name: outline/x */}
                     <svg
                       className="h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
@@ -40,135 +131,79 @@ function headerSection(props) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   </button>
                 </div>
               </div>
-              <div className="hidden space-x-10 lg:flex lg:ml-10">
-                <a
-                  href="#"
-                  className="text-base font-medium text-warm-gray-500 hover:text-warm-gray-900"
-                >
-                  Changelog
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-warm-gray-500 hover:text-warm-gray-900"
-                >
-                  About
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-warm-gray-500 hover:text-warm-gray-900"
-                >
-                  Partners
-                </a>
-                <a
-                  href="#"
-                  className="text-base font-medium text-warm-gray-500 hover:text-warm-gray-900"
-                >
-                  News
-                </a>
-              </div>
             </div>
-            <div className="hidden lg:flex lg:items-center lg:space-x-6">
-              <a
-                href="#"
-                className="py-2 px-6 bg-warm-gray-100 border border-transparent rounded-md text-base font-medium text-warm-gray-900 hover:bg-warm-gray-200"
-              >
-                Login
-              </a>
-            </div>
-          </nav>
-        </div>
-        {/*
-Mobile menu, show/hide based on menu open state.
-
-Entering: "duration-150 ease-out"
-  From: "opacity-0 scale-95"
-  To: "opacity-100 scale-100"
-Leaving: "duration-100 ease-in"
-  From: "opacity-100 scale-100"
-  To: "opacity-0 scale-95"
-    */}
-        <div className="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top lg:hidden">
-          <div className="rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-            <div className="px-5 pt-4 flex items-center justify-between">
-              <div>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=teal&shade=500"
-                  alt
-                />
-              </div>
-              <div className="-mr-2">
-                <button
-                  type="button"
-                  className="bg-white rounded-md p-2 inline-flex items-center justify-center text-warm-gray-400 hover:bg-warm-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
-                >
-                  <span className="sr-only">Close menu</span>
-                  {/* Heroicon name: outline/x */}
-                  <svg
-                    className="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className="pt-5 pb-6">
-              <div className="px-2 space-y-1">
+            <div className="py-6 px-5">
+              <div className="grid grid-cols-2 gap-4">
+                {/* MOBILE MENU OPTIONS */}
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-warm-gray-900 hover:bg-warm-gray-50"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
-                  Changelog
+                  Pricing
                 </a>
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-warm-gray-900 hover:bg-warm-gray-50"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
-                  About
+                  Docs
                 </a>
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-warm-gray-900 hover:bg-warm-gray-50"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
-                  Partners
+                  Enterprise
                 </a>
                 <a
                   href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-warm-gray-900 hover:bg-warm-gray-50"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
-                  News
+                  Help Center
+                </a>
+                <a
+                  href="#"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                >
+                  Guides
+                </a>
+                <a
+                  href="#"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                >
+                  Events
+                </a>
+                <a
+                  href="#"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                >
+                  Security
                 </a>
               </div>
-              <div className="mt-6 px-5">
+              <div className="mt-6">
                 <a
                   href="#"
-                  className="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow bg-teal-500 text-white font-medium hover:bg-teal-600"
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                 >
-                  Login
+                  Log In
                 </a>
+                {/* <p className="mt-6 text-center text-base font-medium text-gray-500">
+                  Existing customer?
+                  <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                    Sign in
+                  </a>
+                </p> */}
               </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
     </>
   );
 }
 
-export default headerSection;
+export default HeaderSection;

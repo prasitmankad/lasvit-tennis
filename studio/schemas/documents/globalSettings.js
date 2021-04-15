@@ -93,7 +93,7 @@ export default {
             { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
           ],
         },
-        // NOT NEEDED -- WILL PULL FROM GLOBAL DOCUMENT
+        // NOT NEEDED -- WILL PULL FROM TEAM MEMBER DOCUMENT
         // {
         //   name: "team",
         //   type: "array",
@@ -275,11 +275,11 @@ export default {
       ],
     },
     {
-      title: "Header Menu",
-      name: "headerMenu",
+      title: "Header",
+      name: "header",
       type: "object",
       description:
-        "Header details to construct the Menu. Logo and business information is pulled from the previous fields and does not need to be provided again.",
+        "Header details. Included at the bottom of every page. Logo and business information is pulled from the previous fields and does not need to be provided again.",
       options: {
         collapsible: true,
         collapsed: true,
@@ -287,41 +287,63 @@ export default {
       },
       fields: [
         // Column 0 automagically added from busness info
-        // object that represents
+        // TODO: Column # Validation
         {
-          name: "menuItems",
-          type: "object",
-          title: "Menu Items",
-          fields: [
+          name: "menu",
+          type: "array",
+          title: "Menu",
+          description: "Define your menu items here. Keep # small.",
+          of: [
             {
-              name: "links",
-              type: "array",
-              title: "Page Links",
-              description: "Apppears as link to to various pages on the site.",
-              of: [
+              name: "items",
+              type: "object",
+              title: "Items",
+              fields: [
                 {
+                  name: "button",
+                  type: "boolean",
+                  title: "Make Button",
+                  description:
+                    "Select this to make the link into a button. All buttons are placed AFTER links.",
+                  validation: (Rule) =>
+                    Rule.warning("Please fill out the field.").required(),
+                },
+                {
+                  name: "highlight",
+                  type: "boolean",
+                  title: "Highlight Button",
+                  description: "Select this to highlight the button.",
+                  validation: (Rule) =>
+                    Rule.warning("Please fill out the field.").required(),
+                },
+                {
+                  name: "text",
+                  type: "string",
+                  title: "Text",
+                  description: "Text on the link (or button).",
+                },
+                {
+                  name: "link",
                   type: "reference",
-                  to: [{ type: "page" }, { type: "course" }],
+                  title: "Link",
+
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "course" }, { type: "post" }],
                 },
               ],
-            },
-            {
-              name: "buttons",
-              type: "array",
-              title: "Buttons",
-              description:
-                "Appears as one or more buttons to various pages on the site. Keep this to max of 2.",
-              of: [
-                {
-                  type: "button",
-                  //to: [{ type: "page" }, { type: "course" }],
-                },
-              ],
+              //TODO: Add preview text for above object and reference.
+              preview: {
+                select: {
+                  title: 'text',
+                  //title: 'caption'
+                }
+              }
             },
           ],
         },
       ],
     },
+
     {
       title: "Footer",
       name: "footer",
@@ -335,84 +357,39 @@ export default {
       },
       fields: [
         // Column 0 automagically added from busness info
-
+        // TODO: Column # Validation
         {
-          name: "column1",
-          type: "object",
-          title: "Column 1 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
+          name: "columns",
+          type: "array",
+          title: "Columns",
+          description:
+            "Define your columns and their content here. Keep # of columns to max 4.",
+          of: [
             {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
+              name: "items",
+              type: "object",
+              title: "Items",
+              fields: [
+                { name: "heading", type: "string", title: "Column Heading" },
                 {
-                  type: "reference",
-                  to: [{ type: "page" }],
+                  name: "links",
+                  type: "array",
+                  title: "Links",
+                  of: [
+                    {
+                      type: "reference",
+                      to: [
+                        { type: "page" },
+                        { type: "course" },
+                        { type: "post" },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
           ],
         },
-        {
-          name: "column2",
-          type: "object",
-          title: "Column 2 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "column3",
-          type: "object",
-          title: "Column 3 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "column4",
-          type: "object",
-          title: "Column 4 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-
         {
           name: "signup",
           type: "object",

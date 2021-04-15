@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
-import Cta from "./Cta";
+//import Cta from "./Cta";
 import { PortableText, urlFor } from "../../utils/sanity";
 
 function heroSection(props) {
   const { title, subtitle, tagline, paragraph, mainImage, ctas } = props;
+  console.log("Hero -> ",props)
+
   return (
     <>
-
     
       {/* HERO SECTION */}
       <section class="text-gray-600 body-font">

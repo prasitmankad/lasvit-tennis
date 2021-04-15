@@ -1,12 +1,15 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { upperFirst } from "lodash";
-import * as SectionComponents from "./sections";
+// import * as SectionComponents from "../sections";
+import * as composites from "../composites";
 
 function resolveSections(section) {
   // eslint-disable-next-line import/namespace
-  const Section = SectionComponents[upperFirst(section._type)];
-  // console.log("Section var =>", section);
+  console.log("Composites -> ", composites)
+  const Section = composites[section._type];
+  console.log("Section --> ", Section);
+
   if (Section) {
     return Section;
   }
@@ -16,18 +19,25 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const { sections } = props;
-  // console.log("RenderSections props =>", props)
+  console.log("props into AllData ->  ", props);
+  const globalData = props.data.globalData;
+  const pageData = props.data.pageData;
+
+  const sections = pageData.sections;
+
+  console.log("Sections --> ", sections);
   if (!sections) {
     // no sections defined on page
-    console.error("Missing section");
-    return <div>Missing sections</div>;
+    console.error("Missing section. Check code for correct configuration.");
+    return <div>Missing Sections</div>;
   }
 
   return (
     <Fragment>
       {sections.map((section) => {
+        console.log("section map -> ", section)
         const SectionComponent = resolveSections(section);
+        console.log("SectionComponent -> ", SectionComponent);
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>;
         }
