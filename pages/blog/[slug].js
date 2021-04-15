@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
 import { urlFor, PortableText } from "../../utils/sanity";
-import Link from "next/link";
+import { PageWrapper } from "../PageWrapper";
 
 const query = groq`{
   'siteData': *[(_type == "globalSettings" )][0] {
@@ -31,55 +31,18 @@ function BlogPostContainer({ postData, preview }) {
     return <Error statusCode={404} />;
   }
 
-  
   const { data: post = {} } = usePreviewSubscription(query, {
     params: { slug: postData.mainContent?.slug?.current },
     initialData: postData,
-    enabled: preview || (router.query.preview !== undefined && router.query.preview !== null)
+    enabled:
+      preview ||
+      (router.query.preview !== undefined && router.query.preview !== null),
   });
 
   // pipe data to const so that preview mode works (see above var)
 
-
   return (
-    <>
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <Link href="/">
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-              <img
-                src={urlFor(post.siteData.logo)
-                  .auto("format")
-                  .width(125)
-                  // .height(400)
-                  .fit("crop")
-                  .quality(80)}
-                alt={
-                  post.siteData.logo?.alt ||
-                  `Photo of ${post.siteData.title}`
-                }
-              />
-            </a>
-          </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Link href="/">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
-            </Link>
-            <Link href="/about">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">About</a>
-            </Link>
-            <Link href="/blog">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-            </Link>
-            {/* <Link href="/contact">
-                <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                  Contact Us
-                </a>
-              </Link> */}
-          </nav>
-        </div>
-      </header>
-
+    <PageWrapper page={post}>
       <section className="text-gray-600 body-font">
         <div className="lg:w-4/6 mx-auto py-0">
           <div className="container px-5 py-10 mx-auto flex flex-col">
@@ -121,64 +84,12 @@ function BlogPostContainer({ postData, preview }) {
                     />
                   </p>
                 )}
-
-               
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer className="text-gray-600 body-font">
-        <div className="bg-gray-100 border-t border-gray-200">
-          <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            <Link href="/">
-              <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                <img
-                  src={urlFor(post.siteData.logo)
-                    .auto("format")
-                    .width(80)
-                    // .height(400)
-                    .fit("crop")
-                    .quality(80)}
-                  alt={
-                    post.siteData.logo?.alt ||
-                    `Photo of ${post.siteData.title}`
-                  }
-                />
-              </a>
-            </Link>
-
-            <p className="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
-              © 2021 Lasvit Tennis. All rights reserved.
-            </p>
-
-            <span className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
-              <Link href="/privacy">
-                <a
-                  // href="/privacy"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 ml-1"
-                  // target="_blank"
-                >
-                  Privacy Policy
-                </a>
-              </Link>{" "}
-              //
-              <Link href="/terms">
-                <a
-                  // href="https://lasvittennis.com/terms"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 ml-1"
-                  // target="_blank"
-                >
-                  Website Terms
-                </a>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </footer>
-    </>
+    </PageWrapper>
   );
 }
 

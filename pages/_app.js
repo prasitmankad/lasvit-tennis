@@ -1,15 +1,18 @@
 import "../styles/index.css";
-import Layout from "../components/Layout";
+import React from "react";
+import { Provider } from "react-redux";
+import { createWrapper } from "next-redux-wrapper";
+import store from "../modules/store";
 
 function MyApp({ Component, pageProps }) {
   return (
-  
-  <>
-  {/* <Layout> */}
+    <Provider store={store}>
       <Component {...pageProps} />
-    {/* </Layout> */}
-    </>
+    </Provider>
   );
 }
 
-export default MyApp;
+const makestore = () => store;
+const wrapper = createWrapper(makestore);
+
+export default wrapper.withRedux(MyApp);

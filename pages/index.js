@@ -1,9 +1,9 @@
 import Error from "next/error";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
-import { urlFor } from "../utils/sanity";
 import RenderSections from "../components/RenderSections";
-import Link from "next/link";
+import { PageWrapper } from "./PageWrapper";
+
 const query = `{
   'siteData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	title,
@@ -54,100 +54,13 @@ function IndexPage(props) {
     initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
-  console.log("page var -> ",page)
+
   return (
     <>
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-
-      <div className="bg-white">
-        <header class="text-gray-600 body-font">
-          <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <Link href="/">
-              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                <img
-                  src={urlFor(pageData.siteData.logo)
-                    .auto("format")
-                    .width(125)
-                    // .height(400)
-                    .fit("crop")
-                    .quality(80)}
-                  alt={
-                    pageData.siteData.logo?.alt ||
-                    `Photo of ${pageData.siteData.title}`
-                  }
-                />
-              </a>
-            </Link>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-              <Link href="/">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
-              </Link>
-              <Link href="/about">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">About</a>
-              </Link>
-              <Link href="/blog">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-              </Link>
-              {/* <Link href="/contact">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">
-                  Contact Us
-                </a>
-              </Link> */}
-            </nav>
-          </div>
-        </header>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+      <PageWrapper page={page}>
         <RenderSections sections={pageData.mainContent.content} />
-        <footer class="text-gray-600 body-font">
-          <div class="bg-gray-100 border-t border-gray-200">
-            <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-              <Link href="/">
-                <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                  <img
-                    src={urlFor(pageData.siteData.logo)
-                      .auto("format")
-                      .width(80)
-                      // .height(400)
-                      .fit("crop")
-                      .quality(80)}
-                    alt={
-                      pageData.siteData.logo?.alt ||
-                      `Photo of ${pageData.siteData.title}`
-                    }
-                  />
-                </a>
-              </Link>
-
-              <p class="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
-                © 2021 Lasvit Tennis. All rights reserved.
-              </p>
-
-              <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
-                <Link href="/privacy">
-                  <a
-                    // href="/privacy"
-                    rel="noopener noreferrer"
-                    class="text-gray-600 ml-1"
-                    // target="_blank"
-                  >
-                    Privacy Policy
-                  </a>
-                </Link>{" "}
-                //
-                <Link href="/terms">
-                  <a
-                    // href="https://lasvittennis.com/terms"
-                    rel="noopener noreferrer"
-                    class="text-gray-600 ml-1"
-                    // target="_blank"
-                  >
-                    Website Terms
-                  </a>
-                </Link>
-              </span>
-            </div>
-          </div>
-        </footer>
-      </div>
+      </PageWrapper>
     </>
   );
 }

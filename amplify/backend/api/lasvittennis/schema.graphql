@@ -1,0 +1,5 @@
+type ClientBilling @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  courseId: ID!
+  billingId: ID!
+}
