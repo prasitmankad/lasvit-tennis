@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Cta from "./Cta";
 import { PortableText, urlFor } from "../../utils/sanity";
 

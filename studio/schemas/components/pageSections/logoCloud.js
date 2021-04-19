@@ -2,10 +2,9 @@
 
 export default {
   type: "object",
-  name: "featuredOn",
-  title: "Featured On",
+  name: "logoCloud",
+  title: "Logo Clouds (As Featured On)",
   fields: [
-    //TODO: Field Validation
     {
       name: "backgroundColor",
       type: "colorlist", // required
@@ -13,30 +12,35 @@ export default {
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
       validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        Rule.warning("This field is required.").required(),
       options: {
         borderradius: {
           outer: "100%",
           inner: "100%",
         },
         list: [
-          { title: "White", value: "#ffffff" },
-          { title: "Pink", value: "#FF6A64" },
-          { title: "Orange", value: "#F15926" },
-          { title: "Light Teal", value: "#31E2E8" },
-          { title: "Light Teal", value: "#20C0D9" },
-          { title: "Dark Teal", value: "#01ADCA" },
-          { title: "Yellow", value: "#FFDE4E" },
-          { title: "Mid Grey", value: "#464343" },
+          { title: "white", value: "#ffffff" },
+          { title: "gray", value: "#c0ccda" },
+          { title: "gray-dark", value: "#3c4858" },
+          { title: "gray-darkest", value: "#1f2d3d" },
+          { title: "pink", value: "#FF6A64" },
+          { title: "orange", value: "#F15926" },
+          { title: "teal-light", value: "#31E2E8" },
+          { title: "teal", value: "#20C0D9" },
+          { title: "teal-dark", value: "#01ADCA" },
+          { title: "yellow", value: "#FFDE4E" },
         ],
       },
     },
+
+    //TODO: Field Validation
 
     {
       name: "logos",
       type: "array",
       title: "Featured Logos",
-      description: "Min of 3 for good appearance. Array of logos to show Featured On as social proof.",
+      description:
+        "Min of 3 for good appearance. Array of logos to show Featured On as social proof.",
       of: [
         {
           title: "Featured Logos",
@@ -59,7 +63,6 @@ export default {
     },
   ],
   preview: {
-
     prepare() {
       return {
         title: `As Featured On`,

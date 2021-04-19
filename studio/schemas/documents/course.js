@@ -13,27 +13,27 @@ export default {
       title: "Basic Info",
       description: "Basic information for the Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 2,
       },
     },
     {
       name: "content",
       title: "Course Content",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 2,
       },
     },
     {
       name: "media",
       title: "Media",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
@@ -41,9 +41,9 @@ export default {
       title: "Pricing",
       description: "Set up pricing for the Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
@@ -51,9 +51,9 @@ export default {
       title: "Frequently Asked Questions",
       description: "Frequently Asked Questions for this Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
   ],
@@ -67,8 +67,7 @@ export default {
       fieldset: "basic",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the required field.").required(),
+      validation: (Rule) => Rule.error("This field is required.").required(),
     },
     {
       name: "slug",
@@ -81,6 +80,7 @@ export default {
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
+      validation: (Rule) => Rule.error("You must generate a slug.").required(),
     },
     {
       name: "shortDescription",
@@ -89,8 +89,7 @@ export default {
       fieldset: "basic",
       description:
         "What is this course all about? Used in landing pages, course landing page etc.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.warning("This field is required.").required(),
     },
 
     // Content
@@ -127,6 +126,8 @@ export default {
           title: "Course Features",
           description: "Array of features for the course.",
           of: [{ type: "feature" }],
+          validation: (Rule) =>
+            Rule.error("This field is required.").required(),
         },
       ],
     },
@@ -139,15 +140,8 @@ export default {
       fieldset: "media",
       description:
         "The image should be either jpg or png. Preferably 3000 x 3000, minimum 1400 x 1400 pixels. Used on sales pages and course landing pages.",
+      validation: (Rule) => Rule.error("This field is required.").required(),
     },
-    // {
-    //   name: "tags",
-    //   type: "tags",
-    //   title: "Tags",
-    //   fieldset: "details",
-    //   description:
-    //     "List of tags that can be used for future sorting, searching.",
-    // },
 
     // Stats Section
     {
@@ -168,9 +162,7 @@ export default {
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
           validation: (Rule) =>
-            Rule.error(
-              "Please provide a title for the Hero Section."
-            ).required(),
+            Rule.error("This field is required.").required(),
         },
         {
           name: "subheading",
@@ -191,6 +183,9 @@ export default {
           type: "array",
           title: "Statistics",
           description: "Set of stats for this Course.",
+          validation: (Rule) =>
+            Rule.error("This field is required.").required(),
+
           of: [
             {
               type: "object",
@@ -225,6 +220,8 @@ export default {
           title: "Section Heading",
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
+          validation: (Rule) =>
+            Rule.error("This field is required.").required(),
         },
         {
           name: "subheading",
@@ -246,6 +243,7 @@ export default {
           title: "Billing Frequency",
           description:
             "Set the billing frequency (how often the customer is charged for this Course). Also used to display on the frontend.",
+
           options: {
             borderradius: {
               outer: "100%",
@@ -259,6 +257,8 @@ export default {
               { title: "Yearly", value: "yearly" },
             ],
           },
+          validation: (Rule) =>
+            Rule.error("This field is required.").required(),
         },
         {
           name: "prices",
@@ -269,15 +269,35 @@ export default {
             {
               type: "object",
               fields: [
-                { name: "symbol", type: "string", title: "Currency Symbol" },
-                { name: "currency", type: "string", title: "Currency" },
-                { name: "value", type: "number", title: "Value" },
+                {
+                  name: "symbol",
+                  type: "string",
+                  title: "Currency Symbol",
+                  validation: (Rule) =>
+                    Rule.error("This field is required.").required(),
+                },
+                {
+                  name: "currency",
+                  type: "string",
+                  title: "Currency",
+                  validation: (Rule) =>
+                    Rule.error("This field is required.").required(),
+                },
+                {
+                  name: "value",
+                  type: "number",
+                  title: "Value",
+                  validation: (Rule) =>
+                    Rule.error("This field is required.").required(),
+                },
               ],
 
               // TODO: Filter on free / sneak peek content items
               // TODO: Add free / sneak peek flag to content items
             },
           ],
+          validation: (Rule) =>
+            Rule.error("This field is required.").required(),
         },
       ],
     },
@@ -300,10 +320,8 @@ export default {
           title: "Heading",
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
-          validation: (Rule) =>
-            Rule.error(
-              "Please provide a title for the Hero Section."
-            ).required(),
+            validation: (Rule) => Rule.error("This field is required.").required(),
+
         },
         {
           name: "content",
@@ -325,6 +343,9 @@ export default {
               // TODO: Add free / sneak peek flag to content items
             },
           ],
+          // TODO: Required and At Least One item needed
+          validation: (Rule) => Rule.error("This field is required.").required(),
+
         },
       ],
     },

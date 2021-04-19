@@ -12,9 +12,9 @@ export default {
       name: "details",
       title: "Content Details",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true, 
+        collapsed: true, 
+        columns: 1, 
       },
     },
   ],
@@ -30,8 +30,7 @@ export default {
           { title: "Video", value: "video" },
           { title: "Article", value: "article" },
           { title: "File", value: "file" },
-        ], // <-- predefined values
-        //layout: 'radio' // <-- defaults to 'dropdown'
+        ], 
       },
     },
 
@@ -68,7 +67,7 @@ export default {
       description:
         "1-2 sentences describing the content item. Used on content rolls / summary pages.",
       validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        Rule.warning("This field is required.").required(),
     },
     {
       name: "longDescription",

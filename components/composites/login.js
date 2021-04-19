@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { PortableText, urlFor } from "../../utils/sanity";
+// TODO: Make cover image diagonal like Hero Image
 
 function loginSection(props) {
   return (

@@ -12,7 +12,6 @@ import contentItem from "./documents/contentItem";
 import faq from "./documents/faq";
 import teamMember from "./documents/teamMember";
 
-
 // import objects
 import blockContent from "./components/objects/blockContent";
 import button from "./components/objects/button"; 

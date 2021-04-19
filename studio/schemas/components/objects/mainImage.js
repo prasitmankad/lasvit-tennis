@@ -19,7 +19,7 @@ export default {
       type: 'string',
       title: 'Alternative text',
       description: 'Important for SEO and accessibility.',
-      validation: Rule => Rule.error('You have to fill out the alternative text.').required(),
+      validation: Rule => Rule.error('This field is required.').required(),
       options: {
         isHighlighted: true
       }

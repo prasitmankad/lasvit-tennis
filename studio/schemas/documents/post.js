@@ -11,27 +11,27 @@ export default {
       name: "info",
       title: "Basic Info",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     {
       name: "media",
       title: "Media",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
     {
       name: "content",
       title: "Content",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
   ],
@@ -43,9 +43,8 @@ export default {
       title: "Blog Post Title",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the Blog Title.").required(),
-        fieldset:"info",
+      validation: (Rule) => Rule.error("This field is required.").required(),
+      fieldset: "info",
     },
     {
       name: "slug",
@@ -53,30 +52,27 @@ export default {
       title: "Slug",
       description:
         "Required to generate the blog post unique URL and context within overall content model to be able to show the post.",
-      validation: (Rule) =>
-        Rule.error(
-          "You must generate a slug so that the frontend can query and render the blog post."
-        ).required(),
+      validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
         source: "title",
         maxLength: 96,
       },
-      fieldset:"info",
-    },   
+      fieldset: "info",
+    },
     {
       name: "publishedAt",
       type: "datetime",
       title: "Published at",
       description:
         "This can be used to schedule post for publishing, sorting and searching for posts.",
-      validation: (Rule) => Rule.error("You must provide a date.").required(),
-      fieldset:"info",
+      validation: (Rule) => Rule.error("This field is required.").required(),
+      fieldset: "info",
     },
     {
       name: "tags",
       type: "tags",
       title: "Tags",
-      fieldset:"info",
+      fieldset: "info",
     },
     {
       name: "mainImage",
@@ -84,9 +80,8 @@ export default {
       title: "Main Image",
       description:
         "Main image used for the post used on blog cards and summary pages. Other images can be included when writing the body post.",
-      validation: (Rule) =>
-        Rule.error("Please provide a main image for the post.").required(),
-        fieldset:"media",
+      validation: (Rule) => Rule.error("This field is required.").required(),
+      fieldset: "media",
     },
     {
       name: "excerpt",
@@ -94,43 +89,25 @@ export default {
       title: "Excerpt",
       description:
         "A short description of what the article is about. This ends up on cards and summary blog pages.",
-        fieldset:"content",
-    }, 
-    // {
-      
-    //   // additional inline content types - internal page, post, course links, image, video
-
-    //   name: "body",
-    //   type: "array",
-    //   title: "Body",
-    //   description:
-    //     "The content for your Blog Post. Words, images, videos and other content.",
-    //   of: [{ type: "block" }],
-    //   fieldset:"content",
-    // },
+      fieldset: "content",
+      validation: (Rule) => Rule.warning("This field is required.").required(),
+    },
     {
       name: "body",
       type: "blockContent",
       title: "Body",
-      fieldset:"content",
+      fieldset: "content",
+      validation: (Rule) => Rule.warning("This field is required.").required(),
     },
     {
-      name: "authors",
-      title: "Authors",
-      type: "array",
+      name: "author",
+      title: "Author",
+      type: "reference",
       description:
         "Add in one or more authors that contributed to this blog post.",
-      validation: (Rule) =>
-        Rule.error("Please select at least one post Author.").required(),
-      of: [
-        {
-          type: "reference",
-          to: [{ type: "teamMember" }],
-        },
-      ],
+      validation: (Rule) => Rule.error("This field is required.").required(),
+      to: [{ type: "teamMember" }],
     },
-
-   
   ],
   orderings: [
     {

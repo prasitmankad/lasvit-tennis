@@ -1,47 +1,102 @@
 import React, { Fragment } from "react";
+import { ExclamationIcon } from "@heroicons/react/solid";
 import PropTypes from "prop-types";
 import { upperFirst } from "lodash";
-// import * as SectionComponents from "../sections";
 import * as composites from "../composites";
-
-function resolveSections(section) {
-  // eslint-disable-next-line import/namespace
-  console.log("Composites -> ", composites)
-  const Section = composites[section._type];
-  console.log("Section --> ", Section);
-
-  if (Section) {
-    return Section;
-  }
-
-  console.error("Cant find section", section); // eslint-disable-line no-console
-  return null;
-}
-
 function RenderSections(props) {
-  console.log("props into AllData ->  ", props);
-  const globalData = props.data.globalData;
-  const pageData = props.data.pageData;
+  console.log("AllData Props ->  ", props);
+  // reconstruct object
 
-  const sections = pageData.sections;
+  const globalData = { globalData: { ...props.data.globalData } };
 
-  console.log("Sections --> ", sections);
-  if (!sections) {
-    // no sections defined on page
+  // check if sections have been provided (var is null)
+  if (!props.data.pageData.sections) {
     console.error("Missing section. Check code for correct configuration.");
-    return <div>Missing Sections</div>;
+    return (
+      <div className="rounded-md bg-yellow-50 p-4">
+        <div className="flex">
+          <div className="flex-shrink-0">
+            <ExclamationIcon
+              className="h-5 w-5 text-yellow-400"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="ml-3">
+            <h3 className="text-sm font-medium text-yellow-800">
+              IT'S NOT YOU, IT'S US
+            </h3>
+            <div className="mt-2 text-sm text-yellow-700">
+              <p>
+                UI render method for React Component not found. Please check
+                your CMS config.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
+  // map each section to its corresponding render component and return a fragment
+  // check if section has corresponding render and pipe out message if not
   return (
     <Fragment>
-      {sections.map((section) => {
-        console.log("section map -> ", section)
+      {props.data.pageData.sections.map((section) => {
         const SectionComponent = resolveSections(section);
-        console.log("SectionComponent -> ", SectionComponent);
+        // console.log("SectionComponent //", section._type);
+
         if (!SectionComponent) {
-          return <div>Missing section {section._type}</div>;
+          // section ui render not found
+          return (
+            <>
+              {/* <div className="rounded-md bg-yellow-50 p-4">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <ExclamationIcon
+                      className="h-5 w-5 text-yellow-400"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="text-sm font-medium text-yellow-800">
+                      IT'S NOT YOU, IT'S US
+                    </h3>
+                    <div className="mt-2 text-sm text-yellow-700">
+                      <p>
+                        UI render method for React Component not found. Please
+                        check your CMS config.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </>
+          );
         }
-        return <SectionComponent {...section} key={section._key} />;
+
+        // group sectiondata into its own sub component
+        let sectionData = { sectionData: { ...section } };
+        if (section._type === "blogRoll") {
+          // console.log("section type // ", section._type)
+          let postsData = { postsData: [ ...props.data.pageData.recentPosts ] };
+
+          return (
+            <SectionComponent
+              key={section._key}
+              {...sectionData} // send section to associated UI component
+              {...globalData} // send global content and params
+              {...postsData}
+            />
+          );
+        } else {
+          return (
+            <SectionComponent
+              key={section._key}
+              {...sectionData} // send section to associated UI component
+              {...globalData} // send global content and params
+            />
+          );
+        }
       })}
     </Fragment>
   );
@@ -58,3 +113,15 @@ RenderSections.propTypes = {
 };
 
 export default RenderSections;
+
+function resolveSections(section) {
+  // eslint-disable-next-line import/namespace
+  const Section = composites[section._type];
+
+  if (Section) {
+    return Section;
+  }
+
+  console.error("Cant find section", section); // eslint-disable-line no-console
+  return null;
+}

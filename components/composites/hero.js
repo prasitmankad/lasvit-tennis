@@ -1,69 +1,100 @@
-import PropTypes from "prop-types";
-//import Cta from "./Cta";
-import { PortableText, urlFor } from "../../utils/sanity";
+import { urlFor } from "../../utils/sanity";
+import Link from "next/link";
 
-function heroSection(props) {
-  const { title, subtitle, tagline, paragraph, mainImage, ctas } = props;
-  console.log("Hero -> ",props)
+import { Popover } from "@headlessui/react";
+
+export default function hero(props) {
+  //console.log("Hero Props // ", props);
 
   return (
     <>
-    
-      {/* HERO SECTION */}
-      <section class="text-gray-600 body-font">
-        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
-          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img
-              src={urlFor(props.mainImage)
-                .auto("format")
-                .width(720)
-                .height(600)
-                .fit("crop")
-                .quality(80)
-                .url()}
-              alt={
-                props.mainImage?.alt || `Photo of ${props.mainImage.caption}`
-              }
-              class="object-cover object-center rounded"
-            />
+      <Popover className="relative bg-white overflow-hidden">
+        {({ open }) => (
+          <>
+            <div className="max-w-7xl mx-auto">
+              <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <svg
+                  className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                  fill="currentColor"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
 
-            {/* <img
-              class="object-cover object-center rounded"
-              alt="hero"
-              src="https://dummyimage.com/720x600"
-            /> */}
-          </div>
-          <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 font-bold">
-              {props.title}
-            </h1>
-            <h2 class="title-font sm:text-1xl text-2xl mb-4 font-medium text-gray-900">
-              {props.subtitle}
-            </h2>
+                <div className="relative pt-6 px-4 sm:px-6 lg:px-8"></div>
 
-            <p class="mb-8 leading-relaxed text-gray-800">
-              {paragraph && (
-                <PortableText
-                  blocks={paragraph}
-                  className="text-gray-700"
-                />
-              )}
-            </p>
-
-            <div class="flex justify-center">
-              {ctas && (
-                <div>
-                  {ctas.map((cta) => (
-                    <Cta {...cta} key={cta._key} />
-                  ))}
-                </div>
-              )}
+                <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                  <div className="sm:text-center lg:text-left">
+                    <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                      <span className="block xl:inline">{props.sectionData.heading}</span>{" "}
+                    </h1>
+                    <h2
+                      className={
+                        "text-2xl font-semibold text-" +
+                        props.globalData.branding.primaryAccentColor.title +
+                        " tracking-wide"
+                      }
+                    >
+                      {props.subheading}
+                    </h2>
+                    <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                      {props.sectionData.content}
+                    </p>
+                    <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                      <div className="rounded-md shadow">
+                        <a
+                          href="#"
+                          className={
+                            "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                            props.globalData.branding.primaryAccentColor.title +
+                            " hover:bg-white hover:border-" +
+                            props.globalData.branding.primaryAccentColor.title +
+                            " hover:text-" +
+                            props.globalData.branding.primaryAccentColor.title +
+                            " md:py-4 md:text-lg md:px-10"
+                          }
+                        >
+                          Ultimate Tennis Parent
+                        </a>
+                      </div>
+                      <div className="mt-3 sm:mt-0 sm:ml-3">
+                        <a
+                          href="#"
+                          className={
+                            "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                            props.globalData.branding.secondaryAccentColor.title +
+                            " hover:bg-white hover:border-" +
+                            props.globalData.branding.secondaryAccentColor.title +
+                            " hover:text-" +
+                            props.globalData.branding.secondaryAccentColor.title +
+                            " md:py-4 md:text-lg md:px-10"
+                          }
+                        >
+                          Other Courses
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+            <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+              <img
+                className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+                src={urlFor(props.sectionData.mainImage)
+                  .auto("format")
+                  //.width(120)
+                  .height(1000)
+                  .fit("crop")
+                  .quality(80)}
+                alt={props.mainImage?.alt || ``}
+              />
+            </div>
+          </>
+        )}
+      </Popover>
     </>
   );
 }
-
-export default heroSection;

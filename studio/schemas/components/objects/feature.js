@@ -10,9 +10,9 @@ export default {
       name: "image",
       title: "Feature Image Settings",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true, 
+        collapsed: true, 
+        columns: 1, 
       },
     },
     {
@@ -33,14 +33,6 @@ export default {
       type: "boolean",
       description:
         "Select if this feature should be called out. Will embiggen the feature instead of just listing it.",
-      // options: {
-      //   list: [
-      //     { title: "Video", value: "video" },
-      //     { title: "Article", value: "article" },
-      //     { title: "File", value: "file" },
-      //   ], // <-- predefined values
-      //layout: 'radio' // <-- defaults to 'dropdown'
-      // },
     },
     {
       name: "mainImage",
@@ -68,8 +60,7 @@ export default {
           { title: "Right", value: "right" },
           { title: "Top Center", value: "topCenter" },
           { title: "Bottom Center", value: "bottomCenter" },
-        ], // <-- predefined values
-        //layout: 'radio' // <-- defaults to 'dropdown'
+        ], 
       },
     },
     {
@@ -87,7 +78,7 @@ export default {
       description:
         "1-2 sentences describing the feature. Used on summary lists.",
       validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        Rule.warning("This field is required.").required(),
       fieldset: "details",
     },
     {
@@ -97,7 +88,7 @@ export default {
       description:
         "5-10 longer sentences describing the feature in more detail. Used for Feature detail sections.",
       validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        Rule.warning("This field is required.").required(),
       fieldset: "details",
     },
 

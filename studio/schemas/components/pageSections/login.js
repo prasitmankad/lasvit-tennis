@@ -12,31 +12,31 @@ export default {
       name: "basic",
       title: "Basic Settings",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     {
       name: "details",
       title: "Detailed Settings",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
   ],
   fields: [
-      // logo and other info is pulled from Global settings
+    // logo and other info is pulled from Global settings
     {
       name: "heading",
       type: "string",
       title: "Heading",
       fieldset: "basic",
-
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
+      validation: (Rule) => Rule.error("This field is required.").required(),
     },
     {
       name: "subheading",
@@ -45,10 +45,7 @@ export default {
       fieldset: "basic",
       description:
         "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
-      validation: (Rule) =>
-        Rule.error("Please provide a title for the Hero Section.").required(),
     },
-
     {
       name: "content",
       type: "text",
@@ -60,8 +57,9 @@ export default {
       name: "mainImage",
       type: "mainImage",
       title: "Main Image",
-      description:
-        "Image used on the login page.",
+      description: "Image used on the login page.",
+      validation: (Rule) =>
+        Rule.error("This field is required.").required(),
     },
   ],
   preview: {

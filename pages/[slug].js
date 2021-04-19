@@ -2,7 +2,7 @@ import Error from "next/error";
 import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
-import RenderSections from "../components/RenderSections";
+//import RenderSections from "../components/render/RenderSections";
 import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 

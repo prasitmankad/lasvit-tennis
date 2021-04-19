@@ -14,7 +14,7 @@ export default {
       description:
         "Question text for the FAQ.",
       validation: (Rule) =>
-        Rule.error("Please fill out the Blog Title.").required(),
+      Rule.error("This field is required.").required(),
     },
     {
       name: "answer",
@@ -23,7 +23,7 @@ export default {
       description:
         "Answer text for the FAQ.",
       validation: (Rule) =>
-        Rule.error("Please fill out the Blog Title.").required(),
+      Rule.error("This field is required.").required(),
     },  
   ],
  

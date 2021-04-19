@@ -1,6 +1,4 @@
-// TODO: Get colors from Sanity CMS and set here
-
-
+const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -15,9 +13,39 @@ module.exports = {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        "accent-1": "#333",
+        transparent: "transparent",
+        current: "currentColor",
+        // lasvit orange
+        orange: {
+          //light: "#85d7ff",
+          DEFAULT: "#F15926",
+          //dark: "#009eeb",
+        },
+        // lasvit teal
+        teal: {
+          light: "#31E2E8",
+          DEFAULT: "#20C0D9",
+          dark: "#01ADCA",
+        },
+        pink: {
+          //light: "#ff7ce5",
+          DEFAULT: "#FF6A64",
+          //dark: "#ff16d1",
+        },
+        yellow: {
+          //light: "#ff7ce5",
+          DEFAULT: "#FFDE4E",
+          //dark: "#ff16d1",
+        },
+        gray: {
+          darkest: "#1f2d3d",
+          dark: "#3c4858",
+          DEFAULT: "#c0ccda",
+          light: "#e0e6ed",
+          lightest: "#f9fafc",
+        },
       },
-    }, 
+    },
   },
   variants: {
     extend: {
@@ -39,3 +67,4 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
   ],
 };
+

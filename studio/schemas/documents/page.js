@@ -8,16 +8,13 @@ export default {
   title: "Page",
   icon: icoPages,
   fields: [
-    
-
     {
       name: "title",
       type: "string",
       title: "Page Title",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the required field.").required(),
+      validation: (Rule) => Rule.error("This field is required.").required(),
     },
     {
       name: "slug",
@@ -25,10 +22,7 @@ export default {
       title: "Slug",
       description:
         "Required to generate the blog post unique URL. Some frontends also require this for accurate context within the overall content model to be able to show the post.",
-      validation: (Rule) =>
-        Rule.error(
-          "You must generate a slug so that the frontend can query and render the blog post."
-        ).required(),
+      validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
         source: "title",
         slugify: (input) =>
@@ -48,18 +42,15 @@ export default {
         { type: "contentBlock" }, // basic content block
         { type: "contactForm" },
         { type: "faq" },
-        // { type: "featureDetail" },
-        { type: "featuredOn" },
-        { type: "featureGrid" },
-        // { type: "featureList" },
-
-        // { type: "pricingSingle" },
+        { type: "featureList" },
+        { type: "logoCloud" },
         { type: "signup" },
         { type: "siteNotice" },
-        // { type: "stats" },
+        //{ type: "stats" },
         { type: "team" },
         { type: "login" },
       ],
+      validation: (Rule) => Rule.error("This field is required.").required(),
     },
   ],
 

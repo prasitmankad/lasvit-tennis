@@ -23,26 +23,26 @@ export default {
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     },
-    
+
     {
       name: "image",
       type: "mainImage",
       title: "Image",
+      validation: (Rule) => Rule.warning("This field is required.").required(),
+
     },
     {
       name: "position",
       type: "string",
       title: "Position",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.warning("This field is required.").required(),
     },
     {
       name: "shortDescription",
       type: "text",
       title: "Short Description",
       description: "1-2 sentence bio used on summary pages.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.warning("This field is required.").required(),
     },
     {
       name: "longDescription",

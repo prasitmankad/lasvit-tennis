@@ -1,12 +1,15 @@
 export default {
   type: "object",
-  name: "pageHeading",
-  title: "Page Heading",
+  name: "featureList",
+  title: "Feature List",
+
+  fieldsets: [],
   fields: [
     {
       name: "heading",
       type: "string",
       title: "Heading",
+
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
       validation: (Rule) => Rule.error("This field is required.").required(),
@@ -18,7 +21,6 @@ export default {
       description:
         "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
     },
-
     {
       name: "backgroundColor",
       type: "colorlist", // required
@@ -52,6 +54,47 @@ export default {
       description:
         "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
     },
+
+    {
+      name: "feature",
+      type: "array",
+      title: "Feature",
+      description:
+        "Min of 2 for good appearance. Array of feature descriptions to show in this section.",
+      of: [
+        {
+          title: "Items",
+          type: "object",
+          fields: [
+            {
+              title: "Icon",
+              name: "logoImage",
+              type: "image",
+              description: "A square icon, min 64px for suitable appearance.",
+            },
+            {
+              name: "itemHeading",
+              type: "string",
+              title: "Item Heading",
+
+              description:
+                "Headings should be short & catchy, descriptive, and only a couple of words long.",
+              validation: (Rule) =>
+                Rule.error(
+                  "Please provide a title for the Hero Section."
+                ).required(),
+            },
+            {
+              name: "itemDescription",
+              type: "text",
+              title: "Item Description",
+              description:
+                "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
@@ -60,8 +103,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Page Heading: ${title}`,
-        subtitle: `${subtitle}`,
+        title: `Feature Grid`,
+        subtitle: `Service Offerings`,
       };
     },
   },

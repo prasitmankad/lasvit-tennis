@@ -16,18 +16,18 @@ export default {
       name: "brand",
       title: "Branding",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true, 
+        collapsed: true, 
+        columns: 1, 
       },
     },
     {
       name: "site",
       title: "Site Settings",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true, 
+        collapsed: true, 
+        columns: 2, 
       },
     },
     { name: "header", title: "Header Config" },
@@ -52,7 +52,7 @@ export default {
           type: "string",
           title: "Company Name",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
         },
         {
           name: "tagline",
@@ -61,7 +61,7 @@ export default {
           description:
             "1 sentence slogan or tagline used in head and hero section.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
         },
         {
           name: "siteDescription",
@@ -70,7 +70,7 @@ export default {
           description:
             "A short description of the website, used in page head and hero sections.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
         },
         {
           title: "Contact",
@@ -78,11 +78,11 @@ export default {
           type: "object",
           description: "Address and other contact info.",
           // validation: (Rule) =>
-          //   Rule.warning("Please fill out the field.").required(),
+          //   Rule.warning("This field is required.").required(),
           options: {
-            collapsible: true, // Makes the whole fieldset collapsible
-            collapsed: false, // Defines if the fieldset should be collapsed by default or not
-            columns: 1, // Defines a grid for the fields and how many columns it should have
+            collapsible: true, 
+            collapsed: false, 
+            columns: 1, 
           },
           fields: [
             { name: "streetNo", type: "string", title: "Street number" },
@@ -101,7 +101,7 @@ export default {
         //   description:
         //     "Core team members of the company. Used on teams / about pages.",
         //   validation: (Rule) =>
-        //     Rule.warning("Please fill out the field.").required(),
+        //     Rule.warning("This field is required.").required(),
         //   of: [
         //     {
         //       type: "reference",
@@ -120,7 +120,7 @@ export default {
       description: "Logo and branding settigns that apply throughout the site.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -131,7 +131,7 @@ export default {
           description:
             "Used across the site wherever a company logo is required.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
           options: { hotspot: true },
           fields: [
             {
@@ -143,34 +143,36 @@ export default {
                 isHighlighted: true,
               },
               validation: (Rule) =>
-                Rule.warning("Please fill out the field.").required(),
+                Rule.warning("This field is required.").required(),
             },
           ],
         },
+        // TODO: ALign all color options.
+        // TODO: Future requirement to make this dynamic so that Tailwind can pick it up
         {
-          // TODO: Align all color options
           name: "primaryTextColor",
           type: "colorlist", // required
           title: "Primary Text Color",
           description:
             "Used as primary text color across the site. Default is White #ffffff",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
           options: {
             borderradius: {
               outer: "100%",
               inner: "100%",
             },
             list: [
-              { title: "White", value: "#ffffff" },
-
-              { title: "Pink", value: "#FF6A64" },
-              { title: "Orange", value: "#F15926" },
-              { title: "Light Teal", value: "#31E2E8" },
-              { title: "Light Teal", value: "#20C0D9" },
-              { title: "Dark Teal", value: "#01ADCA" },
-              { title: "Yellow", value: "#FFDE4E" },
-              { title: "Mid Grey", value: "#464343" },
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
             ],
           },
         },
@@ -181,22 +183,23 @@ export default {
           description:
             "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
           options: {
             borderradius: {
               outer: "100%",
               inner: "100%",
             },
             list: [
-              { title: "White", value: "#ffffff" },
-
-              { title: "Pink", value: "#FF6A64" },
-              { title: "Orange", value: "#F15926" },
-              { title: "Light Teal", value: "#31E2E8" },
-              { title: "Light Teal", value: "#20C0D9" },
-              { title: "Dark Teal", value: "#01ADCA" },
-              { title: "Yellow", value: "#FFDE4E" },
-              { title: "Mid Grey", value: "#464343" },
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
             ],
           },
         },
@@ -206,20 +209,23 @@ export default {
           title: "Secondary Accent Color",
           description: "Used as secondary accent color across the site.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
           options: {
             borderradius: {
               outer: "100%",
               inner: "100%",
             },
             list: [
-              { title: "Pink", value: "#FF6A64" },
-              { title: "Orange", value: "#F15926" },
-              { title: "Light Teal", value: "#31E2E8" },
-              { title: "Light Teal", value: "#20C0D9" },
-              { title: "Dark Teal", value: "#01ADCA" },
-              { title: "Yellow", value: "#FFDE4E" },
-              { title: "Mid Grey", value: "#464343" },
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
             ],
           },
         },
@@ -245,15 +251,14 @@ export default {
           description:
             "The main site url to create canonical url links to other pages",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.warning("This field is required.").required(),
         },
         {
           name: "frontpage",
           type: "reference",
           title: "Home Page",
           description: "Choose the page to be the home page of the site.",
-          validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+          weak:true,
           to: { type: "page" },
         },
         {
@@ -305,16 +310,14 @@ export default {
                   title: "Make Button",
                   description:
                     "Select this to make the link into a button. All buttons are placed AFTER links.",
-                  validation: (Rule) =>
-                    Rule.warning("Please fill out the field.").required(),
+                  
                 },
                 {
                   name: "highlight",
                   type: "boolean",
                   title: "Highlight Button",
                   description: "Select this to highlight the button.",
-                  validation: (Rule) =>
-                    Rule.warning("Please fill out the field.").required(),
+               
                 },
                 {
                   name: "text",
@@ -326,7 +329,7 @@ export default {
                   name: "link",
                   type: "reference",
                   title: "Link",
-
+                  weak: true,
                   type: "reference",
                   to: [{ type: "page" }, { type: "course" }, { type: "post" }],
                 },
