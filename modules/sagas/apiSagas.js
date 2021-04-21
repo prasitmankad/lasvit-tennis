@@ -1,9 +1,14 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery, call, all } from "redux-saga/effects";
 import { actionKeys } from "../actions/actionTypes";
 import { API, graphqlOperation } from "aws-amplify";
 import { listClientBillings } from "../../src/graphql/queries";
-import * as mutations from "../../src/graphql/mutations";
-import { fetchBillingList, fetchBillingListAction } from "../actions/apiAction";
+import * as mutations from "../graphql/mutations";
+import {
+  fetchBillingList,
+  fetchBillingListAction,
+  showPayloadModalAction,
+} from "../actions/apiAction";
+import { postToken } from "../api/pay";
 
 // AWS API
 function* handleFetchBillingList() {
@@ -12,29 +17,45 @@ function* handleFetchBillingList() {
     yield API.graphql(graphqlOperation(listClientBillings)).then(({ data }) => {
       billingList = data.listClientBillings.items;
     });
+    billingList.sort((a, b) =>
+      a.createdAt > b.createdAt ? 1 : b.createdAt > a.createdAt ? -1 : 0
+    );
+
     yield put(fetchBillingList(billingList));
   } catch (error) {
     console.log("[error handleFetchBillingList]", error);
   }
 }
 
-// [VB]TODO : merge Pay Gate data
-function* handleCreateBilling() {
-  const GQLBillingData = {
-    courseId: "course1",
-    billingId: "billing1",
-  };
-
+function* handleCreateBilling(action) {
   try {
+    const { data, token } = action.payload;
+    const response = call(postToken, token, data.amount * 100);
+    const payObject = response.payload.args[0];
+
     yield API.graphql({
       query: mutations.createClientBilling,
-      variables: { input: GQLBillingData },
-    }).then((res) => {
-      console.log("[res]", res);
+      variables: {
+        input: {
+          ...data,
+          ...{
+            payload: {
+              id: payObject.id,
+              created: payObject.created,
+            },
+          },
+        },
+      },
     });
-    yield put(fetchBillingListAction());
+
+    yield all([
+      put(fetchBillingListAction()),
+      put(showPayloadModalAction(true)),
+    ]);
   } catch (error) {
     console.log("[error handleCreateBilling]", error);
+  } finally {
+    yield put(showPayloadModalAction(false));
   }
 }
 

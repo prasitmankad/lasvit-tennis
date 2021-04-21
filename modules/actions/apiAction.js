@@ -1,5 +1,4 @@
 import { actionKeys } from "./actionTypes";
-
 // AWS amplify functions : API
 export function fetchBillingListAction() {
   return {
@@ -14,8 +13,16 @@ export function fetchBillingList(billing) {
   };
 }
 
-export function createBillingAction() {
+export function createBillingAction(token, data) {
   return {
     type: actionKeys.CREATE_BILLING_REQUEST,
+    payload: { token, data },
+  };
+}
+
+export function showPayloadModalAction(show) {
+  return {
+    type: actionKeys.PAYLOAD_MODAL,
+    payload: show,
   };
 }

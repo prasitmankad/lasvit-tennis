@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "lasvittennis6c503e44_identitypool_6c503e44",
+    "identityPoolName": "lasvittennisaead4aab_identitypool_aead4aab",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "lasvit6c503e44",
-    "userPoolName": "lasvittennis6c503e44_userpool_6c503e44",
+    "resourceNameTruncated": "lasvitaead4aab",
+    "userPoolName": "lasvittennisaead4aab_userpool_aead4aab",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -30,10 +30,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "lasvit6c503e44_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "lasvitaead4aab_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "6c503e44",
-    "resourceName": "lasvittennis6c503e44",
+    "sharedId": "aead4aab",
+    "resourceName": "lasvittennisaead4aab",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -53,7 +53,7 @@
         "email"
     ],
     "triggers": "{}",
-    "hostedUIDomainName": "lasvittennis6c503e44-6c503e44",
+    "hostedUIDomainName": "lasvittennis-auth",
     "authProvidersUserPool": [
         "Facebook",
         "Google"

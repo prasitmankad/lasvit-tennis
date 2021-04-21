@@ -21,10 +21,10 @@ function AccountPage() {
 
   return (
     <PageWrapper page={null}>
-      <div class="relative flex-1 flex flex-col w-full bg-white focus:outline-none">
-        <main class="flex-1 flex overflow-hidden">
-          <div class="flex-1 flex flex-col overflow-y-auto xl:overflow-hidden">
-            <div class="flex-1 flex xl:overflow-hidden">
+      <div className="relative flex-1 flex flex-col w-full bg-white focus:outline-none">
+        <main className="flex-1 flex overflow-hidden">
+          <div className="flex-1 flex flex-col overflow-y-auto xl:overflow-hidden">
+            <div className="flex-1 flex xl:overflow-hidden">
               <MenuBar changeView={setPageView} activeView={pageView} />
               <Component />
             </div>
