@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { ExclamationIcon } from "@heroicons/react/solid";
 import PropTypes from "prop-types";
-import { upperFirst } from "lodash";
 import * as composites from "../composites";
 function RenderSections(props) {
   console.log("AllData Props ->  ", props);
@@ -76,17 +75,19 @@ function RenderSections(props) {
 
         // group sectiondata into its own sub component
         let sectionData = { sectionData: { ...section } };
-        if (section._type === "blogRoll") {
-          // console.log("section type // ", section._type)
-          let postsData = { postsData: [ ...props.data.pageData.recentPosts ] };
+        if (section._type === "blog") {
+          //console.log("section type // ", section._type)
+           let postsData = { postsData: [ ...props.data.pageData.recentPosts ] };
 
           return (
+            <>
             <SectionComponent
               key={section._key}
               {...sectionData} // send section to associated UI component
               {...globalData} // send global content and params
               {...postsData}
             />
+            </>
           );
         } else {
           return (

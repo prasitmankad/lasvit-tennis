@@ -41,8 +41,6 @@ export default {
       validation: (Rule) =>
         Rule.error("Please provide a title for the Hero Section.").required(),
     },
-    // TODO: Future requirement to make this dynamic so that Tailwind can pick it up
-    // currently not possible given webpack compiles this
     {
       name: "backgroundColor",
       type: "colorlist", // required
@@ -100,7 +98,8 @@ export default {
           title: "Text",
           description: "Text on the link (or button).",
 
-
+          validation: (Rule) =>
+          Rule.warning("This field is required.").required(),
         },
         {
           name: "link",

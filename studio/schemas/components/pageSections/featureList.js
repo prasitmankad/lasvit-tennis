@@ -80,9 +80,7 @@ export default {
               description:
                 "Headings should be short & catchy, descriptive, and only a couple of words long.",
               validation: (Rule) =>
-                Rule.error(
-                  "Please provide a title for the Hero Section."
-                ).required(),
+                Rule.warning("This field is required.").required(),
             },
             {
               name: "itemDescription",
@@ -90,6 +88,8 @@ export default {
               title: "Item Description",
               description:
                 "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+              validation: (Rule) =>
+                Rule.warning("This field is required.").required(),
             },
           ],
         },

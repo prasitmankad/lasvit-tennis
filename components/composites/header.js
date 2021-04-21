@@ -16,7 +16,7 @@ export default function header(props) {
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
-                  <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                  <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                     <img
                       src={urlFor(props.data.branding.companyLogo)
                         .auto("format")
@@ -147,7 +147,7 @@ export default function header(props) {
                     <div className="flex items-center justify-between">
                       <div>
                         <Link href="/">
-                          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                             <img
                               src={urlFor(props.data.branding.companyLogo)
                                 .auto("format")

@@ -18,7 +18,7 @@ export default {
       description:
         "Unique reference for the person. Also some frontends will require a slug to be set to be able to show the person.",
       options: {
-        source: "title",
+        source: "name",
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },

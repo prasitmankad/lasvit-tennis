@@ -1,5 +1,4 @@
 import { RiMacbookLine as icoCourses } from "react-icons/ri";
-//TODO: Pre-defaults for all fields
 
 export default {
   name: "course",

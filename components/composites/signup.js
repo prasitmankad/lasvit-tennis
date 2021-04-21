@@ -13,7 +13,6 @@ export default function signup(props) {
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
-          {/* TODO: Update variable for text color */}
           <p className="mt-3 max-w-3xl text-lg text-gray-500">{props.sectionData.text}</p>
         </div>
         {/* TODO: Replace with MailerLite integration */}

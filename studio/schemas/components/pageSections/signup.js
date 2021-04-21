@@ -1,6 +1,3 @@
-//TODO: Add Initial Values for certain fields
-// https://www.sanity.io/docs/initial-value-templates
-
 export default {
   type: "object",
   name: "signup",

@@ -1,7 +1,7 @@
 export { default as hero } from "./hero";
 export { default as logoCloud } from "./logoCloud";
 export { default as featureList } from "./featureList";
-export { default as blogRoll } from "./blogRoll";
+export { default as blog } from "./blog";
 export { default as siteNotice } from "./siteNotice";
 export { default as team } from "./team";
 export { default as signup } from "./signup";

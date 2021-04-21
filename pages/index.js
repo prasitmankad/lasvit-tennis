@@ -44,7 +44,16 @@ const query = `{
     slug,
     title,
     'sections':content,
-    'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..2]
+    'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..2]{
+      _id,
+    author->{image,name},
+    excerpt,
+    mainImage,
+    publishedAt,
+    slug,
+    tags,
+    title,
+    }
   }
 }`;
 

@@ -1,7 +1,5 @@
+// TODO: SEO COnfiguration
 // TODO: Google Analytics ID
-// TODO: Header / Footer config
-// TODO: Contact Info (address, phone, socials - see contactInfo object)
-// TODO: Standardise slug generation logic
 
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
@@ -16,18 +14,18 @@ export default {
       name: "brand",
       title: "Branding",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
     {
       name: "site",
       title: "Site Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 2, 
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     { name: "header", title: "Header Config" },
@@ -80,9 +78,9 @@ export default {
           // validation: (Rule) =>
           //   Rule.warning("This field is required.").required(),
           options: {
-            collapsible: true, 
-            collapsed: false, 
-            columns: 1, 
+            collapsible: true,
+            collapsed: false,
+            columns: 1,
           },
           fields: [
             { name: "streetNo", type: "string", title: "Street number" },
@@ -147,8 +145,6 @@ export default {
             },
           ],
         },
-        // TODO: ALign all color options.
-        // TODO: Future requirement to make this dynamic so that Tailwind can pick it up
         {
           name: "primaryTextColor",
           type: "colorlist", // required
@@ -258,7 +254,7 @@ export default {
           type: "reference",
           title: "Home Page",
           description: "Choose the page to be the home page of the site.",
-          weak:true,
+          weak: true,
           to: { type: "page" },
         },
         {
@@ -310,14 +306,12 @@ export default {
                   title: "Make Button",
                   description:
                     "Select this to make the link into a button. All buttons are placed AFTER links.",
-                  
                 },
                 {
                   name: "highlight",
                   type: "boolean",
                   title: "Highlight Button",
                   description: "Select this to highlight the button.",
-               
                 },
                 {
                   name: "text",
@@ -337,10 +331,10 @@ export default {
               //TODO: Add preview text for above object and reference.
               preview: {
                 select: {
-                  title: 'text',
+                  title: "text",
                   //title: 'caption'
-                }
-              }
+                },
+              },
             },
           ],
         },
@@ -360,7 +354,7 @@ export default {
       },
       fields: [
         // Column 0 automagically added from busness info
-        // TODO: Column # Validation
+        // TODO: Column # Validation, min 4 / max 4
         {
           name: "columns",
           type: "array",
@@ -391,6 +385,13 @@ export default {
                 },
               ],
             },
+          ],
+          validation: (Rule) => [
+            // Rule.warning("This field is required.").required(),
+            Rule.required()
+              .max(4)
+              .min(4)
+              .warning("Columns are required. Min 4 / Max 4 Columns."),
           ],
         },
         {

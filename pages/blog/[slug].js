@@ -1,25 +1,54 @@
-import Error from "next/error";
-import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
 import { urlFor, PortableText } from "../../utils/sanity";
 import Link from "next/link";
+import Error from "next/error";
 
-const query = groq`{
-  'globalData': *[(_type == "globalSettings" )][0] {
-	title,
-  tagline,
-  siteDescription,
-  mainNavigation,
-  footerNavigation,
-  frontpage,
-  logo
-  },
-  'mainContent': *[_type == "post" && slug.current == $slug][0]
+import RenderHeader from "../../components/render/renderHeader";
+import RenderFooter from "../../components/render/renderFooter";
+
+const query = `{
+  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
+	  businessInfo {
+      title, 
+      tagline, 
+      siteDescription, 
+      contact,
+      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      },      
+    },
+    branding,
+    header {
+      menu [] {
+        ...,link-> {
+            slug,title
+            }
+      }
+    },
+    footer {
+      signup,
+      columns [] {
+        heading,links[]->
+      }
+    },
+    siteSettings
+	},
+  'pageData': *[(_type == "post" && defined(slug.current) && !(_id in path('drafts.**')))][0] {
+    _id,
+    author,
+    excerpt,
+    mainImage,
+    publishedAt,
+    slug,
+    tags,
+    title,
+  }
 }`;
 
-function BlogPostContainer({ postData, preview }) {
+function BlogPostContainer({ allData, preview, slug }) {
   const router = useRouter();
+  console.log("BlogPostContainer Props // ", allData);
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -27,60 +56,24 @@ function BlogPostContainer({ postData, preview }) {
     return <div>Loading...</div>;
   }
 
-  if (!postData.mainContent?.slug) {
+  if (!allData.mainContent?.slug) {
     return <Error statusCode={404} />;
   }
 
-  
   const { data: post = {} } = usePreviewSubscription(query, {
-    params: { slug: postData.mainContent?.slug?.current },
-    initialData: postData,
-    enabled: preview || (router.query.preview !== undefined && router.query.preview !== null)
+    params: { slug },
+    initialData: allData,
+    enabled:
+      preview ||
+      (router.query.preview !== undefined && router.query.preview !== null),
   });
-
-  // pipe data to const so that preview mode works (see above var)
-
 
   return (
     <>
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <Link href="/">
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-              <img
-                src={urlFor(post.globalData.logo)
-                  .auto("format")
-                  .width(125)
-                  // .height(400)
-                  .fit("crop")
-                  .quality(80)}
-                alt={
-                  post.globalData.logo?.alt ||
-                  `Photo of ${post.globalData.title}`
-                }
-              />
-            </a>
-          </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Link href="/">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
-            </Link>
-            <Link href="/about">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">About</a>
-            </Link>
-            <Link href="/blog">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-            </Link>
-            {/* <Link href="/contact">
-                <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                  Contact Us
-                </a>
-              </Link> */}
-          </nav>
-        </div>
-      </header>
-
-      <section className="text-gray-600 body-font">
+      {/* HEADER */}
+      <RenderHeader data={allData.globalData} />
+      {/* MAIN CONTENT */}
+      {/* <section className="text-gray-600 body-font">
         <div className="lg:w-4/6 mx-auto py-0">
           <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="rounded-xs h-500 overflow-hidden">
@@ -121,85 +114,36 @@ function BlogPostContainer({ postData, preview }) {
                     />
                   </p>
                 )}
-
-               
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <footer className="text-gray-600 body-font">
-        <div className="bg-gray-100 border-t border-gray-200">
-          <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
-            <Link href="/">
-              <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                <img
-                  src={urlFor(post.globalData.logo)
-                    .auto("format")
-                    .width(80)
-                    // .height(400)
-                    .fit("crop")
-                    .quality(80)}
-                  alt={
-                    post.globalData.logo?.alt ||
-                    `Photo of ${post.globalData.title}`
-                  }
-                />
-              </a>
-            </Link>
-
-            <p className="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
-              © 2021 Lasvit Tennis. All rights reserved.
-            </p>
-
-            <span className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
-              <Link href="/privacy">
-                <a
-                  // href="/privacy"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 ml-1"
-                  // target="_blank"
-                >
-                  Privacy Policy
-                </a>
-              </Link>{" "}
-              //
-              <Link href="/terms">
-                <a
-                  // href="https://lasvittennis.com/terms"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 ml-1"
-                  // target="_blank"
-                >
-                  Website Terms
-                </a>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </footer>
+      </section> */}
+      {/* FOOTER */}
+      <RenderFooter data={allData.globalData} />
     </>
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const postData = await getClient(preview).fetch(query, {
-    slug: params.slug,
-  });
-  // console.log("postData ->", postData);
+export async function getStaticProps({ params = {}, preview = false }) {
+  const { slug } = params;
+  var allData = await getClient(preview).fetch(query, { slug });
+
   return {
-    props: { preview, postData },
-    revalidate: 1,
+    props: { preview, allData, slug },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
   };
 }
 
 export async function getStaticPaths() {
-  const paths = await getClient().fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
+  var routes = await getClient().fetch(
+    `*[_type == "post" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
-
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: routes || null,
     fallback: true,
   };
 }

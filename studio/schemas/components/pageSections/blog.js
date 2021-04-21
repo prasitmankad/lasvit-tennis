@@ -1,7 +1,7 @@
 export default {
   type: "object",
-  name: "blogRoll",
-  title: "Blog Roll",
+  name: "blog",
+  title: "Blog Posts",
 
   fieldsets: [
     // TODO: field validation

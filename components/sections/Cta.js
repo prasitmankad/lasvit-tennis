@@ -10,10 +10,10 @@ function Cta(props) {
       // it's an internal link to a page
       <Link href={`/${route.slug.current}`}>
         <a>
-          <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg items-center">
+          <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg items-center">
             {title}
             <svg
-              class="w-4 h-4 ml-5"
+              className="w-4 h-4 ml-5"
               viewBox="0 0 24 24"
               stroke="currentColor"
               stroke-width="3"
@@ -35,10 +35,10 @@ function Cta(props) {
   if (link) {
     return (
       <a href={link}>
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg items-center">
+        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg items-center">
           {title}
           <svg
-            class="w-4 h-4 ml-5"
+            className="w-4 h-4 ml-5"
             viewBox="0 0 24 24"
             stroke="currentColor"
             stroke-width="3"

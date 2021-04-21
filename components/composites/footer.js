@@ -45,7 +45,7 @@ export default function footer(props) {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <Link href="/">
-              <a class="flex title-font font-medium items-center text-black-900 mb-4 md:mb-0 cursor-pointer">
+              <a className="flex title-font font-medium items-center text-black-900 mb-4 md:mb-0 cursor-pointer">
                 <img
                   src={urlFor(props.data.branding.companyLogo)
                     .auto("format")

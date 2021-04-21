@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import { PortableText, urlFor } from "../../utils/sanity";
 
-// TODO: OAuth assignment / association options. Currently assigned and new assignment.
-
 function userProfileSection(props) {
   return (
     <>

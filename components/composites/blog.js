@@ -2,9 +2,11 @@
 
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
+// TODO: Replace <a> with <Link>
 
-export default function blogRoll(props) {
+export default function blog(props) {
   console.log("Blog Props // ", props);
+  let dt = Date
 
   return (
     <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -17,7 +19,7 @@ export default function blogRoll(props) {
             {props.sectionData.content}
           </p>
         </div>
-        <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+        <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-none py-4">
           {props.postsData.map((post) => (
             <div
               key={post.title}
@@ -42,7 +44,7 @@ export default function blogRoll(props) {
                       props.globalData.branding.primaryAccentColor.title
                     }
                   >
-                    {post.tags !== undefined ? (
+                    {post.tags ? (
                       <>
                         {post.tags.map((tag) => (
                           <>{tag.value + " | "}</>
@@ -66,8 +68,13 @@ export default function blogRoll(props) {
                     <span className="sr-only">{post.author.name}</span>
                     <img
                       className="h-10 w-10 rounded-full"
-                      src={post.author.imageUrl}
-                      alt=""
+                      src={urlFor(post.author.image)
+                        .auto("format")
+                        //.width(10)
+                        //.height(10)
+                        .fit("scale")
+                        .quality(80)}
+                      alt={post.mainImage?.alt || ``}
                     />
                   </div>
                   <div className="ml-3">
@@ -75,10 +82,8 @@ export default function blogRoll(props) {
                       {post.author.name}
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime={post.publishedAt}>
-                        {post.publishedAt}
-                      </time>
-                      <span aria-hidden="true">&middot;</span>
+                    {(dt = new Date(post.publishedAt).toLocaleDateString())}
+
                       {/* <span>{post.readingTime} read</span> */}
                     </div>
                   </div>

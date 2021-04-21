@@ -43,42 +43,7 @@ function BlogPostContainer({ postData, preview }) {
 
   return (
     <>
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <Link href="/">
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-              <img
-                src={urlFor(post.globalData.logo)
-                  .auto("format")
-                  .width(125)
-                  // .height(400)
-                  .fit("crop")
-                  .quality(80)}
-                alt={
-                  post.globalData.logo?.alt ||
-                  `Photo of ${post.globalData.title}`
-                }
-              />
-            </a>
-          </Link>
-          <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Link href="/">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
-            </Link>
-            <Link href="/about">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">About</a>
-            </Link>
-            <Link href="/blog">
-              <a className="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
-            </Link>
-            {/* <Link href="/contact">
-                <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                  Contact Us
-                </a>
-              </Link> */}
-          </nav>
-        </div>
-      </header>
+      
 
       <section className="text-gray-600 body-font">
         <div className="lg:w-4/6 mx-auto py-0">

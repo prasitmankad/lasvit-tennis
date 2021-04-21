@@ -31,15 +31,15 @@ export default {
       description:
         "Highlight this button. This uses the Primary Accent Color to fill in the button.",
     },
-    // {
-    //   // TODO: Add Icon
-    //   // TODO: Size validation
-    //   name: "icon",
-    //   type: "image",
-    //   title: "Button Icon",
-    //   description:
-    //     "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
-    // },
+    {
+      // TODO: Add Icon
+      // TODO: Size validation
+      name: "icon",
+      type: "image",
+      title: "Button Icon",
+      description:
+        "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
+    },
     {
       title: "Links",
       name: "links",

@@ -6,7 +6,6 @@ export default {
   type: "document",
   icon: icoContent,
   // TODO: Field validation
-  // TODO: Conditionally Mandatory Items
   fieldsets: [
     {
       name: "details",
@@ -32,6 +31,8 @@ export default {
           { title: "File", value: "file" },
         ], 
       },
+      validation: (Rule) =>
+        Rule.warning("This field is required.").required(),
     },
 
     {
@@ -89,6 +90,8 @@ export default {
       title: "Modules",
       description: "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
       of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
+      validation: (Rule) =>
+        Rule.warning("This field is required.").required(),
     },
   ],
 

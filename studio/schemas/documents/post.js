@@ -1,4 +1,3 @@
-//TODO: Icons
 import { RiCheckboxMultipleBlankLine as icoPosts2 } from "react-icons/ri";
 
 export default {
@@ -55,7 +54,8 @@ export default {
       validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
         source: "title",
-        maxLength: 96,
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
       fieldset: "info",
     },
@@ -104,7 +104,7 @@ export default {
       title: "Author",
       type: "reference",
       description:
-        "Add in one or more authors that contributed to this blog post.",
+        "Author that wrote this blog post.",
       validation: (Rule) => Rule.error("This field is required.").required(),
       to: [{ type: "teamMember" }],
     },

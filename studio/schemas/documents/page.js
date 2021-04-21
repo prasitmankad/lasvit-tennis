@@ -1,6 +1,5 @@
 import { RiPagesLine as icoPages } from "react-icons/ri";
 // TODO: Enforce limit and make delete button work
-// TODO: Implement CORS to make these fields work https://www.sanity.io/plugins/sanity-plugin-seo-tools
 
 export default {
   name: "page",
@@ -38,7 +37,7 @@ export default {
       of: [
         { type: "hero" },
         { type: "pageHeading" },
-        { type: "blogRoll" },
+        { type: "blog" },
         { type: "contentBlock" }, // basic content block
         { type: "contactForm" },
         { type: "faq" },

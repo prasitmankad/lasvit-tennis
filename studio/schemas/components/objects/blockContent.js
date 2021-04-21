@@ -122,6 +122,5 @@ export default {
       options: { hotspot: true },
       description: "Supports YouTube and Vimeo Links"
     },
-    // TODO: Include other embeds - facebook, instagram
   ],
 };

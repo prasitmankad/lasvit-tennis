@@ -38,10 +38,10 @@ function BlogPageContainer({ postsData, preview }) {
   return (
     <>
       <div className="bg-white">
-        <header class="text-gray-600 body-font">
-          <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <header className="text-gray-600 body-font">
+          <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <Link href="/">
-              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+              <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                 <img
                   src={urlFor(postsData.globalData.logo)
                     .auto("format")
@@ -56,18 +56,18 @@ function BlogPageContainer({ postsData, preview }) {
                 />
               </a>
             </Link>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
               <Link href="/">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
+                <a className="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
               </Link>
               <Link href="/about">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">About</a>
+                <a className="mr-5 hover:text-gray-900 cursor-pointer">About</a>
               </Link>
               <Link href="/blog">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
+                <a className="mr-5 hover:text-gray-900 cursor-pointer">Blog</a>
               </Link>
               {/* <Link href="/contact">
-                <a class="mr-5 hover:text-gray-900 cursor-pointer">
+                <a className="mr-5 hover:text-gray-900 cursor-pointer">
                   Contact Us
                 </a>
               </Link> */}
@@ -75,22 +75,22 @@ function BlogPageContainer({ postsData, preview }) {
           </div>
         </header>
 
-        <section class="text-gray-600 body-font">
-          <div class="container mx-auto flex px-5 py-5 items-center justify-center flex-col">
-            <div class="text-center lg:w-2/3 w-full">
-              <h1 class="title-font sm:text-3xl text-3xl mb-4 font-medium text-gray-900">
+        <section className="text-gray-600 body-font">
+          <div className="container mx-auto flex px-5 py-5 items-center justify-center flex-col">
+            <div className="text-center lg:w-2/3 w-full">
+              <h1 className="title-font sm:text-3xl text-3xl mb-4 font-medium text-gray-900">
                 Lasvit Blog
               </h1>
             </div>
           </div>
 
           <>
-            <div class="flex flex-wrap -m-4">
+            <div className="flex flex-wrap -m-4">
               {postsData.mainContent.map((post) => (
                 <>
-                  <div class="p-4 md:w-1/3">
-                    <div class="container px-5 py-10 mx-auto">
-                      <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                  <div className="p-4 md:w-1/3">
+                    <div className="container px-5 py-10 mx-auto">
+                      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img
                           src={urlFor(post.postImage)
                             .auto("format")
@@ -103,13 +103,13 @@ function BlogPageContainer({ postsData, preview }) {
                             post.postImage?.alt ||
                             `Photo of ${post.postImage.caption}`
                           }
-                          class="lg:h-48 md:h-36 w-full object-cover object-center"
+                          className="lg:h-48 md:h-36 w-full object-cover object-center"
                         />
-                        <div class="p-6">
-                          <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                        <div className="p-6">
+                          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                             {post.title}
                           </h1>
-                          <p class="leading-relaxed mb-3">
+                          <p className="leading-relaxed mb-3">
                             {post.excerpt && (
                               <PortableText
                                 blocks={post.excerpt}
@@ -117,12 +117,12 @@ function BlogPageContainer({ postsData, preview }) {
                               />
                             )}
                           </p>
-                          <div class="flex items-center flex-wrap ">
+                          <div className="flex items-center flex-wrap ">
                             <Link href={`/blog/${post.slug.current}`}>
-                              <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                              <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                                 Read More
                                 <svg
-                                  class="w-4 h-4 ml-2"
+                                  className="w-4 h-4 ml-2"
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
                                   stroke-width="2"
@@ -146,11 +146,11 @@ function BlogPageContainer({ postsData, preview }) {
           </>
         </section>
 
-        <footer class="text-gray-600 body-font">
-          <div class="bg-gray-100 border-t border-gray-200">
-            <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+        <footer className="text-gray-600 body-font">
+          <div className="bg-gray-100 border-t border-gray-200">
+            <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
               <Link href="/">
-                <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                   <img
                     src={urlFor(postsData.globalData.logo)
                       .auto("format")
@@ -166,16 +166,16 @@ function BlogPageContainer({ postsData, preview }) {
                 </a>
               </Link>
 
-              <p class="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
+              <p className="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
                 © 2021 Lasvit Tennis. All rights reserved.
               </p>
 
-              <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
+              <span className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
                 <Link href="/privacy">
                   <a
                     // href="/privacy"
                     rel="noopener noreferrer"
-                    class="text-gray-600 ml-1"
+                    className="text-gray-600 ml-1"
                     // target="_blank"
                   >
                     Privacy Policy
@@ -186,7 +186,7 @@ function BlogPageContainer({ postsData, preview }) {
                   <a
                     // href="https://lasvittennis.com/terms"
                     rel="noopener noreferrer"
-                    class="text-gray-600 ml-1"
+                    className="text-gray-600 ml-1"
                     // target="_blank"
                   >
                     Website Terms

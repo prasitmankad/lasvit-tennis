@@ -19,8 +19,6 @@ export default {
       description:
         "Sub-headings for this section - single words that break large chunks of text.",
     },
-    // TODO: Future requirement to make this dynamic so that Tailwind can pick it up
-    // currently not possible given webpack compiles this
     {
       name: "backgroundColor",
       type: "colorlist", // required
