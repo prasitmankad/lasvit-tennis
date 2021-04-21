@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { urlFor } from "../utils/sanity";
 import Link from "next/link";
 import { LoginModal } from "../components/modals/LoginModal";
+import { LanguageButton } from "../components/LanguageButton";
 import { useDispatch } from "react-redux";
 import { getClientDetailAction } from "../modules/actions/clientAction";
 import { Loader } from "../components/Loader";
 import "../configureAmplify";
 
 function PageWrapperPure(props) {
+  const { t } = useTranslation();
   const { page = null, children, loading, client } = props;
   const dispatch = useDispatch();
   const [loginModal, showLoginModal] = React.useState(false);
@@ -63,6 +66,9 @@ function PageWrapperPure(props) {
                 ) : (
                   <div onClick={() => showLoginModal(true)}>Sign in</div>
                 )}
+
+                <LanguageButton />
+                {t("test")}
               </nav>
             </div>
           </header>
