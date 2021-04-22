@@ -1,5 +1,15 @@
 type ClientBilling @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   courseId: ID!
-  billingId: ID!
+  name: String!
+  amount: Int!
+  currency: String!
+  period: String!
+  priceType: String!
+  payload: PayObject!
+}
+
+type PayObject {
+  id: ID!
+  created: Int!
 }

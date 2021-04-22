@@ -55,7 +55,6 @@ function PageContainer({ pageData, preview, slug }) {
     initialData: pageData,
     enabled: preview || router.query.preview !== null,
   });
-  console.log("page var -> ", page);
   return (
     <PageWrapper page={page}>
       <RenderSections sections={page.mainContent.page.content} />

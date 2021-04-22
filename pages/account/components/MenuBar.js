@@ -7,12 +7,11 @@ export function MenuBar(props) {
   return (
     <nav
       aria-label="Sections"
-      class="hidden flex-shrink-0 w-96 bg-white border-r border-blue-gray-200 xl:flex xl:flex-col"
+      className="hidden flex-shrink-0 w-96 bg-white border-r border-blue-gray-200 xl:flex xl:flex-col"
     >
-      <div class="flex-1 min-h-0 overflow-y-auto">
+      <div className="flex-1 min-h-0 overflow-y-auto">
         <div
-          // class="bg-blue-50 bg-opacity-50 flex p-6 border-b border-blue-gray-200"
-          class={`${
+          className={`${
             activeView === PageType.ACCOUNT
               ? "bg-blue-50 bg-opacity-50"
               : "hover:bg-blue-50 hover:bg-opacity-50"
@@ -20,13 +19,13 @@ export function MenuBar(props) {
           onClick={() => changeView(PageType.ACCOUNT)}
         >
           <SvgIcon icon={PageType.ACCOUNT} />
-          <div class="ml-3 text-sm">
-            <p class="font-medium text-blue-gray-900">Account</p>
+          <div className="ml-3 text-sm">
+            <p className="font-medium text-blue-gray-900">Account</p>
           </div>
         </div>
 
         <div
-          class={`${
+          className={`${
             activeView === PageType.BILLING
               ? "bg-blue-50 bg-opacity-50"
               : "hover:bg-blue-50 hover:bg-opacity-50"
@@ -34,8 +33,8 @@ export function MenuBar(props) {
           onClick={() => changeView(PageType.BILLING)}
         >
           <SvgIcon icon={PageType.BILLING} />
-          <div class="ml-3 text-sm">
-            <p class="font-medium text-blue-gray-900">Billing</p>
+          <div className="ml-3 text-sm">
+            <p className="font-medium text-blue-gray-900">Billing</p>
           </div>
         </div>
       </div>

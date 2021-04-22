@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-lasvittennis-dev-124208-authRole",
-      "UnauthRoleArn": "arn:aws:iam::659062198910:role/amplify-lasvittennis-dev-124208-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::659062198910:role/amplify-lasvittennis-dev-124208-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-lasvittennis-dev-124208-deployment",
-      "UnauthRoleName": "amplify-lasvittennis-dev-124208-unauthRole",
-      "StackName": "amplify-lasvittennis-dev-124208",
-      "StackId": "arn:aws:cloudformation:us-east-2:659062198910:stack/amplify-lasvittennis-dev-124208/136e8940-9857-11eb-b9ef-0aed204647fe",
-      "AmplifyAppId": "d3iax0wrv8ywju"
+      "AuthRoleName": "amplify-lasvittennis-dev-145656-authRole",
+      "UnauthRoleArn": "arn:aws:iam::817843650484:role/amplify-lasvittennis-dev-145656-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::817843650484:role/amplify-lasvittennis-dev-145656-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-lasvittennis-dev-145656-deployment",
+      "UnauthRoleName": "amplify-lasvittennis-dev-145656-unauthRole",
+      "StackName": "amplify-lasvittennis-dev-145656",
+      "StackId": "arn:aws:cloudformation:eu-central-1:817843650484:stack/amplify-lasvittennis-dev-145656/bae75930-a10e-11eb-b42e-063b16d34570",
+      "AmplifyAppId": "dq9jfgdmimftd"
     },
     "categories": {
       "auth": {
-        "lasvittennis6c503e44": {}
+        "lasvittennisaead4aab": {}
       }
     }
   }
