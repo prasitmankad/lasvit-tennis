@@ -20,7 +20,7 @@ export function PageBilling() {
     <div className="flex-1 max-h-screen xl:overflow-y-auto">
       <div className="py-10 px-4 sm:px-6 lg:py-12 lg:px-8">
         <h1 className="text-3xl font-extrabold text-blue-gray-900">
-          {t("account.billin.title")}
+          {t("account.billing.title")}
         </h1>
       </div>
       <BillingTable billing={clientBilling} nameTable="Billing history" />
