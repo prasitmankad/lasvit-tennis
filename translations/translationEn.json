@@ -1,5 +1,6 @@
 {
   "test": "test En",
+  "photoAlt": "Photo of {{page}}",
   "menu": {
     "home": "Home",
     "courses": "Courses",
@@ -12,5 +13,32 @@
     "privacy": "Privacy Policy",
     "terms": "Website Terms"
   },
-  "photoAlt": "Photo of {{page}}"
+  "account": {
+    "menu": {
+      "client": "Account",
+      "billing": "Billing"
+    },
+    "client": {
+      "title": "Account",
+      "provider": "Your profile is created from {{provider}} account.",
+      "profile": "Profile",
+      "userName": "User name",
+      "photo": "Photo",
+      "info": "Personal Information",
+      "email": "Email address"
+    },
+    "billing": {
+      "title": "Billing",
+      "table": {
+        "date": "date",
+        "course": "course",
+        "price": "price",
+        "details": "View details"
+      }
+    }
+  },
+  "courses": {
+    "catalog": "Course Catalog",
+    "payButton": "Buy {{type}}"
+  }
 }

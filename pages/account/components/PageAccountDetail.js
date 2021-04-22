@@ -1,32 +1,34 @@
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { clientSignOutAction } from "../../../modules/actions/clientAction";
+import { useTranslation } from "react-i18next";
 
 export function PageAccountDetail() {
   const client = useSelector((state) => state.clientState.client, shallowEqual);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     client && (
       <div className="flex-1 max-h-screen xl:overflow-y-auto">
         <div className="py-10 px-4 sm:px-6 lg:py-12 lg:px-8 flex-1">
           <h1 className="text-3xl font-extrabold text-blue-gray-900">
-            Account
+            {t("account.client.title")}
           </h1>
           <p className="mt-1 text-sm text-blue-gray-500">
-            Your profile is created from {client.provider} account.
+            {t("account.client.title", { provider: client.provider })}
           </p>
 
           <form className="mt-6 space-y-8 divide-y divide-y-blue-gray-200">
             <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6">
               <div className="sm:col-span-6">
                 <h2 className="text-xl font-medium text-blue-gray-900">
-                  Profile
+                  {t("account.client.profile")}
                 </h2>
               </div>
 
               <div className="sm:col-span-6">
                 <div className="block text-sm font-medium text-blue-gray-500">
-                  User name
+                  {t("account.client.userName")}
                 </div>
                 <div className="block text-xl text-blue-gray-500">
                   {client.name}
@@ -38,7 +40,7 @@ export function PageAccountDetail() {
                   for="photo"
                   className="block text-sm font-medium text-blue-gray-900"
                 >
-                  Photo
+                  {t("account.client.photo")}
                 </label>
                 <div className="mt-1 flex items-center">
                   <img
@@ -53,13 +55,13 @@ export function PageAccountDetail() {
             <div className="pt-8 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6">
               <div className="sm:col-span-6">
                 <h2 className="text-xl font-medium text-blue-gray-900">
-                  Personal Information
+                  {t("account.client.info")}
                 </h2>
               </div>
 
               <div className="sm:col-span-6">
                 <div className="block text-sm font-medium text-blue-gray-500">
-                  Email address
+                  {t("account.client.email")}
                 </div>
                 <div className="block text-xl text-blue-gray-500">
                   {client.email}
@@ -67,6 +69,15 @@ export function PageAccountDetail() {
               </div>
             </div>
           </form>
+        </div>
+
+        <div className="py-6 px-4 sm:p-6 lg:pb-8">
+          <button
+            className="text-white w-full mt-10 bg-gray-600 p-3 rounded"
+            onClick={() => dispatch(clientSignOutAction())}
+          >
+            DEV : Sign Out
+          </button>
         </div>
       </div>
     )

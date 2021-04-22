@@ -1,7 +1,9 @@
 import { SvgIcon } from "./SvgIcon";
 import { PageType } from "../index";
+import { useTranslation } from "react-i18next";
 
 export function MenuBar(props) {
+  const { t } = useTranslation();
   const { changeView, activeView } = props;
 
   return (
@@ -20,7 +22,9 @@ export function MenuBar(props) {
         >
           <SvgIcon icon={PageType.ACCOUNT} />
           <div className="ml-3 text-sm">
-            <p className="font-medium text-blue-gray-900">Account</p>
+            <p className="font-medium text-blue-gray-900">
+              {t("account.menu.client")}
+            </p>
           </div>
         </div>
 
@@ -34,7 +38,10 @@ export function MenuBar(props) {
         >
           <SvgIcon icon={PageType.BILLING} />
           <div className="ml-3 text-sm">
-            <p className="font-medium text-blue-gray-900">Billing</p>
+            <p className="font-medium text-blue-gray-900">
+              {" "}
+              {t("account.menu.billing")}
+            </p>
           </div>
         </div>
       </div>

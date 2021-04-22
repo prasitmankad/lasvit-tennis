@@ -20,7 +20,7 @@ export function LanguageButton() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="lang-menu mx-4">
+    <div className="lang-menu mx-4 mt-2">
       <Popover className="relative">
         {() => (
           <>
