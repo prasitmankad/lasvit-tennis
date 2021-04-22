@@ -1,8 +1,10 @@
 import React from "react";
 import i18n from "i18next";
+
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { setLanguage } from "../translations/utils";
 
 const flag = {
   en: "https://lipis.github.io/flag-icon-css/flags/4x3/um.svg",
@@ -14,14 +16,8 @@ function classNames(...classes) {
 }
 
 export function LanguageButton() {
-  const [lang, setLang] = React.useState("en");
+  const [lang, setLang] = React.useState(i18n.language);
   const [open, setOpen] = React.useState(false);
-
-  function changeLanguage(lang) {
-    setLang(lang);
-    setOpen(false);
-    i18n.changeLanguage(lang);
-  }
 
   return (
     <div className="lang-menu mx-4">
@@ -68,7 +64,9 @@ export function LanguageButton() {
                         key={i}
                         className="px-7 py-2 block hover:bg-gray-50 transition ease-in-out duration-150"
                         onClick={() => {
-                          changeLanguage(_);
+                          setLang(_);
+                          setOpen(false);
+                          setLanguage(_);
                         }}
                       >
                         <img className="w-8 h-8" src={flag[_]} alt="" />

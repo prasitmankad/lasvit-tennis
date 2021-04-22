@@ -1,3 +1,16 @@
 {
-  "test": "test En"
+  "test": "test En",
+  "menu": {
+    "home": "Home",
+    "courses": "Courses",
+    "about": "About",
+    "blog": "Blog",
+    "signIn": "Sign in"
+  },
+  "footer": {
+    "lasvit": "© 2021 Lasvit Tennis. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Website Terms"
+  },
+  "photoAlt": "Photo of {{page}}"
 }

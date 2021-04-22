@@ -3,6 +3,8 @@ import { initReactI18next } from "react-i18next";
 import transitionEn from "./translationEn.json";
 import transitionZh from "./translationZh.json";
 
+import { getLanguage } from "./utils";
+
 const resources = {
   en: {
     translation: transitionEn,
@@ -15,7 +17,7 @@ const resources = {
 void i18n.use(initReactI18next).init({
   debug: false,
   resources,
-  lng: "en",
+  lng: getLanguage() || "en",
   fallbackLng: "en",
   interpolation: { escapeValue: false },
 });

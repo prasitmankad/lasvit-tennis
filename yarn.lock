@@ -5814,6 +5814,11 @@ hyperscript@^2.0.2:
     class-list "~0.1.0"
     html-element "^2.0.0"
 
+i18next-localstorage-cache@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/i18next-localstorage-cache/-/i18next-localstorage-cache-1.1.1.tgz#575256cc35e8cb2d88148f754766fdd2d24bb1b7"
+  integrity sha1-V1JWzDXoyy2IFI91R2b90tJLsbc=
+
 i18next@^20.2.1:
   version "20.2.1"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-20.2.1.tgz#8aedfdc596f7d54b9d3f6d87bcb89214467cb785"
