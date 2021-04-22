@@ -12,7 +12,7 @@ export default {
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",
@@ -33,7 +33,6 @@ export default {
       },
     },
 
-    //TODO: Field Validation
 
     {
       name: "logos",
@@ -57,7 +56,6 @@ export default {
               type: "image",
             },
           ],
-          // TODO: Add preview so image and text can be shown
         },
       ],
     },

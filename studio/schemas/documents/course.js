@@ -66,7 +66,7 @@ export default {
       fieldset: "basic",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "slug",
@@ -88,7 +88,7 @@ export default {
       fieldset: "basic",
       description:
         "What is this course all about? Used in landing pages, course landing page etc.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
     // Content
@@ -114,8 +114,6 @@ export default {
             {
               type: "reference",
               to: [{ type: "contentItem" }],
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
         },
@@ -126,7 +124,7 @@ export default {
           description: "Array of features for the course.",
           of: [{ type: "feature" }],
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
       ],
     },
@@ -139,7 +137,7 @@ export default {
       fieldset: "media",
       description:
         "The image should be either jpg or png. Preferably 3000 x 3000, minimum 1400 x 1400 pixels. Used on sales pages and course landing pages.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
     // Stats Section
@@ -161,7 +159,7 @@ export default {
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "subheading",
@@ -183,7 +181,7 @@ export default {
           title: "Statistics",
           description: "Set of stats for this Course.",
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
 
           of: [
             {
@@ -192,9 +190,6 @@ export default {
                 { name: "value", type: "string", title: "Value" },
                 { name: "metric", type: "string", title: "Metric" },
               ],
-
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
         },
@@ -220,7 +215,7 @@ export default {
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "subheading",
@@ -257,7 +252,7 @@ export default {
             ],
           },
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "prices",
@@ -273,30 +268,27 @@ export default {
                   type: "string",
                   title: "Currency Symbol",
                   validation: (Rule) =>
-                    Rule.error("This field is required.").required(),
+                    Rule.required().error("This field is required."),
                 },
                 {
                   name: "currency",
                   type: "string",
                   title: "Currency",
                   validation: (Rule) =>
-                    Rule.error("This field is required.").required(),
+                    Rule.required().error("This field is required."),
                 },
                 {
                   name: "value",
                   type: "number",
                   title: "Value",
                   validation: (Rule) =>
-                    Rule.error("This field is required.").required(),
+                    Rule.required().error("This field is required."),
                 },
               ],
-
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
           validation: (Rule) =>
-            Rule.error("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
       ],
     },
@@ -319,8 +311,8 @@ export default {
           title: "Heading",
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
-            validation: (Rule) => Rule.error("This field is required.").required(),
-
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
         {
           name: "content",
@@ -338,13 +330,12 @@ export default {
             {
               type: "reference",
               to: [{ type: "faq" }],
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
-          // TODO: Required and At Least One item needed
-          validation: (Rule) => Rule.error("This field is required.").required(),
-
+          validation: (Rule) =>
+            Rule.required()
+              .min(1)
+              .error("This field is required and at least 1 is required."),
         },
       ],
     },

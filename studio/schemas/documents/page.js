@@ -1,5 +1,4 @@
 import { RiPagesLine as icoPages } from "react-icons/ri";
-// TODO: Enforce limit and make delete button work
 
 export default {
   name: "page",
@@ -13,7 +12,7 @@ export default {
       title: "Page Title",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "slug",
@@ -40,16 +39,14 @@ export default {
         { type: "blog" },
         { type: "contentBlock" }, // basic content block
         { type: "contactForm" },
-        { type: "faq" },
         { type: "featureList" },
         { type: "logoCloud" },
         { type: "signup" },
         { type: "siteNotice" },
-        //{ type: "stats" },
         { type: "team" },
         { type: "login" },
       ],
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
 

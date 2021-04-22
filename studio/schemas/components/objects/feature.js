@@ -78,7 +78,7 @@ export default {
       description:
         "1-2 sentences describing the feature. Used on summary lists.",
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
       fieldset: "details",
     },
     {
@@ -88,7 +88,7 @@ export default {
       description:
         "5-10 longer sentences describing the feature in more detail. Used for Feature detail sections.",
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
       fieldset: "details",
     },
 

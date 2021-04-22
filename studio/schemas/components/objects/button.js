@@ -14,32 +14,26 @@ export default {
     },
   ],
   fields: [
-    // TODO: type button or link
-    // TODO: highlight button (to make to make it solid)
-    // TODO: field validation
-    // TODO: consistent field descriptions
     {
       name: "buttonText",
       type: "string",
       title: "Button Text",
       description: "The text to show on the button.",
     },
-    {
-      name: "disabled",
-      type: "boolean",
-      title: "Highlight",
-      description:
-        "Highlight this button. This uses the Primary Accent Color to fill in the button.",
-    },
-    {
-      // TODO: Add Icon
-      // TODO: Size validation
-      name: "icon",
-      type: "image",
-      title: "Button Icon",
-      description:
-        "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
-    },
+    // {
+    //   name: "disabled",
+    //   type: "boolean",
+    //   title: "Highlight",
+    //   description:
+    //     "Highlight this button. This uses the Primary Accent Color to fill in the button.",
+    // },
+    // {
+    //   name: "icon",
+    //   type: "image",
+    //   title: "Button Icon",
+    //   description:
+    //     "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
+    // },
     {
       title: "Links",
       name: "links",

@@ -11,7 +11,7 @@ export default {
       title: "Heading",
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "subheading",
@@ -19,14 +19,14 @@ export default {
       title: "Sub-heading or Category",
       description:
         "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "text",
       type: "string",
       title: "Text",
       description: "Main text for the signup block.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "backgroundColor",
@@ -34,7 +34,7 @@ export default {
       title: "Background Color",
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",

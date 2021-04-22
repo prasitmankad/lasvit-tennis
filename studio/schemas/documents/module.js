@@ -13,7 +13,7 @@ export default {
       required: true,
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
     {
@@ -34,14 +34,14 @@ export default {
       type: "mainImage",
       title: "Cover Image",
       description: "Cover image shown for the Module.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "shortDescription",
       type: "text",
       title: "Short Description",
       description: "1-5 sentences describing the module.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "tags",
@@ -54,7 +54,7 @@ export default {
       title: "Parent Course(s)",
       description: "Choose course(s) to publish this module in",
       of: [{ type: "reference", weak: true, to: [{ type: "course" }] }],
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
   preview: {

@@ -1,6 +1,5 @@
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-// TODO: replace a with Link
 import { Popover, Transition } from "@headlessui/react";
 
 

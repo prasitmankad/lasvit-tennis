@@ -1,5 +1,4 @@
-// TODO: SEO COnfiguration
-// TODO: Google Analytics ID
+
 
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
@@ -50,7 +49,7 @@ export default {
           type: "string",
           title: "Company Name",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "tagline",
@@ -59,7 +58,7 @@ export default {
           description:
             "1 sentence slogan or tagline used in head and hero section.",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "siteDescription",
@@ -68,7 +67,7 @@ export default {
           description:
             "A short description of the website, used in page head and hero sections.",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           title: "Contact",
@@ -76,7 +75,7 @@ export default {
           type: "object",
           description: "Address and other contact info.",
           // validation: (Rule) =>
-          //   Rule.warning("This field is required.").required(),
+          //   Rule.required().error("This field is required."),
           options: {
             collapsible: true,
             collapsed: false,
@@ -99,7 +98,7 @@ export default {
         //   description:
         //     "Core team members of the company. Used on teams / about pages.",
         //   validation: (Rule) =>
-        //     Rule.warning("This field is required.").required(),
+        //     Rule.required().error("This field is required."),
         //   of: [
         //     {
         //       type: "reference",
@@ -129,7 +128,7 @@ export default {
           description:
             "Used across the site wherever a company logo is required.",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
           options: { hotspot: true },
           fields: [
             {
@@ -141,7 +140,7 @@ export default {
                 isHighlighted: true,
               },
               validation: (Rule) =>
-                Rule.warning("This field is required.").required(),
+                Rule.required().error("This field is required."),
             },
           ],
         },
@@ -152,7 +151,7 @@ export default {
           description:
             "Used as primary text color across the site. Default is White #ffffff",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
           options: {
             borderradius: {
               outer: "100%",
@@ -179,7 +178,7 @@ export default {
           description:
             "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
           options: {
             borderradius: {
               outer: "100%",
@@ -205,7 +204,7 @@ export default {
           title: "Secondary Accent Color",
           description: "Used as secondary accent color across the site.",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
           options: {
             borderradius: {
               outer: "100%",
@@ -247,7 +246,7 @@ export default {
           description:
             "The main site url to create canonical url links to other pages",
           validation: (Rule) =>
-            Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "frontpage",
@@ -288,7 +287,6 @@ export default {
       },
       fields: [
         // Column 0 automagically added from busness info
-        // TODO: Column # Validation
         {
           name: "menu",
           type: "array",
@@ -328,7 +326,6 @@ export default {
                   to: [{ type: "page" }, { type: "course" }, { type: "post" }],
                 },
               ],
-              //TODO: Add preview text for above object and reference.
               preview: {
                 select: {
                   title: "text",
@@ -354,7 +351,6 @@ export default {
       },
       fields: [
         // Column 0 automagically added from busness info
-        // TODO: Column # Validation, min 4 / max 4
         {
           name: "columns",
           type: "array",
@@ -387,11 +383,11 @@ export default {
             },
           ],
           validation: (Rule) => [
-            // Rule.warning("This field is required.").required(),
+            // Rule.required().error("This field is required."),
             Rule.required()
               .max(4)
               .min(4)
-              .warning("Columns are required. Min 4 / Max 4 Columns."),
+              .error("Columns are required. Min 4 / Max 4 Columns."),
           ],
         },
         {

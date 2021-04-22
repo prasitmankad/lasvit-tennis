@@ -20,7 +20,9 @@ const query = `{
       tagline, 
       siteDescription, 
       contact,
-     
+      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      },      
     },
     branding,
     header {
@@ -38,11 +40,16 @@ const query = `{
     },
     siteSettings
 	},
-  'pageData': *[(_type == "page" && slug.current==$slug && !(_id in path('drafts.**')))][0] {
+  'pageData': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
     slug,
     title,
     'sections':content[]{
       ...,
+      buttons[]{
+        ...,
+        links {route->{slug}}
+      },
+      link {text,link->{slug}},
       'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
         name, position, shortDescription, image[], longDescription
       }, 

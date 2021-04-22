@@ -4,7 +4,6 @@ export default {
   title: "Blog Posts",
 
   fieldsets: [
-    // TODO: field validation
 
     {
       name: "basic",
@@ -44,7 +43,7 @@ export default {
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
       validation: (Rule) =>
-        Rule.error("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
     {
       name: "subheading",
@@ -54,9 +53,8 @@ export default {
       description:
         "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
       validation: (Rule) =>
-        Rule.error("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
-    // TODO: Add ability to pull posts by Category / Tag
 
     {
       name: "numPosts",
@@ -73,7 +71,7 @@ export default {
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",

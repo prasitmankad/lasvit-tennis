@@ -7,8 +7,6 @@ import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 
 
-// TODO: Replace <a> with <Link>
-
 // construct query for global data and page data
 // allData -- overall grouping for global and page data in response
 // globalData -- global reusable content
@@ -53,18 +51,6 @@ const query = `{
   }
 }`;
 
-// const query = `{
-//   'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
-// 	title,
-//   tagline,
-//   siteDescription,
-//   mainNavigation,
-//   footerNavigation,
-//   frontpage,
-//   logo
-// 	},
-// 'mainContent': *[_type == "post" && defined(slug.current) && !(_id in path('drafts.**'))]
-// }`;
 
 function BlogPageContainer({ allData, preview }) {
   console.log("BlogPageContainer Props // ", allData);

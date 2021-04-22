@@ -28,21 +28,21 @@ export default {
       name: "image",
       type: "mainImage",
       title: "Image",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
 
     },
     {
       name: "position",
       type: "string",
       title: "Position",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "shortDescription",
       type: "text",
       title: "Short Description",
       description: "1-2 sentence bio used on summary pages.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "longDescription",

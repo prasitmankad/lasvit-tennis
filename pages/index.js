@@ -11,8 +11,6 @@ import RenderFooter from "../components/render/renderFooter";
 // globalData -- global reusable content
 // pageData -- content for this specific page, not in draft
 
-// FIXME: Update query to return Team Member info
-// FIXME: Update query to return Post Auther info
 const query = `{
   'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	  businessInfo {
@@ -43,7 +41,26 @@ const query = `{
   'pageData': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
     slug,
     title,
-    'sections':content,
+    'sections':content[]{
+      ...,
+      buttons[]{
+        ...,
+        links {route->{slug}}
+      },
+      link {text,link->{slug}},
+      'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      }, 
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "linkBlog" => {
+            "slug": @.reference->slug
+          }
+        }
+      }
+    },
     'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..2]{
       _id,
     author->{image,name},
@@ -56,6 +73,9 @@ const query = `{
     }
   }
 }`;
+
+
+
 
 // main page component renders
 function IndexPage(props) {

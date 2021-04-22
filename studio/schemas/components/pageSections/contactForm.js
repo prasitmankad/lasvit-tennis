@@ -10,7 +10,7 @@ export default {
       type: "string",
       title: "Heading",
       description: "Headings for this section.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "subheading",
@@ -25,7 +25,7 @@ export default {
       title: "Background Color",
       description:
         "Background color for accents on the contact block. Use carefully as this doesn't always work well with images.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",

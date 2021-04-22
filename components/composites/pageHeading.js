@@ -1,7 +1,6 @@
 export default function pageHeading(props) {
   //console.log("pageHeading Props // ", props);
 
-  // TODO: replace default bg with props
   return (
     <>
       <div className={"bg-"+props.sectionData.backgroundColor.title}>

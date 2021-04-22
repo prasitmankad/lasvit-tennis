@@ -42,7 +42,7 @@ export default {
       title: "Blog Post Title",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       fieldset: "info",
     },
     {
@@ -65,7 +65,7 @@ export default {
       title: "Published at",
       description:
         "This can be used to schedule post for publishing, sorting and searching for posts.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       fieldset: "info",
     },
     {
@@ -80,7 +80,7 @@ export default {
       title: "Main Image",
       description:
         "Main image used for the post used on blog cards and summary pages. Other images can be included when writing the body post.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       fieldset: "media",
     },
     {
@@ -90,14 +90,14 @@ export default {
       description:
         "A short description of what the article is about. This ends up on cards and summary blog pages.",
       fieldset: "content",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "body",
       type: "blockContent",
       title: "Body",
       fieldset: "content",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "author",
@@ -105,7 +105,7 @@ export default {
       type: "reference",
       description:
         "Author that wrote this blog post.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       to: [{ type: "teamMember" }],
     },
   ],

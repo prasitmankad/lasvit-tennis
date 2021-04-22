@@ -8,27 +8,27 @@ export default {
       name: "basic",
       title: "Basic Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 2, 
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     {
       name: "image",
       title: "Image Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
     {
       name: "details",
       title: "Detailed Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
   ],
@@ -47,8 +47,7 @@ export default {
       title: "Background Color",
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
-      validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",
@@ -99,7 +98,7 @@ export default {
           description: "Text on the link (or button).",
 
           validation: (Rule) =>
-          Rule.warning("This field is required.").required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "link",
@@ -110,9 +109,7 @@ export default {
           to: [{ type: "page" }, { type: "course" }, { type: "post" }],
         },
       ],
-      validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
-      //TODO: Add preview text for above object and reference.
+      validation: (Rule) => Rule.required().error("This field is required."),
       preview: {
         select: {
           title: "text",
@@ -120,13 +117,6 @@ export default {
         },
       },
     },
-    // {
-    //   // TODO: Validation rule 1 MAX
-    //   name: "link",
-    //   type: "button",
-    //   title: "Link",
-    //   description: "Link to the page that the site notice will go.",
-    // },
   ],
   preview: {
     select: {

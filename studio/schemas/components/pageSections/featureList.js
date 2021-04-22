@@ -12,7 +12,7 @@ export default {
 
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "subheading",
@@ -27,7 +27,7 @@ export default {
       title: "Background Color",
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
-      validation: (Rule) => Rule.warning("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",
@@ -80,7 +80,7 @@ export default {
               description:
                 "Headings should be short & catchy, descriptive, and only a couple of words long.",
               validation: (Rule) =>
-                Rule.warning("This field is required.").required(),
+                Rule.required().error("This field is required."),
             },
             {
               name: "itemDescription",
@@ -89,7 +89,7 @@ export default {
               description:
                 "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
               validation: (Rule) =>
-                Rule.warning("This field is required.").required(),
+                Rule.required().error("This field is required."),
             },
           ],
         },

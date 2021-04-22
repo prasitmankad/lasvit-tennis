@@ -5,7 +5,6 @@ import { Popover } from "@headlessui/react";
 
 export default function hero(props) {
   //console.log("Hero Props // ", props);
-// TODO: Align all Hx and p and other tags to classes from PortableText component
 
   return (
     <>

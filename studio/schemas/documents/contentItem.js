@@ -5,7 +5,6 @@ export default {
   title: "Content Item",
   type: "document",
   icon: icoContent,
-  // TODO: Field validation
   fieldsets: [
     {
       name: "details",
@@ -32,7 +31,7 @@ export default {
         ], 
       },
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
 
     {
@@ -68,7 +67,7 @@ export default {
       description:
         "1-2 sentences describing the content item. Used on content rolls / summary pages.",
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
     {
       name: "longDescription",
@@ -91,7 +90,7 @@ export default {
       description: "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
       of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
       validation: (Rule) =>
-        Rule.warning("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
   ],
 

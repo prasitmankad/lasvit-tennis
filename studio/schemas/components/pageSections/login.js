@@ -6,8 +6,6 @@ export default {
   title: "Login Block",
 
   fieldsets: [
-    // TODO: Field validation
-    // TODO: Selective Identity Proividers
     {
       name: "basic",
       title: "Basic Settings",
@@ -36,7 +34,7 @@ export default {
       fieldset: "basic",
       description:
         "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) => Rule.error("This field is required.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "subheading",
@@ -59,7 +57,7 @@ export default {
       title: "Main Image",
       description: "Image used on the login page.",
       validation: (Rule) =>
-        Rule.error("This field is required.").required(),
+        Rule.required().error("This field is required."),
     },
   ],
   preview: {

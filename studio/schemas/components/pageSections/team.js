@@ -14,7 +14,7 @@ export default {
         description:
           "Headings should be short & catchy, descriptive, and only a couple of words long.",
         validation: (Rule) =>
-        Rule.error("This field is required.").required(),
+        Rule.required().error("This field is required."),
       },
       {
         name: "subheading",
@@ -32,7 +32,6 @@ export default {
         
       },
 
-      // TODO: Reference to Team Member
     ],
     preview: {
       select: {

@@ -2,7 +2,6 @@
 
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-// TODO: Replace <a> with <Link>
 
 export default function blog(props) {
   console.log("Blog Props // ", props);
