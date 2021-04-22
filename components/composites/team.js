@@ -36,7 +36,7 @@ function teamSection(props) {
                       </div>
                       <div className="text-lg leading-6 font-medium space-y-1">
                         <h3>{person.name}</h3>
-                        <p className="text-indigo-600">{person.position}</p>
+                        <p className={"text-"+props.globalData.branding.primaryAccentColor.title}>{person.position}</p>
                       </div>
                       <div className="text-lg">
                         <p className="text-gray-500">
