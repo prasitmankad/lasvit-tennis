@@ -17,7 +17,6 @@
     "@sanity/color-input",
     "media-library",
     "color-list",
-    "intl-input",
     "autocomplete-tags"
   ],
   "env": {
