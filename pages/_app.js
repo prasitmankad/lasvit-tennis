@@ -3,6 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import store from "../modules/store";
+import "../configureAmplify";
 
 function MyApp({ Component, pageProps }) {
   return (

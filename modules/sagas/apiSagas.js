@@ -1,7 +1,7 @@
 import { put, takeEvery, call, all } from "redux-saga/effects";
 import { actionKeys } from "../actions/actionTypes";
 import { API, graphqlOperation } from "aws-amplify";
-import { listClientBillings } from "../../src/graphql/queries";
+import { listClientBillings } from "../graphql/queries";
 import * as mutations from "../graphql/mutations";
 import {
   fetchBillingList,
