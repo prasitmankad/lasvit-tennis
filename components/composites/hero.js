@@ -2,9 +2,10 @@ import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 import { Popover } from "@headlessui/react";
+import { parseWithOptions } from "date-fns/fp";
 
 export default function hero(props) {
-  //console.log("Hero Props // ", props);
+  console.log("Hero Props // ", props);
 
   return (
     <>
@@ -28,7 +29,9 @@ export default function hero(props) {
                 <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                   <div className="sm:text-center lg:text-left">
                     <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                      <span className="block xl:inline">{props.sectionData.heading}</span>{" "}
+                      <span className="block xl:inline">
+                        {props.sectionData.heading}
+                      </span>{" "}
                     </h1>
                     <h2
                       className={
@@ -43,38 +46,33 @@ export default function hero(props) {
                       {props.sectionData.content}
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                      <div className="rounded-md shadow">
-                        <a
-                          href="#"
-                          className={
-                            "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
-                            props.globalData.branding.primaryAccentColor.title +
-                            " hover:bg-white hover:border-" +
-                            props.globalData.branding.primaryAccentColor.title +
-                            " hover:text-" +
-                            props.globalData.branding.primaryAccentColor.title +
-                            " md:py-4 md:text-lg md:px-10"
-                          }
+                      {props.sectionData.buttons?.map((button) => (
+                        <div
+                          key={button.buttonText}
+                          className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
                         >
-                          Ultimate Tennis Parent
-                        </a>
-                      </div>
-                      <div className="mt-3 sm:mt-0 sm:ml-3">
-                        <a
-                          href="#"
-                          className={
-                            "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
-                            props.globalData.branding.secondaryAccentColor.title +
-                            " hover:bg-white hover:border-" +
-                            props.globalData.branding.secondaryAccentColor.title +
-                            " hover:text-" +
-                            props.globalData.branding.secondaryAccentColor.title +
-                            " md:py-4 md:text-lg md:px-10"
-                          }
-                        >
-                          Other Courses
-                        </a>
-                      </div>
+                          <Link href={"/" + button.links.route.slug.current}>
+                            <a
+                              className={
+                                "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                                props.globalData.branding.primaryAccentColor
+                                  .title +
+                                " hover:bg-white hover:border-" +
+                                props.globalData.branding.primaryAccentColor
+                                  .title +
+                                " hover:text-" +
+                                props.globalData.branding.primaryAccentColor
+                                  .title +
+                                " md:py-4 md:text-lg md:px-10"
+                              }
+                            >
+                              {button.buttonText}
+                            </a>
+                          </Link>
+                        </div>
+                      ))}
+ 
+                     
                     </div>
                   </div>
                 </main>

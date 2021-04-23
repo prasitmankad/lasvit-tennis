@@ -4,7 +4,7 @@ import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 export default function blog(props) {
-  console.log("Blog Props // ", props);
+  // console.log("Blog Props // ", props);
   let dt = Date
 
   return (
@@ -53,14 +53,15 @@ export default function blog(props) {
                       <></>
                     )}
                   </p>
-                  <a href={post.slug.current} className="block mt-2">
+                  <Link href={post.slug.current}>
+                  <a className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       {post.title}
                     </p>
                     <p className="mt-3 text-base text-gray-500">
                       {post.excerpt}
                     </p>
-                  </a>
+                  </a></Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">

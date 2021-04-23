@@ -20,12 +20,12 @@ function singlePriceSection(props) {
               unlimited users.
             </p>
           </div>
-          <a
-            href="#"
+          <Link href=""><a
+            
             className="mt-8 w-full bg-indigo-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-indigo-700 sm:mt-10 sm:w-auto xl:mt-0"
           >
             Get started today
-          </a>
+          </a></Link>
         </div>
       </div>
     </>

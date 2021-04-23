@@ -83,15 +83,16 @@ export default function contactForm(props) {
           />
         </svg>
         <div className="text-center">
-        <h3 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-xl">
+          <h3 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-xl">
             {props.sectionData.subheading}
           </h3>
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
-          
+
           <p className="mt-4 text-lg leading-6 text-gray-500">
-          {props.sectionData.content} </p>
+            {props.sectionData.content}{" "}
+          </p>
         </div>
         {/* TODO: Replace with Mailerlite integration */}
 
@@ -210,14 +211,11 @@ export default function contactForm(props) {
                 <div className="ml-3">
                   <p className="text-base text-gray-500">
                     By selecting this, you agree to the{" "}
-                    <a href="#" className="font-medium text-gray-700 underline">
-                      Privacy Policy
-                    </a>
-                    {/* {" "}
-                    and{" "}
-                    <a href="#" className="font-medium text-gray-700 underline">
-                      Cookie Policy
-                    </a> */}
+                    <Link href="/privacy">
+                      <a className="font-medium text-gray-700 underline">
+                        Privacy Policy
+                      </a>
+                    </Link>
                     .
                   </p>
                 </div>
@@ -226,15 +224,14 @@ export default function contactForm(props) {
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className={"w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +
-                props.globalData.branding.primaryAccentColor.title +
-                " hover:bg-white hover:border-" +
-                props.globalData.branding.primaryAccentColor.title +
-                " hover:text-" +
-                props.globalData.branding.primaryAccentColor.title}
-
-                
-                            
+                className={
+                  "w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +
+                  props.globalData.branding.primaryAccentColor.title +
+                  " hover:bg-white hover:border-" +
+                  props.globalData.branding.primaryAccentColor.title +
+                  " hover:text-" +
+                  props.globalData.branding.primaryAccentColor.title
+                }
               >
                 Submit
               </button>

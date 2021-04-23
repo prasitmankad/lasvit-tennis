@@ -74,9 +74,6 @@ const query = `{
   }
 }`;
 
-
-
-
 // main page component renders
 function IndexPage(props) {
   const { allData, preview } = props;
@@ -103,7 +100,6 @@ function IndexPage(props) {
       <RenderHeader data={allData.globalData} />
       <RenderSections data={allData} />
       <RenderFooter data={allData.globalData} />
-
     </>
   );
 }

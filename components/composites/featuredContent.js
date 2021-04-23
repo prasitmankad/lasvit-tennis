@@ -2,10 +2,10 @@
 
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-import { InboxIcon, SparklesIcon } from '@heroicons/react/outline'
+import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
 
 export default function featuredContent(props) {
-  console.log ("featured Content props // ",props)
+  console.log("featured Content props // ", props);
 
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
@@ -15,7 +15,10 @@ export default function featuredContent(props) {
             <div>
               <div>
                 <span className="h-12 w-12 rounded-md flex items-center justify-center bg-indigo-600">
-                  <InboxIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                  <InboxIcon
+                    className="h-6 w-6 text-white"
+                    aria-hidden="true"
+                  />
                 </span>
               </div>
               <div className="mt-6">
@@ -23,17 +26,17 @@ export default function featuredContent(props) {
                   Stay on top of customer support
                 </h2>
                 <p className="mt-4 text-lg text-gray-500">
-                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis bibendum malesuada faucibus lacinia
-                  porttitor. Pulvinar laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at. Lectus
-                  viverra dui tellus ornare pharetra.
+                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
+                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
+                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
+                  pharetra at. Lectus viverra dui tellus ornare pharetra.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
+                  <Link href="">
+                    <a className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                      Get started
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -41,8 +44,9 @@ export default function featuredContent(props) {
               <blockquote>
                 <div>
                   <p className="text-base text-gray-500">
-                    &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed diam. Sit orci risus aenean curabitur
-                    donec aliquet. Mi venenatis in euismod ut.&rdquo;
+                    &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed
+                    diam. Sit orci risus aenean curabitur donec aliquet. Mi
+                    venenatis in euismod ut.&rdquo;
                   </p>
                 </div>
                 <footer className="mt-3">
@@ -54,7 +58,9 @@ export default function featuredContent(props) {
                         alt=""
                       />
                     </div>
-                    <div className="text-base font-medium text-gray-700">Marcia Hill, Digital Marketing Manager</div>
+                    <div className="text-base font-medium text-gray-700">
+                      Marcia Hill, Digital Marketing Manager
+                    </div>
                   </div>
                 </footer>
               </blockquote>
@@ -77,7 +83,10 @@ export default function featuredContent(props) {
             <div>
               <div>
                 <span className="h-12 w-12 rounded-md flex items-center justify-center bg-indigo-600">
-                  <SparklesIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                  <SparklesIcon
+                    className="h-6 w-6 text-white"
+                    aria-hidden="true"
+                  />
                 </span>
               </div>
               <div className="mt-6">
@@ -85,17 +94,20 @@ export default function featuredContent(props) {
                   Better understand your customers
                 </h2>
                 <p className="mt-4 text-lg text-gray-500">
-                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis bibendum malesuada faucibus lacinia
-                  porttitor. Pulvinar laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at. Lectus
-                  viverra dui tellus ornare pharetra.
+                  Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
+                  bibendum malesuada faucibus lacinia porttitor. Pulvinar
+                  laoreet sagittis viverra duis. In venenatis sem arcu pretium
+                  pharetra at. Lectus viverra dui tellus ornare pharetra.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="#"
-                    className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
-                  >
-                    Get started
-                  </a>
+                  <Link href="">
+                    <a
+               
+                      className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
+                    >
+                      Get started
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -112,5 +124,5 @@ export default function featuredContent(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

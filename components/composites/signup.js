@@ -54,9 +54,10 @@ export default function signup(props) {
           </form>
           <p className="mt-3 text-sm text-gray-500">
             We care about the protection of your data. Read our{" "}
-            <a href="/privacy" className="font-medium underline">
+            <Link href="/privacy">
+                  <a className="font-medium underline">
               Privacy Policy.
-            </a>
+            </a></Link>
           </p>
         </div>
       </div>
