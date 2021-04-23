@@ -1,25 +1,54 @@
-import Error from "next/error";
-import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
 import { urlFor, PortableText } from "../../utils/sanity";
-import { PageWrapper } from "../PageWrapper";
+import Link from "next/link";
+import Error from "next/error";
 
-const query = groq`{
-  'siteData': *[(_type == "globalSettings" )][0] {
-	title,
-  tagline,
-  siteDescription,
-  mainNavigation,
-  footerNavigation,
-  frontpage,
-  logo
-  },
-  'mainContent': *[_type == "post" && slug.current == $slug][0]
+import RenderHeader from "../../components/render/renderHeader";
+import RenderFooter from "../../components/render/renderFooter";
+
+const query = `{
+  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
+	  businessInfo {
+      title, 
+      tagline, 
+      siteDescription, 
+      contact,
+      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      },      
+    },
+    branding,
+    header {
+      menu [] {
+        ...,link-> {
+            slug,title
+            }
+      }
+    },
+    footer {
+      signup,
+      columns [] {
+        heading,links[]->
+      }
+    },
+    siteSettings
+	},
+  'pageData': *[(_type == "post" && defined(slug.current) && !(_id in path('drafts.**')))][0] {
+    _id,
+    author,
+    excerpt,
+    mainImage,
+    publishedAt,
+    slug,
+    tags,
+    title,
+  }
 }`;
 
-function BlogPostContainer({ postData, preview }) {
+function BlogPostContainer({ allData, preview, slug }) {
   const router = useRouter();
+  console.log("BlogPostContainer Props // ", allData);
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -27,23 +56,24 @@ function BlogPostContainer({ postData, preview }) {
     return <div>Loading...</div>;
   }
 
-  if (!postData.mainContent?.slug) {
+  if (!allData.mainContent?.slug) {
     return <Error statusCode={404} />;
   }
 
   const { data: post = {} } = usePreviewSubscription(query, {
-    params: { slug: postData.mainContent?.slug?.current },
-    initialData: postData,
+    params: { slug },
+    initialData: allData,
     enabled:
       preview ||
       (router.query.preview !== undefined && router.query.preview !== null),
   });
 
-  // pipe data to const so that preview mode works (see above var)
-
   return (
-    <PageWrapper page={post}>
-      <section className="text-gray-600 body-font">
+    <>
+      {/* HEADER */}
+      <RenderHeader data={allData.globalData} />
+      {/* MAIN CONTENT */}
+      {/* <section className="text-gray-600 body-font">
         <div className="lg:w-4/6 mx-auto py-0">
           <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="rounded-xs h-500 overflow-hidden">
@@ -88,29 +118,32 @@ function BlogPostContainer({ postData, preview }) {
             </div>
           </div>
         </div>
-      </section>
-    </PageWrapper>
+      </section> */}
+      {/* FOOTER */}
+      <RenderFooter data={allData.globalData} />
+    </>
   );
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const postData = await getClient(preview).fetch(query, {
-    slug: params.slug,
-  });
-  // console.log("postData ->", postData);
+export async function getStaticProps({ params = {}, preview = false }) {
+  const { slug } = params;
+  var allData = await getClient(preview).fetch(query, { slug });
+
   return {
-    props: { preview, postData },
-    revalidate: 1,
+    props: { preview, allData, slug },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
   };
 }
 
 export async function getStaticPaths() {
-  const paths = await getClient().fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
+  var routes = await getClient().fetch(
+    `*[_type == "post" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
-
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: routes || null,
     fallback: true,
   };
 }

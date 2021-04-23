@@ -1,122 +1,180 @@
-import Error from "next/error";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
-import { PortableText, urlFor } from "../../utils/sanity";
+import Error from "next/error";
 import Link from "next/link";
-import { PageWrapper } from "../PageWrapper";
+import { urlFor } from "../../utils/sanity";
+import RenderHeader from "../../components/render/renderHeader";
+import RenderFooter from "../../components/render/renderFooter";
+
+
+// construct query for global data and page data
+// allData -- overall grouping for global and page data in response
+// globalData -- global reusable content
+// pageData -- content for this specific page, not in draft
 
 const query = `{
-  'siteData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
-	title,
-  tagline,
-  siteDescription,
-  mainNavigation,
-  footerNavigation,
-  frontpage,
-  logo
+  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
+	  businessInfo {
+      title, 
+      tagline, 
+      siteDescription, 
+      contact,
+      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      },      
+    },
+    branding,
+    header {
+      menu [] {
+        ...,link-> {
+            slug,title
+            }
+      }
+    },
+    footer {
+      signup,
+      columns [] {
+        heading,links[]->
+      }
+    },
+    siteSettings
 	},
-'mainContent': *[_type == "post" && defined(slug.current) && !(_id in path('drafts.**'))]
+  'pageData': *[(_type == "post" && !(_id in path('drafts.**')))] | order(_publishedAt desc) {
+    _id,
+    author->{image,name},
+    excerpt,
+    mainImage,
+    publishedAt,
+    slug,
+    tags,
+    title,
+  }
 }`;
 
-function BlogPageContainer({ postsData, preview }) {
+
+function BlogPageContainer({ allData, preview }) {
+  console.log("BlogPageContainer Props // ", allData);
+
   const router = useRouter();
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
+  // If the page is not yet generated, this will be displayed initially until getStaticProps() finishes running
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  if (!postsData) {
+  if (!allData) {
     return <Error statusCode={404} />;
   }
 
-  // console.log(postsData);
   const { data: posts } = usePreviewSubscription(query, {
-    initialData: postsData,
+    initialData: allData,
     enabled: preview || router.query.preview !== null,
   });
 
-  return (
-    <PageWrapper page={postsData}>
-      <section class="text-gray-600 body-font">
-        <div class="container mx-auto flex px-5 py-5 items-center justify-center flex-col">
-          <div class="text-center lg:w-2/3 w-full">
-            <h1 class="title-font sm:text-3xl text-3xl mb-4 font-medium text-gray-900">
-              Lasvit Blog
-            </h1>
-          </div>
-        </div>
+  var dt = new Date();
 
-        <>
-          <div class="flex flex-wrap -m-4">
-            {postsData.mainContent.map((post) => (
-              <>
-                <div class="p-4 md:w-1/3">
-                  <div class="container px-5 py-10 mx-auto">
-                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+  return (
+    <>
+      <RenderHeader data={allData.globalData} />
+      <div
+        className={
+          "relative bg-gray-100 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8"
+        }
+      >
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center">
+            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-4">
+              {allData.globalData.businessInfo.title + " Blog"}
+            </h2>
+            {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+              {props.sectionData.content}
+            </p> */}
+          </div>
+          <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-full py-4">
+            {allData.pageData.map((post) => (
+              <div
+                key={post.title}
+                className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+              >
+                <div className="flex-shrink-0">
+                  <img
+                    src={urlFor(post.mainImage)
+                      .auto("format")
+                      .width(500)
+                      .height(400)
+                      .fit("scale")
+                      .quality(80)}
+                    alt={post.mainImage?.alt || ``}
+                  />
+                </div>
+                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                  <div className="flex-1">
+                    <p
+                      className={
+                        "text-sm font-medium uppercase italic text-" +
+                        allData.globalData.branding.primaryAccentColor.title
+                      }
+                    >
+                      {post.tags ? (
+                        <>
+                          {post.tags.map((tag) => (
+                            <>{tag.value + " | "}</>
+                          ))}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </p>
+                    <Link href={post.slug.current}>
+                  <a className="block mt-2">
+                      <p className="text-xl font-semibold text-gray-900">
+                        {post.title}
+                      </p>
+                      <p className="mt-3 text-base text-gray-500">
+                        {post.excerpt}
+                      </p>
+                    </a></Link>
+                  </div>
+                  <div className="mt-6 flex items-center">
+                    <div className="flex-shrink-0">
+                      <span className="sr-only">{post.author.name}</span>
+
                       <img
-                        src={urlFor(post.postImage)
+                        className="h-10 w-10 rounded-full"
+                        src={urlFor(post.author.image)
                           .auto("format")
-                          .width(720)
-                          .height(600)
-                          .fit("crop")
-                          .quality(80)
-                          .url()}
-                        alt={
-                          post.postImage?.alt ||
-                          `Photo of ${post.postImage.caption}`
-                        }
-                        class="lg:h-48 md:h-36 w-full object-cover object-center"
+                          //.width(10)
+                          //.height(10)
+                          .fit("scale")
+                          .quality(80)}
+                        alt={post.mainImage?.alt || ``}
                       />
-                      <div class="p-6">
-                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
-                          {post.title}
-                        </h1>
-                        <p class="leading-relaxed mb-3">
-                          {post.excerpt && (
-                            <PortableText
-                              blocks={post.excerpt}
-                              className="text-gray-700"
-                            />
-                          )}
-                        </p>
-                        <div class="flex items-center flex-wrap ">
-                          <Link href={`/blog/${post.slug.current}`}>
-                            <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-                              Read More
-                              <svg
-                                class="w-4 h-4 ml-2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                              </svg>
-                            </a>
-                          </Link>
-                        </div>
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-gray-900">
+                        {post.author.name}
+                      </p>
+                      <div className="flex space-x-1 text-sm text-gray-500">
+                        {(dt = new Date(post.publishedAt).toLocaleDateString())}
+                        {/* <span>{post.readingTime} read</span> */}
                       </div>
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             ))}
           </div>
-        </>
-      </section>
-    </PageWrapper>
+        </div>
+      </div>
+      <RenderFooter data={allData.globalData} />
+    </>
   );
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
-  const postsData = await getClient(preview).fetch(query);
-  // console.log("Query =>", query);
+  var allData = await getClient(preview).fetch(query);
+
   return {
-    props: { preview, postsData },
+    props: { preview, allData },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every second

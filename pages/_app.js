@@ -7,6 +7,7 @@ import store from "../modules/store";
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       <Component {...pageProps} />
     </Provider>
   );

@@ -1,15 +1,5 @@
-/*
-Type (video, audio, article, file)
-Title
-Short Description
-Parent Module[s]
-Link (for video, audio, file only)
-Tags
-{Page Design} for articles
-Thumbnail Image (for video, audio, file)
-*/
-
 import { RiKeyboardLine as icoContent } from "react-icons/ri";
+
 export default {
   name: "contentItem",
   title: "Content Item",
@@ -20,9 +10,9 @@ export default {
       name: "details",
       title: "Content Details",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true, 
+        collapsed: true, 
+        columns: 1, 
       },
     },
   ],
@@ -38,9 +28,10 @@ export default {
           { title: "Video", value: "video" },
           { title: "Article", value: "article" },
           { title: "File", value: "file" },
-        ], // <-- predefined values
-        //layout: 'radio' // <-- defaults to 'dropdown'
+        ], 
       },
+      validation: (Rule) =>
+        Rule.required().error("This field is required."),
     },
 
     {
@@ -57,7 +48,7 @@ export default {
       description: "Required to generate the content item's unique URL.",
       validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
-        source: "title",
+        source: "contentTitle",
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
@@ -76,18 +67,15 @@ export default {
       description:
         "1-2 sentences describing the content item. Used on content rolls / summary pages.",
       validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+        Rule.required().error("This field is required."),
     },
     {
       name: "longDescription",
-      type: "array",
-      title: "Long Description",
-      description:
-        "5-10 longer sentences describing the feature in more detail. Shown below the main content. For articles, this is the main content.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      of: [{ type: "block" }],
+      type: "blockContent",
+      title: "Long Description.",
+      description: "A detailed or transcript for Videos. For articles, this is the Article content itself."
     },
+  
     {
       name: "tags",
       type: "tags",
@@ -99,8 +87,10 @@ export default {
       name: "modules",
       type: "array",
       title: "Modules",
-      description: "Choose module(s) to publish this module in",
+      description: "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
       of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
+      validation: (Rule) =>
+        Rule.required().error("This field is required."),
     },
   ],
 

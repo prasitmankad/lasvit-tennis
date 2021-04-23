@@ -1,4 +1,3 @@
-//TODO: Icons
 import { RiQuestionLine as icoFAQ } from "react-icons/ri";
 
 export default {
@@ -14,7 +13,7 @@ export default {
       description:
         "Question text for the FAQ.",
       validation: (Rule) =>
-        Rule.error("Please fill out the Blog Title.").required(),
+      Rule.required().error("This field is required."),
     },
     {
       name: "answer",
@@ -23,7 +22,7 @@ export default {
       description:
         "Answer text for the FAQ.",
       validation: (Rule) =>
-        Rule.error("Please fill out the Blog Title.").required(),
+      Rule.required().error("This field is required."),
     },  
   ],
  

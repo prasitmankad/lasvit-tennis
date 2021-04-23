@@ -18,31 +18,31 @@ export default {
       description:
         "Unique reference for the person. Also some frontends will require a slug to be set to be able to show the person.",
       options: {
-        source: "title",
+        source: "name",
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     },
-    
+
     {
       name: "image",
       type: "mainImage",
       title: "Image",
+      validation: (Rule) => Rule.required().error("This field is required."),
+
     },
     {
       name: "position",
       type: "string",
       title: "Position",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "shortDescription",
       type: "text",
       title: "Short Description",
       description: "1-2 sentence bio used on summary pages.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "longDescription",
