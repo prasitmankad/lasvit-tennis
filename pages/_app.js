@@ -1,7 +1,5 @@
 import React from "react";
-import { Fragment } from "react";
 import "../styles/index.css";
-import React from "react";
 import { Provider } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import store from "../modules/store";

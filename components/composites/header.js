@@ -1,19 +1,10 @@
 import React from "react";
-<<<<<<< HEAD
 import { connect } from "react-redux";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getClientDetailAction } from "../../modules/actions/clientAction";
 import { Fragment } from "react";
-=======
-import { Fragment } from "react";
-
-import { urlFor } from "../../utils/sanity";
-import Link from "next/link";
-
->>>>>>> oone/prasit-updates3
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { LoginModal } from "../modals/LoginModal";
