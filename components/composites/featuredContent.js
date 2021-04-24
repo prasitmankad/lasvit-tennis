@@ -22,7 +22,7 @@ export default function featuredContent(props) {
                 </span>
               </div>
               <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+                <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900">
                   Stay on top of customer support
                 </h2>
                 <p className="mt-4 text-lg text-gray-500">
@@ -90,7 +90,7 @@ export default function featuredContent(props) {
                 </span>
               </div>
               <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+                <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900">
                   Better understand your customers
                 </h2>
                 <p className="mt-4 text-lg text-gray-500">

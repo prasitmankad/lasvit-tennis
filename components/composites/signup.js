@@ -10,7 +10,7 @@ export default function signup(props) {
     <div className={"bg-" + props.sectionData.backgroundColor.title}>
       <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:py-32 lg:px-8 lg:flex lg:items-center">
         <div className="lg:w-0 lg:flex-1">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
           <p className="mt-3 max-w-3xl text-lg text-gray-500">{props.sectionData.text}</p>

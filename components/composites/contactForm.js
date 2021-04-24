@@ -83,10 +83,10 @@ export default function contactForm(props) {
           />
         </svg>
         <div className="text-center">
-          <h3 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-xl">
+          <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-900">
             {props.sectionData.subheading}
           </h3>
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
 

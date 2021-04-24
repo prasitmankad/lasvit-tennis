@@ -21,7 +21,7 @@ function RenderSections(props) {
             />
           </div>
           <div className="ml-3">
-            <h3 className="text-sm font-medium text-yellow-800">
+            <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-yellow-800">
               IT'S NOT YOU, IT'S US
             </h3>
             <div className="mt-2 text-sm text-yellow-700">
@@ -57,7 +57,7 @@ function RenderSections(props) {
                     />
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-sm font-medium text-yellow-800">
+                    <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-yellow-800">
                       IT'S NOT YOU, IT'S US
                     </h3>
                     <div className="mt-2 text-sm text-yellow-700">

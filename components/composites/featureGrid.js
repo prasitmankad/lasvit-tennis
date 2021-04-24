@@ -7,7 +7,7 @@ import Link from "next/link";
 //       {/* ALTERNATIVE FEATURE LIST  */}
 //       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
 //         <div>
-//           <h2 className="text-base font-semibold text-indigo-600 uppercase tracking-wide">
+//           <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-base font-semibold text-indigo-600 uppercase tracking-wide">
 //             Everything you need
 //           </h2>
 //           <p className="mt-2 text-3xl font-extrabold text-gray-900">
@@ -267,7 +267,7 @@ import Link from "next/link";
 //                   </span>
 //                 </div>
 //                 <div className="mt-6">
-//                   <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+//                   <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900">
 //                     Stay on top of customer support
 //                   </h2>
 //                   <p className="mt-4 text-lg text-gray-500">
@@ -349,7 +349,7 @@ import Link from "next/link";
 //                   </span>
 //                 </div>
 //                 <div className="mt-6">
-//                   <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+//                   <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900">
 //                     Better understand your customers
 //                   </h2>
 //                   <p className="mt-4 text-lg text-gray-500">
@@ -388,7 +388,7 @@ import Link from "next/link";
 //       <div className="py-12 bg-white">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <div className="lg:text-center">
-//             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+//             <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-base text-indigo-600 font-semibold tracking-wide uppercase">
 //               Transactions
 //             </h2>
 //             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -556,7 +556,7 @@ export default function Example() {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div>
-          <h2 className="text-base font-semibold text-indigo-600 uppercase tracking-wide">Everything you need</h2>
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-base font-semibold text-indigo-600 uppercase tracking-wide">Everything you need</h2>
           <p className="mt-2 text-3xl font-extrabold text-gray-900">All-in-one platform</p>
           <p className="mt-4 text-lg text-gray-500">
             Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.

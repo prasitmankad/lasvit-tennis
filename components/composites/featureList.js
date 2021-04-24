@@ -25,7 +25,7 @@ export default function Example() {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div>
-          <h2 className="text-base font-semibold text-indigo-600 uppercase tracking-wide">Everything you need</h2>
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-base font-semibold text-indigo-600 uppercase tracking-wide">Everything you need</h2>
           <p className="mt-2 text-3xl font-extrabold text-gray-900">All-in-one platform</p>
           <p className="mt-4 text-lg text-gray-500">
             Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.

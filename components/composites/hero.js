@@ -29,9 +29,9 @@ export default function hero(props) {
                 <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                   <div className="sm:text-center lg:text-left">
                     <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_title">
-                      <span className="block xl:inline">
+                      {/* <span className="block > */}
                         {props.sectionData.heading}
-                      </span>{" "}
+                      {/* </span>{" "} */}
                     </h1>
                     <h2
                       className={

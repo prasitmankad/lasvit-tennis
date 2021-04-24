@@ -90,7 +90,7 @@ export const PortableText = createPortableTextComponent({
         if (style == "h2") {
           return (
             <React.Fragment>
-              <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
+              <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2">
                 {props.children}
               </h2>
             </React.Fragment>
@@ -99,7 +99,7 @@ export const PortableText = createPortableTextComponent({
         if (style == "h3") {
           return (
             <React.Fragment>
-              <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
+              <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3">
                 {props.children}
               </h3>
             </React.Fragment>
@@ -117,7 +117,7 @@ export const PortableText = createPortableTextComponent({
         if (style == "span") {
           return (
             <React.Fragment>
-              <span className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl">
+              <span className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_span">
                 {props.children}
               </span>
             </React.Fragment>
