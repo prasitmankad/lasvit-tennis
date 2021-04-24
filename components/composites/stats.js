@@ -3,12 +3,12 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function statsSection(props) {
   return (
-    <>
+    <React.Fragment>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div className="bg-gray-50 pt-12 sm:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
               Trusted by developers from over 80 planets
             </h2>
             <p className="mt-3 text-xl text-gray-500 sm:mt-4">
@@ -53,7 +53,7 @@ function statsSection(props) {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -107,8 +107,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Recent Posts`,
-        // subtitle: `${subtitle}`,
+        title: `${title}`,
+        subtitle: `(Blog Posts Block)`,
       };
     },
   },

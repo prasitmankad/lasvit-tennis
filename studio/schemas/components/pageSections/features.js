@@ -1,7 +1,7 @@
 export default {
   type: "object",
-  name: "featureList",
-  title: "Feature List",
+  name: "features",
+  title: "Features",
 
   fieldsets: [],
   fields: [
@@ -103,8 +103,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Feature Grid`,
-        subtitle: `Service Offerings`,
+        title: `${title}`,
+        subtitle: `(Features Block)`,
       };
     },
   },

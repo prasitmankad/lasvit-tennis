@@ -38,13 +38,13 @@ export default function footer(props) {
 
   return (
     <footer className="bg-gray-100" aria-labelledby="footerHeading">
-      <h2 id="footerHeading" className="sr-only">
+      <h2 id="footerHeading" className="sr-only custom_heading2">
         Footer
       </h2>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <Link href="/">
+            <Link href={props.data.siteSettings.homepage.slug.current}>
               <a className="flex title-font font-medium items-center text-black-900 mb-4 md:mb-0 cursor-pointer">
                 <img
                   src={urlFor(props.data.branding.companyLogo)
@@ -70,9 +70,8 @@ export default function footer(props) {
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link href="{item.href}">
+                <Link href="{item.href}" key={item.title + item.href}>
                   <a
-                    key={item.name}
                     className="text-gray-700 hover:text-white-500"
                   >
                     <span className="sr-only">{item.name}</span>
@@ -85,12 +84,12 @@ export default function footer(props) {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-bold text-gray-700 tracking-wider uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[0].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[0].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={props.data.footer.columns[0].heading + item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -108,12 +107,12 @@ export default function footer(props) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-bold text-gray-700 tracking-wider uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[1].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[1].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -133,13 +132,13 @@ export default function footer(props) {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-bold text-gray-700 tracking-wider uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[2].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
-                    <li key={item.title}>
-                      <Link href={item.slug.current}>
+                    <li key={item.slug.current}>
+                      <Link href={item.slug.current} >
                         <a
                           className={
                             "text-base text-" +
@@ -156,12 +155,12 @@ export default function footer(props) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-bold text-gray-700 tracking-wider uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[3].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[3].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={props.data.footer.columns[3].heading + item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={

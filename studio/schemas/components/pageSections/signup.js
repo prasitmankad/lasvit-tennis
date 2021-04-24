@@ -62,8 +62,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Signup: ${title}`,
-        subtitle: `${subtitle}`,
+        title: `${title}`,
+        subtitle: `(Signup Newsletter Block)`,
       };
     },
   },

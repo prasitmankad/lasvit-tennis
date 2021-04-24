@@ -69,7 +69,7 @@ function BlogPostContainer({ allData, preview, slug }) {
   });
 
   return (
-    <>
+    <React.Fragment>
       {/* HEADER */}
       <RenderHeader data={allData.globalData} />
       {/* MAIN CONTENT */}
@@ -78,7 +78,7 @@ function BlogPostContainer({ allData, preview, slug }) {
           <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="rounded-xs h-500 overflow-hidden">
               <div className="text-center mb-20 py-0">
-                <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+                <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading1 text-gray-900">
                   {post.mainContent.title}
                 </h1>
                 <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
@@ -121,7 +121,7 @@ function BlogPostContainer({ allData, preview, slug }) {
       </section> */}
       {/* FOOTER */}
       <RenderFooter data={allData.globalData} />
-    </>
+    </React.Fragment>
   );
 }
 

@@ -1,17 +1,17 @@
+import React from "react";
+import { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-
 import { Popover } from "@headlessui/react";
-import { parseWithOptions } from "date-fns/fp";
 
 export default function hero(props) {
-  console.log("Hero Props // ", props);
+  // console.log("Hero Props // ", props);
 
   return (
-    <>
+    <React.Fragment>
       <Popover className="relative bg-white overflow-hidden">
         {({ open }) => (
-          <>
+          <React.Fragment>
             <div className="max-w-7xl mx-auto">
               <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                 <svg
@@ -28,16 +28,15 @@ export default function hero(props) {
 
                 <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                   <div className="sm:text-center lg:text-left">
-                    <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                      <span className="block xl:inline">
+                    <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_title">
+                      {/* <span className="block > */}
                         {props.sectionData.heading}
-                      </span>{" "}
+                      {/* </span>{" "} */}
                     </h1>
                     <h2
                       className={
-                        "text-2xl font-semibold text-" +
-                        props.globalData.branding.primaryAccentColor.title +
-                        " tracking-wide"
+                        "custom_subtitle text-" +
+                        props.globalData.branding.primaryAccentColor.title
                       }
                     >
                       {props.sectionData.subheading}
@@ -90,9 +89,9 @@ export default function hero(props) {
                 alt={props.mainImage?.alt || ``}
               />
             </div>
-          </>
+          </React.Fragment>
         )}
       </Popover>
-    </>
+    </React.Fragment>
   );
 }

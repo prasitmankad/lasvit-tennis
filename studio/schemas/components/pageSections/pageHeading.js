@@ -60,8 +60,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Page Heading: ${title}`,
-        subtitle: `${subtitle}`,
+        title: `${title}`,
+        subtitle: `(Page Heading Block)`,
       };
     },
   },

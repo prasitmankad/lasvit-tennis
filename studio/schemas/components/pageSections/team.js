@@ -36,11 +36,12 @@ export default {
     preview: {
       select: {
         title: "heading",
-        disabled: "disabled",
+        subtitle: "subheading",
       },
-      prepare({ title }) {
+      prepare({ title, subtitle }) {
         return {
           title: `${title}`,
+          subtitle: `(Team Block)`,
         };
       },
     },

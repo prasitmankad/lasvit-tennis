@@ -83,10 +83,10 @@ export default function contactForm(props) {
           />
         </svg>
         <div className="text-center">
-          <h3 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-xl">
+          <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-900">
             {props.sectionData.subheading}
           </h3>
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
 
@@ -115,7 +115,9 @@ export default function contactForm(props) {
                   name="first_name"
                   id="first_name"
                   autoComplete="given-name"
-                  className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                  className={
+                    "py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
+                  }
                 />
               </div>
             </div>
@@ -194,7 +196,10 @@ export default function contactForm(props) {
                     checked={agreed}
                     onChange={setAgreed}
                     className={classNames(
-                      agreed ? "bg-indigo-600" : "bg-gray-200",
+                      agreed
+                        ? "bg-" +
+                            props.globalData.branding.primaryAccentColor.title
+                        : "bg-gray-200",
                       "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     )}
                   >

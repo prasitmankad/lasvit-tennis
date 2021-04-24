@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { connect } from "react-redux";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
@@ -6,6 +7,13 @@ import Link from "next/link";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getClientDetailAction } from "../../modules/actions/clientAction";
 import { Fragment } from "react";
+=======
+import { Fragment } from "react";
+
+import { urlFor } from "../../utils/sanity";
+import Link from "next/link";
+
+>>>>>>> oone/prasit-updates3
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { LoginModal } from "../modals/LoginModal";
@@ -25,9 +33,8 @@ function HeaderPure(props) {
     <header>
       <Popover className="relative bg-white">
         {({ open }) => (
-          <>
-            {loginModal && <LoginModal onClose={() => showLoginModal(false)} />}
-
+          <React.Fragment>
+          {loginModal && <LoginModal onClose={() => showLoginModal(false)} />}
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
@@ -53,7 +60,7 @@ function HeaderPure(props) {
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
                 <Popover className="relative">
                   {({ open }) => (
-                    <>
+                    <React.Fragment>
                       <Transition
                         show={open}
                         as={Fragment}
@@ -73,9 +80,11 @@ function HeaderPure(props) {
                               {props.data.header.menu.map((item) => {
                                 //console.log("item ", item.button);
                                 return item.button == undefined ? (
-                                  <></>
+                                  <React.Fragment
+                                    key={item._key}
+                                  ></React.Fragment>
                                 ) : (
-                                  <>
+                                  <React.Fragment key={item._key}>
                                     <Link href={"/" + item.link.slug.current}>
                                       <a
                                         key={item.text}
@@ -88,22 +97,22 @@ function HeaderPure(props) {
                                         </div>
                                       </a>
                                     </Link>
-                                  </>
+                                  </React.Fragment>
                                 );
                               })}
                             </div>
                           </div>
                         </Popover.Panel>
                       </Transition>
-                    </>
+                    </React.Fragment>
                   )}
                 </Popover>
 
                 {props.data.header.menu.map((item) => {
                   return item.button !== undefined ? (
-                    <></>
+                    <React.Fragment key={item._key}></React.Fragment>
                   ) : (
-                    <>
+                    <React.Fragment key={item._key}>
                       <Link href={"/" + item.link.slug.current}>
                         <a
                           key={item.text}
@@ -112,7 +121,7 @@ function HeaderPure(props) {
                           {item.text}
                         </a>
                       </Link>
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </Popover.Group>
@@ -151,7 +160,7 @@ function HeaderPure(props) {
                       )}
                     </>
                   ) : (
-                    <></>
+                    <React.Fragment></React.Fragment>
                   );
                 })}
               </div>
@@ -202,9 +211,9 @@ function HeaderPure(props) {
                         {props.data.header.menu.map((item) => {
                           //console.log("item ", item.button);
                           return item.button !== undefined ? (
-                            <></>
+                            <React.Fragment key={item._key}></React.Fragment>
                           ) : (
-                            <>
+                            <React.Fragment key={item._key}>
                               <Link href={"/" + item.link.slug.current}>
                                 <a
                                   key={item.text}
@@ -215,7 +224,7 @@ function HeaderPure(props) {
                                   </div>
                                 </a>
                               </Link>
-                            </>
+                            </React.Fragment>
                           );
                         })}
                       </nav>
@@ -239,7 +248,7 @@ function HeaderPure(props) {
                             </Link> */}
                           </>
                         ) : (
-                          <></>
+                          <React.Fragment key={item._key}></React.Fragment>
                         );
                       })}
                     </div>
@@ -247,7 +256,7 @@ function HeaderPure(props) {
                 </div>
               </Popover.Panel>
             </Transition>
-          </>
+          </React.Fragment>
         )}
       </Popover>
     </header>

@@ -3,15 +3,15 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function singlePriceSection(props) {
   return (
-    <>
+    <React.Fragment>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
           <div>
-            <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">
+            <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-base font-semibold text-indigo-600 tracking-wide uppercase">
               Everything you need
             </h2>
-            <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
+            <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading1">
               <span className="text-gray-900">Everything you need for </span>
               <span className="text-indigo-600">$99 a month</span>
             </h1>
@@ -28,7 +28,7 @@ function singlePriceSection(props) {
           </a></Link>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

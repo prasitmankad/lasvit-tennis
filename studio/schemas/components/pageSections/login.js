@@ -56,8 +56,7 @@ export default {
       type: "mainImage",
       title: "Main Image",
       description: "Image used on the login page.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
   preview: {
@@ -67,8 +66,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Login Block`,
-        subtitle: `Basic Login Block`,
+        title: `${title}`,
+        subtitle: `(Login Block)`,
       };
     },
   },

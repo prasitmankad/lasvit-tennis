@@ -73,7 +73,7 @@ function BlogPageContainer({ allData, preview }) {
   var dt = new Date();
 
   return (
-    <>
+    <React.Fragment>
       <RenderHeader data={allData.globalData} />
       <div
         className={
@@ -82,7 +82,7 @@ function BlogPageContainer({ allData, preview }) {
       >
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-4">
+            <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-4">
               {allData.globalData.businessInfo.title + " Blog"}
             </h2>
             {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
@@ -115,13 +115,13 @@ function BlogPageContainer({ allData, preview }) {
                       }
                     >
                       {post.tags ? (
-                        <>
+                        <React.Fragment>
                           {post.tags.map((tag) => (
-                            <>{tag.value + " | "}</>
+                            <React.Fragment>{tag.value + " | "}</React.Fragment>
                           ))}
-                        </>
+                        </React.Fragment>
                       ) : (
-                        <></>
+                        <React.Fragment></React.Fragment>
                       )}
                     </p>
                     <Link href={post.slug.current}>
@@ -166,7 +166,7 @@ function BlogPageContainer({ allData, preview }) {
         </div>
       </div>
       <RenderFooter data={allData.globalData} />
-    </>
+    </React.Fragment>
   );
 }
 

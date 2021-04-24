@@ -21,7 +21,7 @@ function RenderSections(props) {
             />
           </div>
           <div className="ml-3">
-            <h3 className="text-sm font-medium text-yellow-800">
+            <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-yellow-800">
               IT'S NOT YOU, IT'S US
             </h3>
             <div className="mt-2 text-sm text-yellow-700">
@@ -47,7 +47,7 @@ function RenderSections(props) {
         if (!SectionComponent) {
           // section ui render not found
           return (
-            <>
+            <React.Fragment key={section._key}>
               {/* <div className="rounded-md bg-yellow-50 p-4">
                 <div className="flex">
                   <div className="flex-shrink-0">
@@ -57,7 +57,7 @@ function RenderSections(props) {
                     />
                   </div>
                   <div className="ml-3">
-                    <h3 className="text-sm font-medium text-yellow-800">
+                    <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-yellow-800">
                       IT'S NOT YOU, IT'S US
                     </h3>
                     <div className="mt-2 text-sm text-yellow-700">
@@ -69,7 +69,7 @@ function RenderSections(props) {
                   </div>
                 </div>
               </div> */}
-            </>
+            </React.Fragment>
           );
         }
 
@@ -80,14 +80,14 @@ function RenderSections(props) {
            let postsData = { postsData: [ ...props.data.pageData.recentPosts ] };
 
           return (
-            <>
+            <React.Fragment key={section._key}>
             <SectionComponent
-              key={section._key}
+              
               {...sectionData} // send section to associated UI component
               {...globalData} // send global content and params
               {...postsData}
             />
-            </>
+            </React.Fragment>
           );
         } else {
           return (

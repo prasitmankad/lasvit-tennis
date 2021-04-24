@@ -10,7 +10,8 @@ export default function logoCloud(props) {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 justify-center ">
         <div className="grid grid-cols-2 gap-8 justify-center md:grid-cols-6 lg:grid-cols-5">
           {props.sectionData.logos.map((item) => (
-            <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+            <div key={item.logoImage.asset._ref}
+            className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
               <Link href={item?.externalLink || "#"}>
                 <a className="flex title-font font-medium justify-center text-black-900 mb-4 md:mb-0 cursor-pointer">
                   <img

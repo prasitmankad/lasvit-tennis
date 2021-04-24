@@ -39,7 +39,7 @@ export default {
         { type: "blog" },
         { type: "contentBlock" }, // basic content block
         { type: "contactForm" },
-        { type: "featureList" },
+        { type: "features" },
         { type: "logoCloud" },
         { type: "signup" },
         { type: "siteNotice" },
@@ -53,6 +53,7 @@ export default {
   preview: {
     select: {
       title: "title",
+      slug: "slugs",
     },
   },
 };

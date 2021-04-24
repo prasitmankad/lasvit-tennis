@@ -120,8 +120,8 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Hero Section: ${title}`,
-        subtitle: `${subtitle}`,
+        title: `${title}`,
+        subtitle: `(Hero Block)`,
       };
     },
   },

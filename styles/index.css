@@ -7,8 +7,68 @@
 /* Stop purging. */
 
 /* Write your own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+@layer components {
+  /* CUSTOM WRAPPERS FOR EXTRACTED CLASSES */
+
+  .custom_title {
+    /*  fix size for mobile */
+    @apply mt-6 block xl:text-7xl font-extrabold text-4xl tracking-tight sm:text-5xl md:text-6xl sm:text-center lg:text-left 
+  }
+
+  .custom_subtitle {
+    @apply mt-6 block text-3xl font-semibold tracking-wide
+  }
+
+  .custom_heading1 {
+    @apply mt-6 block text-4xl font-extrabold tracking-wide
+  }
+
+  .custom_heading2 {
+    @apply mt-6 block text-3xl font-extrabold tracking-tight
+  }
+
+  .custom_heading3 {
+    @apply mt-6 block text-2xl font-semibold tracking-wide
+  }
+
+  .custom_heading4 {
+    @apply mt-6 block text-xl font-bold tracking-tight
+  }
+
+  .custom_p {
+    @apply mt-6 text-xl mx-auto
+  }
+
+  .custom_button {}
+
+  .custom_link {@apply mt-6 text-xl cursor-pointer underline }
+
+  .custom_strong {}
+
+  .custom_em {}
+
+  .custom_code {}
+
+  .custom_ul {@apply mt-6 text-xl list-disc pl-8 mx-auto }
+  .custom_ol {@apply mt-6 text-xl list-decimal pl-8 mx-auto }
+
+
+  .custom_li {
+    @apply mt-6 text-xl list-decimal pl-8 mx-auto
+  }
+
+  .custom_blockquote {
+    @apply mt-6 text-xl
+  }
+
+  .custom_blogImage {}
+
+  .custom_span {
+    @apply mt-6 block text-xl font-normal tracking-tight
+  }
+
+  .custom_siteNotice {}
+
 }
 
 /* Start purging... */

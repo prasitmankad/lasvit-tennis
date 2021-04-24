@@ -10,9 +10,9 @@ export default {
       name: "details",
       title: "Content Details",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
   ],
@@ -28,10 +28,9 @@ export default {
           { title: "Video", value: "video" },
           { title: "Article", value: "article" },
           { title: "File", value: "file" },
-        ], 
+        ],
       },
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
     {
@@ -66,16 +65,16 @@ export default {
       title: "Short Description",
       description:
         "1-2 sentences describing the content item. Used on content rolls / summary pages.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "longDescription",
       type: "blockContent",
       title: "Long Description.",
-      description: "A detailed or transcript for Videos. For articles, this is the Article content itself."
+      description:
+        "A detailed or transcript for Videos. For articles, this is the Article content itself.",
     },
-  
+
     {
       name: "tags",
       type: "tags",
@@ -87,24 +86,27 @@ export default {
       name: "modules",
       type: "array",
       title: "Modules",
-      description: "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
+      description:
+        "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
       of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
-
   preview: {
     select: {
       title: "contentTitle",
-      description: "shortDescription",
+      subtitle: "contentType",
+      //publishedAt: "publishedAt",
+      //slug: "slug",
+      //media: "mainImage",
     },
-    prepare({ title, description }) {
+    prepare({ title, subtitle }) {
       return {
-        title,
-        description,
-       // media,
+        title: `${title}`,
+        subtitle: `${subtitle}`,
       };
     },
   },
+
+  
 };

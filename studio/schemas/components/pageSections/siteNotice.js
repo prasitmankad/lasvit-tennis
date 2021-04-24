@@ -78,19 +78,6 @@ export default {
         columns: 1,
       },
       fields: [
-        // {
-        //   name: "button",
-        //   type: "boolean",
-        //   title: "Make Button",
-        //   description:
-        //     "Select this to make the link into a button. All buttons are placed AFTER links.",
-        // },
-        // {
-        //   name: "highlight",
-        //   type: "boolean",
-        //   title: "Highlight Button",
-        //   description: "Select this to highlight the button.",
-        // },
         {
           name: "text",
           type: "string",
@@ -120,13 +107,13 @@ export default {
   ],
   preview: {
     select: {
-      title: "heading",
-      subtitle: "messageText",
+      title: "messageText",
+      subtitle: "",
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Site Notice`,
-        subtitle: `${subtitle}`,
+        title: `${title}`,
+        subtitle: `(Site Notice Block)`,
       };
     },
   },
