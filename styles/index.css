@@ -12,7 +12,7 @@
 
   .custom_title {
     /*  fix size for mobile */
-    @apply mt-6 block xl:text-7xl md:text-5xl sm:text-4xl font-extrabold tracking-wide
+    @apply mt-6 block xl:text-7xl font-extrabold text-4xl tracking-tight sm:text-5xl md:text-6xl sm:text-center lg:text-left 
   }
 
   .custom_subtitle {
@@ -35,11 +35,13 @@
     @apply mt-6 block text-xl font-bold tracking-tight
   }
 
-  .custom_paragraph {}
+  .custom_p {
+    @apply mt-6 text-xl mx-auto
+  }
 
   .custom_button {}
 
-  .custom_link {}
+  .custom_link {@apply mt-6 text-xl cursor-pointer underline }
 
   .custom_strong {}
 
@@ -47,9 +49,17 @@
 
   .custom_code {}
 
-  .custom_ul {}
+  .custom_ul {@apply mt-6 text-xl list-disc pl-8 mx-auto }
+  .custom_ol {@apply mt-6 text-xl list-decimal pl-8 mx-auto }
 
-  .custom_ol {}
+
+  .custom_li {
+    @apply mt-6 text-xl list-decimal pl-8 mx-auto
+  }
+
+  .custom_blockquote {
+    @apply mt-6 text-xl
+  }
 
   .custom_blogImage {}
 

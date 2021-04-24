@@ -13,14 +13,13 @@ export default {
   ],
   preview: {
     select: {
-      title: "title",
-      subtitle: "subtitle",
-      disabled: "disabled",
+      title: "heading",
+      subtitle: "subheading",
     },
     prepare({ title, subtitle }) {
       return {
-        title: `Basic Content Block`,
-        //subtitle: `${subtitle}`,
+        title: `(Basic Content Block)`,
+        //subtitle: `(Basic Content Block)`,
       };
     },
   },

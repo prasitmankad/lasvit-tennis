@@ -38,7 +38,7 @@ export default function footer(props) {
 
   return (
     <footer className="bg-gray-100" aria-labelledby="footerHeading">
-      <h2 id="footerHeading" className="sr-only">
+      <h2 id="footerHeading" className="sr-only custom_heading2">
         Footer
       </h2>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -84,9 +84,9 @@ export default function footer(props) {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-700 uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[0].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[0].links.map((item) => (
                     <li key={props.data.footer.columns[0].heading + item.slug.current}>
@@ -107,9 +107,9 @@ export default function footer(props) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-700 uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[1].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[1].links.map((item) => (
                     <li key={item.slug.current}>
@@ -132,9 +132,9 @@ export default function footer(props) {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-700 uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[2].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
                     <li key={item.slug.current}>
@@ -155,9 +155,9 @@ export default function footer(props) {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3 text-gray-700 uppercase">
+                <h4 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 text-gray-700 uppercase">
                   {props.data.footer.columns[3].heading}
-                </h3>
+                </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[3].links.map((item) => (
                     <li key={props.data.footer.columns[3].heading + item.slug.current}>

@@ -16,18 +16,18 @@ export default {
       validation: (Rule) => Rule.required().error("This field is required."),
     },
 
-    {
-      name: "slug",
-      type: "slug",
-      title: "Slug",
-      description: "Required to generate the module's unique URL.",
-      validation: (Rule) => Rule.error("You must generate a slug.").required(),
-      options: {
-        source: "title",
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-      },
-    },
+    // {
+    //   name: "slug",
+    //   type: "slug",
+    //   title: "Slug",
+    //   description: "Required to generate the module's unique URL.",
+    //   validation: (Rule) => Rule.error("You must generate a slug.").required(),
+    //   options: {
+    //     source: "title",
+    //     slugify: (input) =>
+    //       input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+    //   },
+    // },
 
     {
       name: "mainImage",
@@ -60,14 +60,15 @@ export default {
   preview: {
     select: {
       title: "title",
-      description: "shortDescription",
+      //publishedAt: "publishedAt",
+      slug: "slug",
       media: "mainImage",
     },
-    prepare({ title, description, media }) {
+    prepare({ title = "No title", tags, media }) {
       return {
         title,
-        description,
         media,
+        subtitle: tags,
       };
     },
   },

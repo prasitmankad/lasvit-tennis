@@ -1,6 +1,6 @@
 export { default as hero } from "./hero";
 export { default as logoCloud } from "./logoCloud";
-export { default as featureList } from "./featureList";
+export { default as features } from "./features";
 export { default as blog } from "./blog";
 export { default as siteNotice } from "./siteNotice";
 export { default as team } from "./team";

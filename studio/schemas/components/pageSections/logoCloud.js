@@ -61,10 +61,14 @@ export default {
     },
   ],
   preview: {
-    prepare() {
+    select: {
+      title: "heading",
+      subtitle: "subheading",
+    },
+    prepare({ title, subtitle }) {
       return {
-        title: `As Featured On`,
-        subtitle: `Array of logos`,
+        title: `Array of Logos`,
+        subtitle: `(Login Block)`,
       };
     },
   },

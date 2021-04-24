@@ -108,7 +108,7 @@ export const PortableText = createPortableTextComponent({
         if (style == "p") {
           return (
             <React.Fragment>
-              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
+              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_p">
                 {props.children}
               </p>
             </React.Fragment>
@@ -127,7 +127,7 @@ export const PortableText = createPortableTextComponent({
         if (style == "li") {
           return (
             <React.Fragment>
-              <li className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl list-decimal pl-8 mx-auto">
+              <li className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_li">
                 {props.children}
               </li>
             </React.Fragment>
@@ -150,13 +150,13 @@ export const PortableText = createPortableTextComponent({
         //case else
         return style === "blockquote" ? (
           <React.Fragment>
-            <blockquote className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl">
+            <blockquote className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_blockquote">
               – {props.children}
             </blockquote>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <p className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl mx-auto">
+            <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_p">
               {props.children}
             </p>
           </React.Fragment>
@@ -190,18 +190,17 @@ export const PortableText = createPortableTextComponent({
     list: (props) =>
       props.type === "bullet" ? (
         <React.Fragment>
-          <ul className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl list-disc pl-8 mx-auto">
+          <ul className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_ul">
             {props.children}
           </ul>
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <ol className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl list-decimal pl-8 mx-auto">
+          <ol className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_ol">
             {props.children}
           </ol>
         </React.Fragment>
       ),
-    // listItem: (props) => (props.type == "number" ? <React.Fragment></React.Fragment> : <React.Fragment></React.Fragment>),
     marks: {
       strong: (props) => <strong>{props.children}</strong>,
       em: (props) => <em>{props.children}</em>,
@@ -210,8 +209,8 @@ export const PortableText = createPortableTextComponent({
         // Internal links
         return (
           <React.Fragment>
-            <Link href={"/" + props.mark.slug.current}>
-              <a className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl cursor-pointer underline">
+            <Link href={props.mark.slug.current}>
+              <a className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_link">
                 {props.children}
               </a>
             </Link>
@@ -224,7 +223,7 @@ export const PortableText = createPortableTextComponent({
             <Link href={props.mark.href}>
               <a
                 className={
-                  "mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl cursor-pointer underline"
+                  "prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl custom_link"
                 }
                 target="_blank"
                 rel="noopener"

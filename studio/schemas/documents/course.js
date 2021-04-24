@@ -14,7 +14,7 @@ export default {
       options: {
         collapsible: true,
         collapsed: false,
-        columns: 2,
+        columns: 1,
       },
     },
     {
@@ -23,7 +23,7 @@ export default {
       options: {
         collapsible: true,
         collapsed: false,
-        columns: 2,
+        columns: 1,
       },
     },
     {
@@ -72,10 +72,16 @@ export default {
       name: "slug",
       title: "Slug",
       type: "slug",
+      //inputComponent: SlugInput,
       fieldset: "basic",
       description: "Unique link / reference to the Course.",
+      
       options: {
         source: "title",
+        basePath: "https://lasvittennis.com",
+        // Use isUnique/maxLength just like you would w/ the regular slug field
+        //isUnique: MyCustomIsUniqueFunction,
+        maxLength: 30,
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
@@ -100,8 +106,8 @@ export default {
         "Course content details. Course Modules are automatically included on the Landing Page.",
       options: {
         collapsible: true,
-        collapsed: true,
-        columns: 2,
+        collapsed: false,
+        columns: 1,
       },
       fields: [
         // Automatically included are references to all Modules of the course
@@ -148,7 +154,7 @@ export default {
       description: "Content statistics for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -204,7 +210,7 @@ export default {
       description: "Pricing and billing settings for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -287,6 +293,7 @@ export default {
               ],
             },
           ],
+
           validation: (Rule) =>
             Rule.required().error("This field is required."),
         },
@@ -301,7 +308,7 @@ export default {
       description: "FAQ settings for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -343,9 +350,17 @@ export default {
   preview: {
     select: {
       title: "title",
-      subtitle: "subtitle",
-      description: "description",
-      media: "coverArt",
+      //publishedAt: "publishedAt",
+      slug: "slug",
+      media: "mainImage",
+    },
+    prepare({ title = "No title", slug = {}, media }) {
+      const path = `/courses/${slug.current}`;
+      return {
+        title,
+        media,
+        subtitle: path,
+      };
     },
   },
 };

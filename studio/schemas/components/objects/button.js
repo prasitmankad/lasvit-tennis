@@ -63,23 +63,6 @@ export default {
 
       ],
     },
-
-    // {
-    //   name: "route",
-    //   type: "reference",
-    //   title: "Internal link",
-    //   description: "Link to existing pages on the website",
-    //   to: [{ type: "page" }, { type: "course" }],
-    //   fieldset: "link",
-    // },
-    // {
-    //   name: "link",
-    //   type: "url",
-    //   title: "External link",
-    //   description:
-    //     "Link to external pages on the internet. Enter the full URL.",
-    //   fieldset: "link",
-    // },
   ],
   preview: {
     select: {
