@@ -17,7 +17,6 @@ import blockContent from "./components/objects/blockContent";
 import button from "./components/objects/button"; 
 import { videoEmbed } from "./components/objects/embeds";
 import feature from "./components/objects/feature";
-import figure from "./components/objects/figure";
 import linkInternal from "./components/objects/linkInternal";
 import linkExternal from "./components/objects/linkExternal";
 import mainImage from "./components/objects/mainImage";
@@ -52,7 +51,7 @@ export default createSchema({
       button,
       videoEmbed,
       feature,
-      figure,
+      
       linkInternal,
       linkExternal,
       mainImage,

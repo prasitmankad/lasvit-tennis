@@ -21,12 +21,12 @@ export default function CoursePreview(props) {
       : `http://localhost:3000/courses/${displayed?.slug?.current}?preview`;
 
   return (
-    <>
+    <React.Fragment>
       <div className={styles.componentWrapper}>
         <div className={styles.iframeContainer}>
           <iframe src={url} frameBorder={"0"} />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }

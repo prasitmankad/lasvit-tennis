@@ -1,11 +1,13 @@
 // https://tailwindui.com/components/marketing/sections/blog-sections#component-720cf60b960fecb99c45f462f24db2d9
 
+import React from "react";
+import { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 export default function blog(props) {
   // console.log("Blog Props // ", props);
-  let dt = Date
+  let dt = Date;
 
   return (
     <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -44,24 +46,25 @@ export default function blog(props) {
                     }
                   >
                     {post.tags ? (
-                      <>
+                      <React.Fragment>
                         {post.tags.map((tag) => (
-                          <>{tag.value + " | "}</>
+                          <span key={tag.value}>{tag.value + " | "}</span>
                         ))}
-                      </>
+                      </React.Fragment>
                     ) : (
-                      <></>
+                      <React.Fragment></React.Fragment>
                     )}
                   </p>
                   <Link href={post.slug.current}>
-                  <a className="block mt-2">
-                    <p className="text-xl font-semibold text-gray-900">
-                      {post.title}
-                    </p>
-                    <p className="mt-3 text-base text-gray-500">
-                      {post.excerpt}
-                    </p>
-                  </a></Link>
+                    <a className="block mt-2">
+                      <p className="text-xl font-semibold text-gray-900">
+                        {post.title}
+                      </p>
+                      <p className="mt-3 text-base text-gray-500">
+                        {post.excerpt}
+                      </p>
+                    </a>
+                  </Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
@@ -82,7 +85,7 @@ export default function blog(props) {
                       {post.author.name}
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
-                    {(dt = new Date(post.publishedAt).toLocaleDateString())}
+                      {(dt = new Date(post.publishedAt).toLocaleDateString())}
 
                       {/* <span>{post.readingTime} read</span> */}
                     </div>

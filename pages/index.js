@@ -1,3 +1,5 @@
+import React from "react";
+import { Fragment } from "react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription, urlFor } from "../utils/sanity";
@@ -36,7 +38,7 @@ const query = `{
         heading,links[]->
       }
     },
-    siteSettings
+    siteSettings{...,homepage->{slug,title}},
 	},
   'pageData': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
     slug,
@@ -96,11 +98,11 @@ function IndexPage(props) {
   });
 
   return (
-    <>
+    <React.Fragment>
       <RenderHeader data={allData.globalData} />
       <RenderSections data={allData} />
       <RenderFooter data={allData.globalData} />
-    </>
+    </React.Fragment>
   );
 }
 

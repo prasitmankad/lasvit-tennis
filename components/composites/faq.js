@@ -3,7 +3,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function faqSection(props) {
   return (
-    <>
+    <React.Fragment>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
@@ -40,7 +40,7 @@ function faqSection(props) {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

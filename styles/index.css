@@ -1,5 +1,5 @@
 @tailwind base;
-
+@tailwind typography;
 /* Write your own custom base styles here */
 
 /* Start purging... */
@@ -7,8 +7,55 @@
 /* Stop purging. */
 
 /* Write your own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+@layer components {
+  /* CUSTOM WRAPPERS FOR EXTRACTED CLASSES */
+
+  .custom_title {
+    @apply mt-6 block text-7xl font-extrabold tracking-wide
+  }
+
+  .custom_subtitle {
+    @apply mt-6 block text-3xl font-semibold tracking-wide
+  }
+
+  .custom_heading1 {
+    @apply mt-6 block text-4xl font-extrabold tracking-wide
+  }
+
+  .custom_heading2 {
+    @apply mt-6 block text-3xl font-extrabold tracking-tight
+  }
+
+  .custom_heading3 {
+    @apply mt-6 block text-2xl font-semibold tracking-tight
+  }
+
+  .custom_heading4 {
+    @apply mt-6 block text-xl font-semibold tracking-tight
+  }
+
+  .custom_paragraph {}
+
+  .custom_button {}
+
+  .custom_link {}
+
+  .custom_strong {}
+
+  .custom_em {}
+
+  .custom_code {}
+
+  .custom_ul {}
+
+  .custom_ol {}
+
+  .custom_blogImage {}
+
+  .custom_span {}
+
+  .custom_siteNotice {}
+
 }
 
 /* Start purging... */

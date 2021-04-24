@@ -1,7 +1,9 @@
+import React from "react";
+import { Fragment } from "react";
+
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
-import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
@@ -12,7 +14,7 @@ export default function header(props) {
     <header>
       <Popover className="relative bg-white">
         {({ open }) => (
-          <>
+          <React.Fragment>
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
@@ -38,7 +40,7 @@ export default function header(props) {
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
                 <Popover className="relative">
                   {({ open }) => (
-                    <>
+                    <React.Fragment>
                       <Transition
                         show={open}
                         as={Fragment}
@@ -58,9 +60,11 @@ export default function header(props) {
                               {props.data.header.menu.map((item) => {
                                 //console.log("item ", item.button);
                                 return item.button == undefined ? (
-                                  <></>
+                                  <React.Fragment
+                                    key={item._key}
+                                  ></React.Fragment>
                                 ) : (
-                                  <>
+                                  <React.Fragment key={item._key}>
                                     <Link href={"/" + item.link.slug.current}>
                                       <a
                                         key={item.text}
@@ -73,23 +77,23 @@ export default function header(props) {
                                         </div>
                                       </a>
                                     </Link>
-                                  </>
+                                  </React.Fragment>
                                 );
                               })}
                             </div>
                           </div>
                         </Popover.Panel>
                       </Transition>
-                    </>
+                    </React.Fragment>
                   )}
                 </Popover>
 
                 {props.data.header.menu.map((item) => {
                   //console.log("item ", item.button);
                   return item.button !== undefined ? (
-                    <></>
+                    <React.Fragment key={item._key}></React.Fragment>
                   ) : (
-                    <>
+                    <React.Fragment key={item._key}>
                       <Link href={"/" + item.link.slug.current}>
                         <a
                           key={item.text}
@@ -98,7 +102,7 @@ export default function header(props) {
                           {item.text}
                         </a>
                       </Link>
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </Popover.Group>
@@ -106,7 +110,7 @@ export default function header(props) {
                 {props.data.header.menu.map((item) => {
                   //console.log("item ", item.button);
                   return item.button !== undefined ? (
-                    <>
+                    <React.Fragment key={item._key}>
                       <Link href={"/" + item.link.slug.current}>
                         <a
                           className={
@@ -121,9 +125,9 @@ export default function header(props) {
                           {item.text}
                         </a>
                       </Link>
-                    </>
+                    </React.Fragment>
                   ) : (
-                    <></>
+                    <React.Fragment></React.Fragment>
                   );
                 })}
               </div>
@@ -174,9 +178,9 @@ export default function header(props) {
                         {props.data.header.menu.map((item) => {
                           //console.log("item ", item.button);
                           return item.button !== undefined ? (
-                            <></>
+                            <React.Fragment key={item._key}></React.Fragment>
                           ) : (
-                            <>
+                            <React.Fragment key={item._key}>
                               <Link href={"/" + item.link.slug.current}>
                                 <a
                                   key={item.text}
@@ -187,7 +191,7 @@ export default function header(props) {
                                   </div>
                                 </a>
                               </Link>
-                            </>
+                            </React.Fragment>
                           );
                         })}
                       </nav>
@@ -196,7 +200,7 @@ export default function header(props) {
                       {props.data.header.menu.map((item) => {
                         //console.log("item ", item.button);
                         return item.button !== undefined ? (
-                          <>
+                          <React.Fragment key={item._key}>
                             <Link href={"/" + item.link.slug.current}>
                               <a
                                 className={
@@ -209,9 +213,9 @@ export default function header(props) {
                                 {item.text}
                               </a>
                             </Link>
-                          </>
+                          </React.Fragment>
                         ) : (
-                          <></>
+                          <React.Fragment key={item._key}></React.Fragment>
                         );
                       })}
                     </div>
@@ -219,7 +223,7 @@ export default function header(props) {
                 </div>
               </Popover.Panel>
             </Transition>
-          </>
+          </React.Fragment>
         )}
       </Popover>
     </header>

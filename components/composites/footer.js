@@ -44,7 +44,7 @@ export default function footer(props) {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <Link href="/">
+            <Link href={props.data.siteSettings.homepage.slug.current}>
               <a className="flex title-font font-medium items-center text-black-900 mb-4 md:mb-0 cursor-pointer">
                 <img
                   src={urlFor(props.data.branding.companyLogo)
@@ -70,9 +70,8 @@ export default function footer(props) {
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link href="{item.href}">
+                <Link href="{item.href}" key={item.title + item.href}>
                   <a
-                    key={item.name}
                     className="text-gray-700 hover:text-white-500"
                   >
                     <span className="sr-only">{item.name}</span>
@@ -90,7 +89,7 @@ export default function footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[0].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={props.data.footer.columns[0].heading + item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -113,7 +112,7 @@ export default function footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[1].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -138,8 +137,8 @@ export default function footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
-                    <li key={item.title}>
-                      <Link href={item.slug.current}>
+                    <li key={item.slug.current}>
+                      <Link href={item.slug.current} >
                         <a
                           className={
                             "text-base text-" +
@@ -161,7 +160,7 @@ export default function footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[3].links.map((item) => (
-                    <li key={item.title}>
+                    <li key={props.data.footer.columns[3].heading + item.slug.current}>
                       <Link href={item.slug.current}>
                         <a
                           className={

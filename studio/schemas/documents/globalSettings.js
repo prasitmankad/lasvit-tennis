@@ -90,22 +90,7 @@ export default {
             { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
           ],
         },
-        // NOT NEEDED -- WILL PULL FROM TEAM MEMBER DOCUMENT
-        // {
-        //   name: "team",
-        //   type: "array",
-        //   title: "Team Members",
-        //   description:
-        //     "Core team members of the company. Used on teams / about pages.",
-        //   validation: (Rule) =>
-        //     Rule.required().error("This field is required."),
-        //   of: [
-        //     {
-        //       type: "reference",
-        //       to: [{ type: "teamMember" }],
-        //     },
-        //   ],
-        // },
+
       ],
     },
 
@@ -249,11 +234,11 @@ export default {
             Rule.required().error("This field is required."),
         },
         {
-          name: "frontpage",
+          name: "homepage",
           type: "reference",
           title: "Home Page",
           description: "Choose the page to be the home page of the site.",
-          weak: true,
+          //weak: true,
           to: { type: "page" },
         },
         {

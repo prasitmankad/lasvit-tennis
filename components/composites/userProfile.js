@@ -3,10 +3,10 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function userProfileSection(props) {
   return (
-    <>
+    <React.Fragment>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
-          <>
+          <React.Fragment>
             <div>
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
@@ -232,10 +232,10 @@ function userProfileSection(props) {
                 </div>
               </div>
             </div>
-          </>
+          </React.Fragment>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

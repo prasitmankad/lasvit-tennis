@@ -3,7 +3,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function statsSection(props) {
   return (
-    <>
+    <React.Fragment>
       {/* This example requires Tailwind CSS v2.0+ */}
       <div className="bg-gray-50 pt-12 sm:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ function statsSection(props) {
           </div>
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -3,7 +3,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 
 function modulesSection(props) {
   return (
-    <>
+    <React.Fragment>
 {/*
   This example requires Tailwind CSS v2.0+ 
   
@@ -50,7 +50,7 @@ require('@tailwindcss/aspect-ratio'),
     </div>
   </div>
 </div>
-</>
+</React.Fragment>
   );
 }
 

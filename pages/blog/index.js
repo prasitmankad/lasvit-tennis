@@ -73,7 +73,7 @@ function BlogPageContainer({ allData, preview }) {
   var dt = new Date();
 
   return (
-    <>
+    <React.Fragment>
       <RenderHeader data={allData.globalData} />
       <div
         className={
@@ -115,13 +115,13 @@ function BlogPageContainer({ allData, preview }) {
                       }
                     >
                       {post.tags ? (
-                        <>
+                        <React.Fragment>
                           {post.tags.map((tag) => (
-                            <>{tag.value + " | "}</>
+                            <React.Fragment>{tag.value + " | "}</React.Fragment>
                           ))}
-                        </>
+                        </React.Fragment>
                       ) : (
-                        <></>
+                        <React.Fragment></React.Fragment>
                       )}
                     </p>
                     <Link href={post.slug.current}>
@@ -166,7 +166,7 @@ function BlogPageContainer({ allData, preview }) {
         </div>
       </div>
       <RenderFooter data={allData.globalData} />
-    </>
+    </React.Fragment>
   );
 }
 

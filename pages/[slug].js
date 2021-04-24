@@ -1,3 +1,4 @@
+import React, {Fragment} from "react";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
 import Error from "next/error";
@@ -38,7 +39,7 @@ const query = `{
         heading,links[]->
       }
     },
-    siteSettings
+    siteSettings{...,homepage->{slug,title}},
 	},
   'pageData': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
     slug,
@@ -99,11 +100,11 @@ function PageContainer({ allData, preview, slug }) {
   });
 
   return (
-    <>
+    <React.Fragment>
       <RenderHeader data={allData.globalData} />
       <RenderSections data={allData} />
       <RenderFooter data={allData.globalData} />
-    </>
+    </React.Fragment>
   );
 }
 
