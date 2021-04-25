@@ -8,7 +8,6 @@ import { getClient } from "../../utils/sanity";
 import { query } from "../../utils/query";
 import { useTranslation } from "react-i18next";
 
-
 const PAGE_TITLE = "Courses";
 
 export const getStaticProps = async ({ preview = false }) => {
@@ -32,12 +31,11 @@ export function CoursesPage({ courses, allData, preview }) {
     return <Error statusCode={404} />;
   }
 
-
   return (
     <>
       <RenderHeader data={allData.globalData} />
 
-      <div class="max-w-xl mx-auto lg:max-w-7xl">
+      <div className="max-w-xl mx-auto lg:max-w-7xl">
         <div className="py-10 px-16">
           <h1 className="text-3xl font-extrabold text-blue-gray-900">
             {t("courses.catalog")}

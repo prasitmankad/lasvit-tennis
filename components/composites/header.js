@@ -2,16 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getClientDetailAction } from "../../modules/actions/clientAction";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { LoginModal } from "../modals/LoginModal";
+import { PayloadModal } from "../modals/PayloadModal";
+import { LanguageButton } from "../LanguageButton";
 
 function HeaderPure(props) {
   const { client } = props;
   const dispatch = useDispatch();
+  const billingModal = useSelector((state) => state.billingState.modal);
   const [loginModal, showLoginModal] = React.useState(false);
 
   //  console.log("Header Props // ", props);
@@ -26,6 +29,7 @@ function HeaderPure(props) {
         {({ open }) => (
           <React.Fragment>
             {loginModal && <LoginModal onClose={() => showLoginModal(false)} />}
+            {billingModal && <PayloadModal />}
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
@@ -157,6 +161,8 @@ function HeaderPure(props) {
                   );
                 })}
               </div>
+
+              <LanguageButton />
             </div>
 
             <Transition
