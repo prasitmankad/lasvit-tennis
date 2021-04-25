@@ -1,15 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { urlFor } from "../utils/sanity";
 import Link from "next/link";
 import { LoginModal } from "../components/modals/LoginModal";
+import { LanguageButton } from "../components/LanguageButton";
 import { PayloadModal } from "../components/modals/PayloadModal";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getClientDetailAction } from "../modules/actions/clientAction";
 import { Loader } from "../components/Loader";
 import "../configureAmplify";
 
 function PageWrapperPure(props) {
+  const { t } = useTranslation();
   const { page = null, children, loading, client } = props;
   const dispatch = useDispatch();
   const billingModal = useSelector((state) => state.billingState.modal);
@@ -41,7 +44,7 @@ function PageWrapperPure(props) {
                         .quality(80)}
                       alt={
                         page.siteData.logo?.alt ||
-                        `Photo of ${page.siteData.title}`
+                        t("photoAlt", { page: page.siteData.title })
                       }
                     />
                   </a>
@@ -50,22 +53,22 @@ function PageWrapperPure(props) {
               <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
                 <Link href="/">
                   <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                    Home
+                    {t("menu.home")}
                   </a>
                 </Link>
                 <Link href="/courses">
                   <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                    Courses
+                    {t("menu.courses")}
                   </a>
                 </Link>
                 <Link href="/about">
                   <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                    About
+                    {t("menu.about")}
                   </a>
                 </Link>
                 <Link href="/blog">
                   <a className="mr-5 hover:text-gray-900 cursor-pointer">
-                    Blog
+                    {t("menu.blog")}
                   </a>
                 </Link>
                 {client && client.name ? (
@@ -75,8 +78,13 @@ function PageWrapperPure(props) {
                     </a>
                   </Link>
                 ) : (
-                  <div onClick={() => showLoginModal(true)}>Sign in</div>
+                  <div onClick={() => showLoginModal(true)}>
+                    {t("menu.signIn")}
+                  </div>
                 )}
+
+                <LanguageButton />
+                {t("test")}
               </nav>
             </div>
           </header>
@@ -96,7 +104,7 @@ function PageWrapperPure(props) {
                           .quality(80)}
                         alt={
                           page.siteData.logo?.alt ||
-                          `Photo of ${page.siteData.title}`
+                          t("photoAlt", { page: page.siteData.title })
                         }
                       />
                     </a>
@@ -104,7 +112,7 @@ function PageWrapperPure(props) {
                 )}
 
                 <p className="text-sm text-gray-600 sm:ml-6 sm:mt-0 mt-4">
-                  © 2021 Lasvit Tennis. All rights reserved.
+                  {t("footer.lasvit")}
                 </p>
 
                 <span className="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
@@ -115,9 +123,9 @@ function PageWrapperPure(props) {
                       className="text-gray-600 ml-1"
                       // target="_blank"
                     >
-                      Privacy Policy
+                      {t("footer.privacy")}
                     </a>
-                  </Link>{" "}
+                  </Link>
                   //
                   <Link href="/terms">
                     <a
@@ -126,7 +134,7 @@ function PageWrapperPure(props) {
                       className="text-gray-600 ml-1"
                       // target="_blank"
                     >
-                      Website Terms
+                      {t("footer.terms")}
                     </a>
                   </Link>
                 </span>

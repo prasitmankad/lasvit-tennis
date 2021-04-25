@@ -5,6 +5,8 @@ import { createWrapper } from "next-redux-wrapper";
 import store from "../modules/store";
 import "../configureAmplify";
 
+import "../translations/i18n";
+
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
