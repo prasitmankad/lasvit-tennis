@@ -25,7 +25,7 @@ function HeaderPure(props) {
       <Popover className="relative bg-white">
         {({ open }) => (
           <React.Fragment>
-          {loginModal && <LoginModal onClose={() => showLoginModal(false)} />}
+            {loginModal && <LoginModal onClose={() => showLoginModal(false)} />}
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
@@ -122,14 +122,16 @@ function HeaderPure(props) {
                   return item.button !== undefined ? (
                     <>
                       {client && client.name ? (
-                        <Link href="/account">
-                          <a
-                            key={item.text}
-                            className="text-base font-medium text-gray-500 hover:text-gray-900"
-                          >
-                            {item.text}
-                          </a>
-                        </Link>
+                        <React.Fragment key={item._key}>
+                          <Link href={"/" + item.link.slug.current}>
+                            <a
+                              key={client.name}
+                              className="text-base font-medium text-gray-500 hover:text-gray-900"
+                            >
+                              {client.name}
+                            </a>
+                          </Link>
+                        </React.Fragment>
                       ) : (
                         <div
                           className="cursor-pointer"
@@ -225,18 +227,37 @@ function HeaderPure(props) {
                         //console.log("item ", item.button);
                         return item.button !== undefined ? (
                           <>
-                            {/* <Link href={"/" + item.link.slug.current}>
-                              <a
-                                className={
-                                  "w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +
-                                  props.data.branding.primaryAccentColor.title +
-                                  " hover:bg-white hover:text-" +
-                                  props.data.branding.primaryAccentColor.title
-                                }
+                            {client && client.name ? (
+                              <React.Fragment key={item._key}>
+                                <Link href={"/" + item.link.slug.current}>
+                                  <a
+                                    key={client.name}
+                                    className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
+                                  >
+                                    <div className="ml-4 text-base font-medium text-gray-900">
+                                      {client.name}
+                                    </div>
+                                  </a>
+                                </Link>
+                              </React.Fragment>
+                            ) : (
+                              <div
+                                className="cursor-pointer"
+                                onClick={() => showLoginModal(true)}
                               >
-                                {item.text}
-                              </a>
-                            </Link> */}
+                                <a
+                                  className={
+                                    "w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +
+                                    props.data.branding.primaryAccentColor
+                                      .title +
+                                    " hover:bg-white hover:text-" +
+                                    props.data.branding.primaryAccentColor.title
+                                  }
+                                >
+                                  {item.text}
+                                </a>
+                              </div>
+                            )}
                           </>
                         ) : (
                           <React.Fragment key={item._key}></React.Fragment>

@@ -1,16 +1,38 @@
 import { courses } from "./coursesData"; // TODO : Mock data
-import { PageWrapper } from "../PageWrapper";
 import { CourseCard } from "./components/CourseCard";
+import { useRouter } from "next/router";
+import Error from "next/error";
+import RenderHeader from "../../components/render/renderHeader";
+import RenderFooter from "../../components/render/renderFooter";
+import { getClient } from "../../utils/sanity";
+import { query } from "../../utils/query";
 
-export const getStaticProps = async () => {
+const PAGE_TITLE = "Courses";
+
+export const getStaticProps = async ({ preview = false }) => {
+  var allData = await getClient(preview).fetch(query(PAGE_TITLE));
+
   return {
-    props: { courses },
+    props: { courses, preview, allData },
+    revalidate: 1,
   };
 };
 
-export function CoursesPage({ courses }) {
+export function CoursesPage({ courses, allData, preview }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  if (!allData) {
+    return <Error statusCode={404} />;
+  }
+
   return (
-    <PageWrapper page={null}>
+    <>
+      <RenderHeader data={allData.globalData} />
+
       <div class="max-w-xl mx-auto lg:max-w-7xl">
         <div className="py-10 px-16">
           <h1 className="text-3xl font-extrabold text-blue-gray-900">
@@ -23,7 +45,9 @@ export function CoursesPage({ courses }) {
           ))}
         </div>
       </div>
-    </PageWrapper>
+
+      <RenderFooter data={allData.globalData} />
+    </>
   );
 }
 
