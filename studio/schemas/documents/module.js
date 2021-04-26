@@ -13,36 +13,35 @@ export default {
       required: true,
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the required field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
-    {
-      name: "slug",
-      type: "slug",
-      title: "Slug",
-      description: "Required to generate the module's unique URL.",
-      validation: (Rule) => Rule.error("You must generate a slug.").required(),
-      options: {
-        source: "title",
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-      },
-    },
+    // {
+    //   name: "slug",
+    //   type: "slug",
+    //   title: "Slug",
+    //   description: "Required to generate the module's unique URL.",
+    //   validation: (Rule) => Rule.error("You must generate a slug.").required(),
+    //   options: {
+    //     source: "title",
+    //     slugify: (input) =>
+    //       input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+    //   },
+    // },
 
     {
       name: "mainImage",
       type: "mainImage",
       title: "Cover Image",
       description: "Cover image shown for the Module.",
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "shortDescription",
       type: "text",
       title: "Short Description",
       description: "1-5 sentences describing the module.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "tags",
@@ -55,19 +54,21 @@ export default {
       title: "Parent Course(s)",
       description: "Choose course(s) to publish this module in",
       of: [{ type: "reference", weak: true, to: [{ type: "course" }] }],
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
   preview: {
     select: {
       title: "title",
-      description: "shortDescription",
+      //publishedAt: "publishedAt",
+      slug: "slug",
       media: "mainImage",
     },
-    prepare({ title, description, media }) {
+    prepare({ title = "No title", tags, media }) {
       return {
         title,
-        description,
         media,
+        subtitle: tags,
       };
     },
   },

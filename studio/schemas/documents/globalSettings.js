@@ -1,6 +1,4 @@
-// TODO: Google Analytics ID
-// TODO: Header / Footer config
-// TODO: Contact Info (address, phone, socials - see contactInfo object)
+
 
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
@@ -12,30 +10,21 @@ export default {
   icon: icoSettings,
   fieldsets: [
     {
-      name: "company",
-      title: "Company Info",
-      options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
-      },
-    },
-    {
       name: "brand",
       title: "Branding",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
     {
       name: "site",
       title: "Site Settings",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     { name: "header", title: "Header Config" },
@@ -44,335 +33,346 @@ export default {
   fields: [
     // Company Info
     {
-      name: "title",
-      type: "string",
-      title: "Company Name",
-      fieldset: "company",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      name: "tagline",
-      type: "string",
-      title: "Tagline",
-      fieldset: "company",
-      description:
-        "1 sentence slogan or tagline used in head and hero section.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      name: "siteDescription",
-      type: "text",
-      title: "Site Description",
-      fieldset: "company",
-      description:
-        "A short description of the website, used in page head and hero sections.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      title: "Contact",
-      name: "contact",
+      title: "Company Info",
+      name: "businessInfo",
       type: "object",
-      fieldset: "company",
-      description: "Address and other contact info.",
-      // validation: (Rule) =>
-      //   Rule.warning("Please fill out the field.").required(),
+      description:
+        "Basic business information that's reused in multiple locations through the site.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
       fields: [
-        { name: "streetNo", type: "string", title: "Street number" },
-        { name: "street", type: "string", title: "Street name" },
-        { name: "city", type: "string", title: "City" },
-        { name: "zip", type: "string", title: "Zip Code" },
-        { name: "country", type: "string", title: "Country" },
-        { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
-      ],
-    },
-
-    {
-      name: "team",
-      type: "array",
-      title: "Team Members",
-      fieldset: "company",
-      description:
-        "Core team members of the company. Used on teams / about pages.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      of: [
         {
-          type: "reference",
-          to: [{ type: "teamMember" }],
+          name: "title",
+          type: "string",
+          title: "Company Name",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
+        {
+          name: "tagline",
+          type: "string",
+          title: "Tagline",
+          description:
+            "1 sentence slogan or tagline used in head and hero section.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+        },
+        {
+          name: "siteDescription",
+          type: "text",
+          title: "Site Description",
+          description:
+            "A short description of the website, used in page head and hero sections.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+        },
+        {
+          title: "Contact",
+          name: "contact",
+          type: "object",
+          description: "Address and other contact info.",
+          // validation: (Rule) =>
+          //   Rule.required().error("This field is required."),
+          options: {
+            collapsible: true,
+            collapsed: false,
+            columns: 1,
+          },
+          fields: [
+            { name: "streetNo", type: "string", title: "Street number" },
+            { name: "street", type: "string", title: "Street name" },
+            { name: "city", type: "string", title: "City" },
+            { name: "zip", type: "string", title: "Zip Code" },
+            { name: "country", type: "string", title: "Country" },
+            { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
+          ],
+        },
+
       ],
     },
 
     // Brand Info
     {
-      name: "companyLogo",
-      type: "image",
-      title: "Logo",
-      fieldset: "brand",
-      description: "Used across the site wherever a company logo is required.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      options: { hotspot: true },
+      title: "Branding",
+      name: "branding",
+      type: "object",
+      description: "Logo and branding settigns that apply throughout the site.",
+      options: {
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
+      },
       fields: [
         {
-          name: "alt",
-          type: "string",
-          title: "Alternative Text",
-          description: "Shown to robots and if images can't be loaded.",
-          options: {
-            isHighlighted: true,
-          },
+          name: "companyLogo",
+          type: "image",
+          title: "Logo",
+          description:
+            "Used across the site wherever a company logo is required.",
           validation: (Rule) =>
-            Rule.warning("Please fill out the field.").required(),
+            Rule.required().error("This field is required."),
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative Text",
+              description: "Shown to robots and if images can't be loaded.",
+              options: {
+                isHighlighted: true,
+              },
+              validation: (Rule) =>
+                Rule.required().error("This field is required."),
+            },
+          ],
+        },
+        {
+          name: "primaryTextColor",
+          type: "colorlist", // required
+          title: "Primary Text Color",
+          description:
+            "Used as primary text color across the site. Default is White #ffffff",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
+            ],
+          },
+        },
+        {
+          name: "primaryAccentColor",
+          type: "colorlist", // required
+          title: "Primary Accent Color",
+          description:
+            "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
+            ],
+          },
+        },
+        {
+          name: "secondaryAccentColor",
+          type: "colorlist", // required
+          title: "Secondary Accent Color",
+          description: "Used as secondary accent color across the site.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              { title: "white", value: "#ffffff" },
+              { title: "gray", value: "#c0ccda" },
+              { title: "gray-dark", value: "#3c4858" },
+              { title: "gray-darkest", value: "#1f2d3d" },
+              { title: "pink", value: "#FF6A64" },
+              { title: "orange", value: "#F15926" },
+              { title: "teal-light", value: "#31E2E8" },
+              { title: "teal", value: "#20C0D9" },
+              { title: "teal-dark", value: "#01ADCA" },
+              { title: "yellow", value: "#FFDE4E" },
+            ],
+          },
+        },
+      ],
+    },
+
+    // Site Settings
+    {
+      title: "Site Settings",
+      name: "siteSettings",
+      type: "object",
+      description: "General Site Settings.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
+      },
+      fields: [
+        {
+          name: "url",
+          type: "url",
+          title: "Site Address",
+          description:
+            "The main site url to create canonical url links to other pages",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+        },
+        {
+          name: "homepage",
+          type: "reference",
+          title: "Home Page",
+          description: "Choose the page to be the home page of the site.",
+          //weak: true,
+          to: { type: "page" },
+        },
+        {
+          title: "Instagram",
+          name: "instagram",
+          type: "string",
+        },
+        {
+          title: "Facebook",
+          name: "facebook",
+          type: "string",
+        },
+        {
+          title: "Error 404 Page Message",
+          name: "error404",
+          type: "string",
+          description: "Message to show on any Error 404 Pages.",
         },
       ],
     },
     {
-      name: "primaryTextColor",
-      type: "colorlist", // required
-      title: "Primary Text Color",
-      fieldset: "brand",
-      description: "Used as primary text color across the site.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      options: {
-        borderradius: {
-          outer: "100%",
-          inner: "100%",
-        },
-        list: [
-          { title: "White", value: "#ffffff" },
-
-          { title: "Pink", value: "#FF6A64" },
-          { title: "Orange", value: "#F15926" },
-          { title: "Light Teal", value: "#31E2E8" },
-          { title: "Light Teal", value: "#20C0D9" },
-          { title: "Dark Teal", value: "#01ADCA" },
-          { title: "Yellow", value: "#FFDE4E" },
-          { title: "Mid Grey", value: "#464343" },
-        ],
-      },
-    },
-    {
-      name: "primaryAccentColor",
-      type: "colorlist", // required
-      title: "Primary Accent Color",
-      fieldset: "brand",
-      description:
-        "Used as primary accent color across the site. Used for buttons, hyperlinks, line accents etc.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      options: {
-        borderradius: {
-          outer: "100%",
-          inner: "100%",
-        },
-        list: [
-          { title: "White", value: "#ffffff" },
-
-          { title: "Pink", value: "#FF6A64" },
-          { title: "Orange", value: "#F15926" },
-          { title: "Light Teal", value: "#31E2E8" },
-          { title: "Light Teal", value: "#20C0D9" },
-          { title: "Dark Teal", value: "#01ADCA" },
-          { title: "Yellow", value: "#FFDE4E" },
-          { title: "Mid Grey", value: "#464343" },
-        ],
-      },
-    },
-    {
-      name: "secondaryAccentColor",
-      type: "colorlist", // required
-      title: "Secondary Accent Color",
-      fieldset: "brand",
-      description: "Used as secondary accent color across the site.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      options: {
-        borderradius: {
-          outer: "100%",
-          inner: "100%",
-        },
-        list: [
-          { title: "Pink", value: "#FF6A64" },
-          { title: "Orange", value: "#F15926" },
-          { title: "Light Teal", value: "#31E2E8" },
-          { title: "Light Teal", value: "#20C0D9" },
-          { title: "Dark Teal", value: "#01ADCA" },
-          { title: "Yellow", value: "#FFDE4E" },
-          { title: "Mid Grey", value: "#464343" },
-        ],
-      },
-    },
-    // Site Settings
-    {
-      name: "url",
-      type: "url",
-      title: "Site Address",
-      fieldset: "site",
-      description:
-        "The main site url to create canonical url links to other pages",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-    },
-    {
-      name: "frontpage",
-      type: "reference",
-      title: "Home Page",
-      fieldset: "site",
-      description: "Choose the page to be the home page of the site.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
-      to: { type: "page" },
-    },
-    {
-      title: "Instagram",
-      name: "instagram",
-      type: "string",
-      fieldset: "site",
-    },
-    {
-      title: "Facebook",
-      name: "facebook",
-      type: "string",
-      fieldset: "site",
-    },
-
-    // Footer
-
-    // Left Menu Column
-    // Logo Image
-    // Company Tagline
-    // Social[s]
-    // Icon
-    // Link (to externals)
-    // Menu Column[s] – max 4
-    // Heading Text (e.g. Company, Legal, Support etc.)
-    // Link
-    // Link Text
-    // Link Route (to existing page)
-    // Newsletter
-    // Heading
-    // Message
-    // Button Icon
-    // Button Text
-    // Button Link (to Mailerlite API, add to list)
-    // Submit success message (hidden div)
-    // Submit fail message (hidden div)
-    {
-      title: "Footer",
-      name: "footer",
+      title: "Header",
+      name: "header",
       type: "object",
-      description: "Footer details. Included at the bottom of every page.",
+      description:
+        "Header details. Included at the bottom of every page. Logo and business information is pulled from the previous fields and does not need to be provided again.",
       options: {
         collapsible: true,
         collapsed: true,
         columns: 1,
       },
       fields: [
+        // Column 0 automagically added from busness info
         {
-          name: "column1",
-          type: "object",
-          title: "Column 1 Content",
-          fields: [
-            { name: "logo", type: "image", title: "Footer Logo" },
-            // Taglne automagically added from busness info
-            // { name: "tagline", type: "string", title: "Tagline" },
+          name: "menu",
+          type: "array",
+          title: "Menu",
+          description: "Define your menu items here. Keep # small.",
+          of: [
             {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
+              name: "items",
+              type: "object",
+              title: "Items",
+              fields: [
                 {
+                  name: "button",
+                  type: "boolean",
+                  title: "Make Button",
+                  description:
+                    "Select this to make the link into a button. All buttons are placed AFTER links.",
+                },
+                {
+                  name: "highlight",
+                  type: "boolean",
+                  title: "Highlight Button",
+                  description: "Select this to highlight the button.",
+                },
+                {
+                  name: "text",
+                  type: "string",
+                  title: "Text",
+                  description: "Text on the link (or button).",
+                },
+                {
+                  name: "link",
                   type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
+                  title: "Link",
+                  weak: true,
+                  type: "reference",
+                  to: [{ type: "page" }, { type: "course" }, { type: "post" }],
+                },
+              ],
+              preview: {
+                select: {
+                  title: "text",
+                  //title: 'caption'
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      title: "Footer",
+      name: "footer",
+      type: "object",
+      description:
+        "Footer details. Included at the bottom of every page. Logo and business information is pulled from the previous fields and does not need to be provided again.",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
+      },
+      fields: [
+        // Column 0 automagically added from busness info
+        {
+          name: "columns",
+          type: "array",
+          title: "Columns",
+          description:
+            "Define your columns and their content here. Keep # of columns to max 4.",
+          of: [
+            {
+              name: "items",
+              type: "object",
+              title: "Items",
+              fields: [
+                { name: "heading", type: "string", title: "Column Heading" },
+                {
+                  name: "links",
+                  type: "array",
+                  title: "Links",
+                  of: [
+                    {
+                      type: "reference",
+                      to: [
+                        { type: "page" },
+                        { type: "course" },
+                        { type: "post" },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
           ],
-        },
-        {
-          name: "column2",
-          type: "object",
-          title: "Column 2 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "column3",
-          type: "object",
-          title: "Column 3 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "column4",
-          type: "object",
-          title: "Column 4 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "column5",
-          type: "object",
-          title: "Column 5 Content",
-          fields: [
-            { name: "heading", type: "string", title: "Column Heading" },
-            {
-              name: "links",
-              type: "array",
-              title: "Links",
-              of: [
-                {
-                  type: "reference",
-                  to: [{ type: "page" }, { type: "post" }],
-                },
-              ],
-            },
+          validation: (Rule) => [
+            // Rule.required().error("This field is required."),
+            Rule.required()
+              .max(4)
+              .min(4)
+              .error("Columns are required. Min 4 / Max 4 Columns."),
           ],
         },
         {

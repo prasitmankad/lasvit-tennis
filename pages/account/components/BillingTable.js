@@ -1,8 +1,10 @@
 import React from "react";
 import { format } from "date-fns";
 import { CurrencySymbol } from "../../courses/types";
+import { useTranslation } from "react-i18next";
 
 export function BillingTable(props) {
+  const { t } = useTranslation();
   const { nameTable, billing = [] } = props;
   const [detail, viewDetail] = React.useState(null);
 
@@ -24,16 +26,18 @@ export function BillingTable(props) {
                 <div className="min-w-full mb-24">
                   <div className="grid grid-cols-4 gap-4 bg-gray-50 border-b-2 border-gray-200">
                     <div className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      date
+                      {t("account.billing.table.date")}
                     </div>
                     <div className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      course
+                      {t("account.billing.table.course")}
                     </div>
                     <div className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      price
+                      {t("account.billing.table.price")}
                     </div>
                     <div className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      <span className="sr-only">View details</span>
+                      <span className="sr-only">
+                        {t("account.billing.table.details")}
+                      </span>
                     </div>
                   </div>
                   {billing &&
@@ -64,14 +68,14 @@ export function BillingTable(props) {
                                   )
                                 }
                               >
-                                View detail
+                                {t("account.billing.table.details")}
                               </div>
                             </div>
                           </div>
                           {detail === bill.id && (
                             <div className="transition-transform ease-out grid grid-cols-4 grap-4 bg-blue-50 bg-opacity-50">
                               <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <p>SOME PAY DETAILS...</p>
+                                <p>[TODO] SOME PAY DETAILS...</p>
                               </div>
                               <div className="col-span-3 px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <p>ID : {bill.id}</p>

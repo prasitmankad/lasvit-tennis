@@ -12,27 +12,27 @@ export default {
       title: "Basic Info",
       description: "Basic information for the Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
       name: "content",
       title: "Course Content",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 2, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
       name: "media",
       title: "Media",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
@@ -40,9 +40,9 @@ export default {
       title: "Pricing",
       description: "Set up pricing for the Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
@@ -50,9 +50,9 @@ export default {
       title: "Frequently Asked Questions",
       description: "Frequently Asked Questions for this Course.",
       options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: false, // Defines if the fieldset should be collapsed by default or not
-        columns: 1, // Defines a grid for the fields and how many columns it should have
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
   ],
@@ -66,20 +66,26 @@ export default {
       fieldset: "basic",
       description:
         "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the required field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
+      //inputComponent: SlugInput,
       fieldset: "basic",
       description: "Unique link / reference to the Course.",
+      
       options: {
         source: "title",
+        basePath: "https://lasvittennis.com",
+        // Use isUnique/maxLength just like you would w/ the regular slug field
+        //isUnique: MyCustomIsUniqueFunction,
+        maxLength: 30,
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
+      validation: (Rule) => Rule.error("You must generate a slug.").required(),
     },
     {
       name: "shortDescription",
@@ -88,8 +94,7 @@ export default {
       fieldset: "basic",
       description:
         "What is this course all about? Used in landing pages, course landing page etc.",
-      validation: (Rule) =>
-        Rule.warning("Please fill out the field.").required(),
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
 
     // Content
@@ -97,11 +102,12 @@ export default {
       title: "Course Content",
       name: "content",
       type: "object",
-      description: "Course content details. Course Modules are automatically included on the Landing Page.",
+      description:
+        "Course content details. Course Modules are automatically included on the Landing Page.",
       options: {
         collapsible: true,
-        collapsed: true,
-        columns: 2,
+        collapsed: false,
+        columns: 1,
       },
       fields: [
         // Automatically included are references to all Modules of the course
@@ -114,8 +120,6 @@ export default {
             {
               type: "reference",
               to: [{ type: "contentItem" }],
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
         },
@@ -125,6 +129,8 @@ export default {
           title: "Course Features",
           description: "Array of features for the course.",
           of: [{ type: "feature" }],
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
       ],
     },
@@ -137,15 +143,8 @@ export default {
       fieldset: "media",
       description:
         "The image should be either jpg or png. Preferably 3000 x 3000, minimum 1400 x 1400 pixels. Used on sales pages and course landing pages.",
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
-    // {
-    //   name: "tags",
-    //   type: "tags",
-    //   title: "Tags",
-    //   fieldset: "details",
-    //   description:
-    //     "List of tags that can be used for future sorting, searching.",
-    // },
 
     // Stats Section
     {
@@ -155,7 +154,7 @@ export default {
       description: "Content statistics for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -166,9 +165,7 @@ export default {
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
           validation: (Rule) =>
-            Rule.error(
-              "Please provide a title for the Hero Section."
-            ).required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "subheading",
@@ -189,6 +186,9 @@ export default {
           type: "array",
           title: "Statistics",
           description: "Set of stats for this Course.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+
           of: [
             {
               type: "object",
@@ -196,9 +196,6 @@ export default {
                 { name: "value", type: "string", title: "Value" },
                 { name: "metric", type: "string", title: "Metric" },
               ],
-
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
         },
@@ -207,13 +204,13 @@ export default {
 
     // Price Section
     {
-      title: "Pricing",
+      title: "Pricing & Billing",
       name: "pricing",
       type: "object",
-      description: "Pricing settings for this course.",
+      description: "Pricing and billing settings for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -223,6 +220,8 @@ export default {
           title: "Section Heading",
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
         {
           name: "subheading",
@@ -238,7 +237,29 @@ export default {
           description:
             "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
         },
+        {
+          name: "billingFrequency",
+          type: "string",
+          title: "Billing Frequency",
+          description:
+            "Set the billing frequency (how often the customer is charged for this Course). Also used to display on the frontend.",
 
+          options: {
+            borderradius: {
+              outer: "100%",
+              inner: "100%",
+            },
+            list: [
+              // FUTURE: Implement frequency of monthly billing - e.g. 2, 3, 4 months etc.
+              { title: "One-off", value: "oneoff" },
+              { title: "Monthly", value: "monthly" },
+              { title: "Quarterly", value: "quarterly" },
+              { title: "Yearly", value: "yearly" },
+            ],
+          },
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
+        },
         {
           name: "prices",
           type: "array",
@@ -248,15 +269,33 @@ export default {
             {
               type: "object",
               fields: [
-                { name: "symbol", type: "string", title: "Currency Symbol" },
-                { name: "currency", type: "string", title: "Currency" },
-                { name: "value", type: "number", title: "Value" },
+                {
+                  name: "symbol",
+                  type: "string",
+                  title: "Currency Symbol",
+                  validation: (Rule) =>
+                    Rule.required().error("This field is required."),
+                },
+                {
+                  name: "currency",
+                  type: "string",
+                  title: "Currency",
+                  validation: (Rule) =>
+                    Rule.required().error("This field is required."),
+                },
+                {
+                  name: "value",
+                  type: "number",
+                  title: "Value",
+                  validation: (Rule) =>
+                    Rule.required().error("This field is required."),
+                },
               ],
-
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
+
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
       ],
     },
@@ -269,7 +308,7 @@ export default {
       description: "FAQ settings for this course.",
       options: {
         collapsible: true,
-        collapsed: true,
+        collapsed: false,
         columns: 1,
       },
       fields: [
@@ -280,9 +319,7 @@ export default {
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
           validation: (Rule) =>
-            Rule.error(
-              "Please provide a title for the Hero Section."
-            ).required(),
+            Rule.required().error("This field is required."),
         },
         {
           name: "content",
@@ -300,10 +337,12 @@ export default {
             {
               type: "reference",
               to: [{ type: "faq" }],
-              // TODO: Filter on free / sneak peek content items
-              // TODO: Add free / sneak peek flag to content items
             },
           ],
+          validation: (Rule) =>
+            Rule.required()
+              .min(1)
+              .error("This field is required and at least 1 is required."),
         },
       ],
     },
@@ -311,9 +350,17 @@ export default {
   preview: {
     select: {
       title: "title",
-      subtitle: "subtitle",
-      description: "description",
-      media: "coverArt",
+      //publishedAt: "publishedAt",
+      slug: "slug",
+      media: "mainImage",
+    },
+    prepare({ title = "No title", slug = {}, media }) {
+      const path = `/courses/${slug.current}`;
+      return {
+        title,
+        media,
+        subtitle: path,
+      };
     },
   },
 };

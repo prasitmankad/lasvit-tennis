@@ -2,8 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import StripeCheckout from "react-stripe-checkout";
 import { config } from "../../../modules/api/config";
+import { useTranslation } from "react-i18next";
 
 export function PayButton({ type, amount, payCourse }) {
+  const { t } = useTranslation();
+
   return (
     <StripeCheckout
       name={`Buy ${type}`}
@@ -14,7 +17,7 @@ export function PayButton({ type, amount, payCourse }) {
       allowRememberMe={false}
     >
       <div className="mt-8 block w-full bg-purple-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-purple-700">
-        Buy {type}
+        {t("courses.payButton", { type })}
       </div>
     </StripeCheckout>
   );

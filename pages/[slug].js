@@ -1,80 +1,119 @@
-import Error from "next/error";
+import React, {Fragment} from "react";
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../utils/sanity";
-import RenderSections from "../components/RenderSections";
-import { PageWrapper } from "./PageWrapper";
+import Error from "next/error";
+import Link from "next/link";
+import { urlFor } from "../utils/sanity";
+
+import RenderHeader from "../components/render/renderHeader";
+import RenderSections from "../components/render/renderSections";
+import RenderFooter from "../components/render/renderFooter";
+
+// construct query for global data and page data
+// allData -- overall grouping for global and page data in response
+// globalData -- global reusable content
+// pageData -- content for this specific page, not in draft
 
 const query = `{
-  'siteData': *[(_type == "globalSettings")][0] 
-  {
-	title,
-  tagline, 
-  siteDescription,
-  mainNavigation,
-  footerNavigation,
-  frontpage,
-  logo
+  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
+	  businessInfo {
+      title, 
+      tagline, 
+      siteDescription, 
+      contact,
+      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      },      
+    },
+    branding,
+    header {
+      menu [] {
+        ...,link-> {
+            slug,title
+            }
+      }
+    },
+    footer {
+      signup,
+      columns [] {
+        heading,links[]->
+      }
+    },
+    siteSettings{...,homepage->{slug,title}},
 	},
-  'mainContent': *[(_type == "route" && slug.current==$slug)][0] {
-    
-    page->{
-    ...,
-    content[]{
+  'pageData': *[(_type == "page" && title=="Home" && !(_id in path('drafts.**')))][0] {
+    slug,
+    title,
+    'sections':content[]{
       ...,
-      team_members[]{
-        author->{
-        _id,
-        _type,
-        bio,
-        headline,
-        image,
-        name,
-        slug
+      buttons[]{
+        ...,
+        links {route->{slug}}
+      },
+      link {text,link->{slug}},
+      'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
+        name, position, shortDescription, image[], longDescription
+      }, 
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "linkBlog" => {
+            "slug": @.reference->slug
+          }
         }
       }
+    },
+    'recentPosts': *[_type=="post" && !(_id in path('drafts.**'))]| order(publishedAt desc)[0..2]{
+      _id,
+    author->{image,name},
+    excerpt,
+    mainImage,
+    publishedAt,
+    slug,
+    tags,
+    title,
     }
   }
-}
 }`;
 
-function PageContainer({ pageData, preview, slug }) {
+function PageContainer({ allData, preview, slug }) {
+  //console.log("PageContainer Props // ", allData);
+
   const router = useRouter();
 
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
+  // If the page is not yet generated, this will be displayed initially until getStaticProps() finishes running
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  if (!pageData) {
+  if (!allData) {
     return <Error statusCode={404} />;
   }
 
   const { data: page = {} } = usePreviewSubscription(query, {
     params: { slug },
-    initialData: pageData,
-    enabled: preview || router.query.preview !== null,
+    initialData: allData,
+    enabled:
+      preview ||
+      (router.query.preview !== undefined && router.query.preview !== null),
   });
+
   return (
-    <PageWrapper page={page}>
-      <RenderSections sections={page.mainContent.page.content} />
-    </PageWrapper>
+    <React.Fragment>
+      <RenderHeader data={allData.globalData} />
+      <RenderSections data={allData} />
+      <RenderFooter data={allData.globalData} />
+    </React.Fragment>
   );
 }
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const { slug } = params;
-  var pageData = await getClient(preview).fetch(query, { slug });
-  // var settingsData = await getClient().fetch(settingsQuery);
-  // var arrData = [pageData, settingsData];
-  // pageData = arrData;
-
-  // pageData = Object.assign(settingsData)
-  // page.push(settingsData);
-  // console.log("[joined pageData] ->", pageData);
+  var allData = await getClient(preview).fetch(query, { slug });
 
   return {
-    props: { preview, pageData, slug },
+    props: { preview, allData, slug },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every second
@@ -86,7 +125,6 @@ export async function getStaticPaths() {
   var routes = await getClient().fetch(
     `*[_type == "page" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
-  // console.log("Routes =>",routes);
   return {
     paths: routes || null,
     fallback: true,

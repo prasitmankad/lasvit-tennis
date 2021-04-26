@@ -1,0 +1,44 @@
+{
+  "test": "test En",
+  "photoAlt": "Photo of {{page}}",
+  "menu": {
+    "home": "Home",
+    "courses": "Courses",
+    "about": "About",
+    "blog": "Blog",
+    "signIn": "Sign in"
+  },
+  "footer": {
+    "lasvit": "© 2021 Lasvit Tennis. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Website Terms"
+  },
+  "account": {
+    "menu": {
+      "client": "Account",
+      "billing": "Billing"
+    },
+    "client": {
+      "title": "Account",
+      "provider": "Your profile is created from {{provider}} account.",
+      "profile": "Profile",
+      "userName": "User name",
+      "photo": "Photo",
+      "info": "Personal Information",
+      "email": "Email address"
+    },
+    "billing": {
+      "title": "Billing",
+      "table": {
+        "date": "date",
+        "course": "course",
+        "price": "price",
+        "details": "View details"
+      }
+    }
+  },
+  "courses": {
+    "catalog": "Course Catalog",
+    "payButton": "Buy {{type}}"
+  }
+}
