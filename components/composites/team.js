@@ -1,8 +1,9 @@
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 function teamSection(props) {
-  console.log("teamSection props // ", props);
+  // console.log("teamSection props // ", props);
 
   return (
     <React.Fragment>

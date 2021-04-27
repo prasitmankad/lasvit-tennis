@@ -11,7 +11,6 @@
   /* CUSTOM WRAPPERS FOR EXTRACTED CLASSES */
 
   .custom_title {
-    /*  fix size for mobile */
     @apply mt-6 block xl:text-7xl font-extrabold text-4xl tracking-tight sm:text-5xl md:text-6xl sm:text-center lg:text-left 
   }
 

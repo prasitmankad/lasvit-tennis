@@ -1,24 +1,25 @@
-Overall
-TODO: - none of the Link routes work
-TODO: - Sanity CMS preview componet on pages, posts and courses
-TODO: - routing for detailed blog posts
+TODO: - pull out Header and Footer into Layout at top level to fix menu option
+
 TODO: - routing for detailed course page and course catalog
-TODO: - feature list section UI
-TODO: - course landing page UI
-TODO: - course catalog landing page UI
-TODO: - user profile page UI
-TODO: - course content detail page UI
+
 TODO: - video.js integration
 
+TODO: - course catalog landing page UI
+TODO: - course landing page UI
+TODO: - course content detail page UI
+
+TODO: - user profile page UI
+
+TODO: - Sanity CMS frontend previews for pages, posts and courses
+
+DONE: - routing for non home pages
+DONE: - routing for detailed blog posts
 DONE: - extract Tailwind CSS component classes
 DONE: - Sanity CMS preview text on schema documents & objects
 DONE: - home page hero buttons
 DONE: - home page site notice buttons
 DONE: - consistent description text on all schema fields
 DONE: - about us page contact form T&C check box (consistent styling)
-
-Jirka Tasks
-TODO: - Replace form with Mailerlite integration 
 
 Future
 FUTURE: - SEO COnfiguration

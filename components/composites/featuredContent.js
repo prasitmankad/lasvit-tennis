@@ -1,5 +1,6 @@
 // https://tailwindui.com/components/marketing/sections/feature-sections#component-fea10362c98dcf74d601fab911a1aee3
 
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";

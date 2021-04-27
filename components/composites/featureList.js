@@ -1,4 +1,5 @@
 // https://tailwindui.com/components/marketing/sections/feature-sections#component-457ed17404f82cd5c0e79a7a3bacf4e5
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { CheckIcon } from '@heroicons/react/outline'

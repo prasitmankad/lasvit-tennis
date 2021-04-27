@@ -1,9 +1,10 @@
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 
 export default function login(props) {
-  console.log("Login Props // ", props);
+  // console.log("Login Props // ", props);
 
   return (
     <React.Fragment>

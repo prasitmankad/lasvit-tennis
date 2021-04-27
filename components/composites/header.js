@@ -14,7 +14,7 @@ export default function header(props) {
     <header>
       <Popover className="relative bg-white">
         {({ open }) => (
-          <React.Fragment>
+          <React.Fragment key={open}>
             <div className="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
               <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href="/">
@@ -40,7 +40,7 @@ export default function header(props) {
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
                 <Popover className="relative">
                   {({ open }) => (
-                    <React.Fragment>
+                    <React.Fragment key={open}>
                       <Transition
                         show={open}
                         as={Fragment}
@@ -61,11 +61,11 @@ export default function header(props) {
                                 //console.log("item ", item.button);
                                 return item.button == undefined ? (
                                   <React.Fragment
-                                    key={item._key}
+                                    key={item.text}
                                   ></React.Fragment>
                                 ) : (
-                                  <React.Fragment key={item._key}>
-                                    <Link href={"/" + item.link.slug.current}>
+                                  <React.Fragment key={item.text}>
+                                    <Link href={item.link.slug.current}>
                                       <a
                                         key={item.text}
                                         className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
@@ -94,7 +94,7 @@ export default function header(props) {
                     <React.Fragment key={item._key}></React.Fragment>
                   ) : (
                     <React.Fragment key={item._key}>
-                      <Link href={"/" + item.link.slug.current}>
+                      <Link href={item.link.slug.current}>
                         <a
                           key={item.text}
                           className="text-base font-medium text-gray-500 hover:text-gray-900"
@@ -111,7 +111,7 @@ export default function header(props) {
                   //console.log("item ", item.button);
                   return item.button !== undefined ? (
                     <React.Fragment key={item._key}>
-                      <Link href={"/" + item.link.slug.current}>
+                      <Link href={item.link.slug.current}>
                         <a
                           className={
                             "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +
@@ -181,7 +181,7 @@ export default function header(props) {
                             <React.Fragment key={item._key}></React.Fragment>
                           ) : (
                             <React.Fragment key={item._key}>
-                              <Link href={"/" + item.link.slug.current}>
+                              <Link href={item.link.slug.current}>
                                 <a
                                   key={item.text}
                                   className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
@@ -201,7 +201,7 @@ export default function header(props) {
                         //console.log("item ", item.button);
                         return item.button !== undefined ? (
                           <React.Fragment key={item._key}>
-                            <Link href={"/" + item.link.slug.current}>
+                            <Link href={item.link.slug.current}>
                               <a
                                 className={
                                   "w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-" +

@@ -1,10 +1,11 @@
 // https://tailwindui.com/components/marketing/sections/footers#component-36e2a0eb52bc8006c006cae948ce6516
 
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 export default function footer(props) {
-  // console.log("Footer Props // ", props);
+  //console.log("Footer Props // ", props);
   const navigation = {
     social: [
       {

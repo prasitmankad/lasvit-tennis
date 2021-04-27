@@ -1,5 +1,6 @@
 // https://tailwindui.com/components/marketing/sections/newsletter-sections#component-f166d5961b0707369d1dd54aee4b5c87
 
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 

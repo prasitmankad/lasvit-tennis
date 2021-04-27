@@ -74,6 +74,13 @@ export const PortableText = createPortableTextComponent({
       //     </React.Fragment>
       //   );
       // },
+      undefined: (props) => {
+        // if style is undefined, don't return any content
+        //console.log("undefined block props // ", props);
+        //const style = props.node.style || "normal";
+
+        return <React.Fragment></React.Fragment>;
+      },
 
       // render text blocks
       block: (props) => {
@@ -171,7 +178,6 @@ export const PortableText = createPortableTextComponent({
         </React.Fragment>
       ),
 
-      // render image
       mainImage: (props) => (
         <React.Fragment>
           <img

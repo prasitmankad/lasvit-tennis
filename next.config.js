@@ -12,4 +12,15 @@ module.exports = {
   future: {
     webpack5: true,
   },
+  // FIXME: Find more dynamic solution based on homepage selected
+  // DOESN"T FUCKING WORK
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/home',
+  //       destination: '/',
+  //       permanent: true,
+  //     },
+  //   ]
+  // },
 };

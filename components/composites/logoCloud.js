@@ -1,4 +1,5 @@
 // https://tailwindui.com/components/marketing/sections/logo-clouds#component-fd820f87009f8bfcba4533c929686aad
+import React, { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
