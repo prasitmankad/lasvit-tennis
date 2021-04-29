@@ -15,12 +15,12 @@ export function LoginModal(props) {
       <div className="m-8">
         <div>
           <h2 className="mt-6 text-left text-3xl font-extrabold text-gray-900">
-            Sign in to your account
+            Login to your account
           </h2>
         </div>
         <div>
           <div className="mt-8 text-left text-3xl font-extrabold text-gray-900">
-            <label className="text-sm font-bold">Sign in with</label>
+            <label className="text-sm font-bold">Login with</label>
           </div>
         </div>
         <div className="flex flex-row items-center justify-evenly mb-8 w-full mt-4">

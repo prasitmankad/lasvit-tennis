@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import styles from "./IframePreview.css";
 
 // make sure the CORS path is set up for all addresses in manage.sanity.io - nothing but the console will tell you this shite and you will have to figure it out yourself
@@ -21,12 +21,12 @@ export default function CoursePreview(props) {
       : `http://localhost:3000/courses/${displayed?.slug?.current}?preview`;
 
   return (
-    <>
+    <React.Fragment>
       <div className={styles.componentWrapper}>
         <div className={styles.iframeContainer}>
           <iframe src={url} frameBorder={"0"} />
         </div>
       </div>
-    </>
+    </React.Fragment>
   );
 }

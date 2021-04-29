@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import {
   createClient,
   createImageUrlBuilder,
@@ -7,7 +9,7 @@ import {
 } from "next-sanity";
 
 import ReactPlayer from "react-player/lazy";
-const config = {
+export const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
    * These are considered “public”, but you can use environment variables
@@ -15,8 +17,9 @@ const config = {
    *
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: "2021-03-25", // use a UTC date string
   useCdn: process.env.NODE_ENV === "production",
   // withCredentials: true,
   /**
@@ -53,112 +56,182 @@ export const PortableText = createPortableTextComponent({
   serializers: {
     types: {
       // render video block
-      videoEmbed: (props) => {
-        // const { url } = props.node.url;
+      // TODO: Doesn't work - provide Content Block using video.js
+      // videoEmbed: (props) => {
+      //   // const { url } = props.node.url;
 
-        if (!props.node.url) {
-          console.log("video props ->", props);
-          return null;
-        }
+      //   if (!props.node.url) {
+      //     console.log("video props ->", props);
+      //     return null;
+      //   }
 
-        return (
-          <>
-            <div className="container px-5 py-24 mx-auto flex flex-wrap">
-              <div className="flex flex-wrap w-full">
-                    <ReactPlayer url={props.node.url} controls />
-              </div>
-            </div>
-          </>
-        );
-      },
+      //   return (
+      //     <React.Fragment>
+      //       <div className="container px-5 py-24 mx-auto flex flex-wrap">
+      //         <div className="flex flex-wrap w-full">
+      //           <ReactPlayer url={props.node.url} controls />
+      //         </div></div>
+      //     </React.Fragment>
+      //   );
+      // },
 
       // render text blocks
       block: (props) => {
         const style = props.node.style || "normal";
         if (style == "h1") {
           return (
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              {props.children}
-            </h1>
+            <React.Fragment>
+              <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading1">
+                {props.children}
+              </h1>
+            </React.Fragment>
           );
         }
         if (style == "h2") {
           return (
-            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-              {props.children}
-            </h2>
+            <React.Fragment>
+              <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2">
+                {props.children}
+              </h2>
+            </React.Fragment>
           );
         }
         if (style == "h3") {
           return (
-            <h3 className="title-font font-medium text-gray-900">
-              {props.children}
-            </h3>
+            <React.Fragment>
+              <h3 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading3">
+                {props.children}
+              </h3>
+            </React.Fragment>
+          );
+        }
+        if (style == "p") {
+          return (
+            <React.Fragment>
+              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_p">
+                {props.children}
+              </p>
+            </React.Fragment>
+          );
+        }
+        if (style == "span") {
+          return (
+            <React.Fragment>
+              <span className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_span">
+                {props.children}
+              </span>
+            </React.Fragment>
           );
         }
 
-        if (/^h\d/.test(style)) {
-          const level = style.replace(/[^\d]/g, "");
-          return React.createElement(`h${level}`, {}, props.children);
+        if (style == "li") {
+          return (
+            <React.Fragment>
+              <li className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_li">
+                {props.children}
+              </li>
+            </React.Fragment>
+          );
         }
 
+        // for any other heading tags, return standard heading no additional class names
+        if (/^h\d/.test(style)) {
+          const level = style.replace(/[^\d]/g, "");
+          return React.createElement(
+            `h${level}`,
+            {
+              className:
+                "mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl font-semibold tracking-wide text-xl",
+            },
+            props.children
+          );
+        }
+
+        //case else
         return style === "blockquote" ? (
-          <blockquote>– {props.children}</blockquote>
+          <React.Fragment>
+            <blockquote className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_blockquote">
+              – {props.children}
+            </blockquote>
+          </React.Fragment>
         ) : (
-          <p className="leading-relaxed">{props.children}</p>
+          <React.Fragment>
+            <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_p">
+              {props.children}
+            </p>
+          </React.Fragment>
         );
       },
-      // render code block
+
       code: (props) => (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
+        <React.Fragment>
+          <pre data-language={props.node.language}>
+            <code>{props.node.code}</code>
+          </pre>
+        </React.Fragment>
       ),
 
       // render image
       mainImage: (props) => (
-        <figure>
+        <React.Fragment>
           <img
             src={urlFor(props.node.asset)
               .auto("format")
-              .width(500)
+              .width("auto")
               // .height(400)
               //.fit("crop")
               .quality(80)
               .url()}
             alt={props.node.alt}
           />
-          <figcaption>{props.node.caption}</figcaption>
-        </figure>
+        </React.Fragment>
       ),
     },
     list: (props) =>
-       console.log("list", props) ||
       props.type === "bullet" ? (
-        <ul>{props.children}</ul>
+        <React.Fragment>
+          <ul className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_ul">
+            {props.children}
+          </ul>
+        </React.Fragment>
       ) : (
-        <ol>{props.children}</ol>
+        <React.Fragment>
+          <ol className="mt-6 prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_ol">
+            {props.children}
+          </ol>
+        </React.Fragment>
       ),
-    listItem: (props) =>
-      console.log("list", props) ||
-      (props.type === "bullet" ? (
-        <li>{props.children}</li>
-      ) : (
-        <li>{props.children}</li>
-      )),
     marks: {
-      strong: (props) =>
-        console.log("strong", props) || <strong>{props.children}</strong>,
-      em: (props) => console.log("em", props) || <em>{props.children}</em>,
-      code: (props) =>
-        console.log("code", props) || <code>{props.children}</code>,
-      externalLink: (props) => {
+      strong: (props) => <strong>{props.children}</strong>,
+      em: (props) => <em>{props.children}</em>,
+      code: (props) => <code>{props.children}</code>,
+      linkBlog: (props) => {
+        // Internal links
         return (
-          <Link href={props.mark.url}>
-            <a className="mr-5 hover:text-gray-900 cursor-pointer">
-              {props.children}
-            </a>
-          </Link>
+          <React.Fragment>
+            <Link href={props.mark.slug.current}>
+              <a className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_link">
+                {props.children}
+              </a>
+            </Link>
+          </React.Fragment>
+        );
+      },
+      link: (props) => {
+        return (
+          <React.Fragment>
+            <Link href={props.mark.href}>
+              <a
+                className={
+                  "prose prose-sm sm:prose lg:prose-lg xl:prose-xl text-xl custom_link"
+                }
+                target="_blank"
+                rel="noopener"
+              >
+                {props.children}
+              </a>
+            </Link>
+          </React.Fragment>
         );
       },
     },
@@ -177,5 +250,5 @@ export const previewClient = createClient({
 });
 
 // Helper function for easily switching between normal client and preview client
-export  const getClient = (usePreview) =>
+export const getClient = (usePreview) =>
   usePreview ? previewClient : sanityClient;

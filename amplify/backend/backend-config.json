@@ -1,6 +1,6 @@
 {
   "auth": {
-    "lasvittennis6c503e44": {
+    "lasvittennisaead4aab": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -16,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authlasvittennis6c503e44"
+              "userPoolId": "authlasvittennisaead4aab"
             }
           },
           "additionalAuthenticationProviders": []

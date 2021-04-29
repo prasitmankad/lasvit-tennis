@@ -1,0 +1,7 @@
+{
+  "test": "test Zh",
+  "courses": {
+    "catalog": "課程目錄",
+    "payButton": "買 {{type}}"
+  }
+}

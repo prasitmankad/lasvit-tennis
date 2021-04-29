@@ -1,5 +1,5 @@
 import { RiPagesLine as icoPages } from "react-icons/ri";
-// TODO: Fix Team Member reference fail - enforce limit and make delete button work
+import { i18n_options, baseLanguage } from "../../../translations/config";
 
 export default {
   name: "page",
@@ -9,12 +9,18 @@ export default {
   fields: [
     {
       name: "title",
-      type: "string",
+      type: "object",
       title: "Page Title",
-      description:
-        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) =>
-        Rule.error("Please fill out the required field.").required(),
+      options: i18n_options,
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Title",
+          description:
+            "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+        },
+      ],
     },
     {
       name: "slug",
@@ -22,10 +28,7 @@ export default {
       title: "Slug",
       description:
         "Required to generate the blog post unique URL. Some frontends also require this for accurate context within the overall content model to be able to show the post.",
-      validation: (Rule) =>
-        Rule.error(
-          "You must generate a slug so that the frontend can query and render the blog post."
-        ).required(),
+      validation: (Rule) => Rule.error("You must generate a slug.").required(),
       options: {
         source: "title",
         slugify: (input) =>
@@ -41,27 +44,32 @@ export default {
       of: [
         { type: "hero" },
         { type: "pageHeading" },
-        { type: "blogRoll" },
+        { type: "blog" },
         { type: "contentBlock" }, // basic content block
-        // { type: "contentRoll" },
-        // { type: "faq" },
-        // { type: "featureDetail" },
-        { type: "featuredOn" },
-        { type: "featureGrid" },
-        // { type: "featureList" },
-
-        // { type: "pricingSingle" },
+        { type: "contactForm" },
+        { type: "features" },
+        { type: "logoCloud" },
         { type: "signup" },
         { type: "siteNotice" },
-        // { type: "stats" },
         { type: "team" },
+        { type: "login" },
       ],
+      validation: (Rule) => Rule.required().error("This field is required."),
     },
   ],
 
   preview: {
     select: {
       title: "title",
+      slug: "slugs",
+    },
+    prepare({ title }) {
+      return {
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].title
+            : title,
+      };
     },
   },
 };

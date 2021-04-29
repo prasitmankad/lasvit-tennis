@@ -9,5 +9,6 @@
   "sanity-plugin-media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
   "media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
   "sanity-plugin-intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb",
-  "intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb"
+  "intl-input": "836769499d9d622e2bab7ec2729c2aa94d04e642f6f6352ce04e6dfc9f5f23cb",
+  "sanity-plugin-seo-tools": "564f33b8f2360b079d7c71dac71fb0e4efbad16ec97f1042b9cabc58c7da8533"
 }
