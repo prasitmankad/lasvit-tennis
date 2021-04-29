@@ -1,7 +1,6 @@
-
-
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
+import { i18n_options, baseLanguage } from "../../../translations/config";
 
 export default {
   name: "globalSettings",
@@ -90,7 +89,6 @@ export default {
             { name: "geolocation", type: "geopoint", title: "GPS Coordinates" },
           ],
         },
-
       ],
     },
 
@@ -298,9 +296,16 @@ export default {
                 },
                 {
                   name: "text",
-                  type: "string",
-                  title: "Text",
-                  description: "Text on the link (or button).",
+                  type: "object",
+                  options: i18n_options,
+                  fields: [
+                    {
+                      name: "text",
+                      type: "string",
+                      title: "Text",
+                      description: "Text on the link (or button).",
+                    },
+                  ],
                 },
                 {
                   name: "link",
@@ -315,6 +320,15 @@ export default {
                 select: {
                   title: "text",
                   //title: 'caption'
+                },
+                prepare({ title }) {
+                  console.log("[obj]", title);
+                  return {
+                    title:
+                      title && typeof title === "object"
+                        ? title[baseLanguage].text
+                        : title,
+                  };
                 },
               },
             },

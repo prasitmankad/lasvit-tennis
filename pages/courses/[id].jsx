@@ -8,10 +8,8 @@ import { createBillingAction } from "../../modules/actions/apiAction";
 import { useRouter } from "next/router";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
-import { getClient } from "../../utils/sanity";
-import { query } from "../../utils/query";
-
-const PAGE_TITLE = "Courses";
+import { sanityClient } from "../../utils/sanity";
+import { query } from "../../modules/groq/page";
 
 export const getStaticPaths = async () => {
   const paths = courses.map((course) => {
@@ -27,7 +25,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  var allData = await getClient(false).fetch(query(PAGE_TITLE));
+  var allData = await sanityClient.fetch(query, { slug: "courses" });
   const id = context.params.id;
   const data = courses.find((course) => course.id === Number(id)) || null;
 

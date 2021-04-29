@@ -9,7 +9,7 @@ export function MenuBar(props) {
   return (
     <nav
       aria-label="Sections"
-      className="hidden flex-shrink-0 w-96 bg-white border-r border-blue-gray-200 xl:flex xl:flex-col"
+      className="flex-shrink-0 w-96 bg-white border-r border-blue-gray-200 xl:flex xl:flex-col"
     >
       <div className="flex-1 min-h-0 overflow-y-auto">
         <div

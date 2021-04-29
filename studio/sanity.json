@@ -17,13 +17,12 @@
     "@sanity/color-input",
     "media-library",
     "color-list",
-    "autocomplete-tags"
+    "autocomplete-tags",
+    "intl-input"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [

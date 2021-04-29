@@ -75,7 +75,7 @@ export default {
       //inputComponent: SlugInput,
       fieldset: "basic",
       description: "Unique link / reference to the Course.",
-      
+
       options: {
         source: "title",
         basePath: "https://lasvittennis.com",

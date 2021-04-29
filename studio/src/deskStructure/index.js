@@ -60,7 +60,6 @@ export default () =>
               S.documentTypeListItem("module").title("Modules"),
               S.documentTypeListItem("contentItem").title("Content Items"),
               S.documentTypeListItem("faq").title("FAQs"),
-
             ])
         ),
 
@@ -71,8 +70,6 @@ export default () =>
         .child(
           S.documentList().title("Team Members").filter('_type == "teamMember"')
         ),
-
-      
     ]);
 
 export const getDefaultDocumentNode = (props) => {
@@ -99,12 +96,6 @@ export const getDefaultDocumentNode = (props) => {
     return S.document().views([
       S.view.form(),
       S.view.component(PostPreview).title("Preview Mode"),
-    ]);
-  }
-  if (schemaType === "page") {
-    return S.document().views([
-      S.view.form(),
-      S.view.component(PagePreview).title("Preview Mode"),
     ]);
   }
 

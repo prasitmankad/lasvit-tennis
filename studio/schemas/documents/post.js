@@ -103,8 +103,7 @@ export default {
       name: "author",
       title: "Author",
       type: "reference",
-      description:
-        "Author that wrote this blog post.",
+      description: "Author that wrote this blog post.",
       validation: (Rule) => Rule.required().error("This field is required."),
       to: [{ type: "teamMember" }],
     },

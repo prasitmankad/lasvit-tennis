@@ -10,14 +10,14 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { LoginModal } from "../modals/LoginModal";
 import { PayloadModal } from "../modals/PayloadModal";
 import { LanguageButton } from "../LanguageButton";
+import { useLanguage } from "../../hooks/useLanguage";
 
 function HeaderPure(props) {
   const { client } = props;
   const dispatch = useDispatch();
   const billingModal = useSelector((state) => state.billingState.modal);
   const [loginModal, showLoginModal] = React.useState(false);
-
-  //  console.log("Header Props // ", props);
+  const { l } = useLanguage();
 
   React.useEffect(() => {
     !client && dispatch(getClientDetailAction());
@@ -72,8 +72,7 @@ function HeaderPure(props) {
                         >
                           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                              {props.data.header.menu.map((item) => {
-                                //console.log("item ", item.button);
+                              {props.data.header.menu.map((item, i) => {
                                 return item.button == undefined ? (
                                   <React.Fragment
                                     key={item._key}
@@ -82,12 +81,12 @@ function HeaderPure(props) {
                                   <React.Fragment key={item._key}>
                                     <Link href={"/" + item.link.slug.current}>
                                       <a
-                                        key={item.text}
+                                        key={i}
                                         className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                       >
                                         <div className="ml-4">
                                           <p className="text-base font-medium text-gray-900">
-                                            {item.text}
+                                            {l(item.text)}
                                           </p>
                                         </div>
                                       </a>
@@ -103,17 +102,17 @@ function HeaderPure(props) {
                   )}
                 </Popover>
 
-                {props.data.header.menu.map((item) => {
+                {props.data.header.menu.map((item, i) => {
                   return item.button !== undefined ? (
                     <React.Fragment key={item._key}></React.Fragment>
                   ) : (
                     <React.Fragment key={item._key}>
                       <Link href={"/" + item.link.slug.current}>
                         <a
-                          key={item.text}
+                          key={i}
                           className="text-base font-medium text-gray-500 hover:text-gray-900"
                         >
-                          {item.text}
+                          {l(item.text)}
                         </a>
                       </Link>
                     </React.Fragment>
@@ -122,7 +121,6 @@ function HeaderPure(props) {
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 {props.data.header.menu.map((item) => {
-                  //console.log("item ", item.button);
                   return item.button !== undefined ? (
                     <>
                       {client && client.name ? (
@@ -151,7 +149,7 @@ function HeaderPure(props) {
                               props.data.branding.primaryAccentColor.title
                             }
                           >
-                            {item.text}
+                            {l(item.text)}
                           </a>
                         </div>
                       )}
@@ -207,7 +205,7 @@ function HeaderPure(props) {
                     </div>
                     <div className="mt-6">
                       <nav className="grid grid-cols-1 gap-7">
-                        {props.data.header.menu.map((item) => {
+                        {props.data.header.menu.map((item, i) => {
                           //console.log("item ", item.button);
                           return item.button !== undefined ? (
                             <React.Fragment key={item._key}></React.Fragment>
@@ -215,11 +213,11 @@ function HeaderPure(props) {
                             <React.Fragment key={item._key}>
                               <Link href={"/" + item.link.slug.current}>
                                 <a
-                                  key={item.text}
+                                  key={i}
                                   className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
                                 >
                                   <div className="ml-4 text-base font-medium text-gray-900">
-                                    {item.text}
+                                    {l(item.text)}
                                   </div>
                                 </a>
                               </Link>
@@ -260,7 +258,7 @@ function HeaderPure(props) {
                                     props.data.branding.primaryAccentColor.title
                                   }
                                 >
-                                  {item.text}
+                                  {l(item.text)}
                                 </a>
                               </div>
                             )}

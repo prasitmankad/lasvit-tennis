@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { ExclamationIcon } from "@heroicons/react/solid";
 import PropTypes from "prop-types";
 import * as composites from "../composites";
+
 function RenderSections(props) {
   console.log("AllData Props ->  ", props);
   // reconstruct object
@@ -77,16 +78,15 @@ function RenderSections(props) {
         let sectionData = { sectionData: { ...section } };
         if (section._type === "blog") {
           //console.log("section type // ", section._type)
-           let postsData = { postsData: [ ...props.data.pageData.recentPosts ] };
+          let postsData = { postsData: [...props.data.pageData.recentPosts] };
 
           return (
             <React.Fragment key={section._key}>
-            <SectionComponent
-              
-              {...sectionData} // send section to associated UI component
-              {...globalData} // send global content and params
-              {...postsData}
-            />
+              <SectionComponent
+                {...sectionData} // send section to associated UI component
+                {...globalData} // send global content and params
+                {...postsData}
+              />
             </React.Fragment>
           );
         } else {

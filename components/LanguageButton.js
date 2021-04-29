@@ -4,12 +4,8 @@ import i18n from "i18next";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import { setLanguage } from "../translations/utils";
-
-const flag = {
-  en: "https://lipis.github.io/flag-icon-css/flags/4x3/um.svg",
-  zh: "https://lipis.github.io/flag-icon-css/flags/4x3/cn.svg",
-};
+import { flag } from "../translations/config";
+import { useLanguage } from "../hooks/useLanguage";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,6 +14,7 @@ function classNames(...classes) {
 export function LanguageButton() {
   const [lang, setLang] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const { setLangMutate } = useLanguage();
 
   React.useEffect(() => {
     setLang(i18n.language);
@@ -71,7 +68,7 @@ export function LanguageButton() {
                           onClick={() => {
                             setLang(_);
                             setOpen(false);
-                            setLanguage(_);
+                            setLangMutate(_);
                           }}
                         >
                           <img className="w-8 h-8" src={flag[_]} alt="" />

@@ -14,7 +14,7 @@ import teamMember from "./documents/teamMember";
 
 // import objects
 import blockContent from "./components/objects/blockContent";
-import button from "./components/objects/button"; 
+import button from "./components/objects/button";
 import { videoEmbed } from "./components/objects/embeds";
 import feature from "./components/objects/feature";
 import linkInternal from "./components/objects/linkInternal";
@@ -51,11 +51,10 @@ export default createSchema({
       button,
       videoEmbed,
       feature,
-      
+
       linkInternal,
       linkExternal,
       mainImage,
-
     ])
     .concat(allPlugs),
 });

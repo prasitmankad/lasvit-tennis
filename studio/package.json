@@ -35,6 +35,7 @@
     "resize-observer": "^1.0.0",
     "sanity-plugin-autocomplete-tags": "^1.0.1",
     "sanity-plugin-color-list": "^2.0.1",
+    "sanity-plugin-intl-input": "^5.0.6",
     "sanity-plugin-media-library": "^1.0.5",
     "vercel": "^22.0.0"
   },

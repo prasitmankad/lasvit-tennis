@@ -6,16 +6,14 @@ import { PageBilling } from "./components/PageBilling";
 import { useRouter } from "next/router";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
-import { getClient } from "../../utils/sanity";
-import { query } from "../../utils/query";
-
-const PAGE_TITLE = "Account";
+import { sanityClient, getClient } from "../../utils/sanity";
+import { query } from "../../modules/groq/page";
 
 export async function getStaticProps({ preview = false }) {
-  var allData = await getClient(preview).fetch(query(PAGE_TITLE));
+  var pageData = await sanityClient.fetch(query, { slug: "account" });
 
   return {
-    props: { preview, allData },
+    props: { preview, pageData },
     revalidate: 1,
   };
 }
@@ -30,17 +28,15 @@ const component = {
   [PageType.BILLING]: PageBilling,
 };
 
-function AccountPage(props) {
-  const { allData, preview } = props;
+function AccountPage({ pageData }) {
   const router = useRouter();
-
   const [pageView, setPageView] = React.useState(PageType.ACCOUNT);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  if (!allData) {
+  if (!pageData) {
     return <Error statusCode={404} />;
   }
 
@@ -48,9 +44,9 @@ function AccountPage(props) {
 
   return (
     <>
-      <RenderHeader data={allData.globalData} />
+      <RenderHeader data={pageData.globalData} />
 
-      <div className="relative flex-1 flex flex-col w-full bg-white focus:outline-none">
+      <div className="relative max-w-7xl mx-auto flex-1 flex flex-col w-full bg-white focus:outline-none">
         <main className="flex-1 flex overflow-hidden">
           <div className="flex-1 flex flex-col overflow-y-auto xl:overflow-hidden">
             <div className="flex-1 flex xl:overflow-hidden">
@@ -61,7 +57,7 @@ function AccountPage(props) {
         </main>
       </div>
 
-      <RenderFooter data={allData.globalData} />
+      <RenderFooter data={pageData.globalData} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import i18n from "i18next";
-
+import { baseLanguage } from "./config";
 const I18N = "i18n-lang";
 
 export function setLanguage(lang) {
@@ -12,6 +12,6 @@ export function getLanguage() {
     const lang = localStorage.getItem(I18N);
     return lang;
   } catch (error) {
-    return null;
+    return baseLanguage;
   }
 }

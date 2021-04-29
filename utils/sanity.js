@@ -9,7 +9,7 @@ import {
 } from "next-sanity";
 
 import ReactPlayer from "react-player/lazy";
-const config = {
+export const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
    * These are considered “public”, but you can use environment variables

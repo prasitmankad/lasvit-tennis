@@ -2,9 +2,11 @@
 
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function footer(props) {
-  // console.log("Footer Props // ", props);
+  const { l } = useLanguage();
+
   const navigation = {
     social: [
       {
@@ -71,9 +73,7 @@ export default function footer(props) {
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <Link href="{item.href}" key={item.title + item.href}>
-                  <a
-                    className="text-gray-700 hover:text-white-500"
-                  >
+                  <a className="text-gray-700 hover:text-white-500">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
                   </a>
@@ -89,7 +89,11 @@ export default function footer(props) {
                 </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[0].links.map((item) => (
-                    <li key={props.data.footer.columns[0].heading + item.slug.current}>
+                    <li
+                      key={
+                        props.data.footer.columns[0].heading + item.slug.current
+                      }
+                    >
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -99,7 +103,7 @@ export default function footer(props) {
                             props.data.branding.primaryAccentColor.title
                           }
                         >
-                          {item.title}
+                          {l(item.title)}
                         </a>
                       </Link>
                     </li>
@@ -122,7 +126,7 @@ export default function footer(props) {
                             props.data.branding.primaryAccentColor.title
                           }
                         >
-                          {item.title}
+                          {l(item.title)}
                         </a>
                       </Link>
                     </li>
@@ -138,7 +142,7 @@ export default function footer(props) {
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
                     <li key={item.slug.current}>
-                      <Link href={item.slug.current} >
+                      <Link href={item.slug.current}>
                         <a
                           className={
                             "text-base text-" +
@@ -147,7 +151,7 @@ export default function footer(props) {
                             props.data.branding.primaryAccentColor.title
                           }
                         >
-                          {item.title}
+                          {l(item.title)}
                         </a>
                       </Link>
                     </li>
@@ -160,7 +164,11 @@ export default function footer(props) {
                 </h4>
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[3].links.map((item) => (
-                    <li key={props.data.footer.columns[3].heading + item.slug.current}>
+                    <li
+                      key={
+                        props.data.footer.columns[3].heading + item.slug.current
+                      }
+                    >
                       <Link href={item.slug.current}>
                         <a
                           className={
@@ -170,7 +178,7 @@ export default function footer(props) {
                             props.data.branding.primaryAccentColor.title
                           }
                         >
-                          {item.title}
+                          {l(item.title)}
                         </a>
                       </Link>
                     </li>

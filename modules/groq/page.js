@@ -1,4 +1,4 @@
-export const query = (title) => `{
+export const query = `{
   'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
 	  businessInfo {
       title, 
@@ -20,12 +20,15 @@ export const query = (title) => `{
     footer {
       signup,
       columns [] {
-        heading,links[]->
+        heading,links[]->{
+          slug,
+          title
+        }
       }
     },
     siteSettings{...,homepage->{slug,title}},
 	},
-  'pageData': *[(_type == "page" && title=="${title}" && !(_id in path('drafts.**')))][0] {
+  'pageData': *[(_type == "page" && slug["current"]==$slug && !(_id in path('drafts.**')))][0] {
     slug,
     title,
     'sections':content[]{

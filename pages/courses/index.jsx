@@ -4,22 +4,20 @@ import { useRouter } from "next/router";
 import Error from "next/error";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
-import { getClient } from "../../utils/sanity";
-import { query } from "../../utils/query";
+import { sanityClient } from "../../utils/sanity";
+import { query } from "../../modules/groq/page";
 import { useTranslation } from "react-i18next";
 
-const PAGE_TITLE = "Courses";
-
-export const getStaticProps = async ({ preview = false }) => {
-  var allData = await getClient(preview).fetch(query(PAGE_TITLE));
+export async function getStaticProps() {
+  var pageData = await sanityClient.fetch(query, { slug: "courses" });
 
   return {
-    props: { courses, preview, allData },
+    props: { courses, pageData },
     revalidate: 1,
   };
-};
+}
 
-export function CoursesPage({ courses, allData, preview }) {
+function CoursesPage({ courses, pageData }) {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -27,13 +25,13 @@ export function CoursesPage({ courses, allData, preview }) {
     return <div>Loading...</div>;
   }
 
-  if (!allData) {
+  if (!pageData) {
     return <Error statusCode={404} />;
   }
 
   return (
     <>
-      <RenderHeader data={allData.globalData} />
+      <RenderHeader data={pageData.globalData} />
 
       <div className="max-w-xl mx-auto lg:max-w-7xl">
         <div className="py-10 px-16">
@@ -48,7 +46,7 @@ export function CoursesPage({ courses, allData, preview }) {
         </div>
       </div>
 
-      <RenderFooter data={allData.globalData} />
+      <RenderFooter data={pageData.globalData} />
     </>
   );
 }

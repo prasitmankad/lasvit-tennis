@@ -1,4 +1,5 @@
 import { RiPagesLine as icoPages } from "react-icons/ri";
+import { i18n_options, baseLanguage } from "../../../translations/config";
 
 export default {
   name: "page",
@@ -8,11 +9,18 @@ export default {
   fields: [
     {
       name: "title",
-      type: "string",
+      type: "object",
       title: "Page Title",
-      description:
-        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      options: i18n_options,
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Title",
+          description:
+            "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+        },
+      ],
     },
     {
       name: "slug",
@@ -54,6 +62,14 @@ export default {
     select: {
       title: "title",
       slug: "slugs",
+    },
+    prepare({ title }) {
+      return {
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].title
+            : title,
+      };
     },
   },
 };

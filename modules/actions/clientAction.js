@@ -34,3 +34,10 @@ export function toogleLoading(loading) {
     payload: loading,
   };
 }
+
+export function setLanguageAction(language) {
+  return {
+    type: actionKeys.SET_LANGUAGE,
+    payload: language,
+  };
+}
