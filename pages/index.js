@@ -7,7 +7,7 @@ import RenderHeader from "../components/render/renderHeader";
 import RenderSections from "../components/render/renderSections";
 import RenderFooter from "../components/render/renderFooter";
 
-import { query } from "../modules/groq/page";
+import query from "../modules/groq/page";
 
 export async function getStaticProps() {
   var pageData = await sanityClient.fetch(query, { slug: "home" });

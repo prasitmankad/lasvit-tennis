@@ -39,6 +39,7 @@
   },
   "courses": {
     "catalog": "Course Catalog",
-    "payButton": "Buy {{type}}"
+    "payButton": "Buy Course",
+    "features": "What's included"
   }
 }

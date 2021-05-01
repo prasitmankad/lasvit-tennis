@@ -5,19 +5,19 @@ import Error from "next/error";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 import { sanityClient } from "../../utils/sanity";
-import { query } from "../../modules/groq/page";
+import { courseCollection as query } from "../../modules/groq/course";
 import { useTranslation } from "react-i18next";
 
 export async function getStaticProps() {
-  var pageData = await sanityClient.fetch(query, { slug: "courses" });
+  var pageData = await sanityClient.fetch(query);
 
   return {
-    props: { courses, pageData },
+    props: { pageData },
     revalidate: 1,
   };
 }
 
-function CoursesPage({ courses, pageData }) {
+function CoursesPage({ pageData }) {
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -40,7 +40,7 @@ function CoursesPage({ courses, pageData }) {
           </h1>
         </div>
         <div className="flex-1 flex flex-row flex-wrap justify-between w-full px-16">
-          {courses.map((course) => (
+          {pageData.pageData.map((course) => (
             <CourseCard course={course} />
           ))}
         </div>
