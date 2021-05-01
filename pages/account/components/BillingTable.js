@@ -1,6 +1,6 @@
 import React from "react";
 import { format } from "date-fns";
-import { CurrencySymbol } from "../../courses/types";
+// import { CurrencySymbol } from "../../courses/types";
 import { useTranslation } from "react-i18next";
 
 export function BillingTable(props) {
@@ -55,7 +55,7 @@ export function BillingTable(props) {
                               {bill.name}
                             </div>
                             <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              {CurrencySymbol[`${bill.currency}`]}
+                              {/* {CurrencySymbol[`${bill.currency}`]} */}
                               {bill.amount}
                               {`/${bill.period}`}
                             </div>
@@ -82,7 +82,7 @@ export function BillingTable(props) {
                                 <p>NAME: {bill.name}</p>
                                 <p>TYPE: {bill.priceType}</p>
                                 <p>
-                                  PRICE: {CurrencySymbol[`${bill.currency}`]}
+                                  {/* PRICE: {CurrencySymbol[`${bill.currency}`]} */}
                                   {bill.amount}
                                 </p>
                                 <p>PERIOD: {bill.period}</p>
