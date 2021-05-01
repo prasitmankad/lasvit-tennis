@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 import { sanityClient, getClient } from "../../utils/sanity";
-import { query } from "../../modules/groq/page";
+import query from "../../modules/groq/page";
 
 export async function getStaticProps({ preview = false }) {
   var pageData = await sanityClient.fetch(query, { slug: "account" });

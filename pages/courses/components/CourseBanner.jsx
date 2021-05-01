@@ -5,9 +5,11 @@ export function CourseBanner({ course }) {
         <div className="px-0 sm:px-4 lg:px-0 lg:flex lg:justify-between lg:items-center">
           <div className="max-w-xl">
             <h2 className="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">
-              {course.name}
+              {course.title}
             </h2>
-            <p className="mt-5 text-xl text-indigo-300">{course.perex}</p>
+            <p className="mt-5 text-xl text-indigo-300">
+              {course.shortDescription}
+            </p>
           </div>
         </div>
       </div>
