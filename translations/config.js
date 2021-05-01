@@ -9,7 +9,13 @@ export const flag = {
   [lang.zh]: "https://lipis.github.io/flag-icon-css/flags/4x3/cn.svg",
 };
 
-// for sanity studio
+// data for pricing - currency pricing from Sanity
+export const Currency = {
+  [lang.en]: "USD",
+  [lang.zh]: "EUR",
+};
+
+// data for sanity studio
 export const languages = [
   { name: lang.en, title: "English" },
   { name: lang.zh, title: "Chinese" },
