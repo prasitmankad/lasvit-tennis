@@ -1,3 +1,4 @@
+import React from 'react';
 export default function pageHeading(props) {
   //console.log("pageHeading Props // ", props);
 

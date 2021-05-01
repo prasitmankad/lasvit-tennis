@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRouter } from "next/router";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
 import Error from "next/error";
@@ -37,7 +38,10 @@ const query = `{
         heading,links[]->
       }
     },
-    siteSettings
+    siteSettings {
+      ...,
+      homepage->{slug}
+    }
 	},
   'pageData': *[(_type == "post" && !(_id in path('drafts.**')))] | order(_publishedAt desc) {
     _id,
@@ -71,6 +75,14 @@ function BlogPageContainer({ allData, preview }) {
   });
 
   var dt = new Date();
+
+  // TODO move to Excerpt component
+  const renderExcerpt = (data) => {
+    if (typeof data === 'string') {
+      return data
+    } else
+      return data?.[0]?.children?.[0]?.text;
+  }
 
   return (
     <React.Fragment>
@@ -121,37 +133,38 @@ function BlogPageContainer({ allData, preview }) {
                           ))}
                         </React.Fragment>
                       ) : (
-                        <React.Fragment></React.Fragment>
+                        null
                       )}
                     </p>
                     <Link href={post.slug.current}>
-                  <a className="block mt-2">
-                      <p className="text-xl font-semibold text-gray-900">
-                        {post.title}
-                      </p>
-                      <p className="mt-3 text-base text-gray-500">
-                        {post.excerpt}
-                      </p>
-                    </a></Link>
+                      <a className="block mt-2">
+                        <p className="text-xl font-semibold text-gray-900">
+                          {post.title}
+                        </p>
+                        <p className="mt-3 text-base text-gray-500">
+                          {renderExcerpt(post.excerpt)}
+                        </p>
+                      </a></Link>
                   </div>
                   <div className="mt-6 flex items-center">
                     <div className="flex-shrink-0">
-                      <span className="sr-only">{post.author.name}</span>
-
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={urlFor(post.author.image)
-                          .auto("format")
-                          //.width(10)
-                          //.height(10)
-                          .fit("scale")
-                          .quality(80)}
-                        alt={post.mainImage?.alt || ``}
-                      />
+                      <span className="sr-only">{post?.author?.name || ""}</span>
+                      {post?.author?.image &&
+                        <img
+                          className="h-10 w-10 rounded-full"
+                          src={urlFor(post.author.image)
+                            .auto("format")
+                            //.width(10)
+                            //.height(10)
+                            .fit("scale")
+                            .quality(80)}
+                          alt={post.mainImage?.alt || ``}
+                        />
+                      }
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
-                        {post.author.name}
+                        {post?.author?.name || ""}
                       </p>
                       <div className="flex space-x-1 text-sm text-gray-500">
                         {(dt = new Date(post.publishedAt).toLocaleDateString())}
