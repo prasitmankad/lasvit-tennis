@@ -61,7 +61,7 @@ function CourseDetail({ pageData }) {
 
       <CoursePriceCard
         course={course}
-        payCourse={(token) => payCourse(token, price)}
+        payCourse={(token, price) => payCourse(token, price)}
       />
 
       <RenderFooter data={globalData} />
