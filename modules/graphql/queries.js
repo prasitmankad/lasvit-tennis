@@ -9,6 +9,7 @@ export const getClientBilling = /* GraphQL */ `
       name
       amount
       currency
+      symbol
       period
       priceType
       payload {
@@ -34,6 +35,7 @@ export const listClientBillings = /* GraphQL */ `
         name
         amount
         currency
+        symbol
         period
         priceType
         payload {

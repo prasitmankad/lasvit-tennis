@@ -43,12 +43,13 @@ function CourseDetail({ pageData }) {
 
   function payCourse(token, price) {
     const GQLData = {
-      amount: price.amount,
+      amount: price.value,
       currency: price.currency,
-      period: price.period,
+      symbol: price.symbol,
+      period: price.frequency,
       priceType: price.type,
-      courseId: `${course.id}`,
-      name: course.name,
+      courseId: `${course._id}`,
+      name: course.title,
     };
 
     dispatch(createBillingAction(token, GQLData));

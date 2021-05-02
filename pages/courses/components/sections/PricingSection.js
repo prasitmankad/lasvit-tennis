@@ -39,7 +39,13 @@ export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
               <PayButton
                 amount={price.value}
                 currency={price.currency}
-                payCourse={(token) => payCourse(token, price.value)}
+                payCourse={(token) =>
+                  payCourse(token, {
+                    ...price,
+                    frequency: pricing.billingFrequency,
+                    type: pricing.subheading,
+                  })
+                }
               />
             </div>
             <div className="pt-6 pb-8 px-6">

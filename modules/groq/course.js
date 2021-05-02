@@ -14,6 +14,7 @@ export const courseCollectionQuery = `
 }`;
 
 export const courseDetailQuery = `*[_type == "course" && slug.current == $slug][0]{
+  _id,
   title,
   shortDescription,
   stats,
