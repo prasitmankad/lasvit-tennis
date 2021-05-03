@@ -47,17 +47,17 @@ export function BillingTable(props) {
                             key={bill.id}
                             className="grid grid-cols-4 gap-4 bg-white border-b-2 border-gray-200"
                           >
-                            <div className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <div className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 truncate">
                               {format(new Date(bill.createdAt), "MM/dd/yyyy")}
                             </div>
-                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
                               {bill.name}
                             </div>
-                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
                               {bill.symbol}
                               {bill.amount}
                             </div>
-                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
                               <div
                                 className="text-orange-600 hover:text-orange-900 cursor-pointer"
                                 onClick={() =>

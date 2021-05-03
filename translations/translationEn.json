@@ -40,6 +40,8 @@
   "courses": {
     "catalog": "Course Catalog",
     "payButton": "Buy Course",
-    "features": "What's included"
+    "features": "What's included",
+    "module": "Course Modules",
+    "moduleItems": "Content : {{title}}"
   }
 }

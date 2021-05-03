@@ -9,10 +9,12 @@ import {
   showPayloadModalAction,
 } from "../actions/apiAction";
 import { postToken } from "../api/pay";
+import { toogleLoading } from "../actions/clientAction";
 
 // AWS API
 function* handleFetchBillingList() {
   try {
+    yield put(toogleLoading(true));
     let billingList = [];
     yield API.graphql(graphqlOperation(listClientBillings)).then(({ data }) => {
       billingList = data.listClientBillings.items;
@@ -24,6 +26,8 @@ function* handleFetchBillingList() {
     yield put(fetchBillingList(billingList));
   } catch (error) {
     console.log("[error handleFetchBillingList]", error);
+  } finally {
+    yield put(toogleLoading(false));
   }
 }
 

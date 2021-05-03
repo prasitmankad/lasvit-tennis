@@ -25,13 +25,26 @@ export const courseDetailQuery = `*[_type == "course" && slug.current == $slug][
       mainImage{
         "url": asset->{url}
       }
-    }
+    },
+    sneakpeek[]->
   },
   faqs{
     ...,
     faq[]->{
       question,
       answer
+    }
+  },
+  "modules": *[_type == "module" && ^._id in course[]._ref]{
+    ...,
+    mainImage{
+      asset->{
+        url
+      }
+    },
+    "items": *[_type == "contentItem" && ^._id in modules[]._ref]{
+      ...,
+      modules[]->
     }
   }
 }`;
