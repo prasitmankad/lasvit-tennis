@@ -12,6 +12,7 @@ export const createClientBilling = /* GraphQL */ `
       name
       amount
       currency
+      symbol
       period
       priceType
       payload {
@@ -35,6 +36,7 @@ export const updateClientBilling = /* GraphQL */ `
       name
       amount
       currency
+      symbol
       period
       priceType
       payload {
@@ -58,6 +60,7 @@ export const deleteClientBilling = /* GraphQL */ `
       name
       amount
       currency
+      symbol
       period
       priceType
       payload {

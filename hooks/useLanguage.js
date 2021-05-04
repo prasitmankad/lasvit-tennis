@@ -8,10 +8,6 @@ export function useLanguage() {
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.applicationState.language);
 
-  async function setLang(lang) {
-    await dispatch(setLanguageAction(lang));
-  }
-
   const setLangMutate = React.useCallback(
     (lang) => {
       dispatch(setLanguageAction(lang));

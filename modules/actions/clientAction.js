@@ -27,6 +27,13 @@ export function clientSignOutAction() {
   };
 }
 
+export function showLoginModalAction(show) {
+  return {
+    type: actionKeys.LOGIN_MODAL,
+    payload: show,
+  };
+}
+
 // APP function
 export function toogleLoading(loading) {
   return {

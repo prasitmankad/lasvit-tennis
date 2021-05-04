@@ -12,7 +12,7 @@ export function FeatureSectionWithPictures({ content }) {
                     {feature.featureName}
                   </h2>
                   <p className="mt-4 text-lg text-gray-500">
-                    {feature.shortDescription}
+                    {feature.longDescription}
                   </p>
                 </div>
               </div>
