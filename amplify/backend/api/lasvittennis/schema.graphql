@@ -2,8 +2,9 @@ type ClientBilling @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   courseId: ID!
   name: String!
-  amount: Int!
+  amount: Float!
   currency: String!
+  symbol: String!
   period: String!
   priceType: String!
   payload: PayObject!

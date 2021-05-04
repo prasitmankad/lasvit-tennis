@@ -1,20 +1,11 @@
 import React from "react";
-import { shallowEqual, useSelector, useDispatch } from "react-redux";
-import { fetchBillingListAction } from "../../../modules/actions/apiAction";
 import { BillingTable } from "./BillingTable";
 import { useTranslation } from "react-i18next";
+import { useBillingCourse } from "../../../hooks/useBillingCourse";
 
 export function PageBilling() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const clientBilling = useSelector(
-    (state) => state.billingState.billing,
-    shallowEqual
-  );
-
-  React.useEffect(() => {
-    !clientBilling && dispatch(fetchBillingListAction());
-  }, [clientBilling]);
+  const { clientBillingList } = useBillingCourse();
 
   return (
     <div className="flex-1 max-h-screen xl:overflow-y-auto">
@@ -23,7 +14,7 @@ export function PageBilling() {
           {t("account.billing.title")}
         </h1>
       </div>
-      <BillingTable billing={clientBilling} nameTable="Billing history" />
+      <BillingTable billing={clientBillingList} nameTable="Billing history" />
     </div>
   );
 }

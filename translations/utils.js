@@ -9,7 +9,7 @@ export function setLanguage(lang) {
 
 export function getLanguage() {
   try {
-    const lang = localStorage.getItem(I18N);
+    const lang = localStorage.getItem(I18N) || baseLanguage;
     return lang;
   } catch (error) {
     return baseLanguage;
