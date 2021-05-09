@@ -20,9 +20,9 @@
       "billing": "Billing"
     },
     "client": {
-      "title": "Account",
+      "title": "Profile",
       "provider": "Your profile is created from {{provider}} account.",
-      "profile": "Profile",
+      "profile": "Your Account",
       "userName": "User name",
       "photo": "Photo",
       "info": "Personal Information",
@@ -32,10 +32,18 @@
       "title": "Billing",
       "table": {
         "date": "date",
-        "course": "course",
-        "price": "price",
+        "description": "description",
+        "amount": "amount",
         "details": "View details"
       }
+    },
+    "detail": {
+      "title": "Payment details",
+      "course": "Course name",
+      "email": "Email address",
+      "date": "Date",
+      "amount": "Amount",
+      "period": "Pay period"
     }
   },
   "courses": {

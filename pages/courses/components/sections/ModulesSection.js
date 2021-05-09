@@ -16,11 +16,11 @@ export function ModulesSection({ modules }) {
   const [actionIdx, setActionIdx] = React.useState(ACTUAL_MODULE);
 
   return (
-    <div className="mx-8 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+    <div className="max-w-7xl mx-auto">
+      <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 mx-16 mb-4">
         {t("courses.module")}
       </h2>
-      <div className="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+      <div className="mx-16 rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
         {modules.map((mod, inx) => (
           <div
             key={mod._id}
@@ -66,7 +66,10 @@ export function ModulesSection({ modules }) {
         ))}
       </div>
 
-      <ModulesItemSection module={actualModule} />
+      <ModulesItemSection
+        items={actualModule.items}
+        title={t("courses.moduleItems", { title: actualModule.title })}
+      />
     </div>
   );
 }

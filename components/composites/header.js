@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,9 +14,10 @@ import { PayloadModal } from "../modals/PayloadModal";
 import { LanguageButton } from "../LanguageButton";
 import { useLanguage } from "../../hooks/useLanguage";
 import { Loader } from "../Loader";
+import { useClient } from "../../hooks/useClient";
 
-function HeaderPure(props) {
-  const { client } = props;
+export function Header(props) {
+  const { client } = useClient();
   const dispatch = useDispatch();
   const billingModal = useSelector((state) => state.billingState.modal);
   const loginModal = useSelector((state) => state.clientState.modal);
@@ -291,13 +291,3 @@ function HeaderPure(props) {
     </>
   );
 }
-
-const mapStateToProps = (state) => {
-  const { client } = state.clientState;
-
-  return {
-    client,
-  };
-};
-
-export default React.memo(connect(mapStateToProps)(HeaderPure));

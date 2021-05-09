@@ -39,8 +39,8 @@ function CoursesPage({ pageData }) {
           </h1>
         </div>
         <div className="flex-1 flex flex-row flex-wrap justify-between w-full px-16">
-          {pageData.pageData.map((course) => (
-            <CourseCard course={course} />
+          {pageData.pageData.map((course, i) => (
+            <CourseCard key={i} course={course} />
           ))}
         </div>
       </div>

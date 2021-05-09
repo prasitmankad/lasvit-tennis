@@ -60,10 +60,12 @@ function Course({ pageData }) {
       <RenderHeader data={globalData} />
 
       <CourseBanner course={course} />
-      <CourseDetail
-        course={course}
-        payCourse={(token, price) => payCourse(token, price)}
-      />
+      {course && (
+        <CourseDetail
+          course={course}
+          payCourse={(token, price) => payCourse(token, price)}
+        />
+      )}
 
       <RenderFooter data={globalData} />
     </>

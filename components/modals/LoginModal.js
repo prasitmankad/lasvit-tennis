@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { FaGoogle, FaFacebookSquare } from "react-icons/fa";
 import { clientSignInAction } from "../../modules/actions/clientAction";
 import { FederationTypes } from "../../modules/actions/actionTypes";
+import { XIcon } from "@heroicons/react/outline";
+import { showLoginModalAction } from "../../modules/actions/clientAction";
 
 export function LoginModal(props) {
   const { onClose } = props;
@@ -13,11 +15,23 @@ export function LoginModal(props) {
   return (
     <Modal>
       <div className="m-8">
+        <div className="hidden sm:block relative top-0 right-0">
+          <button
+            type="button"
+            className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={() => dispatch(showLoginModalAction(false))}
+          >
+            <span className="sr-only">Close</span>
+            <XIcon className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+
         <div>
           <h2 className="mt-6 text-left text-3xl font-extrabold text-gray-900">
             Login to your account
           </h2>
         </div>
+
         <div>
           <div className="mt-8 text-left text-3xl font-extrabold text-gray-900">
             <label className="text-sm font-bold">Login with</label>

@@ -26,7 +26,7 @@ function* handleFetchBillingList() {
 
     yield put(fetchBillingList(billingList));
   } catch (error) {
-    console.log("[error handleFetchBillingList]", error);
+    // console.error("[error handleFetchBillingList]", error);
   } finally {
     yield put(toogleLoading(false));
   }
@@ -60,7 +60,7 @@ function* handleCreateBilling(action) {
       put(showPayloadModalAction(true)),
     ]);
   } catch (error) {
-    console.log("[error handleCreateBilling]", error);
+    // console.error("[error handleCreateBilling]", error);
   } finally {
   }
 }

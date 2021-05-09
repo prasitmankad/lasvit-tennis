@@ -5,11 +5,12 @@ import { config } from "../../../modules/api/config";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoginModalAction } from "../../../modules/actions/clientAction";
+import { useClient } from "../../../hooks/useClient";
 
 export function PayButton({ amount, currency, payCourse }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { client } = useSelector((state) => state.clientState);
+  const { client } = useClient();
 
   return (
     <>

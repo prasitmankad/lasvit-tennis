@@ -2,8 +2,8 @@ export function FeatureSectionWithPictures({ content }) {
   const { features } = content;
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
-      {features.map((feature) => (
-        <div className="relative my-4">
+      {features.map((feature, i) => (
+        <div key={i} className="relative my-4">
           <div className="h-96 lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
             <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
               <div>
