@@ -6,4 +6,8 @@ export const config = {
     apiUrl:
       "https://k2514x4m1b.execute-api.eu-central-1.amazonaws.com/dev/serverless/createCharge",
   },
+  subscribe: {
+    apiUrl:
+      "https://9ohyon3ug7.execute-api.eu-central-1.amazonaws.com/dev/serverless/subscribe",
+  },
 };

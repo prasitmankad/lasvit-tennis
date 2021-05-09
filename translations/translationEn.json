@@ -1,5 +1,6 @@
 {
   "test": "test En",
+  "subscribeSnackbar": "Sign up to our newsletter",
   "photoAlt": "Photo of {{page}}",
   "menu": {
     "home": "Home",

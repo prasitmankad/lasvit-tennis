@@ -2,7 +2,6 @@ import React from "react";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import { sanityClient } from "../utils/sanity";
-
 import RenderHeader from "../components/render/renderHeader";
 import RenderSections from "../components/render/renderSections";
 import RenderFooter from "../components/render/renderFooter";
