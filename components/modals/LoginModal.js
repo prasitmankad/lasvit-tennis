@@ -1,5 +1,5 @@
 import { Modal } from "./Modal";
-import { Auth } from "aws-amplify";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { FaGoogle, FaFacebookSquare } from "react-icons/fa";
@@ -7,10 +7,21 @@ import { clientSignInAction } from "../../modules/actions/clientAction";
 import { FederationTypes } from "../../modules/actions/actionTypes";
 import { XIcon } from "@heroicons/react/outline";
 import { showLoginModalAction } from "../../modules/actions/clientAction";
+import {
+  setRedirectLocation,
+  removeRedirectLocation,
+} from "../../utils/localStorageUtils";
 
 export function LoginModal(props) {
   const { onClose } = props;
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  if (window && router.pathname === "/courses/[id]") {
+    setRedirectLocation(window.location.pathname);
+  } else {
+    removeRedirectLocation();
+  }
 
   return (
     <Modal>

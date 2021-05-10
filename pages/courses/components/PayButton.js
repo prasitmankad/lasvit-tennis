@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import StripeCheckout from "react-stripe-checkout";
 import { config } from "../../../modules/api/config";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showLoginModalAction } from "../../../modules/actions/clientAction";
 import { useClient } from "../../../hooks/useClient";
 
