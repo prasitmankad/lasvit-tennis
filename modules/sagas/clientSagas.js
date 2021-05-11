@@ -29,7 +29,7 @@ function* handleClientDetail() {
 
     yield put(getClientDetail(userDetail));
   } catch (error) {
-    console.log("[error handleClientDetail]", error);
+    // console.error("[error handleClientDetail]", error);
   } finally {
     yield put(toogleLoading(false));
   }
@@ -41,7 +41,7 @@ function* handleClientSignIn(action) {
     const { provider } = action.payload;
     yield Auth.federatedSignIn({ provider });
   } catch (error) {
-    console.log("[error handleClientSignIn]", error);
+    // console.error("[error handleClientSignIn]", error);
   }
 }
 
@@ -50,7 +50,7 @@ function* handleClientSignOut() {
     yield put(toogleLoading(true));
     yield Auth.signOut();
   } catch (error) {
-    console.log("[error handleClientSignOut]", error);
+    // console.error("[error handleClientSignOut]", error);
   } finally {
     yield put(toogleLoading(false));
   }

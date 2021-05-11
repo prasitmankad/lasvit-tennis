@@ -1,11 +1,24 @@
 // https://tailwindui.com/components/marketing/sections/newsletter-sections#component-f166d5961b0707369d1dd54aee4b5c87
 
-import { urlFor } from "../../utils/sanity";
+// import { urlFor } from "../../utils/sanity";
+import React from "react";
 import Link from "next/link";
+import { postSubscribe } from "../../modules/api/subscribe";
+import Snackbar from "../Snackbar";
 
 export default function signup(props) {
   // console.log("Signup Props // ", props);
+  const [showSnackbar, setShowSnackbar] = React.useState(false);
+  const [email, setEmail] = React.useState("");
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    postSubscribe("newsletter", email).then((res) => {
+      console.log(res);
+      setShowSnackbar(true);
+      setEmail("");
+    });
+  };
   return (
     <div className={"bg-" + props.sectionData.backgroundColor.title}>
       <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:py-32 lg:px-8 lg:flex lg:items-center">
@@ -13,19 +26,22 @@ export default function signup(props) {
           <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
             {props.sectionData.heading}
           </h2>
-          <p className="mt-3 max-w-3xl text-lg text-gray-500">{props.sectionData.text}</p>
+          <p className="mt-3 max-w-3xl text-lg text-gray-500">
+            {props.sectionData.text}
+          </p>
         </div>
         {/* TODO: Replace with MailerLite integration */}
         <div className="mt-8 lg:mt-0 lg:ml-8">
-          <form className="sm:flex">
+          <form className="sm:flex" onSubmit={onSubmit}>
             <label htmlFor="emailAddress" className="sr-only">
               Email address
             </label>
             <input
               id="emailAddress"
-              name="emailAddress"
               type="email"
               autoComplete="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               required
               className={
                 "w-full px-5 py-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:ring-1 focus:ring-" +
@@ -55,12 +71,12 @@ export default function signup(props) {
           <p className="mt-3 text-sm text-gray-500">
             We care about the protection of your data. Read our{" "}
             <Link href="/privacy">
-                  <a className="font-medium underline">
-              Privacy Policy.
-            </a></Link>
+              <a className="font-medium underline">Privacy Policy.</a>
+            </Link>
           </p>
         </div>
       </div>
+      {showSnackbar && <Snackbar onClose={() => setShowSnackbar(false)} />}
     </div>
   );
 }

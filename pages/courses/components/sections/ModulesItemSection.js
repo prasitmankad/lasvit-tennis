@@ -1,14 +1,10 @@
 import ReactPlayer from "react-player/youtube";
-import { useTranslation } from "react-i18next";
 
-export function ModulesItemSection({ module }) {
-  const { items, title } = module;
-  const { t } = useTranslation();
-
+export function ModulesItemSection({ items, title }) {
   return (
-    <div className="mt-16">
+    <div className="mt-16 mx-16">
       <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-        {t("courses.moduleItems", { title: title })}
+        {title}
       </h2>
 
       <div className="mx-16 my-4">
@@ -30,7 +26,7 @@ export function ModulesItemSection({ module }) {
 
                 {item.contentType !== "video" && (
                   <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                    // TODO: I need UX
+                    // TODO
                   </div>
                 )}
               </div>

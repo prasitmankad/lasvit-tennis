@@ -1,4 +1,4 @@
-import { put, takeEvery, call, all } from "redux-saga/effects";
+import { put, takeEvery, call, all, select } from "redux-saga/effects";
 import { actionKeys } from "../actions/actionTypes";
 import { API, graphqlOperation } from "aws-amplify";
 import { listClientBillings } from "../graphql/queries";
@@ -9,6 +9,7 @@ import {
   showPayloadModalAction,
 } from "../actions/apiAction";
 import { postToken } from "../api/pay";
+import { postSubscribe } from "../api/subscribe";
 import { toogleLoading } from "../actions/clientAction";
 
 // AWS API
@@ -25,7 +26,7 @@ function* handleFetchBillingList() {
 
     yield put(fetchBillingList(billingList));
   } catch (error) {
-    console.log("[error handleFetchBillingList]", error);
+    // console.error("[error handleFetchBillingList]", error);
   } finally {
     yield put(toogleLoading(false));
   }
@@ -33,6 +34,7 @@ function* handleFetchBillingList() {
 
 function* handleCreateBilling(action) {
   try {
+    const { client } = yield select((state) => state.clientState);
     const { data, token } = action.payload;
     const response = call(postToken, token, data.amount * 100);
     const payObject = response.payload.args[0];
@@ -54,12 +56,12 @@ function* handleCreateBilling(action) {
 
     yield all([
       put(fetchBillingListAction()),
+      call(postSubscribe, "payer", client.email),
       put(showPayloadModalAction(true)),
     ]);
   } catch (error) {
-    console.log("[error handleCreateBilling]", error);
+    // console.error("[error handleCreateBilling]", error);
   } finally {
-    yield put(showPayloadModalAction(false));
   }
 }
 

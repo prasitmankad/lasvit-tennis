@@ -7,6 +7,7 @@ const STUDIO_REWRITE = {
 };
 
 module.exports = {
+  trailingSlash: true,
   rewrites: () => [STUDIO_REWRITE],
   // trailingSlash: true,
   future: {
