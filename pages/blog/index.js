@@ -1,92 +1,45 @@
-import React from 'react';
+import React from "react";
 import { useRouter } from "next/router";
-import { getClient, usePreviewSubscription } from "../../utils/sanity";
+import { sanityClient } from "../../utils/sanity";
 import Error from "next/error";
 import Link from "next/link";
 import { urlFor } from "../../utils/sanity";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
+import { postCollection } from "../../modules/groq/post";
 
+export async function getStaticProps({ params = {}, preview = false }) {
+  var pageData = await sanityClient.fetch(postCollection);
 
-// construct query for global data and page data
-// allData -- overall grouping for global and page data in response
-// globalData -- global reusable content
-// pageData -- content for this specific page, not in draft
+  return {
+    props: { preview, pageData },
+    revalidate: 1,
+  };
+}
 
-const query = `{
-  'globalData': *[(_type == "globalSettings" && !(_id in path('drafts.**')))][0] {
-	  businessInfo {
-      title, 
-      tagline, 
-      siteDescription, 
-      contact,
-      'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
-        name, position, shortDescription, image[], longDescription
-      },      
-    },
-    branding,
-    header {
-      menu [] {
-        ...,link-> {
-            slug,title
-            }
-      }
-    },
-    footer {
-      signup,
-      columns [] {
-        heading,links[]->
-      }
-    },
-    siteSettings {
-      ...,
-      homepage->{slug}
-    }
-	},
-  'pageData': *[(_type == "post" && !(_id in path('drafts.**')))] | order(_publishedAt desc) {
-    _id,
-    author->{image,name},
-    excerpt,
-    mainImage,
-    publishedAt,
-    slug,
-    tags,
-    title,
-  }
-}`;
-
-
-function BlogPageContainer({ allData, preview }) {
-  console.log("BlogPageContainer Props // ", allData);
-
+function BlogPageContainer({ pageData, preview }) {
   const router = useRouter();
-  // If the page is not yet generated, this will be displayed initially until getStaticProps() finishes running
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  if (!allData) {
+  if (!pageData) {
     return <Error statusCode={404} />;
   }
-
-  const { data: posts } = usePreviewSubscription(query, {
-    initialData: allData,
-    enabled: preview || router.query.preview !== null,
-  });
 
   var dt = new Date();
 
   // TODO move to Excerpt component
   const renderExcerpt = (data) => {
-    if (typeof data === 'string') {
-      return data
-    } else
-      return data?.[0]?.children?.[0]?.text;
-  }
+    if (typeof data === "string") {
+      return data;
+    } else return data?.[0]?.children?.[0]?.text;
+  };
 
   return (
-    <React.Fragment>
-      <RenderHeader data={allData.globalData} />
+    <>
+      <RenderHeader data={pageData.globalData} />
       <div
         className={
           "relative bg-gray-100 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8"
@@ -95,14 +48,14 @@ function BlogPageContainer({ allData, preview }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-4">
-              {allData.globalData.businessInfo.title + " Blog"}
+              {pageData.globalData.businessInfo.title + " Blog"}
             </h2>
             {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
               {props.sectionData.content}
             </p> */}
           </div>
           <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-full py-4">
-            {allData.pageData.map((post) => (
+            {pageData.pageData.map((post) => (
               <div
                 key={post.title}
                 className="flex flex-col rounded-lg shadow-lg overflow-hidden"
@@ -123,20 +76,18 @@ function BlogPageContainer({ allData, preview }) {
                     <p
                       className={
                         "text-sm font-medium uppercase italic text-" +
-                        allData.globalData.branding.primaryAccentColor.title
+                        pageData.globalData.branding.primaryAccentColor.title
                       }
                     >
                       {post.tags ? (
-                        <React.Fragment>
+                        <>
                           {post.tags.map((tag) => (
-                            <React.Fragment>{tag.value + " | "}</React.Fragment>
+                            <div>{tag.value + " | "}</div>
                           ))}
-                        </React.Fragment>
-                      ) : (
-                        null
-                      )}
+                        </>
+                      ) : null}
                     </p>
-                    <Link href={post.slug.current}>
+                    <Link href={`/blog/${post.slug.current}`}>
                       <a className="block mt-2">
                         <p className="text-xl font-semibold text-gray-900">
                           {post.title}
@@ -144,12 +95,15 @@ function BlogPageContainer({ allData, preview }) {
                         <p className="mt-3 text-base text-gray-500">
                           {renderExcerpt(post.excerpt)}
                         </p>
-                      </a></Link>
+                      </a>
+                    </Link>
                   </div>
                   <div className="mt-6 flex items-center">
                     <div className="flex-shrink-0">
-                      <span className="sr-only">{post?.author?.name || ""}</span>
-                      {post?.author?.image &&
+                      <span className="sr-only">
+                        {post?.author?.name || ""}
+                      </span>
+                      {post?.author?.image && (
                         <img
                           className="h-10 w-10 rounded-full"
                           src={urlFor(post.author.image)
@@ -160,7 +114,7 @@ function BlogPageContainer({ allData, preview }) {
                             .quality(80)}
                           alt={post.mainImage?.alt || ``}
                         />
-                      }
+                      )}
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
@@ -178,21 +132,9 @@ function BlogPageContainer({ allData, preview }) {
           </div>
         </div>
       </div>
-      <RenderFooter data={allData.globalData} />
-    </React.Fragment>
+      <RenderFooter data={pageData.globalData} />
+    </>
   );
-}
-
-export async function getStaticProps({ params = {}, preview = false }) {
-  var allData = await getClient(preview).fetch(query);
-
-  return {
-    props: { preview, allData },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every second
-    revalidate: 1, // In seconds
-  };
 }
 
 export default BlogPageContainer;

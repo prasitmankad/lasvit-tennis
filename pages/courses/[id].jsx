@@ -12,7 +12,7 @@ import { courseList, courseDetail } from "../../modules/groq/course";
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const { id } = params;
-  var pageData = await sanityClient.fetch(courseDetail, { slug: id });
+  const pageData = await sanityClient.fetch(courseDetail, { slug: id });
 
   return {
     props: { pageData },
@@ -21,7 +21,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
 }
 
 export async function getStaticPaths() {
-  var routes = await sanityClient.fetch(courseList);
+  const routes = await sanityClient.fetch(courseList);
   return {
     paths: routes || null,
     fallback: true,

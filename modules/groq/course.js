@@ -1,4 +1,4 @@
-import { globalPageQuery } from "./page";
+import { globalPageQuery } from "./common";
 
 export const courseCollectionQuery = `
 *[(_type == "course" )]{
