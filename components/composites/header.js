@@ -117,7 +117,7 @@ export function Header(props) {
                       <React.Fragment key={item._key}></React.Fragment>
                     ) : (
                       <React.Fragment key={item._key}>
-                        <Link href={"/" + item.link.slug.current}>
+                        <Link href={"/" + (item.link ? item.link.slug.current : "")}>
                           <a
                             key={i}
                             className="text-base font-medium text-gray-500 hover:text-gray-900"
@@ -135,7 +135,7 @@ export function Header(props) {
                       <>
                         {client && client.name ? (
                           <React.Fragment key={item._key}>
-                            <Link href={"/" + item.link.slug.current}>
+                            <Link href={"/" + item.link ? item.link.slug.current : ""}>
                               <a
                                 key={client.name}
                                 className="text-base font-medium text-gray-500 hover:text-gray-900"
@@ -216,12 +216,11 @@ export function Header(props) {
                       <div className="mt-6">
                         <nav className="grid grid-cols-1 gap-7">
                           {props.data.header.menu.map((item, i) => {
-                            //console.log("item ", item.button);
                             return item.button !== undefined ? (
                               <React.Fragment key={item._key}></React.Fragment>
                             ) : (
                               <React.Fragment key={item._key}>
-                                <Link href={"/" + item.link.slug.current}>
+                                <Link href={"/" + (item.link ? item.link.slug.current : "")}>
                                   <a
                                     key={i}
                                     className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"

@@ -18,11 +18,19 @@ export async function getStaticProps({ params = {}, preview = false }) {
     revalidate: 1,
   };
 }
-
+// TODO next.js fix
+function isInWhitelist(slug) {
+  if (!slug) return false;
+  if (slug === 'account' || slug ==='blog' || slug === 'courses' || slug === 'login') {
+    return false
+  }
+  return true;
+}
 export async function getStaticPaths() {
   var routes = await getClient().fetch(
     `*[_type == "page" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
+  routes = routes.filter(e => isInWhitelist(e.params.slug))
   return {
     paths: routes || null,
     fallback: true,

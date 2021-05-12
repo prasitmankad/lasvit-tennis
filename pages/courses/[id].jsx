@@ -1,7 +1,7 @@
 import React from "react";
 import Error from "next/error";
-import { CourseBanner } from "./components/CourseBanner";
-import { CourseDetail } from "./components/CourseDetail";
+import { CourseBanner } from "../../components/courses/CourseBanner";
+import { CourseDetail } from "../../components/courses/CourseDetail";
 import { useDispatch } from "react-redux";
 import { createBillingAction } from "../../modules/actions/apiAction";
 import { useRouter } from "next/router";
@@ -29,7 +29,6 @@ export async function getStaticPaths() {
 }
 
 function Course({ pageData }) {
-  const { pageData: course, globalData } = pageData;
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -57,17 +56,19 @@ function Course({ pageData }) {
 
   return (
     <>
-      <RenderHeader data={globalData} />
+      <RenderHeader data={pageData.globalData} />
 
-      <CourseBanner course={course} />
-      {course && (
-        <CourseDetail
-          course={course}
-          payCourse={(token, price) => payCourse(token, price)}
-        />
+      {pageData && (
+        <>
+          <CourseBanner course={pageData.pageData} />
+          <CourseDetail
+            course={pageData.pageData}
+            payCourse={(token, price) => payCourse(token, price)}
+          />
+        </>
       )}
 
-      <RenderFooter data={globalData} />
+      <RenderFooter data={pageData.globalData} />
     </>
   );
 }

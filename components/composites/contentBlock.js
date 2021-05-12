@@ -2,7 +2,7 @@ import { PortableText, urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 export default function contentBlock(props) {
-  console.log("contentBlock Props // ", props);
+  // console.log("contentBlock Props // ", props);
 
   return (
     <>
