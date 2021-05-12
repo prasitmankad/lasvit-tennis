@@ -1,14 +1,14 @@
 import React from "react";
 
-import { FeatureSectionWithPictures } from "./sections/FeatureSectionWithPictures";
-import { FeatureSection } from "./sections/FeatureSection";
-import { FaqSection } from "./sections/FaqSection";
-import { StatSection } from "./sections/StatSection";
-import { PricingSection } from "./sections/PricingSection";
-import { ModulesSection } from "./sections/ModulesSection";
-import { ModulesItemSection } from "./sections/ModulesItemSection";
-import { useClient } from "../../../hooks/useClient";
-import { Loader } from "../../../components/Loader";
+import { FeatureSectionWithPictures } from "./../../components/sections/FeatureSectionWithPictures";
+import { FeatureSection } from "./../../components/sections/FeatureSection";
+import { FaqSection } from "./../../components/sections/FaqSection";
+import { StatSection } from "./../../components/sections/StatSection";
+import { PricingSection } from "./../../components/sections/PricingSection";
+import { ModulesSection } from "./../../components/sections/ModulesSection";
+import { ModulesItemSection } from "./../../components/sections/ModulesItemSection";
+import { useClient } from "../../hooks/useClient";
+import { Loader } from "../../components/Loader";
 
 export function CourseDetail({ payCourse, course }) {
   const { courseBilling, client } = useClient(course._id);

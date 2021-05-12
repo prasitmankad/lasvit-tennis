@@ -1,6 +1,6 @@
 import { globalPageQuery } from "./common";
 
-export const pageDataQuery = `*[(_type == "post"  && !(_id in path('drafts.**')))] | order(_publishedAt desc) {
+export const pageDataQuery = `*[(_type == "post" && slug.current != "skill-development-window-for-tennis" && !(_id in path('drafts.**')))] | order(_publishedAt desc) {
   _id,
   author->{image,name},
   excerpt,
@@ -36,4 +36,4 @@ export const postDetail = `{
   'pageData': ${pageDetailQuery}
 }`;
 
-export const postList = `*[_type == "post" && defined(slug.current)]{"params": {"id": slug.current}}`;
+export const postList = `*[_type == "post" && slug.current != "skill-development-window-for-tennis" && defined(slug.current)]{"params": {"id": slug.current}}`;

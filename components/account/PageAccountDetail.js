@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { clientSignOutAction } from "../../../modules/actions/clientAction";
+import { clientSignOutAction } from "../../modules/actions/clientAction";
 import { useTranslation } from "react-i18next";
-import { useClient } from "../../../hooks/useClient";
+import { useClient } from "../../hooks/useClient";
 
 export function PageAccountDetail() {
   const { client } = useClient();

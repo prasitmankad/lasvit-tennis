@@ -14,7 +14,6 @@ export default function signup(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     postSubscribe("newsletter", email).then((res) => {
-      console.log(res);
       setShowSnackbar(true);
       setEmail("");
     });

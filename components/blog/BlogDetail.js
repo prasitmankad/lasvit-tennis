@@ -1,5 +1,5 @@
 import React from "react";
-import { urlFor, PortableText } from "../../../utils/sanity";
+import { urlFor, PortableText } from "../../utils/sanity";
 
 export function BlogDetail({ post }) {
   return (
@@ -16,16 +16,21 @@ export function BlogDetail({ post }) {
                 {post.excerpt}
               </p>
             </div>
-            <img
-              alt={post.mainImage?.alt || `Photo of ${post.title}`}
-              className="object-cover object-center h-full w-full"
-              src={urlFor(post.mainImage.url.url)
-                .auto("format")
-                .width(800)
-                .height(Math.floor((9 / 16) * 1000))
-                .fit("crop")
-                .quality(80)}
-            />
+            {
+              post.mainImage && (
+                <img
+                  alt={post.mainImage?.alt || `Photo of ${post.title}`}
+                  className="object-cover object-center h-full w-full"
+                  src={urlFor(post.mainImage.url.url)
+                    .auto("format")
+                    .width(800)
+                    .height(Math.floor((9 / 16) * 1000))
+                    .fit("crop")
+                    .quality(80)}
+                />
+              )
+            }
+
           </div>
 
           <div className="flex flex-col sm:flex-row mt-10">

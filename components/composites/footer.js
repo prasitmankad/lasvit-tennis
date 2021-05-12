@@ -6,7 +6,6 @@ import { useLanguage } from "../../hooks/useLanguage";
 
 export default function footer(props) {
   const { l } = useLanguage();
-
   const navigation = {
     social: [
       {
@@ -72,7 +71,7 @@ export default function footer(props) {
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link href={item.href} key={item.title + item.href}>
+                <Link href={`/${item.href}`} key={item.title + item.href}>
                   <a className="text-gray-700 hover:text-white-500">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -94,7 +93,7 @@ export default function footer(props) {
                         props.data.footer.columns[0].heading + item.slug.current
                       }
                     >
-                      <Link href={item.slug.current}>
+                      <Link href={`/${item.slug.current}`}>
                         <a
                           className={
                             "text-base text-" +
@@ -115,22 +114,24 @@ export default function footer(props) {
                   {props.data.footer.columns[1].heading}
                 </h4>
                 <ul className="mt-4 space-y-4">
-                  {props.data.footer.columns[1].links.map((item) => (
-                    <li key={item.slug.current}>
-                      <Link href={item.slug.current}>
-                        <a
-                          className={
-                            "text-base text-" +
-                            props.data.branding.primaryTextColor.title +
-                            " hover:text-" +
-                            props.data.branding.primaryAccentColor.title
-                          }
-                        >
-                          {l(item.title)}
-                        </a>
-                      </Link>
-                    </li>
-                  ))}
+                  {props.data.footer.columns[1].links.map((item) => {
+                    return (
+                      <li key={item.slug.current}>
+                        <Link href={`/${item.slug.current}`}>
+                          <a
+                            className={
+                              "text-base text-" +
+                              props.data.branding.primaryTextColor.title +
+                              " hover:text-" +
+                              props.data.branding.primaryAccentColor.title
+                            }
+                          >
+                            {l(item.title)}
+                          </a>
+                        </Link>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>
@@ -142,7 +143,7 @@ export default function footer(props) {
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
                     <li key={item.slug.current}>
-                      <Link href={item.slug.current}>
+                      <Link href={`/${item.slug.current}`}>
                         <a
                           className={
                             "text-base text-" +
@@ -169,7 +170,7 @@ export default function footer(props) {
                         props.data.footer.columns[3].heading + item.slug.current
                       }
                     >
-                      <Link href={item.slug.current}>
+                      <Link href={`/${item.slug.current}`}>
                         <a
                           className={
                             "text-base text-" +

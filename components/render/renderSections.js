@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import * as composites from "../composites";
 
 function RenderSections(props) {
-  console.log("AllData Props ->  ", props);
+  // console.log("AllData Props ->  ", props);
   // reconstruct object
 
   const globalData = { globalData: { ...props.data.globalData } };

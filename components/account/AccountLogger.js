@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Hub } from "aws-amplify";
 import { useClient } from "../../hooks/useClient";
 import { useRouter } from "next/router";
-import { Loader } from "../../components/Loader";
+import { Loader } from "../Loader";
 import { getRedirectLocation } from "../../utils/localStorageUtils";
 import { Auth } from "aws-amplify";
 

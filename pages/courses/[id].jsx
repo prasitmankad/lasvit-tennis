@@ -1,7 +1,7 @@
 import React from "react";
 import Error from "next/error";
-import { CourseBanner } from "./components/CourseBanner";
-import { CourseDetail } from "./components/CourseDetail";
+import { CourseBanner } from "../../components/courses/CourseBanner";
+import { CourseDetail } from "../../components/courses/CourseDetail";
 import { useDispatch } from "react-redux";
 import { createBillingAction } from "../../modules/actions/apiAction";
 import { useRouter } from "next/router";

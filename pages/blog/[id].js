@@ -7,7 +7,7 @@ import { postList, postDetail } from "../../modules/groq/post";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 
-import { BlogDetail } from "./components/BlogDetail";
+import { BlogDetail } from "./../../components/blog/BlogDetail";
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const { id } = params;
@@ -20,8 +20,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
 }
 
 export async function getStaticPaths() {
-  const routes = await sanityClient.fetch(postList);
-
+  let routes = await sanityClient.fetch(postList);
   return {
     paths: routes || null,
     fallback: true,
