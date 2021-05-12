@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StripeCheckout from "react-stripe-checkout";
-import { config } from "../../../modules/api/config";
+import { config } from "../../modules/api/config";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { showLoginModalAction } from "../../../modules/actions/clientAction";
-import { useClient } from "../../../hooks/useClient";
+import { showLoginModalAction } from "../../modules/actions/clientAction";
+import { useClient } from "../../hooks/useClient";
 
 export function PayButton({ amount, currency, payCourse }) {
   const { t } = useTranslation();

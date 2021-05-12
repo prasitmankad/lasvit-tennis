@@ -1,4 +1,4 @@
-import { CourseCard } from "./components/CourseCard";
+import { CourseCard } from "../../components/courses/CourseCard";
 import { useRouter } from "next/router";
 import Error from "next/error";
 import RenderHeader from "../../components/render/renderHeader";

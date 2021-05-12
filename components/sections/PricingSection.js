@@ -1,9 +1,9 @@
 import React from "react";
 import { CheckIcon as CheckIconSolid } from "@heroicons/react/solid";
 import { useTranslation } from "react-i18next";
-import { Currency } from "../../../../translations/config";
-import { getLanguage } from "../../../../translations/utils";
-import { PayButton } from "../PayButton";
+import { Currency } from "../../translations/config";
+import { getLanguage } from "../../translations/utils";
+import { PayButton } from "../courses/PayButton";
 
 export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
   const { t } = useTranslation();
