@@ -41,6 +41,7 @@ function Course({ pageData }) {
   }
 
   function payCourse(token, price) {
+    const course = pageData.pageData;
     const GQLData = {
       amount: price.value,
       currency: price.currency,
