@@ -30,7 +30,7 @@ export default function hero(props) {
                   <div className="sm:text-center lg:text-left">
                     <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_title">
                       {/* <span className="block > */}
-                        {props.sectionData.heading}
+                      {props.sectionData.heading}
                       {/* </span>{" "} */}
                     </h1>
                     <h2
@@ -50,7 +50,7 @@ export default function hero(props) {
                           key={button.buttonText}
                           className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
                         >
-                          <Link href={"/" + button.links.route.slug.current}>
+                          <Link href={`/${button.links.route.slug.current}`}>
                             <a
                               className={
                                 "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
@@ -70,8 +70,6 @@ export default function hero(props) {
                           </Link>
                         </div>
                       ))}
- 
-                     
                     </div>
                   </div>
                 </main>
