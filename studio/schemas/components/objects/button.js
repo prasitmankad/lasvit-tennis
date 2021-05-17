@@ -20,20 +20,7 @@ export default {
       title: "Button Text",
       description: "The text to show on the button.",
     },
-    // {
-    //   name: "disabled",
-    //   type: "boolean",
-    //   title: "Highlight",
-    //   description:
-    //     "Highlight this button. This uses the Primary Accent Color to fill in the button.",
-    // },
-    // {
-    //   name: "icon",
-    //   type: "image",
-    //   title: "Button Icon",
-    //   description:
-    //     "Optional icon image used on the button. Must be transparent PNG, square image, max 48px.",
-    // },
+
     {
       title: "Links",
       name: "links",
@@ -66,10 +53,10 @@ export default {
   ],
   preview: {
     select: {
-      title: "title",
-      routeTitle: "route.title",
-      slug: "route.slug.current",
-      link: "link",
+      title: "buttonText",
+      routeTitle: "links.route.title",
+      slug: "links.route.slug.current",
+      link: "links.route.link",
     },
     prepare({ title, routeTitle = "", slug, link }) {
       const subtitleExtra = slug
