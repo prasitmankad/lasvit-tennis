@@ -144,7 +144,7 @@ export function Header(props) {
                             >
                               <a
                                 key={client.name}
-                                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                                className={"text-base font-medium text-gray-500 hover:"+ props.data.branding.primaryAccentColor.title}
                               >
                                 {client.name}
                               </a>

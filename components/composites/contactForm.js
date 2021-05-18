@@ -10,7 +10,7 @@ function classNames(...classes) {
 }
 
 export default function contactForm(props) {
-  console.log("contactForm Props // ", props);
+  //console.log("contactForm Props // ", props);
 
   const [agreed, setAgreed] = useState(false);
 
