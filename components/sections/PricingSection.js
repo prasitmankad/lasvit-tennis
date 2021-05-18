@@ -16,7 +16,7 @@ export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
   return (
     <div className="bg-gradient-to-b from-white to-gray-50">
       {price && (
-        <div className="max-w-7xl mx-auto p-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto pb-16 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center mt-12 space-y-4 sm:mt-16 sm:space-y-0 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0">
             <div
               key={pricing.heading}
@@ -32,8 +32,6 @@ export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
                     {price.symbol}
                     {price.value}
                   </span>
-
-                  {/* <span className="text-base font-medium text-gray-500">/mo</span> */}
                 </p>
 
                 <PayButton
