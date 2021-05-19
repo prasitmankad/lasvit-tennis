@@ -4,7 +4,7 @@ import { urlFor } from "../../utils/sanity";
 
 export function CourseCard(props) {
   const router = useRouter();
-console.log ("CourseCard -> ",props)
+//console.log ("CourseCard -> ",props)
   return (
     <div
       key={props.course.id}

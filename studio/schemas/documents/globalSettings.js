@@ -322,7 +322,7 @@ export default {
                   //title: 'caption'
                 },
                 prepare({ title }) {
-                  console.log("[obj]", title);
+                  //console.log("[obj]", title);
                   return {
                     title:
                       title && typeof title === "object"

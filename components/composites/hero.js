@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { Popover } from "@headlessui/react";

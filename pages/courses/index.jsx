@@ -52,7 +52,17 @@ function CoursesPage({ pageData }) {
             </div>
           </div>
 
-          
+          {/* USE FOR COURSE CATALOG PAGE */}
+          {/* <div className="bg-blue-50">
+          <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 className="text-3xl font-extrabold tracking-tight text-blue-900 sm:text-4xl">
+              <span className="block">Ready to dive in?</span>
+              <span className="block text-blue-600">
+                Check out our courses below
+              </span>
+            </h2>
+          </div>
+        </div> */}
 
           <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-none py-4">
             {pageData.pageData.map((course, i) => (
@@ -65,6 +75,7 @@ function CoursesPage({ pageData }) {
           </div>
         </div>
       </div>
+
       <RenderFooter data={pageData.globalData} />
     </>
   );

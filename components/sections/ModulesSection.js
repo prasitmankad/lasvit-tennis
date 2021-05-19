@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { ModulesItemSection } from "./ModulesItemSection";
+import { ContentSneakPeek } from "./ContentSneakPeek";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

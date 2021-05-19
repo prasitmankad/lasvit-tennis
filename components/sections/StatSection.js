@@ -1,12 +1,13 @@
 export function StatSection({ stats }) {
   return (
+    <>
     <div className="bg-gray-50 pt-12 sm:pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2">
             {stats.heading}
           </h2>
-          <p className="mt-3 text-xl text-gray-500 sm:mt-4">{stats.content}</p>
+          <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_p">{stats.content}</p>
         </div>
       </div>
       <div className="mt-10 pb-12 bg-white sm:pb-16">
@@ -33,6 +34,13 @@ export function StatSection({ stats }) {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      
+      
+      
+    </>
   );
 }
+
+
+

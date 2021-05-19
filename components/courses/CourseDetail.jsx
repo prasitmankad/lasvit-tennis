@@ -1,14 +1,15 @@
 import React from "react";
-
-import { FeatureSectionWithPictures } from "./../../components/sections/FeatureSectionWithPictures";
-import { FeatureSection } from "./../../components/sections/FeatureSection";
+import { urlFor } from "../../utils/sanity";
+import { MajorCourseFeatures } from "../sections/MajorCourseFeatures";
+import { FullCourseFeatures } from "./../../components/sections/FullCourseFeatures";
 import { FaqSection } from "./../../components/sections/FaqSection";
 import { StatSection } from "./../../components/sections/StatSection";
 import { PricingSection } from "./../../components/sections/PricingSection";
 import { ModulesSection } from "./../../components/sections/ModulesSection";
-import { ModulesItemSection } from "./../../components/sections/ModulesItemSection";
+import { ContentSneakPeek } from "./../../components/sections/ContentSneakPeek";
 import { useClient } from "../../hooks/useClient";
 import { Loader } from "../../components/Loader";
+import { CourseBanner } from "../../components/courses/CourseBanner";
 
 export function CourseDetail({ payCourse, course }) {
   const { courseBilling, client } = useClient(course._id);
@@ -21,23 +22,32 @@ export function CourseDetail({ payCourse, course }) {
     <div className="bg-white">
       {course && (
         <>
-          <FeatureSectionWithPictures content={course.content} />
-
-          {client === null || courseBilling === null ? (
+          {client === null || courseBilling === null ? ( // not paid
             <>
+              <CourseBanner course={course} />
+
+              <MajorCourseFeatures content={course.content} />
+              <ContentSneakPeek content={course.content.sneakpeek} />
+
+              <FullCourseFeatures content={course.content} />
+              <StatSection stats={course.stats} />
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
-              <ModulesItemSection
+              <FaqSection faqs={course.faqs} />
+
+              {/* <ModulesItemSection
                 items={course.content.sneakpeek}
                 title={"Sneak peek"}
-              />
+              /> */}
             </>
           ) : (
-            <ModulesSection modules={course.modules} />
+            // paid layout variants
+            // modules
+            // content items - videos
+            // content items - articles
+            <>
+              <ModulesSection modules={course.modules} />
+            </>
           )}
-
-          <StatSection stats={course.stats} />
-          <FeatureSection content={course.content} />
-          <FaqSection faqs={course.faqs} />
         </>
       )}
     </div>
