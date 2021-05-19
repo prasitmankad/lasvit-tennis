@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { showPayloadModalAction } from "../../modules/actions/apiAction";
+import { useTranslation } from "react-i18next";
 
 export function PayloadModal() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <div
-      className="fixed z-10 inset-0 overflow-y-auto"
+      className="z-50 fixed z-10 inset-0 overflow-y-auto"
       ariaLabelledby="modal-title"
       role="dialog"
       ariaModal="true"
@@ -48,12 +50,11 @@ export function PayloadModal() {
                 className="text-lg leading-6 font-medium text-gray-900"
                 id="modal-title"
               >
-                Payment successful
+                {t("courses.paymentModal.title")}
               </h3>
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur amet labore.
+                  {t("courses.paymentModal.description")}
                 </p>
               </div>
             </div>
@@ -66,7 +67,7 @@ export function PayloadModal() {
               type="button"
               className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
             >
-              Go back to dashboard
+              {t("courses.paymentModal.button")}
             </button>
           </div>
         </div>
