@@ -5,7 +5,7 @@ export const lang = {
 };
 
 export const flag = {
-  [lang.en]: "https://lipis.github.io/flag-icon-css/flags/4x3/um.svg",
+  [lang.en]: "https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg",
   [lang.zh]: "https://lipis.github.io/flag-icon-css/flags/4x3/cn.svg",
 };
 

@@ -12,7 +12,7 @@
 
   .custom_title {
     /*  fix size for mobile */
-    @apply mt-6 block xl:text-7xl font-extrabold text-4xl tracking-tight sm:text-5xl md:text-6xl sm:text-center lg:text-left 
+    @apply mt-6 block xl:text-5xl font-extrabold text-3xl tracking-tight sm:text-3xl md:text-4xl sm:text-center lg:text-left 
   }
 
   .custom_subtitle {
