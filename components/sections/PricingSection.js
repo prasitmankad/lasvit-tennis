@@ -4,9 +4,11 @@ import { useTranslation } from "react-i18next";
 import { Currency } from "../../translations/config";
 import { getLanguage } from "../../translations/utils";
 import { PayButton } from "../courses/PayButton";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
   const { t } = useTranslation();
+  const { l } = useLanguage();
 
   const price = React.useMemo(
     () => pricing.prices.find((p) => p.currency === Currency[getLanguage()]),
@@ -19,14 +21,16 @@ export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
         <div className="max-w-7xl mx-auto pb-16 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center mt-12 space-y-4 sm:mt-16 sm:space-y-0 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0">
             <div
-              key={pricing.heading}
+              key={l(pricing.heading)}
               className="flex-1 mx-4 border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 max-w-sm"
             >
               <div className="p-6">
                 <h2 className="text-lg leading-6 font-medium text-gray-900">
-                  {pricing.heading}
+                  {l(pricing.heading)}
                 </h2>
-                <p className="mt-4 text-sm text-gray-500">{pricing.content}</p>
+                <p className="mt-4 text-sm text-gray-500">
+                  {l(pricing.content)}
+                </p>
                 <p className="mt-8">
                   <span className="text-4xl font-extrabold text-gray-900">
                     {price.symbol}
@@ -41,7 +45,7 @@ export function PricingSection({ payCourse, pricing, features = ["todo"] }) {
                     payCourse(token, {
                       ...price,
                       frequency: pricing.billingFrequency,
-                      type: pricing.subheading,
+                      type: l(pricing.subheading),
                     })
                   }
                 />

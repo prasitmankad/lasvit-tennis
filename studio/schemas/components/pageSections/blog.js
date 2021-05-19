@@ -1,59 +1,77 @@
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
+
 export default {
   type: "object",
   name: "blog",
   title: "Blog Posts",
 
   fieldsets: [
-
     {
       name: "basic",
       title: "Basic Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 2, 
+        collapsible: true,
+        collapsed: true,
+        columns: 2,
       },
     },
     {
       name: "image",
       title: "Image Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
     {
       name: "details",
       title: "Detailed Settings",
       options: {
-        collapsible: true, 
-        collapsed: true, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: true,
+        columns: 1,
       },
     },
   ],
   fields: [
     {
       name: "heading",
-      type: "string",
-      title: "Heading",
+      type: "object",
       fieldset: "basic",
-
-      description:
-        "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      options: i18n_options,
+      validation: fieldValidationRequired("heading", "Heading"),
+      fields: [
+        {
+          name: "heading",
+          type: "string",
+          title: "Heading",
+          fieldset: "basic",
+          description:
+            "Headings should be short & catchy, descriptive, and only a couple of words long.",
+        },
+      ],
     },
     {
       name: "subheading",
-      type: "string",
-      title: "Sub-heading or Category",
+      type: "object",
       fieldset: "basic",
-      description:
-        "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "subheading",
+        "Sub-heading or Category"
+      ),
+      fields: [
+        {
+          name: "subheading",
+          type: "string",
+          title: "Sub-heading or Category",
+          fieldset: "basic",
+          description:
+            "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+        },
+      ],
     },
 
     {
@@ -70,8 +88,7 @@ export default {
       title: "Background Color",
       description:
         "Used as the background color for the section. Use carefully as this doesn't always work well with images.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      validation: (Rule) => Rule.required().error("This field is required."),
       options: {
         borderradius: {
           outer: "100%",
@@ -93,11 +110,19 @@ export default {
     },
     {
       name: "content",
-      type: "text",
-      title: "Content",
+      type: "object",
       fieldset: "basic",
-      description:
-        "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+      options: i18n_options,
+      fields: [
+        {
+          name: "content",
+          type: "text",
+          title: "Content",
+          fieldset: "basic",
+          description:
+            "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+        },
+      ],
     },
   ],
   preview: {
@@ -107,7 +132,10 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].heading
+            : title,
         subtitle: `(Blog Posts Block)`,
       };
     },

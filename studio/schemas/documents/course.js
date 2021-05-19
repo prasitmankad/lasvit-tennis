@@ -1,4 +1,6 @@
 import { RiMacbookLine as icoCourses } from "react-icons/ri";
+import { i18n_options, baseLanguage } from "../../../translations/config";
+import { fieldValidationRequired } from "../validations";
 
 export default {
   name: "course",
@@ -60,13 +62,20 @@ export default {
     // Basic Info
     {
       name: "title",
-      type: "string",
-      title: "Course Title",
-      required: true,
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("title", "Course Title"),
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Course Title",
+          required: true,
+          description:
+            "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+        },
+      ],
       fieldset: "basic",
-      description:
-        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "slug",
@@ -89,12 +98,23 @@ export default {
     },
     {
       name: "shortDescription",
-      type: "text",
-      title: "Short Description",
+      type: "object",
       fieldset: "basic",
-      description:
-        "What is this course all about? Used in landing pages, course landing page etc.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "shortDescription",
+        "Short Description"
+      ),
+      fields: [
+        {
+          name: "shortDescription",
+          type: "text",
+          title: "Short Description",
+          fieldset: "basic",
+          description:
+            "What is this course all about? Used in landing pages, course landing page etc.",
+        },
+      ],
     },
 
     // Content
@@ -160,41 +180,70 @@ export default {
       fields: [
         {
           name: "heading",
-          type: "string",
-          title: "Heading",
-          description:
-            "Headings should be short & catchy, descriptive, and only a couple of words long.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("heading", "Heading"),
+          fields: [
+            {
+              name: "heading",
+              type: "string",
+              title: "Heading",
+              description:
+                "Headings should be short & catchy, descriptive, and only a couple of words long.",
+            },
+          ],
         },
         {
           name: "subheading",
-          type: "string",
-          title: "Section Sub-heading or Category",
-          description:
-            "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired(
+            "subheading",
+            "Section Sub-heading or Category"
+          ),
+          fields: [
+            {
+              name: "subheading",
+              type: "string",
+              title: "Section Sub-heading or Category",
+              description:
+                "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+            },
+          ],
         },
         {
           name: "content",
-          type: "text",
-          title: "Content",
-          description:
-            "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+          type: "object",
+          options: i18n_options,
+          fields: [
+            {
+              name: "content",
+              type: "text",
+              title: "Content",
+              description:
+                "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+            },
+          ],
         },
         {
           name: "statistics",
-          type: "array",
-          title: "Statistics",
-          description: "Set of stats for this Course.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
-
-          of: [
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("statistics", "Statistics"),
+          fields: [
             {
-              type: "object",
-              fields: [
-                { name: "value", type: "string", title: "Value" },
-                { name: "metric", type: "string", title: "Metric" },
+              name: "statistics",
+              type: "array",
+              title: "Statistics",
+              description: "Set of stats for this Course.",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    { name: "value", type: "string", title: "Value" },
+                    { name: "metric", type: "string", title: "Metric" },
+                  ],
+                },
               ],
             },
           ],
@@ -216,26 +265,46 @@ export default {
       fields: [
         {
           name: "heading",
-          type: "string",
-          title: "Section Heading",
-          description:
-            "Headings should be short & catchy, descriptive, and only a couple of words long.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("heading", "Section Heading"),
+          fields: [
+            {
+              name: "heading",
+              type: "string",
+              title: "Section Heading",
+              description:
+                "Headings should be short & catchy, descriptive, and only a couple of words long.",
+            },
+          ],
         },
         {
           name: "subheading",
-          type: "string",
-          title: "Section Sub-heading or Category",
-          description:
-            "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+          type: "object",
+          options: i18n_options,
+          fields: [
+            {
+              name: "subheading",
+              type: "string",
+              title: "Section Sub-heading or Category",
+              description:
+                "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+            },
+          ],
         },
         {
           name: "content",
-          type: "text",
-          title: "Section Text",
-          description:
-            "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+          type: "object",
+          options: i18n_options,
+          fields: [
+            {
+              name: "content",
+              type: "text",
+              title: "Section Text",
+              description:
+                "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+            },
+          ],
         },
         {
           name: "billingFrequency",
@@ -314,19 +383,32 @@ export default {
       fields: [
         {
           name: "heading",
-          type: "string",
-          title: "Heading",
-          description:
-            "Headings should be short & catchy, descriptive, and only a couple of words long.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("heading", "Heading"),
+          fields: [
+            {
+              name: "heading",
+              type: "string",
+              title: "Heading",
+              description:
+                "Headings should be short & catchy, descriptive, and only a couple of words long.",
+            },
+          ],
         },
         {
           name: "content",
-          type: "text",
-          title: "Content",
-          description:
-            "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+          type: "object",
+          options: i18n_options,
+          fields: [
+            {
+              name: "content",
+              type: "text",
+              title: "Content",
+              description:
+                "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+            },
+          ],
         },
         {
           name: "faq",
@@ -357,7 +439,10 @@ export default {
     prepare({ title = "No title", slug = {}, media }) {
       const path = `/courses/${slug.current}`;
       return {
-        title,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].title
+            : title,
         media,
         subtitle: path,
       };

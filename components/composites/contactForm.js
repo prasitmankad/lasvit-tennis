@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
+import { useLanguage } from "../../hooks/useLanguage";
 
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
@@ -11,7 +12,7 @@ function classNames(...classes) {
 
 export default function contactForm(props) {
   //console.log("contactForm Props // ", props);
-
+  const { l } = useLanguage();
   const [agreed, setAgreed] = useState(false);
 
   return (
@@ -37,12 +38,12 @@ export default function contactForm(props) {
                   <dt className="sr-only">Postal address</dt>
                   <dd>
                     <p className="text-gray-500 text-base">
-                      {props.globalData.businessInfo.contact.streetNo}{" "}
-                      {props.globalData.businessInfo.contact.street}
+                      {l(props.globalData.businessInfo.contact.streetNo)}{" "}
+                      {l(props.globalData.businessInfo.contact.street)}
                       <br />
-                      {props.globalData.businessInfo.contact.city},{" "}
-                      {props.globalData.businessInfo.contact.country}{" "}
-                      {props.globalData.businessInfo.contact.zip}
+                      {l(props.globalData.businessInfo.contact.city)},{" "}
+                      {l(props.globalData.businessInfo.contact.country)}{" "}
+                      {l(props.globalData.businessInfo.contact.zip)}
                     </p>
                   </dd>
                 </div>

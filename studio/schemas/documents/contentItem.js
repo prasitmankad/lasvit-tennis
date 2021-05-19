@@ -1,4 +1,6 @@
 import { RiKeyboardLine as icoContent } from "react-icons/ri";
+import { i18n_options, baseLanguage } from "../../../translations/config";
+import { fieldValidationRequired } from "../validations";
 
 export default {
   name: "contentItem",
@@ -34,11 +36,18 @@ export default {
     },
 
     {
-      title: "Content Title",
       name: "contentTitle",
-      type: "string",
-      description:
-        "Specify the title of the content. e.g. name of the video. Used on content rolls / summary pages.",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          title: "Content Title",
+          name: "contentTitle",
+          type: "string",
+          description:
+            "Specify the title of the content. e.g. name of the video. Used on content rolls / summary pages.",
+        },
+      ],
     },
     {
       name: "slug",
@@ -61,18 +70,35 @@ export default {
     },
     {
       name: "shortDescription",
-      type: "text",
-      title: "Short Description",
-      description:
-        "1-2 sentences describing the content item. Used on content rolls / summary pages.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "shortDescription",
+        "Short Description"
+      ),
+      fields: [
+        {
+          name: "shortDescription",
+          type: "text",
+          title: "Short Description",
+          description:
+            "1-2 sentences describing the content item. Used on content rolls / summary pages.",
+        },
+      ],
     },
     {
       name: "longDescription",
-      type: "blockContent",
-      title: "Long Description.",
-      description:
-        "A detailed or transcript for Videos. For articles, this is the Article content itself.",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          name: "longDescription",
+          type: "blockContent",
+          title: "Long Description.",
+          description:
+            "A detailed or transcript for Videos. For articles, this is the Article content itself.",
+        },
+      ],
     },
 
     {
@@ -102,11 +128,12 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].contentTitle
+            : title,
         subtitle: `${subtitle}`,
       };
     },
   },
-
-  
 };

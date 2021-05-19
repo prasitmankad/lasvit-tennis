@@ -1,3 +1,6 @@
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
+
 export default {
   type: "object",
   name: "signup",
@@ -7,26 +10,50 @@ export default {
   fields: [
     {
       name: "heading",
-      type: "string",
-      title: "Heading",
-      description:
-        "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("heading", "Heading"),
+      fields: [
+        {
+          name: "heading",
+          type: "string",
+          title: "Heading",
+          description:
+            "Headings should be short & catchy, descriptive, and only a couple of words long.",
+        },
+      ],
     },
     {
       name: "subheading",
-      type: "string",
-      title: "Sub-heading or Category",
-      description:
-        "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "subheading",
+        "Sub-heading or Category"
+      ),
+      fields: [
+        {
+          name: "subheading",
+          type: "string",
+          title: "Sub-heading or Category",
+          description:
+            "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+        },
+      ],
     },
     {
       name: "text",
-      type: "string",
-      title: "Text",
-      description: "Main text for the signup block.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("text", "Text"),
+      fields: [
+        {
+          name: "text",
+          type: "string",
+          title: "Text",
+          description: "Main text for the signup block.",
+        },
+      ],
     },
     {
       name: "backgroundColor",
@@ -62,7 +89,10 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].heading
+            : title,
         subtitle: `(Signup Newsletter Block)`,
       };
     },

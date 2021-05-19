@@ -2,6 +2,8 @@ import { CheckIcon as CheckIconOutline } from "@heroicons/react/outline";
 
 export function FeatureSection({ content }) {
   const { features } = content;
+
+  console.log("[]", features);
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
       <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">

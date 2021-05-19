@@ -6,6 +6,7 @@ import { useLanguage } from "../../hooks/useLanguage";
 
 export default function footer(props) {
   const { l } = useLanguage();
+
   const navigation = {
     social: [
       {
@@ -69,15 +70,15 @@ export default function footer(props) {
               </a>
             </Link>
             <p className="text-gray-500 text-base">
-              {props.data.businessInfo.tagline}
+              {l(props.data.businessInfo.tagline)}
             </p>
             <p className="text-gray-500 text-base">
-              {props.data.businessInfo.contact.streetNo}{" "}
-              {props.data.businessInfo.contact.street}
+              {l(props.data.businessInfo.contact.streetNo)}{" "}
+              {l(props.data.businessInfo.contact.street)}
               <br />
-              {props.data.businessInfo.contact.city},{" "}
-              {props.data.businessInfo.contact.country}{" "}
-              {props.data.businessInfo.contact.zip}
+              {l(props.data.businessInfo.contact.city)},{" "}
+              {l(props.data.businessInfo.contact.country)}{" "}
+              {l(props.data.businessInfo.contact.zip)}
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -209,7 +210,7 @@ export default function footer(props) {
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8">
           <p className="text-base text-gray-700 xl:text-center">
-            &copy; 2021 {props.data.businessInfo.title}. All rights reserved.
+            &copy; 2021 {l(props.data.businessInfo.title)}. All rights reserved.
           </p>
         </div>
       </div>

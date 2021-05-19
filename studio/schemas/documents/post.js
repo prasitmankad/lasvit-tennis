@@ -1,4 +1,6 @@
 import { RiCheckboxMultipleBlankLine as icoPosts2 } from "react-icons/ri";
+import { i18n_options, baseLanguage } from "../../../translations/config";
+import { fieldValidationRequired } from "../validations";
 
 export default {
   name: "post",
@@ -38,12 +40,19 @@ export default {
   fields: [
     {
       name: "title",
-      type: "string",
-      title: "Blog Post Title",
-      description:
-        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("title", "Blog Post Title"),
       fieldset: "info",
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Blog Post Title",
+          description:
+            "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+        },
+      ],
     },
     {
       name: "slug",
@@ -85,19 +94,34 @@ export default {
     },
     {
       name: "excerpt",
-      type: "text",
-      title: "Excerpt",
-      description:
-        "A short description of what the article is about. This ends up on cards and summary blog pages.",
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("excerpt", "Excerpt"),
+      fields: [
+        {
+          name: "excerpt",
+          type: "text",
+          title: "Excerpt",
+          description:
+            "A short description of what the article is about. This ends up on cards and summary blog pages.",
+          fieldset: "content",
+        },
+      ],
       fieldset: "content",
-      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "body",
-      type: "blockContent",
-      title: "Body",
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("body", "Body"),
+      fields: [
+        {
+          name: "body",
+          type: "blockContent",
+          title: "Body",
+        },
+      ],
       fieldset: "content",
-      validation: (Rule) => Rule.required().error("This field is required."),
     },
     {
       name: "author",
@@ -148,7 +172,10 @@ export default {
     prepare({ title = "No title", publishedAt, slug = {}, media }) {
       const path = `/blog/${slug.current}`;
       return {
-        title,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].title
+            : title,
         media,
         subtitle: publishedAt ? path : "Missing publishing date",
       };
