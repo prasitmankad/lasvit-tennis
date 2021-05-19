@@ -37,6 +37,16 @@ export default function footer(props) {
     ],
   };
 
+  function getRelativeSlug(slug, type) {
+    switch (type) {
+      case "course":
+        return `/courses/${slug}`;
+
+      default:
+        return `/${slug}`;
+    }
+  }
+
   return (
     <footer className="bg-gray-100" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only custom_heading2">
@@ -93,7 +103,9 @@ export default function footer(props) {
                         props.data.footer.columns[0].heading + item.slug.current
                       }
                     >
-                      <Link href={`/${item.slug.current}`}>
+                      <Link
+                        href={getRelativeSlug(item.slug.current, item._type)}
+                      >
                         <a
                           className={
                             "text-base text-" +
@@ -117,7 +129,9 @@ export default function footer(props) {
                   {props.data.footer.columns[1].links.map((item) => {
                     return (
                       <li key={item.slug.current}>
-                        <Link href={`/${item.slug.current}`}>
+                        <Link
+                          href={getRelativeSlug(item.slug.current, item._type)}
+                        >
                           <a
                             className={
                               "text-base text-" +
@@ -130,7 +144,7 @@ export default function footer(props) {
                           </a>
                         </Link>
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </div>
@@ -143,7 +157,9 @@ export default function footer(props) {
                 <ul className="mt-4 space-y-4">
                   {props.data.footer.columns[2].links.map((item) => (
                     <li key={item.slug.current}>
-                      <Link href={`/${item.slug.current}`}>
+                      <Link
+                        href={getRelativeSlug(item.slug.current, item._type)}
+                      >
                         <a
                           className={
                             "text-base text-" +
@@ -170,7 +186,9 @@ export default function footer(props) {
                         props.data.footer.columns[3].heading + item.slug.current
                       }
                     >
-                      <Link href={`/${item.slug.current}`}>
+                      <Link
+                        href={getRelativeSlug(item.slug.current, item._type)}
+                      >
                         <a
                           className={
                             "text-base text-" +

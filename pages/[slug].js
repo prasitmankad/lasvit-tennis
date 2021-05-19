@@ -7,7 +7,7 @@ import RenderHeader from "../components/render/renderHeader";
 import RenderSections from "../components/render/renderSections";
 import RenderFooter from "../components/render/renderFooter";
 
-import query from "../modules/groq/page";
+import { pageCollection as query } from "../modules/groq/page";
 
 export async function getStaticProps({ params = {}, preview = false }) {
   const { slug } = params;
@@ -21,8 +21,13 @@ export async function getStaticProps({ params = {}, preview = false }) {
 // TODO next.js fix
 function isInWhitelist(slug) {
   if (!slug) return false;
-  if (slug === 'account' || slug ==='blog' || slug === 'courses' || slug === 'login') {
-    return false
+  if (
+    slug === "account" ||
+    slug === "blog" ||
+    slug === "courses" ||
+    slug === "login"
+  ) {
+    return false;
   }
   return true;
 }
@@ -30,7 +35,7 @@ export async function getStaticPaths() {
   var routes = await getClient().fetch(
     `*[_type == "page" && defined(slug.current)]{"params": {"slug": slug.current}}`
   );
-  routes = routes.filter(e => isInWhitelist(e.params.slug))
+  routes = routes.filter((e) => isInWhitelist(e.params.slug));
   return {
     paths: routes || null,
     fallback: true,

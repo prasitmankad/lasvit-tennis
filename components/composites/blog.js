@@ -55,7 +55,7 @@ export default function blog(props) {
                       <React.Fragment></React.Fragment>
                     )}
                   </p>
-                  <Link href={post.slug.current}>
+                  <Link href={`/blog/${post.slug.current}`}>
                     <a className="block mt-2">
                       <p className="text-xl font-semibold text-gray-900">
                         {post.title}
