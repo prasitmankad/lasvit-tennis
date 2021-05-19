@@ -34,7 +34,7 @@ export function PaymentDetail({ bill, client }) {
                   disabled
                   value={bill.name}
                   autoComplete="cc-given-name"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                  className="bg-gray-100 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
                 />
               </div>
 
@@ -52,7 +52,7 @@ export function PaymentDetail({ bill, client }) {
                   autoComplete="email"
                   disabled
                   value={client.email}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                  className="bg-gray-100 bg-gray mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
                 />
               </div>
 
@@ -70,7 +70,7 @@ export function PaymentDetail({ bill, client }) {
                   autoComplete="cc-exp"
                   disabled
                   value={format(new Date(bill.createdAt), "MM/dd/yyyy")}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                  className="bg-gray-100 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
                   placeholder="MM / YY"
                 />
               </div>
@@ -89,7 +89,7 @@ export function PaymentDetail({ bill, client }) {
                   autoComplete="cc-csc"
                   disabled
                   value={`${bill.symbol}${bill.amount}`}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                  className="bg-gray-100 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
                 />
               </div>
 
@@ -107,7 +107,7 @@ export function PaymentDetail({ bill, client }) {
                   autoComplete="postal-code"
                   disabled
                   value={bill.period}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+                  className="bg-gray-100 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
                 />
               </div>
             </div>
