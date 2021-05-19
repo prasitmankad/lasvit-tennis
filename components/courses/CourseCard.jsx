@@ -1,28 +1,38 @@
 import { useRouter } from "next/router";
+import React from "react";
+import { urlFor } from "../../utils/sanity";
 
-export function CourseCard({ course }) {
-  const { mainImage, shortDescription, title, slug } = course;
+export function CourseCard(props) {
   const router = useRouter();
-
+console.log ("CourseCard -> ",props)
   return (
     <div
-      key={course.id}
-      className="max-w-xs rounded overflow-hidden hover:bg-blue-50 hover:bg-opacity-50 hover:shadow-xl shadow-md m-4 cursor-pointer"
+      key={props.course.id}
+      className="flex flex-col rounded-lg shadow-lg overflow-hidden cursor-pointer"
       onClick={() => {
-        router.push(`/courses/${slug.current}`);
+        router.push(`/courses/${props.course.slug.current}`);
       }}
     >
-      <div className="relative text-center text-white">
+      <div className="flex-shrink-0">
         <img
-          className="w-full"
-          src={mainImage.src.url}
-          alt="Sunset in the mountains"
+          src={props.course.mainImage.src.url}
+          alt={props.course.mainImage?.alt || ``}
         />
       </div>
-      <div className="h-56 px-6 py-4">
-        <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-grey-darker text-justify">{shortDescription}</p>
+      <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+        <div className="flex-1">
+          <a className="block mt-2">
+            <p className="text-xl font-semibold text-gray-900">
+              {props.course.title}
+            </p>
+            <p className="mt-3 text-base text-gray-500">
+              {props.course.shortDescription}
+            </p>
+          </a>
+        </div>
       </div>
+
+      
     </div>
   );
 }

@@ -7,7 +7,7 @@
     "dev": "concurrently \"next --port 3000\" \"cd studio && sanity start\"",
     "build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
     "start": "vercel dev",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "cd studio && yarn install && cd .. && lerna bootstrap",
     "check-template": "sanity-template check"
   },
   "repository": {
