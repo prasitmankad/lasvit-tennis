@@ -39,6 +39,7 @@ function BlogPageContainer({ pageData, preview }) {
 
   return (
     <>
+
       <RenderHeader data={pageData.globalData} />
       <div
         className={
