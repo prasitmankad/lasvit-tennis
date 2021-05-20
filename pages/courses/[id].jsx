@@ -1,6 +1,6 @@
 import React from "react";
 import Error from "next/error";
-import { CourseBanner } from "../../components/courses/CourseBanner";
+// import { CourseBanner } from "../../components/courses/CourseBanner";
 import { CourseDetail } from "../../components/courses/CourseDetail";
 import { useDispatch } from "react-redux";
 import { createBillingAction } from "../../modules/actions/apiAction";
@@ -61,7 +61,7 @@ function Course({ pageData }) {
 
       {pageData && (
         <>
-          <CourseBanner course={pageData.pageData} />
+          {/* <CourseBanner course={pageData.pageData} /> */}
           <CourseDetail
             course={pageData.pageData}
             payCourse={(token, price) => payCourse(token, price)}
