@@ -1,19 +1,21 @@
+import { useLanguage } from "../../hooks/useLanguage";
 export function FeatureSectionWithPictures({ content }) {
   const { features } = content;
+  const { l } = useLanguage();
 
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
       {features.map((feature) => {
         return feature.imageLocation === "right"
           ? RigtCard(
-              feature.featureName,
-              feature.longDescription,
-              feature.mainImage.url.url
+              l(feature.featureName),
+              l(feature.longDescription),
+              l(feature.mainImage.url.url)
             )
           : LeftCard(
-              feature.featureName,
-              feature.longDescription,
-              feature.mainImage.url.url
+              l(feature.featureName),
+              l(feature.longDescription),
+              l(feature.mainImage.url.url)
             );
       })}
     </div>

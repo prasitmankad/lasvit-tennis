@@ -104,7 +104,6 @@ export default {
           title: "Excerpt",
           description:
             "A short description of what the article is about. This ends up on cards and summary blog pages.",
-          fieldset: "content",
         },
       ],
       fieldset: "content",

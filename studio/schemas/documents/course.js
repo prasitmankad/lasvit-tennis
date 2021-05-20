@@ -110,7 +110,6 @@ export default {
           name: "shortDescription",
           type: "text",
           title: "Short Description",
-          fieldset: "basic",
           description:
             "What is this course all about? Used in landing pages, course landing page etc.",
         },

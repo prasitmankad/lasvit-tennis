@@ -1,7 +1,7 @@
 import { useLanguage } from "../../hooks/useLanguage";
 
 export function StatSection({ stats }) {
-  const { l } = useLanguage();
+  const { l, lang } = useLanguage();
   return (
     <div className="bg-gray-50 pt-12 sm:pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +20,7 @@ export function StatSection({ stats }) {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
-                {stats.statistics.map((stat, i) => (
+                {stats.statistics[lang].statistics.map((stat, i) => (
                   <div
                     key={i}
                     className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r"
