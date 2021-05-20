@@ -10,6 +10,7 @@ import { ContentSneakPeek } from "./../../components/sections/ContentSneakPeek";
 import { StatSection } from "./../../components/sections/StatSection";
 import { PricingSection } from "./../../components/sections/PricingSection";
 import { FaqSection } from "./../../components/sections/FaqSection";
+import { CourseDashboard } from "../sections/CourseDashboard.js";
 
 export function CourseDetail({ payCourse, course }) {
   const { courseBilling, client } = useClient(course._id);
@@ -25,6 +26,9 @@ export function CourseDetail({ payCourse, course }) {
           {/* <FeatureSectionWithPictures content={course.content} /> */}
           {client === null || courseBilling === null ? (
             <>
+              
+              {/* <CourseDashboard course={course} /> */}
+
               <CourseBanner course={course} />
               <MajorCourseFeatures content={course.content} />
               <ContentSneakPeek content={course.content.sneakpeek} />
@@ -32,6 +36,9 @@ export function CourseDetail({ payCourse, course }) {
               <StatSection stats={course.stats} />
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
               <FaqSection faqs={course.faqs} />
+              
+
+              
 
               {/* <PricingSection pricing={course.pricing} payCourse={payCourse} />
               <div className="lg:mx-24">
