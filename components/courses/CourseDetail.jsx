@@ -22,7 +22,6 @@ export function CourseDetail({ payCourse, course }) {
       {course && (
         <>
           <FeatureSectionWithPictures content={course.content} />
-
           {client === null || courseBilling === null ? (
             <>
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
@@ -36,7 +35,6 @@ export function CourseDetail({ payCourse, course }) {
           ) : (
             <ModulesSection modules={course.modules} />
           )}
-
           <StatSection stats={course.stats} />
           <FeatureSection content={course.content} />
           <FaqSection faqs={course.faqs} />

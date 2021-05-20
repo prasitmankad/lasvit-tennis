@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { urlFor } from "../../utils/sanity";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export function CourseCard(props) {
   const router = useRouter();
-console.log ("CourseCard -> ",props)
+  const { l } = useLanguage();
+  console.log("CourseCard -> ", props);
   return (
     <div
       key={props.course.id}
@@ -23,16 +25,14 @@ console.log ("CourseCard -> ",props)
         <div className="flex-1">
           <a className="block mt-2">
             <p className="text-xl font-semibold text-gray-900">
-              {props.course.title}
+              {l(props.course.title)}
             </p>
             <p className="mt-3 text-base text-gray-500">
-              {props.course.shortDescription}
+              {l(props.course.shortDescription)}
             </p>
           </a>
         </div>
       </div>
-
-      
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
 //import socials from "../objects/socials"
 import { i18n_options, baseLanguage } from "../../../translations/config";
+import { fieldValidationRequired } from "../validations";
 
 export default {
   name: "globalSettings",
@@ -45,28 +46,49 @@ export default {
       fields: [
         {
           name: "title",
-          type: "string",
-          title: "Company Name",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("title", "Company Name"),
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "Company Name",
+            },
+          ],
         },
         {
           name: "tagline",
-          type: "string",
-          title: "Tagline",
-          description:
-            "1 sentence slogan or tagline used in head and hero section.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("tagline", "Tagline"),
+          fields: [
+            {
+              name: "tagline",
+              type: "string",
+              title: "Tagline",
+              description:
+                "1 sentence slogan or tagline used in head and hero section.",
+            },
+          ],
         },
         {
           name: "siteDescription",
-          type: "text",
-          title: "Site Description",
-          description:
-            "A short description of the website, used in page head and hero sections.",
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired(
+            "siteDescription",
+            "Site Description"
+          ),
+          fields: [
+            {
+              name: "siteDescription",
+              type: "text",
+              title: "Site Description",
+              description:
+                "A short description of the website, used in page head and hero sections.",
+            },
+          ],
         },
         {
           title: "Contact",
@@ -76,6 +98,7 @@ export default {
           // validation: (Rule) =>
           //   Rule.required().error("This field is required."),
           options: {
+            ...i18n_options,
             collapsible: true,
             collapsed: false,
             columns: 1,
@@ -362,7 +385,11 @@ export default {
               type: "object",
               title: "Items",
               fields: [
-                { name: "heading", type: "string", title: "Column Heading" },
+                {
+                  name: "heading",
+                  type: "string",
+                  title: "Column Heading",
+                },
                 {
                   name: "links",
                   type: "array",
@@ -395,6 +422,7 @@ export default {
           title: "Newsletter Signup",
           description:
             "Content for the newsletter signup section in the Footer.",
+          options: i18n_options,
           fields: [
             {
               name: "heading",

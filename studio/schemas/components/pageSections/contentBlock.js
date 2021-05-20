@@ -1,3 +1,5 @@
+import { i18n_options } from "../../../../translations/config";
+
 export default {
   type: "object",
   name: "contentBlock",
@@ -5,10 +7,17 @@ export default {
   fields: [
     {
       name: "body",
-      type: "blockContent",
-      title: "Body",
-      description:
-        "The content for your Blog Post. Words, images, videos and other content.",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          name: "body",
+          type: "blockContent",
+          title: "Body",
+          description:
+            "The content for your Blog Post. Words, images, videos and other content.",
+        },
+      ],
     },
   ],
   preview: {

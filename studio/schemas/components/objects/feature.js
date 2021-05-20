@@ -1,3 +1,6 @@
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
+
 export default {
   title: "Feature",
   name: "feature",
@@ -5,14 +8,14 @@ export default {
   description:
     "Data fields for a given Feature, Service Offer etc. that can be used and presented in a multi-column layout.",
 
-  fieldsets: [ 
+  fieldsets: [
     {
       name: "image",
       title: "Feature Image Settings",
       options: {
-        collapsible: true, 
-        collapsed: false, 
-        columns: 1, 
+        collapsible: true,
+        collapsed: false,
+        columns: 1,
       },
     },
     {
@@ -26,7 +29,6 @@ export default {
     },
   ],
   fields: [
-
     {
       title: "Main Feature",
       name: "mainFeature",
@@ -60,39 +62,62 @@ export default {
           { title: "Right", value: "right" },
           { title: "Top Center", value: "topCenter" },
           { title: "Bottom Center", value: "bottomCenter" },
-        ], 
+        ],
       },
     },
     {
-      title: "Feature Name",
       name: "featureName",
-      type: "string",
-      description: "Feature Name",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          title: "Feature Name",
+          name: "featureName",
+          type: "string",
+          description: "Feature Name",
+        },
+      ],
       fieldset: "details",
     },
 
     {
       name: "shortDescription",
-      type: "text",
-      title: "Short Description",
-      description:
-        "1-2 sentences describing the feature. Used on summary lists.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "shortDescription",
+        "Short Description"
+      ),
+      fields: [
+        {
+          name: "shortDescription",
+          type: "text",
+          title: "Short Description",
+          description:
+            "1-2 sentences describing the feature. Used on summary lists.",
+        },
+      ],
       fieldset: "details",
     },
     {
       name: "longDescription",
-      type: "text",
-      title: "Long Description",
-      description:
-        "5-10 longer sentences describing the feature in more detail. Used for Feature detail sections.",
-      validation: (Rule) =>
-        Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "longDescription",
+        "Long Description"
+      ),
+      fields: [
+        {
+          name: "longDescription",
+          type: "text",
+          title: "Long Description",
+          description:
+            "5-10 longer sentences describing the feature in more detail. Used for Feature detail sections.",
+        },
+      ],
       fieldset: "details",
     },
-
-
   ],
   preview: {
     select: {
@@ -100,11 +125,17 @@ export default {
       description: "shortDescription",
       media: "mainImage",
     },
-    prepare({ title, description,media }) {
+    prepare({ title, description, media }) {
       return {
-        title,
-        description,
-        media,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].featureName
+            : title,
+        description:
+          description && typeof description === "object"
+            ? description[baseLanguage].shortDescription
+            : description,
+        media: media,
       };
     },
   },

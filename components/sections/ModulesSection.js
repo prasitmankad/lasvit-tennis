@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ModulesItemSection } from "./ModulesItemSection";
+import { useLanguage } from "../../hooks/useLanguage";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -10,6 +11,7 @@ const ACTUAL_MODULE = 0;
 
 export function ModulesSection({ modules }) {
   const { t } = useTranslation();
+  const { l } = useLanguage();
   const [actualModule, setActualModule] = React.useState(
     modules[ACTUAL_MODULE]
   );
@@ -51,11 +53,11 @@ export function ModulesSection({ modules }) {
               <h3 className="text-lg font-medium">
                 <div className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
-                  {mod.title}
+                  {l(mod.title)}
                 </div>
               </h3>
               <p className="mt-2 text-sm text-gray-500">
-                {mod.shortDescription}
+                {l(mod.shortDescription)}
               </p>
             </div>
             <span
@@ -68,7 +70,7 @@ export function ModulesSection({ modules }) {
 
       <ModulesItemSection
         items={actualModule.items}
-        title={t("courses.moduleItems", { title: actualModule.title })}
+        title={t("courses.moduleItems", { title: l(actualModule.title) })}
       />
     </div>
   );
