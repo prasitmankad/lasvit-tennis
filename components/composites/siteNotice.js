@@ -7,9 +7,11 @@ import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 
 import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function siteNotice(props) {
   //console.log("SiteNotice Props // ", props);
+  const { l } = useLanguage();
 
   return (
     <React.Fragment>
@@ -30,10 +32,10 @@ export default function siteNotice(props) {
               </span>
               <p className="ml-3 font-medium text-white">
                 <span className="md:hidden">
-                  {props.sectionData.messageText}
+                  {l(props.sectionData.messageText)}
                 </span>
                 <span className="hidden md:inline">
-                  {props.sectionData.messageText}
+                  {l(props.sectionData.messageText)}
                 </span>
               </p>
             </div>
@@ -46,7 +48,7 @@ export default function siteNotice(props) {
                     " bg-white hover:bg-gray-light"
                   }
                 >
-                  {props.sectionData.link.text}
+                  {l(props.sectionData.link.text)}
                 </a>
               </Link>
             </div>

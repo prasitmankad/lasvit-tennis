@@ -3,9 +3,11 @@ import { Fragment } from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { Popover } from "@headlessui/react";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function hero(props) {
   // console.log("Hero Props // ", props);
+  const { l } = useLanguage();
 
   return (
     <React.Fragment>
@@ -30,7 +32,7 @@ export default function hero(props) {
                   <div className="sm:text-center lg:text-left">
                     <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_title">
                       {/* <span className="block > */}
-                      {props.sectionData.heading}
+                      {l(props.sectionData.heading)}
                       {/* </span>{" "} */}
                     </h1>
                     <h2
@@ -39,15 +41,15 @@ export default function hero(props) {
                         props.globalData.branding.primaryAccentColor.title
                       }
                     >
-                      {props.sectionData.subheading}
+                      {l(props.sectionData.subheading)}
                     </h2>
                     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                      {props.sectionData.content}
+                      {l(props.sectionData.content)}
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                       {props.sectionData.buttons?.map((button) => (
                         <div
-                          key={button.buttonText}
+                          key={l(button.buttonText)}
                           className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
                         >
                           <Link href={`/${button.links.route.slug.current}`}>
@@ -65,7 +67,7 @@ export default function hero(props) {
                                 " md:py-4 md:text-lg md:px-10"
                               }
                             >
-                              {button.buttonText}
+                              {l(button.buttonText)}
                             </a>
                           </Link>
                         </div>

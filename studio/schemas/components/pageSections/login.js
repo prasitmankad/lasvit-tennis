@@ -1,4 +1,5 @@
-//
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
 
 export default {
   type: "object",
@@ -29,27 +30,50 @@ export default {
     // logo and other info is pulled from Global settings
     {
       name: "heading",
-      type: "string",
-      title: "Heading",
+      type: "object",
       fieldset: "basic",
-      description:
-        "Headings should be short & catchy, descriptive, and only a couple of words long.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      options: i18n_options,
+      validation: fieldValidationRequired("heading", "Heading"),
+      fields: [
+        {
+          name: "heading",
+          type: "string",
+          title: "Heading",
+          fieldset: "basic",
+          description:
+            "Headings should be short & catchy, descriptive, and only a couple of words long.",
+        },
+      ],
     },
     {
       name: "subheading",
-      type: "string",
-      title: "Sub-heading or Category",
+      type: "object",
       fieldset: "basic",
-      description:
-        "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+      options: i18n_options,
+      fields: [
+        {
+          name: "subheading",
+          type: "string",
+          title: "Sub-heading or Category",
+          fieldset: "basic",
+          description:
+            "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
+        },
+      ],
     },
     {
       name: "content",
-      type: "text",
-      title: "Content",
-      description:
-        "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          name: "content",
+          type: "text",
+          title: "Content",
+          description:
+            "Usually 1-2 sentences used in the heading as a lead-in to the section detail.",
+        },
+      ],
     },
     {
       name: "mainImage",
@@ -66,7 +90,10 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].heading
+            : title,
         subtitle: `(Login Block)`,
       };
     },

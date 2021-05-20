@@ -1,9 +1,11 @@
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export default function login(props) {
   // console.log("Login Props // ", props);
+  const { l } = useLanguage();
 
   return (
     <React.Fragment>
@@ -35,11 +37,11 @@ export default function login(props) {
                         Course{" "}
                       </span>
                       <span className="block xl:inline">
-                        {props.sectionData.heading}
+                        {l(props.sectionData.heading)}
                       </span>{" "}
                     </h1>
                     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                      {props.sectionData.content}
+                      {l(props.sectionData.content)}
                     </p>
 
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">

@@ -1,9 +1,11 @@
 import React from "react";
 import { urlFor } from "../../utils/sanity";
 import Link from "next/link";
+import { useLanguage } from "../../hooks/useLanguage";
 
 function teamSection(props) {
   // console.log("teamSection props // ", props);
+  const { l } = useLanguage();
 
   const people = [
     {
@@ -11,7 +13,8 @@ function teamSection(props) {
       role: "Co-Founder / CEO",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-      bio: "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
+      bio:
+        "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
       twitterUrl: "#",
       linkedinUrl: "#",
     },
@@ -25,10 +28,10 @@ function teamSection(props) {
           <div className="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
             <div className="space-y-5 sm:space-y-4">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                {props.sectionData.heading}
+                {l(props.sectionData.heading)}
               </h2>
               <p className="text-xl text-gray-500">
-                {props.sectionData.content}
+                {l(props.sectionData.content)}
               </p>
             </div>
             <div className="lg:col-span-2">
@@ -46,7 +49,7 @@ function teamSection(props) {
                       <div className="sm:col-span-2">
                         <div className="space-y-4">
                           <div className="text-lg leading-6 font-medium space-y-1">
-                            <h3>{person.name}</h3>
+                            <h3>{l(person.name)}</h3>
                             <p
                               className={
                                 "text-" +
@@ -54,12 +57,12 @@ function teamSection(props) {
                                   .title
                               }
                             >
-                              {person.position}
+                              {l(person.position)}
                             </p>
                           </div>
                           <div className="text-lg">
                             <p className="text-gray-500">
-                              {person.shortDescription}
+                              {l(person.shortDescription)}
                             </p>
                           </div>
                           {/* <ul className="flex space-x-5">

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 import { sanityClient } from "../../utils/sanity";
-import query from "../../modules/groq/page";
+import { pageCollection as query } from "../../modules/groq/page";
 import { BillingTable } from "../../components/account/BillingTable";
 import { AccountLogger } from "../../components/account/AccountLogger";
 

@@ -1,3 +1,6 @@
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
+
 export default {
   title: "Button",
   name: "button",
@@ -16,16 +19,22 @@ export default {
   fields: [
     {
       name: "buttonText",
-      type: "string",
-      title: "Button Text",
-      description: "The text to show on the button.",
+      type: "object",
+      options: i18n_options,
+      fields: [
+        {
+          name: "buttonText",
+          type: "string",
+          title: "Button Text",
+          description: "The text to show on the button.",
+        },
+      ],
     },
     {
       title: "Links",
       name: "links",
       type: "object",
-      description:
-        "Links to external pages.",
+      description: "Links to external pages.",
       options: {
         collapsible: true,
         collapsed: true,
@@ -46,7 +55,6 @@ export default {
           description:
             "Link to external pages on the internet. Enter the full URL.",
         },
-
       ],
     },
   ],
@@ -64,7 +72,10 @@ export default {
         ? `External link: ${link}`
         : "Not set";
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].buttonText
+            : title,
         subtitle: `${routeTitle} ${subtitleExtra}`,
       };
     },

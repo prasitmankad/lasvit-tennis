@@ -1,3 +1,6 @@
+import { i18n_options, baseLanguage } from "../../../../translations/config";
+import { fieldValidationRequired } from "../../validations";
+
 export default {
   type: "object",
   name: "siteNotice",
@@ -35,11 +38,17 @@ export default {
   fields: [
     {
       name: "messageText",
-      type: "string",
-      title: "Message Text",
-      description: "Message text to show . Keep this super short sentence.",
-      validation: (Rule) =>
-        Rule.error("Please provide a title for the Hero Section.").required(),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("messageText", "Message Text"),
+      fields: [
+        {
+          name: "messageText",
+          type: "string",
+          title: "Message Text",
+          description: "Message text to show . Keep this super short sentence.",
+        },
+      ],
     },
     {
       name: "backgroundColor",
@@ -80,12 +89,17 @@ export default {
       fields: [
         {
           name: "text",
-          type: "string",
-          title: "Text",
-          description: "Text on the link (or button).",
-
-          validation: (Rule) =>
-            Rule.required().error("This field is required."),
+          type: "object",
+          options: i18n_options,
+          validation: fieldValidationRequired("text", "Text"),
+          fields: [
+            {
+              name: "text",
+              type: "string",
+              title: "Text",
+              description: "Text on the link (or button).",
+            },
+          ],
         },
         {
           name: "link",
@@ -112,7 +126,10 @@ export default {
     },
     prepare({ title, subtitle }) {
       return {
-        title: `${title}`,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].messageText
+            : title,
         subtitle: `(Site Notice Block)`,
       };
     },
