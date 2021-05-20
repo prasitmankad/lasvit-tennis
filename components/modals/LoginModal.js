@@ -26,7 +26,7 @@ export function LoginModal(props) {
   return (
     <Modal>
       <div className="m-8">
-        <div className="hidden sm:block relative top-0 right-0">
+        <div className="sm:block relative top-0 right-0 text-right">
           <button
             type="button"
             className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -48,21 +48,21 @@ export function LoginModal(props) {
             <label className="text-sm font-bold">Login with</label>
           </div>
         </div>
-        <div className="flex flex-row items-center justify-evenly mb-8 w-full mt-4">
+        <div className="lg:flex lg:flex-row sm:flex sm:flex-row lg:flex lg:flex-row items-center justify-evenly mb-8 w-full mt-4">
           <button
-            className="w-full focus:outline-none mr-8"
+            className="w-full mt-4  focus:outline-none mr-8"
             onClick={() => {
               dispatch(clientSignInAction(FederationTypes.GOOGLE));
               onClose();
             }}
           >
-            <div className="flex border border-gray-300 p-2 items-center justify-center bg-red-600 hover:bg-red-700 text-white">
+            <div className="flex border border-gray-300 p-2 mt-4 items-center justify-center bg-red-600 hover:bg-red-700 text-white">
               <FaGoogle size="34" />
               <p className="ml-3">Google</p>
             </div>
           </button>
           <button
-            className="w-full focus:outline-none bg-blue-800 hover:bg-blue-900"
+            className="w-full mt-4 focus:outline-none bg-blue-800 hover:bg-blue-900"
             onClick={() => {
               dispatch(clientSignInAction(FederationTypes.FACEBOOK));
               onClose();
