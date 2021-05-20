@@ -18,33 +18,35 @@ export function ContentSneakPeek({ content }) {
           <div className="container px-5 py-10 mx-auto">
             <div className="flex flex-wrap -m-4">
               {content.map((item) => (
-                <>
-                  {item.contentType === "video" && (
-                    <div className="p-4 lg:w-1/4 md:w-1/2">
-                      <div className="h-full flex flex-col items-center text-center">
-                        <>
-                          <div className="player-wrapper">
-                            <ReactPlayer
-                              className="react-player"
-                              url={item.fileUrl}
-                              //style="mb-4 flex-shrink-0 lg:w-1/2 w-full lg:h-auto h-64"
-                              width="100%"
-                              height="100%"
-                              light={true} // shows vid thumbnail, load full player on click
-                            />
-                          </div>
-                        </>
+              <>
+                {item.contentType === "video" && (
+                <div className="p-4 lg:w-1/4 md:w-1/2">
+                  <div className="h-full flex flex-col items-center text-center">
+                    
+                      <><ReactPlayer
+                        className="mb-4 flex-shrink-0 lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                        url={item.fileUrl}
+                        //style="mb-4 flex-shrink-0 lg:w-1/2 w-full lg:h-auto h-64"
+                        width="80%"
+                        height="80%"
+                        light={true} // shows vid thumbnail, load full player on click
+                      />
+                        
+                      </>
+                    
 
-                        <div className="w-full">
-                          <h2 className="title-font font-medium text-lg text-gray-900">
-                            {item.contentTitle}
-                          </h2>
-                          <p className="mb-4">{item.shortDescription}</p>
-                        </div>
-                      </div>
+                    <div className="w-full">
+                      <h2 className="title-font font-medium text-lg text-gray-900">
+                        {item.contentTitle}
+                      </h2>
+                      <p className="mb-4">
+                        {item.shortDescription}
+                      </p>
                     </div>
+                  </div>
+                  </div>
                   )}
-                </>
+                  </>
               ))}
             </div>
           </div>
