@@ -17,11 +17,7 @@ export function useLanguage() {
   );
 
   const fallbackLanguage = React.useCallback((T) => {
-    //    console.log("language ->", T)
-    // return T ? "en_us" : "";
-
     if (typeof T === "object") {
-      // return T ? "en_us" : "";
       return T ? Object.values(lang in T ? T[lang] : T[baseLanguage]) : "";
     }
     return T;
