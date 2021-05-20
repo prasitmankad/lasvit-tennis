@@ -1,5 +1,8 @@
 // module - describes sections in a course
 import { RiFunctionLine as icoModules } from "react-icons/ri";
+import { i18n_options, baseLanguage } from "../../../translations/config";
+import { fieldValidationRequired } from "../validations";
+
 export default {
   name: "module",
   title: "Module",
@@ -8,12 +11,19 @@ export default {
   fields: [
     {
       name: "title",
-      type: "string",
-      title: "Module Title",
-      required: true,
-      description:
-        "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired("title", "Module Title"),
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Module Title",
+          required: true,
+          description:
+            "Titles should be catchy, descriptive, and not too long. The title is also used to generate a unique slug.",
+        },
+      ],
     },
 
     // {
@@ -38,10 +48,20 @@ export default {
     },
     {
       name: "shortDescription",
-      type: "text",
-      title: "Short Description",
-      description: "1-5 sentences describing the module.",
-      validation: (Rule) => Rule.required().error("This field is required."),
+      type: "object",
+      options: i18n_options,
+      validation: fieldValidationRequired(
+        "shortDescription",
+        "Short Description"
+      ),
+      fields: [
+        {
+          name: "shortDescription",
+          type: "text",
+          title: "Short Description",
+          description: "1-5 sentences describing the module.",
+        },
+      ],
     },
     {
       name: "tags",
@@ -66,7 +86,10 @@ export default {
     },
     prepare({ title = "No title", tags, media }) {
       return {
-        title,
+        title:
+          title && typeof title === "object"
+            ? title[baseLanguage].title
+            : title,
         media,
         subtitle: tags,
       };

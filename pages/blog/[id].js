@@ -30,6 +30,8 @@ export async function getStaticPaths() {
 function BlogPostContainer({ pageData }) {
   const router = useRouter();
 
+  console.log("[]", pageData);
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }

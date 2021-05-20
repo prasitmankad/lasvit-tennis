@@ -35,7 +35,7 @@ export const pageDataQuery = `*[(_type == "page" && slug["current"]==$slug && !(
   }
 }`;
 
-export default `{
+export const pageCollection = `{
   'globalData': ${globalPageQuery},
   'pageData': ${pageDataQuery}
 }`;

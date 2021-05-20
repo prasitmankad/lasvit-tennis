@@ -20,6 +20,7 @@ export const globalPageQuery = `*[(_type == "globalSettings" && !(_id in path('d
     signup,
     columns [] {
       heading,links[]->{
+        _type,
         slug,
         title
       }

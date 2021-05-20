@@ -7,6 +7,7 @@ import { urlFor } from "../../utils/sanity";
 import RenderHeader from "../../components/render/renderHeader";
 import RenderFooter from "../../components/render/renderFooter";
 import { postCollection } from "../../modules/groq/post";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export async function getStaticProps({ params = {}, preview = false }) {
   var pageData = await sanityClient.fetch(postCollection);
@@ -19,6 +20,7 @@ export async function getStaticProps({ params = {}, preview = false }) {
 
 function BlogPageContainer({ pageData, preview }) {
   const router = useRouter();
+  const { l } = useLanguage();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -39,7 +41,6 @@ function BlogPageContainer({ pageData, preview }) {
 
   return (
     <>
-
       <RenderHeader data={pageData.globalData} />
       <div
         className={
@@ -49,7 +50,7 @@ function BlogPageContainer({ pageData, preview }) {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading2 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-4">
-              {pageData.globalData.businessInfo.title + " Blog"}
+              {l(pageData.globalData.businessInfo.title) + " Blog"}
             </h2>
             {/* <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
               {props.sectionData.content}
@@ -58,7 +59,7 @@ function BlogPageContainer({ pageData, preview }) {
           <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-full py-4">
             {pageData.pageData.map((post) => (
               <div
-                key={post.title}
+                key={l(post.title)}
                 className="flex flex-col rounded-lg shadow-lg overflow-hidden"
               >
                 <div className="flex-shrink-0">
@@ -91,10 +92,10 @@ function BlogPageContainer({ pageData, preview }) {
                     <Link href={`/blog/${post.slug.current}`}>
                       <a className="block mt-2">
                         <p className="text-xl font-semibold text-gray-900">
-                          {post.title}
+                          {l(post.title)}
                         </p>
                         <p className="mt-3 text-base text-gray-500">
-                          {renderExcerpt(post.excerpt)}
+                          {renderExcerpt(l(post.excerpt)[0])}
                         </p>
                       </a>
                     </Link>
@@ -102,7 +103,7 @@ function BlogPageContainer({ pageData, preview }) {
                   <div className="mt-6 flex items-center">
                     <div className="flex-shrink-0">
                       <span className="sr-only">
-                        {post?.author?.name || ""}
+                        {l(post?.author?.name) || ""}
                       </span>
                       {post?.author?.image && (
                         <img
@@ -119,7 +120,7 @@ function BlogPageContainer({ pageData, preview }) {
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
-                        {post?.author?.name || ""}
+                        {l(post?.author?.name) || ""}
                       </p>
                       <div className="flex space-x-1 text-sm text-gray-500">
                         {(dt = new Date(post.publishedAt).toLocaleDateString())}

@@ -1,6 +1,8 @@
 import ReactPlayer from "react-player/youtube";
+import { useLanguage } from "../../hooks/useLanguage";
 
 export function ModulesItemSection({ items, title }) {
+  const { l } = useLanguage();
   return (
     <div className="mt-16 mx-6">
       <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-gray-900">
@@ -29,10 +31,10 @@ export function ModulesItemSection({ items, title }) {
               )}
             </div>
             <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-              {file.contentTitle}
+              {l(file.contentTitle)}
             </p>
             <p className="block text-sm font-medium text-gray-500 pointer-events-none">
-              {file.shortDescription}
+              {l(file.shortDescription)}
             </p>
           </li>
         ))}
