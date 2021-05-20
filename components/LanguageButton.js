@@ -14,7 +14,7 @@ function classNames(...classes) {
 export function LanguageButton() {
   const [lang, setLang] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const { setLangMutate } = useLanguage();
+  // const { setLangMutate } = useLanguage();
 
   React.useEffect(() => {
     setLang(i18n.language);

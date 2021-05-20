@@ -176,7 +176,7 @@ export function Header(props) {
                   })}
                 </div>
 
-                <LanguageButton />
+                {/* <LanguageButton /> */}
               </div>
 
               <Transition
