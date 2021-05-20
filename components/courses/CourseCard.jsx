@@ -6,7 +6,8 @@ import { useLanguage } from "../../hooks/useLanguage";
 export function CourseCard(props) {
   const router = useRouter();
   const { l } = useLanguage();
-  console.log("CourseCard -> ", props);
+  //console.log("CourseCard -> ", props);
+  
   return (
     <div
       key={props.course.id}

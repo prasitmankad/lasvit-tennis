@@ -48,7 +48,7 @@
   },
   "courses": {
     "catalog": "Course Catalog",
-    "payButton": "Buy Course",
+    "payButton": "Register & Buy Course",
     "features": "What's included",
     "module": "Course Modules",
     "moduleItems": "Content : {{title}}",

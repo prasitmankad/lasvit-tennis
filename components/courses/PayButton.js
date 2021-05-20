@@ -23,14 +23,19 @@ export function PayButton({ amount, currency, payCourse }) {
           stripeKey={config.stripe.apiKey} // Stripe publishable API Key
           allowRememberMe={false}
         >
-          <div className="mt-8 block w-full bg-purple-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-purple-700">
+          <div
+            className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 cursor-pointer"
+
+          >
             {t("courses.payButton")}
           </div>
+
+         
         </StripeCheckout>
       ) : (
         <div
           onClick={() => dispatch(showLoginModalAction(true))}
-          className="mt-8 block w-full bg-purple-600 border border-transparent rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-purple-700"
+          className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 cursor-pointer"
         >
           {t("courses.payButton")}
         </div>
