@@ -144,7 +144,10 @@ export function Header(props) {
                             >
                               <a
                                 key={client.name}
-                                className={"text-base font-medium text-gray-500 hover:"+ props.data.branding.primaryAccentColor.title}
+                                className={
+                                  "text-base font-medium text-gray-500 hover:" +
+                                  props.data.branding.primaryAccentColor.title
+                                }
                               >
                                 {client.name}
                               </a>
@@ -266,7 +269,9 @@ export function Header(props) {
                               ) : (
                                 <div
                                   className="cursor-pointer"
-                                  onClick={() => showLoginModal(true)}
+                                  onClick={() =>
+                                    dispatch(showLoginModalAction(true))
+                                  }
                                 >
                                   <a
                                     className={
