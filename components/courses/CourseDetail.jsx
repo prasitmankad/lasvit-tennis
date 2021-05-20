@@ -1,14 +1,16 @@
 import React from "react";
-
-import { FeatureSectionWithPictures } from "./../../components/sections/FeatureSectionWithPictures";
-import { FeatureSection } from "./../../components/sections/FeatureSection";
-import { FaqSection } from "./../../components/sections/FaqSection";
-import { StatSection } from "./../../components/sections/StatSection";
-import { PricingSection } from "./../../components/sections/PricingSection";
+import { urlFor } from "../../utils/sanity";
+import { FullCourseFeatures } from "./../../components/sections/FullCourseFeatures";
 import { ModulesSection } from "./../../components/sections/ModulesSection";
-import { ModulesItemSection } from "./../../components/sections/ModulesItemSection";
 import { useClient } from "../../hooks/useClient";
 import { Loader } from "../../components/Loader";
+import { CourseBanner } from "../../components/courses/CourseBanner";
+import { MajorCourseFeatures } from "../sections/MajorCourseFeatures";
+import { ContentSneakPeek } from "./../../components/sections/ContentSneakPeek";
+import { StatSection } from "./../../components/sections/StatSection";
+import { PricingSection } from "./../../components/sections/PricingSection";
+import { FaqSection } from "./../../components/sections/FaqSection";
+import { CourseDashboard } from "../sections/CourseDashboard.js";
 
 export function CourseDetail({ payCourse, course }) {
   const { courseBilling, client } = useClient(course._id);
@@ -21,23 +23,43 @@ export function CourseDetail({ payCourse, course }) {
     <div className="bg-white">
       {course && (
         <>
-          <FeatureSectionWithPictures content={course.content} />
+          {/* <FeatureSectionWithPictures content={course.content} /> */}
           {client === null || courseBilling === null ? (
             <>
+              
+              {/* <CourseDashboard course={course} /> */}
+
+              <CourseBanner course={course} />
+              <MajorCourseFeatures content={course.content} />
+              <ContentSneakPeek content={course.content.sneakpeek} />
+              <FullCourseFeatures content={course.content} />
+              <StatSection stats={course.stats} />
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
-              <div className="lg:mx-auto lg:max-w-7xl lg:px-8">
+              <FaqSection faqs={course.faqs} />
+              
+
+              
+
+              {/* <PricingSection pricing={course.pricing} payCourse={payCourse} />
+              <div className="lg:mx-24">
                 <ModulesItemSection
                   items={course.content.sneakpeek}
                   title={"Sneak peek"}
                 />
-              </div>
+              </div> */}
             </>
           ) : (
-            <ModulesSection modules={course.modules} />
+            // paid layout variants
+            // modules
+            // content items - videos
+            // content items - articles
+            <>
+              <ModulesSection modules={course.modules} />
+            </>
           )}
-          <StatSection stats={course.stats} />
+          {/* <StatSection stats={course.stats} />
           <FeatureSection content={course.content} />
-          <FaqSection faqs={course.faqs} />
+          <FaqSection faqs={course.faqs} /> */}
         </>
       )}
     </div>

@@ -60,8 +60,8 @@ export default {
         list: [
           { title: "Left", value: "left" },
           { title: "Right", value: "right" },
-          { title: "Top Center", value: "topCenter" },
-          { title: "Bottom Center", value: "bottomCenter" },
+          //{ title: "Top Center", value: "topCenter" },
+          //{ title: "Bottom Center", value: "bottomCenter" },
         ],
       },
     },

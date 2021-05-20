@@ -143,6 +143,24 @@ export default {
           ],
         },
         {
+          name: "featureBlockHeadline",
+          type: "string",
+          title: "Feature Block Headline",
+
+          description:
+            "Headline for the feature block.",
+          validation: (Rule) => Rule.required().error("This field is required."),
+        },
+        {
+          name: "featureBlockDescription",
+          type: "text",
+          title: "Feature Block Description",
+
+          description:
+            "Description for the feature block.",
+          validation: (Rule) => Rule.required().error("This field is required."),
+        },
+        {
           name: "features",
           type: "array",
           title: "Course Features",

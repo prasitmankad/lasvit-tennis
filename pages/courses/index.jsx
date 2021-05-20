@@ -52,8 +52,6 @@ function CoursesPage({ pageData }) {
             </div>
           </div>
 
-          
-
           <div className="mt-12 max-w-lg mx-auto grid gap-16 lg:grid-cols-3 lg:max-w-none py-4">
             {pageData.pageData.map((course, i) => (
               <CourseCard
