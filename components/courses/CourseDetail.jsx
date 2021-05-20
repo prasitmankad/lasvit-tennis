@@ -25,7 +25,7 @@ export function CourseDetail({ payCourse, course }) {
           {client === null || courseBilling === null ? (
             <>
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
-              <div className="lg:mx-24">
+              <div className="lg:mx-auto lg:max-w-7xl lg:px-8">
                 <ModulesItemSection
                   items={course.content.sneakpeek}
                   title={"Sneak peek"}
