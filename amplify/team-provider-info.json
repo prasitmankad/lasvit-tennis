@@ -16,5 +16,23 @@
         "lasvittennisaead4aab": {}
       }
     }
+  },
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lasvittennis-prod-174122-authRole",
+      "UnauthRoleArn": "arn:aws:iam::632544729979:role/amplify-lasvittennis-prod-174122-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::632544729979:role/amplify-lasvittennis-prod-174122-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-lasvittennis-prod-174122-deployment",
+      "UnauthRoleName": "amplify-lasvittennis-prod-174122-unauthRole",
+      "StackName": "amplify-lasvittennis-prod-174122",
+      "StackId": "arn:aws:cloudformation:eu-central-1:632544729979:stack/amplify-lasvittennis-prod-174122/009b3fa0-ba4b-11eb-bb98-069b22d7f5bc",
+      "AmplifyAppId": "d12gy4okc0wvqj"
+    },
+    "categories": {
+      "auth": {
+        "lasvittennisaead4aab": {}
+      }
+    }
   }
 }

@@ -4,10 +4,10 @@ export const config = {
     apiKey:
       "pk_test_51IdIGYExvadlvJZ2NGckQcsVFhkmY5kELt2SSTCuSa9icMjmUSrjQuM6FypvlVPMXLmErF2x2IRdbN0eOZZf5BFN00HEDWzxQw",
     apiUrl:
-      "https://k2514x4m1b.execute-api.eu-central-1.amazonaws.com/dev/serverless/createCharge",
+      "https://v6djkdnzx0.execute-api.eu-central-1.amazonaws.com/prod/serverless/createCharge",
   },
   subscribe: {
     apiUrl:
-      "https://9ohyon3ug7.execute-api.eu-central-1.amazonaws.com/dev/serverless/subscribe",
+      "https://qaa7my6q38.execute-api.eu-central-1.amazonaws.com/prod/serverless/subscribe",
   },
 };

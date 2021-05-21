@@ -3,12 +3,12 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
-    "aws_cognito_identity_pool_id": "eu-central-1:c64c880e-2c62-46ac-b782-dec7844e7c06",
+    "aws_cognito_identity_pool_id": "eu-central-1:ee56d882-ae1a-49f2-904d-c683fbf1725d",
     "aws_cognito_region": "eu-central-1",
-    "aws_user_pools_id": "eu-central-1_LIonKtPUH",
-    "aws_user_pools_web_client_id": "ufqtq1t4d6c2r26q19uld12sm",
+    "aws_user_pools_id": "eu-central-1_2ogzXfOW9",
+    "aws_user_pools_web_client_id": "1m45oeepbde2egsqr0dtll69tt",
     "oauth": {
-        "domain": "lasvittennis-auth-dev.auth.eu-central-1.amazoncognito.com",
+        "domain": "lasvittennis-auth-prod.auth.eu-central-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -21,7 +21,7 @@ const awsmobile = {
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
-    "aws_appsync_graphqlEndpoint": "https://tm6fcp3idffdphuj6zqyov5coq.appsync-api.eu-central-1.amazonaws.com/graphql",
+    "aws_appsync_graphqlEndpoint": "https://6yhtbas6lnhd3nel3r4fr4oqni.appsync-api.eu-central-1.amazonaws.com/graphql",
     "aws_appsync_region": "eu-central-1",
     "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
 };
