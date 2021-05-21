@@ -57,19 +57,19 @@ function Course({ pageData }) {
 
   return (
     <>
-      <RenderHeader data={pageData.globalData} />
+      {/* <RenderHeader data={pageData.globalData} /> */}
 
       {pageData && (
         <>
           {/* <CourseBanner course={pageData.pageData} /> */}
           <CourseDetail
-            course={pageData.pageData}
+            course={pageData.pageData} data={pageData.globalData}
             payCourse={(token, price) => payCourse(token, price)}
           />
         </>
       )}
 
-      <RenderFooter data={pageData.globalData} />
+      {/* <RenderFooter data={pageData.globalData} /> */}
     </>
   );
 }

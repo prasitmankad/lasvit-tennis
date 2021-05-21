@@ -10,9 +10,13 @@ import { ContentSneakPeek } from "./../../components/sections/ContentSneakPeek";
 import { StatSection } from "./../../components/sections/StatSection";
 import { PricingSection } from "./../../components/sections/PricingSection";
 import { FaqSection } from "./../../components/sections/FaqSection";
-import { CourseDashboard } from "../sections/CourseDashboard.js";
+import { CourseDashboard } from "../courses/CourseDashboard"; // aka course layout
+import RenderHeader from "../../components/render/renderHeader";
+import RenderFooter from "../../components/render/renderFooter";
+import { Course } from "./dashboard/coursed";
 
-export function CourseDetail({ payCourse, course }) {
+export function CourseDetail({ payCourse, course, data }) {
+  // console.log("Course Data -> ", course)
   const { courseBilling, client } = useClient(course._id);
 
   if (courseBilling === undefined && client) {
@@ -27,8 +31,8 @@ export function CourseDetail({ payCourse, course }) {
           {client === null || courseBilling === null ? (
             <>
               
-              {/* <CourseDashboard course={course} /> */}
-
+              <RenderHeader data={data} />
+              <CourseDashboard course={course} globalData={data} />
               <CourseBanner course={course} />
               <MajorCourseFeatures content={course.content} />
               <ContentSneakPeek content={course.content.sneakpeek} />
@@ -36,30 +40,15 @@ export function CourseDetail({ payCourse, course }) {
               <StatSection stats={course.stats} />
               <PricingSection pricing={course.pricing} payCourse={payCourse} />
               <FaqSection faqs={course.faqs} />
-              
-
-              
-
-              {/* <PricingSection pricing={course.pricing} payCourse={payCourse} />
-              <div className="lg:mx-24">
-                <ModulesItemSection
-                  items={course.content.sneakpeek}
-                  title={"Sneak peek"}
-                />
-              </div> */}
+              <RenderFooter data={data} />
             </>
           ) : (
-            // paid layout variants
-            // modules
-            // content items - videos
-            // content items - articles
-            <>
-              <ModulesSection modules={course.modules} />
-            </>
+            <Course />
+            // <>
+            //   <ModulesSection modules={course.modules} />
+            // </>
           )}
-          {/* <StatSection stats={course.stats} />
-          <FeatureSection content={course.content} />
-          <FaqSection faqs={course.faqs} /> */}
+          
         </>
       )}
     </div>

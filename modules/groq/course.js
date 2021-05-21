@@ -28,7 +28,6 @@ export const courseDetailQuery = `*[_type == "course" && slug.current == $slug][
       ...,
       mainImage{
         ...,
-        
       }
     },
     sneakpeek[]->

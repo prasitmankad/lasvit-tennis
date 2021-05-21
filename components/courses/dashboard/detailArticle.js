@@ -1,11 +1,9 @@
 import React from "react";
-import { urlFor, PortableText } from "../../utils/sanity";
-import { useLanguage } from "../../hooks/useLanguage";
+import { useLanguage } from "../../../hooks/useLanguage";
 
-export function BlogDetail({ post }) {
+export function Article({ article }) {
   const { l } = useLanguage();
 
-  //console.log("[]", l(post.body));
   return (
     <article className="text-gray-600 body-font">
       <div className="lg:w-4/6 mx-auto py-0">
@@ -13,18 +11,18 @@ export function BlogDetail({ post }) {
           <div className="rounded-xs h-500 overflow-hidden">
             <div className="text-center mb-20 py-0">
               <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading1 text-gray-900">
-                {l(post.title)}
+                {l(article.title)}
               </h1>
 
               <p className="text-base text-gray-600 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-                {l(post.excerpt)}
+                {l(article.excerpt)}
               </p>
             </div>
-            {post.mainImage && (
+            {article.mainImage && (
               <img
-                alt={post.mainImage?.alt || `Photo of ${post.title}`}
+                alt={article.mainImage?.alt || `Photo of ${article.title}`}
                 className="object-cover object-center h-full w-full"
-                src={urlFor(post.mainImage.url.url)
+                src={urlFor(article.mainImage.url)
                   .auto("format")
                   .width(800)
                   .height(Math.floor((9 / 16) * 1000))
@@ -36,9 +34,9 @@ export function BlogDetail({ post }) {
 
           <div className="flex flex-col sm:flex-row mt-10">
             <div className="sm:w-4/4 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-              {post.body && (
+              {article.body && (
                 <p className="leading-relaxed text-lg mb-4">
-                  {l(post.body).map((body) => (
+                  {l(article.body).map((body) => (
                     <PortableText blocks={body} className="text-gray-600" />
                   ))}
                 </p>
