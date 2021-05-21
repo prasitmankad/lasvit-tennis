@@ -28,6 +28,7 @@ export function ContentSneakPeek({ content }) {
                       <div className="h-full flex flex-col items-center text-center">
                         <>
                           <ReactPlayer
+                            controls={true}
                             className="mb-4 flex-shrink-0 lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                             url={item.fileUrl}
                             //style="mb-4 flex-shrink-0 lg:w-1/2 w-full lg:h-auto h-64"

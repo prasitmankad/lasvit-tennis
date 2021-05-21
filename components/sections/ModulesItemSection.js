@@ -1,4 +1,4 @@
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player/lazy";
 import { useLanguage } from "../../hooks/useLanguage";
 
 export function ModulesItemSection({ items, title }) {
@@ -21,6 +21,8 @@ export function ModulesItemSection({ items, title }) {
                   url={file.fileUrl}
                   width="auto"
                   height="auto"
+                  controls={true}
+                  light={true}
                 />
               )}
 
