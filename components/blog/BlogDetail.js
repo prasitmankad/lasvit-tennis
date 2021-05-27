@@ -5,7 +5,6 @@ import { useLanguage } from "../../hooks/useLanguage";
 export function BlogDetail({ post }) {
   const { l } = useLanguage();
 
-  //console.log("[]", l(post.body));
   return (
     <article className="text-gray-600 body-font">
       <div className="lg:w-4/6 mx-auto py-0">

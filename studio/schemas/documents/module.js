@@ -26,19 +26,6 @@ export default {
       ],
     },
 
-    // {
-    //   name: "slug",
-    //   type: "slug",
-    //   title: "Slug",
-    //   description: "Required to generate the module's unique URL.",
-    //   validation: (Rule) => Rule.error("You must generate a slug.").required(),
-    //   options: {
-    //     source: "title",
-    //     slugify: (input) =>
-    //       input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
-    //   },
-    // },
-
     {
       name: "mainImage",
       type: "mainImage",
@@ -69,13 +56,30 @@ export default {
       title: "Tags",
     },
     {
-      name: "course",
+      name: "contentItems",
       type: "array",
-      title: "Parent Course(s)",
-      description: "Choose course(s) to publish this module in",
-      of: [{ type: "reference", weak: true, to: [{ type: "course" }] }],
-      validation: (Rule) => Rule.required().error("This field is required."),
+      title: "Content Items",
+      description: "Content comprising the module. Order here determines order on the frontend.",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "contentItem" }],
+        },
+      ],
+      validation: (Rule) =>
+        Rule.required()
+          .min(1)
+          .error("This field is required and at least 1 content item is required."),
     },
+
+    // {
+    //   name: "course",
+    //   type: "array",
+    //   title: "Parent Course(s)",
+    //   description: "Choose course(s) to publish this module in",
+    //   of: [{ type: "reference", weak: true, to: [{ type: "course" }] }],
+    //   validation: (Rule) => Rule.required().error("This field is required."),
+    // },
   ],
   preview: {
     select: {

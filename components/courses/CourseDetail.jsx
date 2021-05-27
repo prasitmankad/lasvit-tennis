@@ -27,12 +27,11 @@ export function CourseDetail({ payCourse, course, data }) {
     <div className="bg-white">
       {course && (
         <>
-          {/* <FeatureSectionWithPictures content={course.content} /> */}
           {client === null || courseBilling === null ? (
             <>
-              
+              {console.log("CourseData -> ",course) }
+              <CourseDashboard courseData={course} globalData={data} />
               <RenderHeader data={data} />
-              <CourseDashboard course={course} globalData={data} />
               <CourseBanner course={course} />
               <MajorCourseFeatures content={course.content} />
               <ContentSneakPeek content={course.content.sneakpeek} />
@@ -43,12 +42,8 @@ export function CourseDetail({ payCourse, course, data }) {
               <RenderFooter data={data} />
             </>
           ) : (
-            <Course />
-            // <>
-            //   <ModulesSection modules={course.modules} />
-            // </>
+            <Course courseInfo={course} globalData={data} />
           )}
-          
         </>
       )}
     </div>

@@ -37,6 +37,7 @@ export default {
         columns: 1,
       },
     },
+
     {
       name: "pricing",
       title: "Pricing",
@@ -168,6 +169,22 @@ export default {
           of: [{ type: "feature" }],
           validation: (Rule) =>
             Rule.required().error("This field is required."),
+        },
+        {
+          name: "modules",
+          type: "array",
+          title: "Course Modules",
+          description: "Array of modules for the course. Order here determines order on the frontend.",
+          of: [
+            {
+              type: "reference",
+              to: [{ type: "module" }],
+            },
+          ],
+          validation: (Rule) =>
+            Rule.required()
+              .min(1)
+              .error("This field is required and at least 1 moduleis required."),
         },
       ],
     },

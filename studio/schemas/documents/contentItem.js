@@ -108,15 +108,15 @@ export default {
       description:
         "List of tags that can be used for future sorting, searching.",
     },
-    {
-      name: "modules",
-      type: "array",
-      title: "Modules",
-      description:
-        "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
-      of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
-      validation: (Rule) => Rule.required().error("This field is required."),
-    },
+    // {
+    //   name: "modules",
+    //   type: "array",
+    //   title: "Modules",
+    //   description:
+    //     "Choose module(s) to publish this Content Item in. This make it the Content Item a part of that Module and therefore part of the Course.",
+    //   of: [{ type: "reference", weak: true, to: [{ type: "module" }] }],
+    //   validation: (Rule) => Rule.required().error("This field is required."),
+    // },
   ],
   preview: {
     select: {
