@@ -36,9 +36,8 @@ function* handleCreateBilling(action) {
   try {
     const { client } = yield select((state) => state.clientState);
     const { data, token } = action.payload;
-    const response = call(postToken, token, data.amount * 100);
-    const payObject = response.payload.args[0];
-
+    console.log('token:', token)
+    const response = yield call(postToken, token, data);
     yield API.graphql({
       query: mutations.createClientBilling,
       variables: {
@@ -46,8 +45,8 @@ function* handleCreateBilling(action) {
           ...data,
           ...{
             payload: {
-              id: payObject.id,
-              created: payObject.created,
+              id: response?.charge?.id,
+              created: response?.charge?.created,
             },
           },
         },
