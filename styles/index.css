@@ -9,7 +9,21 @@
 /* Write your own custom component styles here */
 @layer components {
   /* CUSTOM WRAPPERS FOR EXTRACTED CLASSES */
-
+  .player-wrapper {
+    width: relative;
+    position:relative;
+    padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+  }
+  
+  .react-player {
+    position: absolute;
+    top:0;
+    left:0;
+      }
+      .react-player iframe {
+        height: 100% !important;
+      }
+  
   .custom_title {
     /*  fix size for mobile */
     @apply mt-6 block xl:text-5xl font-extrabold text-3xl tracking-tight sm:text-3xl md:text-4xl sm:text-center lg:text-left 
@@ -36,7 +50,7 @@
   }
 
   .custom_p {
-    @apply mt-6 text-xl mx-auto
+    @apply mt-6 text-sm text-left
   }
 
   .custom_button {}

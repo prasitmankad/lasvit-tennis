@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import { useLanguage } from "../../hooks/useLanguage";
 
+import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 
@@ -13,6 +13,7 @@ function classNames(...classes) {
 export default function contactForm(props) {
   //console.log("contactForm Props // ", props);
   const { l } = useLanguage();
+
   const [agreed, setAgreed] = useState(false);
 
   return (
@@ -25,13 +26,13 @@ export default function contactForm(props) {
           <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
             <div className="max-w-lg mx-auto">
               <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                {props.sectionData.heading}
+                {l(props.sectionData.heading)}
               </h2>
               <p className="mt-3 text-lg leading-6 text-gray-500">
-                {props.sectionData.subheading}
+                {l(props.sectionData.subheading)}
               </p>
               <p className="mt-4 text-lg leading-6 text-gray-500">
-                {props.sectionData.content}
+                {l(props.sectionData.content)}
               </p>
               <dl className="mt-8 text-base text-gray-500">
                 <div>

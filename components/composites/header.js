@@ -50,7 +50,7 @@ export function Header(props) {
                           .width(120)
                           // .height(400)
                           .fit("crop")
-                          .quality(80)}
+                          .quality(100)}
                         alt={props.data.branding.companyLogo?.alt || ``}
                       />
                     </a>

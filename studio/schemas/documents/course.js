@@ -37,6 +37,7 @@ export default {
         columns: 1,
       },
     },
+
     {
       name: "pricing",
       title: "Pricing",
@@ -143,6 +144,24 @@ export default {
           ],
         },
         {
+          name: "featureBlockHeadline",
+          type: "string",
+          title: "Feature Block Headline",
+
+          description:
+            "Headline for the feature block.",
+          validation: (Rule) => Rule.required().error("This field is required."),
+        },
+        {
+          name: "featureBlockDescription",
+          type: "text",
+          title: "Feature Block Description",
+
+          description:
+            "Description for the feature block.",
+          validation: (Rule) => Rule.required().error("This field is required."),
+        },
+        {
           name: "features",
           type: "array",
           title: "Course Features",
@@ -150,6 +169,22 @@ export default {
           of: [{ type: "feature" }],
           validation: (Rule) =>
             Rule.required().error("This field is required."),
+        },
+        {
+          name: "modules",
+          type: "array",
+          title: "Course Modules",
+          description: "Array of modules for the course. Order here determines order on the frontend.",
+          of: [
+            {
+              type: "reference",
+              to: [{ type: "module" }],
+            },
+          ],
+          validation: (Rule) =>
+            Rule.required()
+              .min(1)
+              .error("This field is required and at least 1 moduleis required."),
         },
       ],
     },

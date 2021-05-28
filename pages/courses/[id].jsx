@@ -1,6 +1,6 @@
 import React from "react";
 import Error from "next/error";
-import { CourseBanner } from "../../components/courses/CourseBanner";
+// import { CourseBanner } from "../../components/courses/CourseBanner";
 import { CourseDetail } from "../../components/courses/CourseDetail";
 import { useDispatch } from "react-redux";
 import { createBillingAction } from "../../modules/actions/apiAction";
@@ -57,19 +57,19 @@ function Course({ pageData }) {
 
   return (
     <>
-      <RenderHeader data={pageData.globalData} />
+      {/* <RenderHeader data={pageData.globalData} /> */}
 
       {pageData && (
         <>
-          <CourseBanner course={pageData.pageData} />
+          {/* <CourseBanner course={pageData.pageData} /> */}
           <CourseDetail
-            course={pageData.pageData}
+            course={pageData.pageData} data={pageData.globalData}
             payCourse={(token, price) => payCourse(token, price)}
           />
         </>
       )}
 
-      <RenderFooter data={pageData.globalData} />
+      {/* <RenderFooter data={pageData.globalData} /> */}
     </>
   );
 }

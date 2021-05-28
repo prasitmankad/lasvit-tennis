@@ -5,9 +5,8 @@ import { useLanguage } from "../../hooks/useLanguage";
 export function BlogDetail({ post }) {
   const { l } = useLanguage();
 
-  console.log("[]", l(post.body));
   return (
-    <section className="text-gray-600 body-font">
+    <article className="text-gray-600 body-font">
       <div className="lg:w-4/6 mx-auto py-0">
         <div className="container px-5 py-10 mx-auto flex flex-col">
           <div className="rounded-xs h-500 overflow-hidden">
@@ -47,6 +46,6 @@ export function BlogDetail({ post }) {
           </div>
         </div>
       </div>
-    </section>
+    </article>
   );
 }
