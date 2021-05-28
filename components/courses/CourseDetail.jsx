@@ -29,8 +29,7 @@ export function CourseDetail({ payCourse, course, data }) {
         <>
           {client === null || courseBilling === null ? (
             <>
-              {console.log("CourseData -> ",course) }
-              <CourseDashboard courseData={course} globalData={data} />
+              {/* {console.log("CourseData -> ",course) } */}
               <RenderHeader data={data} />
               <CourseBanner course={course} />
               <MajorCourseFeatures content={course.content} />
@@ -42,7 +41,7 @@ export function CourseDetail({ payCourse, course, data }) {
               <RenderFooter data={data} />
             </>
           ) : (
-            <Course courseInfo={course} globalData={data} />
+            <CourseDashboard courseData={course} globalData={data} />
           )}
         </>
       )}

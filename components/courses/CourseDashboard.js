@@ -103,9 +103,10 @@ export function CourseDashboard({ courseData, globalData }) {
                     </a>
                   </Link>
                 </div>
-                {/* Mobile Popout Menu */}
+                {/* Mobile Popout Menu 
+                list out all the videos and articles here so dont have a separate list in mobile view */}
                 <nav className="mt-5" aria-label="Sidebar">
-                  <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl font-medium text-gray-600 pt-0 pb-4 px-2 mx-auto">
+                  <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl font-bold text-gray-600 pt-0 pb-4 px-2 mx-auto">
                     {l(courseData.title)}
                   </p>
                   <div className="px-2 space-y-1">
@@ -115,7 +116,7 @@ export function CourseDashboard({ courseData, globalData }) {
                           <a
                             className={classNames(
                               module.current
-                                ? "bg-gray-100 text-gray-900"
+                                ? "bg-gray-100 text-orange"
                                 : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                               "group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer"
                             )}
@@ -134,8 +135,8 @@ export function CourseDashboard({ courseData, globalData }) {
                               <Disclosure.Button
                                 className={classNames(
                                   module.current
-                                    ? "bg-gray-100 text-gray-900"
-                                    : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                                    ? "bg-gray-100 text-gray-orange"
+                                    : "bg-white text-gray-darkest hover:bg-gray-50 hover:text-gray-900",
                                   "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-sm focus:outline-none focus:ring-1 focus:ring-orange"
                                 )}
                               >
@@ -157,23 +158,92 @@ export function CourseDashboard({ courseData, globalData }) {
                                 {l(module.title)}
                               </Disclosure.Button>
                               <Disclosure.Panel className="space-y-1 cursor-pointer">
-                                {[
+                                {module.contentItems.map((contentItem) =>
+                                  !module.contentItems ? (
+                                    <li
+                                      key={contentItem.id}
+                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                    >
+                                      <div className="flex justify-between space-x-3">
+                                        <div className="min-w-0 flex-1">
+                                          <a className="block focus:outline-none">
+                                            <span
+                                              className="absolute inset-0"
+                                              aria-hidden="true"
+                                            />
+                                            <p className="text-sm font-medium text-gray-dark truncate">
+                                              No Content
+                                            </p>
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ) : (
+                                    <>
+                                      <ul className="divide-y divide-gray-200">
+                                        <li
+                                          onClick={() => {
+                                            setSidebarOpen(false);
+                                            setContentDetail(contentItem);
+                                          }}
+                                          key={contentItem.id}
+                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                        >
+                                          <div className="flex justify-between space-x-3">
+                                            <div className="min-w-0 flex-1">
+                                              <a className="block focus:outline-none">
+                                                <span
+                                                  className="absolute inset-0"
+                                                  aria-hidden="true"
+                                                />
+                                                <p className="text-sm font-medium text-gray-dark">
+                                                  {l(contentItem.contentTitle) +
+                                                    l(
+                                                      " (" +
+                                                        contentItem.contentType
+                                                          .charAt(0)
+                                                          .toUpperCase() +
+                                                        contentItem.contentType.slice(
+                                                          1
+                                                        ) +
+                                                        ") "
+                                                    )}
+                                                </p>
+                                              </a>
+                                            </div>
+                                          </div>
+                                          <div className="mt-1">
+                                            <p className="line-clamp-2 text-sm text-gray-600">
+                                              {l(contentItem.shortDescription)}
+                                            </p>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </>
+                                  )
+                                )}
+
+                                {/* {[
                                   ...new Set(
-                                    module.items.map((x) => x.contentType)
+                                    module.contentItems.map(
+                                      (x) => x.contentType
+                                    )
                                   ),
                                 ].map((subItem) => (
-                                  <a
-                                    onClick={() => setSidebarOpen(false)}
-                                    key={subItem.id}
-                                    className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
-                                  >
-                                    {l(
-                                      subItem.charAt(0).toUpperCase() +
-                                        subItem.slice(1) +
-                                        "s"
-                                    )}
-                                  </a>
-                                ))}
+                                  <>
+                                    <a
+                                      onClick={() => setSidebarOpen(false)}
+                                      key={subItem.id}
+                                      className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
+                                    >
+                                      {l(
+                                        subItem.charAt(0).toUpperCase() +
+                                          subItem.slice(1) +
+                                          "s"
+                                      )}
+                                    </a>
+                                  </>
+                                ))} */}
                               </Disclosure.Panel>
                             </>
                           )}
@@ -194,7 +264,7 @@ export function CourseDashboard({ courseData, globalData }) {
       {/* DESKTOP COMPONENTS */}
       {/* ENTIRE SIDEBAR */}
       <div className="hidden lg:flex lg:flex-shrink-0">
-        <div className="flex flex-col w-64">
+        <div className="flex flex-col w-128">
           {/* Sidebar component, swap this with another sidebar if you like */}
           <div className="flex flex-col h-0 flex-1 border-r border-gray-200 bg-gray-100">
             <div className="flex-1 flex flex-col overflow-y-auto">
@@ -227,7 +297,7 @@ export function CourseDashboard({ courseData, globalData }) {
                     <div key={module.id}>
                       <a
                         // module menu option clicked, make update via useEffect
-                        onClick={()=>{}}
+                        onClick={() => {}}
                         className={classNames(
                           module.current
                             ? "bg-gray-100 text-gray-900"
@@ -268,8 +338,72 @@ export function CourseDashboard({ courseData, globalData }) {
                             </svg>
                             {l(module.title)}
                           </Disclosure.Button>
-                          <Disclosure.Panel className="space-y-1 cursor-pointer">
-                            {[
+                            <Disclosure.Panel className="space-y-1 cursor-pointer">
+                            {module.contentItems.map((contentItem) =>
+                                  !module.contentItems ? (
+                                    <li
+                                      key={contentItem.id}
+                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                    >
+                                      <div className="flex justify-between space-x-3">
+                                        <div className="min-w-0 flex-1">
+                                          <a className="block focus:outline-none">
+                                            <span
+                                              className="absolute inset-0"
+                                              aria-hidden="true"
+                                            />
+                                            <p className="text-sm font-medium text-gray-dark truncate">
+                                              No Content
+                                            </p>
+                                          </a>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ) : (
+                                    <>
+                                      <ul className="divide-y divide-gray-200">
+                                        <li
+                                          onClick={() => {
+                                            setSidebarOpen(false);
+                                            setContentDetail(contentItem);
+                                          }}
+                                          key={contentItem.id}
+                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                        >
+                                          <div className="flex justify-between space-x-3">
+                                            <div className="min-w-0 flex-1">
+                                              <a className="block focus:outline-none">
+                                                <span
+                                                  className="absolute inset-0"
+                                                  aria-hidden="true"
+                                                />
+                                                <p className="text-sm font-normal text-gray-dark">
+                                                  {l(contentItem.contentTitle) +
+                                                    l(
+                                                      " (" +
+                                                        contentItem.contentType
+                                                          .charAt(0)
+                                                          .toUpperCase() +
+                                                        contentItem.contentType.slice(
+                                                          1
+                                                        ) +
+                                                        ") "
+                                                    )}
+                                                </p>
+                                              </a>
+                                            </div>
+                                          </div>
+                                          {/* <div className="mt-1">
+                                            <p className="line-clamp-2 text-sm text-gray-600">
+                                              {l(contentItem.shortDescription)}
+                                            </p>
+                                          </div> */}
+                                        </li>
+                                      </ul>
+                                    </>
+                                  )
+                                )}
+                            {/* {[
                               ...new Set(
                                 module.contentItems.map((x) => x.contentType)
                               ),
@@ -284,7 +418,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                     "s"
                                 )}
                               </a>
-                            ))}
+                            ))} */}
                           </Disclosure.Panel>
                         </>
                       )}
@@ -330,7 +464,7 @@ export function CourseDashboard({ courseData, globalData }) {
         </div>
         <div className="flex-1 relative z-0 flex overflow-hidden">
           {/* MIDDLE PANEL LIST */}
-          <aside className="hidden xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">
+          {/* <aside className="hidden xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">
             <nav
               className="flex-1 min-h-0 overflow-y-auto "
               aria-label="Directory"
@@ -456,7 +590,6 @@ export function CourseDashboard({ courseData, globalData }) {
                                 </>
                               ) : (
                                 <>
-                                  {/* {some other content types to be defined in the future} */}
                                 </>
                               )}
                             </>
@@ -468,21 +601,27 @@ export function CourseDashboard({ courseData, globalData }) {
                 </div>
               </div>
             </nav>
-          </aside>
+          </aside> */}
           {/* MAIN CONTENT AREA - DESKTOP AND MOBILE */}
           <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
             {/* MAIN CONTENT */}
             <div className="mt-6 sm:mt-2 2xl:mt-5">
               <div className="mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="pb-5 pt-5 border-b">
+                <div className="pb-5 pt-5 border-b lg:visible xl:visible 2xl:visible">
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Content Detail
+                    {l(contentDetail.contentTitle) +
+                      l(
+                        " (" +
+                          contentDetail.contentType.charAt(0).toUpperCase() +
+                          contentDetail.contentType.slice(1) +
+                          ") "
+                      )}
                   </h3>
                 </div>
                 <article>
-                  {menuSelection.contentType === "video" ? (
+                  {contentDetail.contentType === "video" ? (
                     <>
-                      <section className=" body-font">
+                      <section className="body-font">
                         <div className="container mx-auto flex px-5 py-5 items-center justify-center flex-col">
                           <div className="text-center lg:w-5/6 w-full">
                             <div className="player-wrapper">
@@ -495,15 +634,15 @@ export function CourseDashboard({ courseData, globalData }) {
                               />
                             </div>
 
-                            <div className="lg:flex-grow md:w-2/2 lg:pl-10 md:pl-16 flex flex-col md:items-start md:text-left items-left text-left">
-                              <h1 className="custom_heading4 mb-4 font-medium text-gray-900">
+                            <div className="lg:flex-grow md:w-2/2 lg:pl-10 flex flex-col md:items-start md:text-left items-left text-left">
+                              {/* <h1 className="custom_heading4 mb-4 font-medium text-gray-900">
                                 {l(contentDetail.contentTitle)}
-                              </h1>
-                              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mb-8 leading-relaxed">
+                              </h1> */}
+                              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mb-8 mt-4 leading-relaxed">
                                 {l(contentDetail.shortDescription)}
                               </p>
                             </div>
-                            <div className="lg:flex-grow md:w-2/2 lg:pl-10 md:pl-16 flex flex-col md:items-start md:text-left items-left text-left">
+                            <div className="lg:flex-grow md:w-2/2 lg:pl-10 flex flex-col md:items-start md:text-left items-left text-left">
                               {contentDetail.longDescription && (
                                 <>
                                   {l(contentDetail.longDescription).map(
@@ -523,14 +662,14 @@ export function CourseDashboard({ courseData, globalData }) {
                     </>
                   ) : (
                     <>
-                      {menuSelection.contentType === "article" ? (
+                      {contentDetail.contentType === "article" ? (
                         <>
                           <div className="lg:w-6/6 mx-auto py-0">
                             <div className="container px-5 py-10 mx-auto flex flex-col">
                               <div className="rounded-xs h-500 overflow-hidden">
-                                <div className="text-center mb-20 py-0">
+                                <div className="text-center mb-2 py-0">
                                   <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading1 text-gray-900">
-                                    {l(contentDetail.title)}
+                                    {l(contentDetail.contentTitle)}
                                   </h1>
 
                                   <p className="text-base text-gray-600 leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
@@ -541,7 +680,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                   <img
                                     alt={
                                       contentDetail.mainImage?.alt ||
-                                      `Photo of ${contentDetail.title}`
+                                      `Photo of ${contentDetail.ticontentTitletle}`
                                     }
                                     className="object-cover object-center h-full w-full"
                                     src={urlFor(contentDetail.mainImage.url)
@@ -555,10 +694,10 @@ export function CourseDashboard({ courseData, globalData }) {
                               </div>
 
                               <div className="flex flex-col sm:flex-row mt-10">
-                                <div className="sm:w-4/4 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                                  {contentDetail.body && (
+                                <div className="sm:w-4/4 sm:pl-8 sm:py-8 border-gray-200 sm:border-t-0 border-t mt-4 sm:mt-0 text-center sm:text-left">
+                                  {contentDetail.longDescription && (
                                     <>
-                                      {l(contentDetail.body).map((body) => (
+                                      {l(contentDetail.longDescription).map((body) => (
                                         <PortableText
                                           blocks={body}
                                           className="text-gray-600"
@@ -573,7 +712,7 @@ export function CourseDashboard({ courseData, globalData }) {
                         </>
                       ) : (
                         <>
-                          {menuSelection.contentType === "file" ? (
+                          {contentDetail.contentType === "file" ? (
                             <>
                               <section className=" body-font">
                                 <div className="container mx-auto flex px-5 py-5 items-center justify-center flex-col">

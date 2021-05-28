@@ -50,7 +50,7 @@
   }
 
   .custom_p {
-    @apply mt-6 text-xl text-left
+    @apply mt-6 text-sm text-left
   }
 
   .custom_button {}
