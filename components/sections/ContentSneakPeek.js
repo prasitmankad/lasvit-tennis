@@ -4,66 +4,87 @@ import { useLanguage } from "../../hooks/useLanguage";
 export function ContentSneakPeek({ content }) {
   // console.log("SneakPeek Items -> ", content);
   const { l } = useLanguage();
+  const people = [
+    {
+      name: "Lindsay Walton",
+      role: "Front-end Developer",
+      imageUrl:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      twitterUrl: "#",
+      linkedinUrl: "#",
+    },
+    {
+      name: "Lindsay Walton",
+      role: "Front-end Developer",
+      imageUrl:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      twitterUrl: "#",
+      linkedinUrl: "#",
+    },
+    {
+      name: "Lindsay Walton",
+      role: "Front-end Developer",
+      imageUrl:
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      twitterUrl: "#",
+      linkedinUrl: "#",
+    },
+    // More people...
+  ];
 
   return (
     <>
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              Sneak Peek
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Take a look at some of the amazing content available as part of
-              this course.
-            </p>
-          </div>
-
-          <section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto">
-              <div className="flex flex-wrap -m-4">
-                {/* CONTAINER */}
-                {content.map((contentItem) => (
+        <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+          <div className="space-y-12">
+            <div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Sneak Peek
+              </h2>
+              <p className="text-xl text-gray-500">
+                Take a look at some of the amazing content available as part of
+                this course.
+              </p>
+            </div>
+            <ul className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+              {content.map((contentItem) => (
                 <>
-                  {contentItem.contentType === "video" && (
-                    <>
-                      <section className="text-gray-600 body-font overflow-hidden">
-                        <div className="container px-5 sm:py-10 lg:py-10 mx-auto">
-                          <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                            <div className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded">
-                              {/* TODO: Different player sizes for Youtube & Vimeo */}
-                              <ReactPlayer
-                                controls={true}
-                                url={contentItem.fileUrl}
-                                width="100%"
-                                height="100%"
-                              />
-                            </div>
-                            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                              <h1 className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl custom_heading4 mb-1">
-                                {l(contentItem.contentTitle)}{" "}
-                              </h1>
-
-                              <p className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl leading-relaxed">
-                                {l(contentItem.shortDescription)}
-                                {/* TODO: Fix long description / show notes being pulled across as translated Portable Text.
-                                
-                                {console.log("longdescription ", contentItem.longDescription)} */}
-                              </p>
-                            </div>
+                  {contentItem.contentType === "video" ? (
+                    <li key={contentItem.id}>
+                      <div className="space-y-4">
+                        <div className="aspect-w-3">
+                          <div className="player-wrapper">
+                            <ReactPlayer
+                              controls={true}
+                              className="react-player"
+                              url={contentItem.fileUrl}
+                              width="100%"
+                              height="100%"
+                            />
                           </div>
                         </div>
-                      </section>
-                      <br />
-                    </>
+
+                        <div className="space-y-2">
+                          <div className="text-lg leading-6 font-medium space-y-1">
+                            <h3>{l(contentItem.contentTitle)}</h3>
+                            <p className="text-base font-light">
+                              {l(contentItem.shortDescription)}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ) : (
+                    <></>
                   )}
                 </>
               ))}
-              </div>
-            </div>
-          </section>
+            </ul>
+          </div>
         </div>
       </div>
+
+      
     </>
   );
 }
