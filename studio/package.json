@@ -19,17 +19,10 @@
     "@sanity/cli": "^2.10.5",
     "@sanity/color-input": "^2.2.6",
     "@sanity/components": "^2.2.6",
-<<<<<<< HEAD
     "@sanity/core": "^2.10.5",
     "@sanity/default-layout": "^2.10.5",
     "@sanity/default-login": "^2.10.5",
     "@sanity/desk-tool": "^2.10.5",
-=======
-    "@sanity/core": "^2.10.2",
-    "@sanity/default-layout": "^2.10.2",
-    "@sanity/default-login": "^2.8.0",
-    "@sanity/desk-tool": "^2.10.4",
->>>>>>> d8f8905db903149cc20bef073f39c1c293b8221d
     "@sanity/production-preview": "^2.2.6",
     "@sanity/vision": "^2.10.5",
     "postcss": "^8.2.10",

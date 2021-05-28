@@ -20,26 +20,8 @@ export const courseDetailQuery = `*[_type == "course" && slug.current == $slug][
   shortDescription,
   stats,
   pricing,
-<<<<<<< HEAD
   mainImage,
   content{
-=======
-  mainImage{
-  	...
-	},
-  content{
-    ...,
-    features[]{
-      ...,
-      mainImage{
-        ...,
-        
-      }
-    },
-    sneakpeek[]->
-  },
-  faqs{
->>>>>>> d8f8905db903149cc20bef073f39c1c293b8221d
     ...,
     features[]{...,},
     modules[]->{..., contentItems[]->},
