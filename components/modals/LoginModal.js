@@ -1,21 +1,50 @@
-import { Modal } from "./Modal";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import React from "react";
 import PropTypes from "prop-types";
-import { FaGoogle, FaFacebookSquare } from "react-icons/fa";
-import { clientSignInAction } from "../../modules/actions/clientAction";
-import { FederationTypes } from "../../modules/actions/actionTypes";
-import { XIcon } from "@heroicons/react/outline";
-import { showLoginModalAction } from "../../modules/actions/clientAction";
+import { Modal } from "./Modal";
+import { SignIn } from "./loginComponents/SignIn";
+import { SignUp } from "./loginComponents/SignUp";
+import { ConfirmSignUp } from "./loginComponents/ConfirmSignUp";
+import { ForgotPassword } from "./loginComponents/ForgotPassword";
+import { ForgotPasswordSubmit } from "./loginComponents/ForgotPasswordSubmit";
+import { useRouter } from "next/router";
 import {
   setRedirectLocation,
   removeRedirectLocation,
 } from "../../utils/localStorageUtils";
+import { Auth } from "aws-amplify";
+import { useDispatch } from "react-redux";
+import {
+  clientCustomSignIn,
+  clientCustomSignUp,
+  clientCustomConfirmSignUp,
+  clientCustomForgotPassword,
+  clientCustomForgotPasswordSubmit,
+  clientCustomLoginFail,
+} from "../../modules/actions/clientAction";
+
+const initialState = {
+  email: "",
+  password: "",
+  authCode: "",
+  username: "",
+  picture:
+    "https://cdn.sanity.io/images/uhhvkz4x/production/359912cf717e3e1a8b59724b8a8ebf3e762be47e-1080x1080.png?w=120&q=80&fit=crop&auto=format", // placeholder
+};
 
 export function LoginModal(props) {
   const { onClose } = props;
-  const dispatch = useDispatch();
   const router = useRouter();
+  const dispatch = useDispatch();
+  const [uiState, setUiState] = React.useState("signIn");
+  const [formState, setFormState] = React.useState(initialState);
+
+  const { email, password, authCode, username, picture } = formState;
+
+  React.useEffect(() => {
+    return () => {
+      dispatch(clientCustomLoginFail(false));
+    };
+  }, []);
 
   if (window && router.pathname === "/courses/[id]") {
     setRedirectLocation(window.location.pathname);
@@ -23,57 +52,77 @@ export function LoginModal(props) {
     removeRedirectLocation();
   }
 
+  function onChange(e) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  }
+
   return (
     <Modal>
-      <div className="m-8">
-        <div className="sm:block relative top-0 right-0 text-right">
-          <button
-            type="button"
-            className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            onClick={() => dispatch(showLoginModalAction(false))}
-          >
-            <span className="sr-only">Close</span>
-            <XIcon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-
-        <div>
-          <h2 className="mt-6 text-left text-3xl font-extrabold text-gray-900">
-            Login to your account
-          </h2>
-        </div>
-
-        <div>
-          <div className="mt-8 text-left text-3xl font-extrabold text-gray-900">
-            <label className="text-sm font-bold">Login with</label>
-          </div>
-        </div>
-        <div className="lg:flex lg:flex-row sm:flex sm:flex-row lg:flex lg:flex-row items-center justify-evenly mb-8 w-full mt-4">
-          <button
-            className="w-full mt-4 focus:outline-none mr-8"
-            onClick={() => {
-              dispatch(clientSignInAction(FederationTypes.GOOGLE));
-              onClose();
+      <div className="pb-4 px-4">
+        {uiState === "signIn" && (
+          <SignIn
+            onClose={onClose}
+            onChange={onChange}
+            setUiState={setUiState}
+            signIn={() => {
+              dispatch(clientCustomSignIn(email, password));
             }}
-          >
-            <div className="flex border border-gray-300 p-2 items-center justify-center bg-red-600 hover:bg-red-700 text-white">
-              <FaGoogle size="34" />
-              <p className="ml-3">Google</p>
-            </div>
-          </button>
-          <button
-            className="w-full mt-4 focus:outline-none bg-blue-800 hover:bg-blue-900"
-            onClick={() => {
-              dispatch(clientSignInAction(FederationTypes.FACEBOOK));
-              onClose();
+          />
+        )}
+
+        {uiState === "signUp" && (
+          <SignUp
+            onChange={onChange}
+            setUiState={setUiState}
+            signUp={() => {
+              dispatch(
+                clientCustomSignUp({
+                  username: email,
+                  password,
+                  attributes: {
+                    email,
+                    picture,
+                    name: username,
+                  },
+                })
+              );
+              setUiState("confirmSignUp");
             }}
-          >
-            <div className="flex border border-gray-300 p-2 items-center justify-center text-white">
-              <FaFacebookSquare size="34" />
-              <p className="ml-3">Facebook</p>
-            </div>
-          </button>
-        </div>
+          />
+        )}
+
+        {uiState === "confirmSignUp" && (
+          <ConfirmSignUp
+            onChange={onChange}
+            setUiState={setUiState}
+            confirmSignUp={() => {
+              dispatch(clientCustomConfirmSignUp(email, authCode, password));
+            }}
+          />
+        )}
+
+        {uiState === "forgotPassword" && (
+          <ForgotPassword
+            onChange={onChange}
+            setUiState={setUiState}
+            forgotPassword={() => {
+              dispatch(clientCustomForgotPassword(email));
+              setUiState("forgotPasswordSubmit");
+            }}
+          />
+        )}
+
+        {uiState === "forgotPasswordSubmit" && (
+          <ForgotPasswordSubmit
+            onChange={onChange}
+            forgotPasswordSubmit={() => {
+              dispatch(
+                clientCustomForgotPasswordSubmit(email, authCode, password)
+              );
+              setUiState("signIn");
+            }}
+          />
+        )}
       </div>
     </Modal>
   );

@@ -34,6 +34,48 @@ export function showLoginModalAction(show) {
   };
 }
 
+export function clientCustomSignIn(email, password) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_SIGN_IN,
+    payload: { email, password },
+  };
+}
+
+export function clientCustomSignUp(data) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_SIGN_UP,
+    payload: { data },
+  };
+}
+
+export function clientCustomConfirmSignUp(email, authCode, password) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_CONFIRM_SIGN_UP,
+    payload: { email, authCode, password },
+  };
+}
+
+export function clientCustomForgotPassword(email) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_FORGOTPASSWORD,
+    payload: { email },
+  };
+}
+
+export function clientCustomForgotPasswordSubmit(email, authCode, password) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_FORGOTPASSWORD_SUBMIT,
+    payload: { email, authCode, password },
+  };
+}
+
+export function clientCustomLoginFail(fail) {
+  return {
+    type: actionKeys.CLIENT_CUSTOM_LOGIN_FAIL,
+    payload: fail,
+  };
+}
+
 // APP function
 export function toogleLoading(loading) {
   return {

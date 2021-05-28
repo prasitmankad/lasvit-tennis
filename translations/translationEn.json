@@ -57,5 +57,30 @@
       "description": "Your account has been created and a receipt sent to the email you used to purchase the course.",
       "button": "Go to Course"
     }
+  },
+  "loginModal": {
+    "signIn": "Login to your account",
+    "signUp": "Sign up for an account",
+    "confirm": "Confirm your account",
+    "pswForgot": "Forgot password?",
+    "pswReset": "Reset password",
+    "social": "Sign in with",
+    "continue": "Or continue with",
+    "validate": "your account is not registered...",
+    "dont": "Don't have an account?",
+    "have": "Have an account?",
+    "form": {
+      "email": "Email address",
+      "password": "Password",
+      "resetPsw": "Reset password",
+      "newPsw": "New Password",
+      "submitNewPsw": "Submit new password",
+      "username": "User name",
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "authCode": "Confirmation Code",
+      "confirm": "Confirm Sign Up",
+      "cancel": "Cancel"
+    }
   }
 }
