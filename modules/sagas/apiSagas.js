@@ -36,7 +36,7 @@ function* handleCreateBilling(action) {
   try {
     const { client } = yield select((state) => state.clientState);
     const { data, token } = action.payload;
-    console.log('token:', token)
+    // console.log('token:', token)
     const response = yield call(postToken, token, data);
     yield API.graphql({
       query: mutations.createClientBilling,

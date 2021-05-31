@@ -1,5 +1,5 @@
 {
-  "name": "sanity-lasvit-tennis-studio",
+  "name": "sanity-nextjs-ecommerce-studio",
   "private": true,
   "version": "0.0.0",
   "description": "",
@@ -27,8 +27,8 @@
     "@sanity/vision": "^2.10.5",
     "postcss": "^8.3.0",
     "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-moveable": "^0.27.7",
     "react-player": "^2.9.0",

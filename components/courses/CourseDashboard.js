@@ -21,17 +21,17 @@ export function CourseDashboard({ courseData, globalData }) {
     moduleName: courseData.content.modules[0].title, // pre-default module selected
     contentType: "video", // pre-default content type
   });
-  console.log("menuSelection -> ", menuSelection);
+  // console.log("menuSelection -> ", menuSelection);
 
   const [contentList, setContentList] = useState(
     courseData.content.modules[0].contentItems.filter(
       (x) => x.contentType === menuSelection.contentType
     )
   );
-  console.log("contentList -> ", contentList);
+  // console.log("contentList -> ", contentList);
 
   const [contentDetail, setContentDetail] = useState(contentList[0]);
-  console.log("contentDetail -> ", contentDetail);
+  // console.log("contentDetail -> ", contentDetail);
 
   return (
     <div className="h-screen flex overflow-hidden bg-white">
