@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@aws-amplify/api-graphql": "^2.0.1",
-    "@aws-amplify/core": "^4.0.3",
+    "@aws-amplify/core": "4.0.3",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
