@@ -66,7 +66,7 @@ export default {
           name: "subheading",
           type: "string",
           title: "Sub-heading or Category",
-          fieldset: "basic",
+          // fieldset: "basic",
           description:
             "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
         },
