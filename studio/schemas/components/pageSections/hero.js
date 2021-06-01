@@ -7,33 +7,8 @@ export default {
   title: "Hero",
 
   fieldsets: [
-    {
-      name: "basic",
-      title: "Basic Settings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-        columns: 2,
-      },
-    },
-    {
-      name: "image",
-      title: "Image Settings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-        columns: 1,
-      },
-    },
-    {
-      name: "details",
-      title: "Detailed Settings",
-      options: {
-        collapsible: true,
-        collapsed: true,
-        columns: 1,
-      },
-    },
+  
+   
   ],
   fields: [
     {
@@ -50,7 +25,7 @@ export default {
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
         },
       ],
-      fieldset: "basic",
+      // fieldset: "basic",
     },
     {
       name: "subheading",
@@ -69,7 +44,7 @@ export default {
             "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
         },
       ],
-      fieldset: "basic",
+      // fieldset: "basic",
     },
     {
       name: "backgroundColor",
@@ -116,7 +91,7 @@ export default {
       name: "mainImage",
       type: "mainImage",
       title: "Main Image",
-      fieldset: "image",
+      // fieldset: "image",
       description:
         "Image used in the layout e.g. hero image, feature image etc.. Other images can be included when writing the body.",
       validation: (Rule) => Rule.required().error("This field is required."),
