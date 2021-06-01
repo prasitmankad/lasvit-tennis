@@ -75,7 +75,7 @@ export default function footer(props) {
               {l(props.data.businessInfo.tagline)}
             </p>
             <p className="text-gray-500 text-base">
-              {console.log(l(props.data.businessInfo.contact))}
+              {/* {console.log(l(props.data.businessInfo.contact))} */}
               {l(props.data.businessInfo.contact)[4]}{" "} 
               {l(props.data.businessInfo.contact)[3]}
               <br />
