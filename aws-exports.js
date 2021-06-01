@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://lasvit-tennis-oone-dev-jirka-oone.vercel.app/account/",
-        "redirectSignOut": "https://lasvit-tennis-oone-dev-jirka-oone.vercel.app/",
+        "redirectSignIn": "https://lasvittennis.com/account/",
+        "redirectSignOut": "https://lasvittennis.com/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",

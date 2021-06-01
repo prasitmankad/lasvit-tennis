@@ -67,5 +67,5 @@
     },
     "permissions": [],
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://lasvit-tennis-oone-dev-jirka-oone.vercel.app/account/\"],\"LogoutURLs\":[\"https://lasvit-tennis-oone-dev-jirka-oone.vercel.app/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://lasvittennis.com/account/\"],\"LogoutURLs\":[\"https://lasvittennis.com/\"]}"
 }
