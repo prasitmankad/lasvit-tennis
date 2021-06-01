@@ -6,12 +6,12 @@ export default {
   title: "Content Block",
   fields: [
     {
-      name: "body",
+      name: "content",
       type: "object",
       options: i18n_options,
       fields: [
         {
-          name: "body",
+          name: "content",
           type: "blockContent",
           title: "Body",
           description:
