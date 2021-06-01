@@ -39,7 +39,6 @@ export default {
           name: "heading",
           type: "string",
           title: "Heading",
-          fieldset: "basic",
           description:
             "Headings should be short & catchy, descriptive, and only a couple of words long.",
         },
@@ -55,7 +54,6 @@ export default {
           name: "subheading",
           type: "string",
           title: "Sub-heading or Category",
-          fieldset: "basic",
           description:
             "Sub-headings are event shorter, can be used as categories - single words that break large chunks of text.",
         },
