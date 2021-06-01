@@ -5,7 +5,7 @@ import Link from "next/link";
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
 
 export default function featuredContent(props) {
-  // console.log("featured Content props // ", props);
+  console.log("featured Content props // ", props);
 
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">

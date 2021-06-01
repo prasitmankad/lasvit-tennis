@@ -6,7 +6,9 @@ import { useLanguage } from "../../hooks/useLanguage";
 
 export default function footer(props) {
   const { l } = useLanguage();
+  // const contactInfo = props.data.businessInfo.contact
 
+  console.log("Footer -> ", props)
   const navigation = {
     social: [
       {
@@ -73,12 +75,13 @@ export default function footer(props) {
               {l(props.data.businessInfo.tagline)}
             </p>
             <p className="text-gray-500 text-base">
-              {l(props.data.businessInfo.contact.streetNo)}{" "}
-              {l(props.data.businessInfo.contact.street)}
+              {console.log(l(props.data.businessInfo.contact))}
+              {l(props.data.businessInfo.contact)[4]}{" "} 
+              {l(props.data.businessInfo.contact)[3]}
               <br />
-              {l(props.data.businessInfo.contact.city)},{" "}
-              {l(props.data.businessInfo.contact.country)}{" "}
-              {l(props.data.businessInfo.contact.zip)}
+              {l(props.data.businessInfo.contact)[0]},{" "}
+              {l(props.data.businessInfo.contact)[1]}{" "}
+              {l(props.data.businessInfo.contact)[6]}
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
