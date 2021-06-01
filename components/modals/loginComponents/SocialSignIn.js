@@ -23,7 +23,7 @@ export function SocialSignIn(props) {
         </button>
       </div>
 
-      <div className="flex-1 mx-2">
+      {/* <div className="flex-1 mx-2">
         <button
           onClick={() => {
             dispatch(clientSignInAction(FederationTypes.GOOGLE));
@@ -34,7 +34,7 @@ export function SocialSignIn(props) {
           <span className="sr-only">Sign in with Google</span>
           <FaGoogle size="24" className="text-red-600" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
