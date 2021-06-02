@@ -6,7 +6,7 @@ import { Popover } from "@headlessui/react";
 import { useLanguage } from "../../hooks/useLanguage";
 
 export default function hero(props) {
-  console.log("Hero Props // ", props);
+  //console.log("Hero Props // ", props);
   const { l } = useLanguage();
 
   return (
