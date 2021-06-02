@@ -16,13 +16,3 @@ export { default as signup} from "./signup";
 export { default as siteNotice } from "./siteNotice";
 export { default as team } from "./team";
 export { default as contactForm } from "./contactForm";
-
-// export { default as stats } from "./stats";
-// export { default as sneakPeek } from "./sneakPeek";
-// export { default as singlePrice } from "./singlePrice";
-// export { default as modules } from "./modules";
-// export { default as faq } from "./faq";
-// export { default as userProfile } from "./userProfile";
-
-
-// protected

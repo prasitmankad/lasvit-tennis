@@ -1,10 +1,5 @@
 import PropTypes from "prop-types";
 import { PortableText, urlFor } from "../../utils/sanity";
-// TODO: add in videojs implementation
-// https://videojs.com/getting-started/#videojs-cdn
-// https://github.com/vercel/next.js/tree/canary/examples/with-videojs
-// https://codepen.io/heff/pen/EarCt
-// https://github.com/mister-ben/videojs-mobile-ui#readme
 
 function sneakPeekSection(props) {
   return (
@@ -22,7 +17,6 @@ function sneakPeekSection(props) {
             </p>
           </div>
           <React.Fragment>
-            {/* This example requires Tailwind CSS v2.0+ */}
             <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
               {/* More items... */}
               <li>

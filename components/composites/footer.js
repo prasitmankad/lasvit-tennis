@@ -8,7 +8,7 @@ export default function footer(props) {
   const { l } = useLanguage();
   // const contactInfo = props.data.businessInfo.contact
 
-  console.log("Footer -> ", props)
+  //console.log("Footer -> ", props)
   const navigation = {
     social: [
       {

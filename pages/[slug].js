@@ -2,11 +2,9 @@ import React from "react";
 import { useRouter } from "next/router";
 import { getClient, sanityClient } from "../utils/sanity";
 import Error from "next/error";
-
 import RenderHeader from "../components/render/renderHeader";
 import RenderSections from "../components/render/renderSections";
 import RenderFooter from "../components/render/renderFooter";
-
 import { pageCollection as query } from "../modules/groq/page";
 
 export async function getStaticProps({ params = {}, preview = false }) {

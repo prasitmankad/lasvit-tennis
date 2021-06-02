@@ -6,7 +6,7 @@ import { Popover } from "@headlessui/react";
 import { useLanguage } from "../../hooks/useLanguage";
 
 export default function hero(props) {
-  // console.log("Hero Props // ", props);
+  console.log("Hero Props // ", props);
   const { l } = useLanguage();
 
   return (
@@ -48,29 +48,93 @@ export default function hero(props) {
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                       {props.sectionData.buttons?.map((button) => (
-                        <div
-                          key={l(button.buttonText)}
-                          className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
-                        >
-                          <Link href={`/${button.links.route.slug.current}`}>
-                            <a
-                              className={
-                                "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
-                                props.globalData.branding.primaryAccentColor
-                                  .title +
-                                " hover:bg-white hover:border-" +
-                                props.globalData.branding.primaryAccentColor
-                                  .title +
-                                " hover:text-" +
-                                props.globalData.branding.primaryAccentColor
-                                  .title +
-                                " md:py-4 md:text-lg md:px-10"
-                              }
-                            >
-                              {l(button.buttonText)}
-                            </a>
-                          </Link>
-                        </div>
+                        <>
+                          {button.links.internalRoute ? (
+                            <>
+                              <div
+                                key={l(button.buttonText)}
+                                className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
+                              >
+                                <Link href={`${button.links.internalRoute}`}>
+                                  <a
+                                    className={
+                                      "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                                      props.globalData.branding
+                                        .primaryAccentColor.title +
+                                      " hover:bg-white hover:border-" +
+                                      props.globalData.branding
+                                        .primaryAccentColor.title +
+                                      " hover:text-" +
+                                      props.globalData.branding
+                                        .primaryAccentColor.title +
+                                      " md:py-4 md:text-lg md:px-10"
+                                    }
+                                  >
+                                    {l(button.buttonText)}
+                                  </a>
+                                </Link>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {button.links.route ? (
+                                <>
+                                  <div
+                                    key={l(button.buttonText)}
+                                    className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
+                                  >
+                                    <Link
+                                      href={`/${button.links.route.slug.current}`}
+                                    >
+                                      <a
+                                        className={
+                                          "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                                          props.globalData.branding
+                                            .primaryAccentColor.title +
+                                          " hover:bg-white hover:border-" +
+                                          props.globalData.branding
+                                            .primaryAccentColor.title +
+                                          " hover:text-" +
+                                          props.globalData.branding
+                                            .primaryAccentColor.title +
+                                          " md:py-4 md:text-lg md:px-10"
+                                        }
+                                      >
+                                        {l(button.buttonText)}
+                                      </a>
+                                    </Link>
+                                  </div>
+                                </>
+                              ) : (
+                                <></>
+                              )}
+                            </>
+                          )}
+
+                          {/* <div
+                            key={l(button.buttonText)}
+                            className="rounded-md shadow mt-3 sm:mt-0 sm:ml-3"
+                          >
+                            <Link href={`/${button.links.route.slug.current}`}>
+                              <a
+                                className={
+                                  "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-" +
+                                  props.globalData.branding.primaryAccentColor
+                                    .title +
+                                  " hover:bg-white hover:border-" +
+                                  props.globalData.branding.primaryAccentColor
+                                    .title +
+                                  " hover:text-" +
+                                  props.globalData.branding.primaryAccentColor
+                                    .title +
+                                  " md:py-4 md:text-lg md:px-10"
+                                }
+                              >
+                                {l(button.buttonText)}
+                              </a>
+                            </Link>
+                          </div> */}
+                        </>
                       ))}
                     </div>
                   </div>

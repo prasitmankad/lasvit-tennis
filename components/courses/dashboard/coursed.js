@@ -10,7 +10,7 @@ import { ChevronLeftIcon } from "@heroicons/react/solid";
 // useEffect(() => {});
 
 export function Course({ courseInfo, globalData }) {
-  console.log("courseInfo -> ", courseInfo);
+  // console.log("courseInfo -> ", courseInfo);
   const { l } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [data, setData] = useState({
@@ -180,19 +180,19 @@ export function Course({ courseInfo, globalData }) {
                                         ...data,
                                         currentContentType: subItem,
                                       });
-                                      console.log(
-                                        "(desktop) subitem-> ",
-                                        subItem
-                                      );
+                                      // console.log(
+                                      //   "(desktop) subitem-> ",
+                                      //   subItem
+                                      // );
 
                                       setData({
                                         ...data,
                                         currentModuleName: module.title,
                                       });
-                                      console.log(
-                                        "(desktop) module-> ",
-                                        module.title
-                                      );
+                                      // console.log(
+                                      //   "(desktop) module-> ",
+                                      //   module.title
+                                      // );
                                     }}
                                     className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
                                   >
@@ -327,15 +327,15 @@ export function Course({ courseInfo, globalData }) {
                                       ),
                                       //contentItem: data.contentItem,
                                     });
-                                    console.log("(subitem-> ", subItem);
-                                    console.log(
-                                      "(module -> ",
-                                      l(module.title)[0]
-                                    );
-                                    console.log(
-                                      "(contentitems-> ",
-                                      data.contentItems
-                                    );
+                                    // console.log("(subitem-> ", subItem);
+                                    // console.log(
+                                    //   "(module -> ",
+                                    //   l(module.title)[0]
+                                    // );
+                                    // console.log(
+                                    //   "(contentitems-> ",
+                                    //   data.contentItems
+                                    // );
                                   }}
                                   className="group w-full flex items-center pl-10 pr-2 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50"
                                 >

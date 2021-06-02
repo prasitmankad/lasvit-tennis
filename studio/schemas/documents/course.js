@@ -148,18 +148,18 @@ export default {
           type: "string",
           title: "Feature Block Headline",
 
-          description:
-            "Headline for the feature block.",
-          validation: (Rule) => Rule.required().error("This field is required."),
+          description: "Headline for the feature block.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
         {
           name: "featureBlockDescription",
           type: "text",
           title: "Feature Block Description",
 
-          description:
-            "Description for the feature block.",
-          validation: (Rule) => Rule.required().error("This field is required."),
+          description: "Description for the feature block.",
+          validation: (Rule) =>
+            Rule.required().error("This field is required."),
         },
         {
           name: "features",
@@ -174,7 +174,8 @@ export default {
           name: "modules",
           type: "array",
           title: "Course Modules",
-          description: "Array of modules for the course. Order here determines order on the frontend.",
+          description:
+            "Array of modules for the course. Order here determines order on the frontend.",
           of: [
             {
               type: "reference",
@@ -184,7 +185,9 @@ export default {
           validation: (Rule) =>
             Rule.required()
               .min(1)
-              .error("This field is required and at least 1 moduleis required."),
+              .error(
+                "This field is required and at least 1 moduleis required."
+              ),
         },
       ],
     },

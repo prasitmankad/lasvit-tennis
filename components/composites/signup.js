@@ -31,7 +31,6 @@ export default function signup(props) {
             {l(props.sectionData.text)}
           </p>
         </div>
-        {/* TODO: Replace with MailerLite integration */}
         <div className="mt-8 lg:mt-0 lg:ml-8">
           <form className="sm:flex" onSubmit={onSubmit}>
             <label htmlFor="emailAddress" className="sr-only">

@@ -1,5 +1,4 @@
 import { RiListSettingsLine as icoSettings } from "react-icons/ri";
-//import socials from "../objects/socials"
 import { i18n_options, baseLanguage } from "../../../translations/config";
 import { fieldValidationRequired } from "../validations";
 
@@ -280,6 +279,8 @@ export default {
         },
       ],
     },
+
+    // Header Settings
     {
       title: "Header",
       name: "header",
@@ -327,6 +328,7 @@ export default {
                       type: "string",
                       title: "Text",
                       description: "Text on the link (or button).",
+
                     },
                   ],
                 },
@@ -336,8 +338,26 @@ export default {
                   title: "Link",
                   weak: true,
                   type: "reference",
-                  to: [{ type: "page" }, { type: "course" }, { type: "post" }],
+                  to: [{ type: "page" }, { type: "post" }],
                 },
+                // TODO: Implement longer term solution
+                {
+                  name: "internalRoute",
+                  type: "string",
+                  title: "Internal Route / Deep Link or Path e.g. /courses",
+                  description:
+                    "Link to a specific deep path on the site that's not a direct reference. E.g. for a dynamically generated page.",
+                },
+                {
+                  name: "externalLink",
+                  type: "url",
+                  title: "External link",
+                  description:
+                    "Link to external pages on the internet. Enter the full URL.",
+                },
+                                
+                
+
               ],
               preview: {
                 select: {
@@ -359,7 +379,7 @@ export default {
         },
       ],
     },
-
+    // Footer
     {
       title: "Footer",
       name: "footer",

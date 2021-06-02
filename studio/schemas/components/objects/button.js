@@ -48,6 +48,14 @@ export default {
           description: "Link to existing pages on the website",
           to: [{ type: "page" }, { type: "course" }],
         },
+        // TODO: Implement longer term solution
+        {
+          name: "internalRoute",
+          type: "string",
+          title: "Internal Route / Deep Link or Path e.g. /courses",
+          description:
+            "Link to a specific deep path on the site that's not a direct reference. E.g. for a dynamically generated page.",
+        },
         {
           name: "link",
           type: "url",
