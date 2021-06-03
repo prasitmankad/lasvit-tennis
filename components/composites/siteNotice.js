@@ -10,7 +10,7 @@ import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
 import { useLanguage } from "../../hooks/useLanguage";
 
 export default function siteNotice(props) {
-  console.log("SiteNotice Props // ", props);
+  //console.log("SiteNotice Props // ", props);
   const { l } = useLanguage();
 
   return (
