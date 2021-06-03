@@ -85,7 +85,7 @@ export default function footer(props) {
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
-                <Link href={`/${item.href}`} key={item.title + item.href}>
+                <Link href={`${item.href}`} key={item.title + item.href}>
                   <a className="text-gray-700 hover:text-white-500">
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" aria-hidden="true" />
