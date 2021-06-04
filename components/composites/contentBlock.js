@@ -4,7 +4,7 @@ import { useLanguage } from "../../hooks/useLanguage";
 export default function contentBlock(props) {
   const { l } = useLanguage()
   //console.log("contentBlock // ", props)
-  const contents = props.sectionData.content
+  const contents = props.sectionData.body
   return (
     <>
       <div className="bg-white">
