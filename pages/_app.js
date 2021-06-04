@@ -11,15 +11,16 @@ import "../translations/i18n";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-    
-    <Provider store={store}>
+      <Provider store={store}>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <Head>
-        <link rel="shortcut icon" href="/images/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
+          <link rel="shortcut icon" href="/images/favicon.ico" />
+          <title>Lasvit Tennis</title>
+          <meta property="og:title" content="Lasvit Tennis" key="title" />
+        </Head>
+        <Component {...pageProps} />
       </Provider>
-      </>
+    </>
   );
 }
 
