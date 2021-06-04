@@ -66,7 +66,7 @@ export function BillingTable(props) {
                                   </div>
                                   <div className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate">
                                     <div
-                                      className="text-orange cursor-pointer"
+                                      className="gray-dark cursor-pointer"
                                       onClick={() =>
                                         viewDetail((prev) =>
                                           prev === bill.id ? null : bill.id
@@ -251,7 +251,7 @@ export function BillingTable2() {
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                   <a
                                     href={payment.href}
-                                    className="text-orange"
+                                    className="gray-dark"
                                   >
                                     View receipt
                                   </a>

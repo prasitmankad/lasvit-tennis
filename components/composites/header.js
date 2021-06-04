@@ -56,7 +56,7 @@ export function Header(props) {
                 >
                   <div className="flex items-center flex-1">
                     <div className="flex items-center justify-between w-full lg:w-auto">
-                      <span className="sr-only">Lasvit Tennis</span>
+                      <span className="sr-only">The Running Klub</span>
                       <Link href="/">
                         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                           <img

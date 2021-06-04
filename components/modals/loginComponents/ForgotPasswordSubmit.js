@@ -53,7 +53,7 @@ export function ForgotPasswordSubmit({ onChange, forgotPasswordSubmit }) {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange hover:bg-white hover:border-orange hover:text-orange"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-dark hover:bg-white hover:border-green-dark hover:gray-dark"
               onClick={forgotPasswordSubmit}
             >
               {t("loginModal.form.submitNewPsw")}

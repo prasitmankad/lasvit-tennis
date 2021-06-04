@@ -115,7 +115,7 @@ export function Course({ courseInfo, globalData }) {
                             }
                             className={classNames(
                               module.current
-                                ? "bg-white text-orange"
+                                ? "bg-white gray-dark"
                                 : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                               "group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md"
                             )}
@@ -145,9 +145,9 @@ export function Course({ courseInfo, globalData }) {
                               <Disclosure.Button
                                 className={classNames(
                                   module.current
-                                    ? "bg-white text-orange"
+                                    ? "bg-white gray-dark"
                                     : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                                  "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-orange"
+                                  "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-green-dark"
                                 )}
                               >
                                 <svg
@@ -257,7 +257,7 @@ export function Course({ courseInfo, globalData }) {
                           href={module.href}
                           className={classNames(
                             module.current
-                              ? "bg-white text-orange"
+                              ? "bg-white gray-dark"
                               : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                             "group w-full flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md"
                           )}
@@ -287,9 +287,9 @@ export function Course({ courseInfo, globalData }) {
                             <Disclosure.Button
                               className={classNames(
                                 module.current
-                                  ? "bg-white text-orange"
+                                  ? "bg-white gray-dark"
                                   : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                                "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-orange"
+                                "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-green-dark"
                               )}
                             >
                               <svg
@@ -425,7 +425,7 @@ export function Course({ courseInfo, globalData }) {
                           });
                         }}
                         key={video.id}
-                        className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange"
+                        className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark"
                       >
                         <div className="flex justify-between space-x-3">
                           <div className="min-w-0 flex-1">
@@ -459,7 +459,7 @@ export function Course({ courseInfo, globalData }) {
                         .map((article) => (
                           <li
                             key={article.id}
-                            className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange"
+                            className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark"
                           >
                             <div className="flex justify-between space-x-3">
                               <div className="min-w-0 flex-1">
@@ -495,7 +495,7 @@ export function Course({ courseInfo, globalData }) {
                               <>
                                 <li
                                   key={file.id}
-                                  className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange"
+                                  className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark"
                                 >
                                   <div className="flex justify-between space-x-3">
                                     <div className="min-w-0 flex-1">

@@ -33,14 +33,14 @@ export function ConfirmSignUp({ onChange, setUiState, confirmSignUp }) {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange hover:bg-white hover:border-orange hover:text-orange"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-dark hover:bg-white hover:border-green-dark hover:gray-dark"
               onClick={confirmSignUp}
             >
               {t("loginModal.form.confirm")}
             </button>
             <button
               onClick={() => setUiState("signIn")}
-              className="text-sm mt-6 text-orange"
+              className="text-sm mt-6 gray-dark"
             >
               {t("loginModal.form.cancel")}
             </button>

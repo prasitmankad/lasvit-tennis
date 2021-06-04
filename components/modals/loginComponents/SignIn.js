@@ -93,7 +93,7 @@ export function SignIn({ onClose, onChange, setUiState, signIn }) {
           <div>
             <span
               onClick={() => setUiState("forgotPassword")}
-              className="cursor-pointer text-sm text-orange"
+              className="cursor-pointer text-sm gray-dark"
             >
               {t("loginModal.pswForgot")}
             </span>
@@ -103,7 +103,7 @@ export function SignIn({ onClose, onChange, setUiState, signIn }) {
         <div>
           <button
             type="submit"
-            className="text-sm w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange hover:bg-white hover:border-orange hover:text-orange"
+            className="text-sm w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-dark hover:bg-white hover:border-green-dark hover:gray-dark"
             onClick={signIn}
           >
             {t("loginModal.form.signIn")}
@@ -115,7 +115,7 @@ export function SignIn({ onClose, onChange, setUiState, signIn }) {
           <span
             onClick={() => setUiState("signUp")}
             role="button"
-            className="cursor-pointer text-orange"
+            className="cursor-pointer gray-dark"
           >
             {" "}
             {t("loginModal.form.signUp")}.

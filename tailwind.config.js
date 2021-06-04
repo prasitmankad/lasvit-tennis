@@ -8,7 +8,6 @@ module.exports = {
   },
   purge: false,
   theme: {
-    
     extend: {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
@@ -16,34 +15,29 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        // lasvit orange
-        orange: {
-          //light: "#85d7ff",
-          DEFAULT: "#CB5223",
-          //dark: "#009eeb",
+
+        black: {
+          DEFAULT: "#171710",
         },
-        // lasvit teal
-        teal: {
-          light: "#31E2E8",
-          DEFAULT: "#20C0D9",
-          dark: "#01ADCA",
-        },
-        pink: {
-          //light: "#ff7ce5",
-          DEFAULT: "#FF6A64",
-          //dark: "#ff16d1",
-        },
-        yellow: {
-          //light: "#ff7ce5",
-          DEFAULT: "#FFDE4E",
-          //dark: "#ff16d1",
+        white: {
+          DEFAULT: "#FFFFFF",
         },
         gray: {
-          darkest: "#1f2d3d",
-          dark: "#3c4858",
+          darkest: "#22252b",
+          dark: "#383E48",
           DEFAULT: "#c0ccda",
           light: "#e0e6ed",
-          lightest: "#f9fafc",
+          lightest: "#F4F5F7",
+        },
+        gunmetal: {
+          dark: "#364D62",
+          medium: "#517192",
+          light: "#9FC2DC",
+        },
+        green: {
+          fluoro: "#D6F02F",
+          lime: "#B9DF5B",
+          dark: "#246C21",
         },
       },
     },
@@ -68,4 +62,3 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
   ],
 };
-

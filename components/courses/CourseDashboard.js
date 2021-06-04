@@ -116,7 +116,7 @@ export function CourseDashboard({ courseData, globalData }) {
                           <a
                             className={classNames(
                               module.current
-                                ? "bg-gray-100 text-orange"
+                                ? "bg-gray-100 gray-dark"
                                 : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                               "group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer"
                             )}
@@ -135,9 +135,9 @@ export function CourseDashboard({ courseData, globalData }) {
                               <Disclosure.Button
                                 className={classNames(
                                   module.current
-                                    ? "bg-gray-100 text-gray-orange"
+                                    ? "bg-gray-100 text-gray"
                                     : "bg-white text-gray-darkest hover:bg-gray-50 hover:text-gray-900",
-                                  "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-sm focus:outline-none focus:ring-1 focus:ring-orange"
+                                  "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-sm focus:outline-none focus:ring-1 focus:ring-green-dark"
                                 )}
                               >
                                 <svg
@@ -162,7 +162,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                   !module.contentItems ? (
                                     <li
                                       key={contentItem.id}
-                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                     >
                                       <div className="flex justify-between space-x-3">
                                         <div className="min-w-0 flex-1">
@@ -187,7 +187,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                             setContentDetail(contentItem);
                                           }}
                                           key={contentItem.id}
-                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                         >
                                           <div className="flex justify-between space-x-3">
                                             <div className="min-w-0 flex-1">
@@ -318,7 +318,7 @@ export function CourseDashboard({ courseData, globalData }) {
                               module.current
                                 ? "bg-gray-100 text-gray-900"
                                 : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                              "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-sm focus:outline-none focus:ring-1 focus:ring-orange"
+                              "group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-sm focus:outline-none focus:ring-1 focus:ring-green-dark"
                             )}
                           >
                             <svg
@@ -343,7 +343,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                   !module.contentItems ? (
                                     <li
                                       key={contentItem.id}
-                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                     >
                                       <div className="flex justify-between space-x-3">
                                         <div className="min-w-0 flex-1">
@@ -368,7 +368,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                             setContentDetail(contentItem);
                                           }}
                                           key={contentItem.id}
-                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                          className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                         >
                                           <div className="flex justify-between space-x-3">
                                             <div className="min-w-0 flex-1">
@@ -453,7 +453,7 @@ export function CourseDashboard({ courseData, globalData }) {
             <div>
               <button
                 type="button"
-                className="-mr-3 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange"
+                className="-mr-3 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-dark"
                 onClick={() => setSidebarOpen(true)}
               >
                 <span className="sr-only">Open sidebar</span>
@@ -487,7 +487,7 @@ export function CourseDashboard({ courseData, globalData }) {
                               .map((video) => (
                                 <li
                                   key={video.id}
-                                  className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                  className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                 >
                                   <div className="flex justify-between space-x-3">
                                     <div className="min-w-0 flex-1">
@@ -521,7 +521,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                   .map((article) => (
                                     <li
                                       key={article.id}
-                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                      className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                     >
                                       <div className="flex justify-between space-x-3">
                                         <div className="min-w-0 flex-1">
@@ -562,7 +562,7 @@ export function CourseDashboard({ courseData, globalData }) {
                                           >
                                             <li
                                               key={file.id}
-                                              className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange cursor-pointer"
+                                              className="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-dark cursor-pointer"
                                             >
                                               <div className="flex justify-between space-x-3">
                                                 <div className="min-w-0 flex-1">

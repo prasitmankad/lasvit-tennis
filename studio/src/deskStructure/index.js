@@ -19,7 +19,7 @@ const hiddenDocTypes = (listItem) =>
 
 export default () =>
   S.list()
-    .title("Lasvit Tennis")
+    .title("The Running Klub")
     .items([
       //...S.documentTypeListItems().filter(hiddenDocTypes),
 

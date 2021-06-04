@@ -164,7 +164,7 @@ function userProfileSection(props) {
                       Billing History
                     </h3>
                     <p className="mt-1 text-sm text-gray-600">
-                      A list of previous payments made to Lasvit Tennis. Please
+                      A list of previous payments made to The Running Klub. Please
                       contact us if you have any questions about your billing
                       history.
                     </p>

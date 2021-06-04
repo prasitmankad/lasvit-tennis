@@ -1,4 +1,4 @@
-## sanity-lasvit-tennis
+## sanity-therunningklub
 
 This folder contains the required metadata for using this repository as a template on sanity.io/create
 

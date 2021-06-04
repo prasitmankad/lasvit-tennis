@@ -16,8 +16,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" /> {/* INTER FONT */}
         <Head>
           <link rel="shortcut icon" href="/images/favicon.ico" />{/* FAVICON */}
-          <title>Lasvit Tennis</title>{/* TODO: Make dynamic in future. */}
-          <meta property="og:title" content="Lasvit Tennis" key="title" />{/* TODO: Make dynamic in future. */}
+          <title>The Running Klub</title>{/* TODO: Make dynamic in future. */}
+          <meta property="og:title" content="The Running Klub" key="title" />{/* TODO: Make dynamic in future. */}
         </Head>
         <Component {...pageProps} />
       </Provider>

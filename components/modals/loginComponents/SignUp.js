@@ -74,7 +74,7 @@ export function SignUp({ onChange, setUiState, signUp }) {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange hover:bg-white hover:border-orange hover:text-orange"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-dark hover:bg-white hover:border-green-dark hover:gray-dark"
               onClick={signUp}
             >
               {t("loginModal.form.signUp")}
@@ -86,7 +86,7 @@ export function SignUp({ onChange, setUiState, signUp }) {
             <span
               onClick={() => setUiState("signIn")}
               role="button"
-              className="cursor-pointer text-orange"
+              className="cursor-pointer gray-dark"
             >
               {" "}
               {t("loginModal.form.signIn")}.

@@ -154,7 +154,7 @@ export default {
           type: "colorlist", // required
           title: "Primary Text Color",
           description:
-            "Used as primary text color across the site. Default is White #ffffff",
+            "Used as primary text color across the site.",
           validation: (Rule) =>
             Rule.required().error("This field is required."),
           options: {
@@ -164,15 +164,18 @@ export default {
             },
             list: [
               { title: "white", value: "#ffffff" },
+              { title: "gray-lightest", value: "#F4F5F7" },
+              { title: "gray-light", value: "#e0e6ed" },
               { title: "gray", value: "#c0ccda" },
-              { title: "gray-dark", value: "#3c4858" },
-              { title: "gray-darkest", value: "#1f2d3d" },
-              { title: "pink", value: "#FF6A64" },
-              { title: "orange", value: "#F15926" },
-              { title: "teal-light", value: "#31E2E8" },
-              { title: "teal", value: "#20C0D9" },
-              { title: "teal-dark", value: "#01ADCA" },
-              { title: "yellow", value: "#FFDE4E" },
+              { title: "gray-dark", value: "#383E48" },
+
+              { title: "gunmetal-dark", value: "#364D62" },
+              { title: "gunmetal-medium", value: "#517192" },
+              { title: "gunmetal-light", value: "#9FC2DC" },
+
+              { title: "green-fluoro", value: "#D6F02F" },
+              { title: "green-lime", value: "#B9DF5B" },
+              { title: "green-dark", value: "#246C21" },
             ],
           },
         },
@@ -191,15 +194,18 @@ export default {
             },
             list: [
               { title: "white", value: "#ffffff" },
+              { title: "gray-lightest", value: "#F4F5F7" },
+              { title: "gray-light", value: "#e0e6ed" },
               { title: "gray", value: "#c0ccda" },
-              { title: "gray-dark", value: "#3c4858" },
-              { title: "gray-darkest", value: "#1f2d3d" },
-              { title: "pink", value: "#FF6A64" },
-              { title: "orange", value: "#F15926" },
-              { title: "teal-light", value: "#31E2E8" },
-              { title: "teal", value: "#20C0D9" },
-              { title: "teal-dark", value: "#01ADCA" },
-              { title: "yellow", value: "#FFDE4E" },
+              { title: "gray-dark", value: "#383E48" },
+
+              { title: "gunmetal-dark", value: "#364D62" },
+              { title: "gunmetal-medium", value: "#517192" },
+              { title: "gunmetal-light", value: "#9FC2DC" },
+
+              { title: "green-fluoro", value: "#D6F02F" },
+              { title: "green-lime", value: "#B9DF5B" },
+              { title: "green-dark", value: "#246C21" },
             ],
           },
         },
@@ -217,15 +223,18 @@ export default {
             },
             list: [
               { title: "white", value: "#ffffff" },
+              { title: "gray-lightest", value: "#F4F5F7" },
+              { title: "gray-light", value: "#e0e6ed" },
               { title: "gray", value: "#c0ccda" },
-              { title: "gray-dark", value: "#3c4858" },
-              { title: "gray-darkest", value: "#1f2d3d" },
-              { title: "pink", value: "#FF6A64" },
-              { title: "orange", value: "#F15926" },
-              { title: "teal-light", value: "#31E2E8" },
-              { title: "teal", value: "#20C0D9" },
-              { title: "teal-dark", value: "#01ADCA" },
-              { title: "yellow", value: "#FFDE4E" },
+              { title: "gray-dark", value: "#383E48" },
+
+              { title: "gunmetal-dark", value: "#364D62" },
+              { title: "gunmetal-medium", value: "#517192" },
+              { title: "gunmetal-light", value: "#9FC2DC" },
+
+              { title: "green-fluoro", value: "#D6F02F" },
+              { title: "green-lime", value: "#B9DF5B" },
+              { title: "green-dark", value: "#246C21" },
             ],
           },
         },
@@ -328,7 +337,6 @@ export default {
                       type: "string",
                       title: "Text",
                       description: "Text on the link (or button).",
-
                     },
                   ],
                 },
@@ -355,9 +363,6 @@ export default {
                   description:
                     "Link to external pages on the internet. Enter the full URL.",
                 },
-                                
-                
-
               ],
               preview: {
                 select: {
