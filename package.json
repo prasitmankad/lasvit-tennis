@@ -15,7 +15,6 @@
     "url": "git+https://github.com/prasitmankad/lasvit-tennis.git"
   },
   "dependencies": {
-    "@aws-amplify/core": "^4.0.3",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@headlessui/react": "^1.0.0",
     "@heroicons/react": "^1.0.1",

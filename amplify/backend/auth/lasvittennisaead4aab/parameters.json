@@ -67,5 +67,6 @@
     },
     "permissions": [],
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://lasvittennis.com/account/\"],\"LogoutURLs\":[\"https://lasvittennis.com/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://lasvittennis.com/account/\"],\"LogoutURLs\":[\"https://lasvittennis.com/\"]}",
+    "breakCircularDependency": false
 }
