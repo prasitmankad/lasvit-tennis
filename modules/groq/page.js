@@ -13,7 +13,7 @@ export const pageDataQuery = `*[(_type == "page" && slug["current"]==$slug && !(
     'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
       name, position, shortDescription, image[], longDescription
     }, 
-    body[]{
+    body{
       ...,
       markDefs[]{
         ...,
