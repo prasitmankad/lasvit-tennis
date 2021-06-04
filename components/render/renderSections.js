@@ -77,7 +77,7 @@ function RenderSections(props) {
         // group sectiondata into its own sub component
         let sectionData = { sectionData: { ...section } };
         if (section._type === "blog") {
-          //console.log("section type // ", section._type)
+          console.log("section type // ", section._type)
           let postsData = { postsData: [...props.data.pageData.recentPosts] };
 
           return (
