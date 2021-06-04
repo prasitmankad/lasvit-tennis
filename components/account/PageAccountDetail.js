@@ -17,7 +17,7 @@ export function PageAccountDetail() {
             className="text-white w-42 mt-10 bg-gray-400 p-3 rounded"
             onClick={() => dispatch(clientSignOutAction())}
           >
-            DEV : Sign Out
+            Sign Out
           </button>
         </div>
 
