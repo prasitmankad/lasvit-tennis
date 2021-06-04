@@ -19,7 +19,7 @@ module.exports = {
         // lasvit orange
         orange: {
           //light: "#85d7ff",
-          DEFAULT: "#F15926",
+          DEFAULT: "#CB5223",
           //dark: "#009eeb",
         },
         // lasvit teal

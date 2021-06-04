@@ -12,11 +12,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Provider store={store}>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" /> {/* INTER FONT */}
         <Head>
-          <link rel="shortcut icon" href="/images/favicon.ico" />
-          <title>Lasvit Tennis</title>
-          <meta property="og:title" content="Lasvit Tennis" key="title" />
+          <link rel="shortcut icon" href="/images/favicon.ico" />{/* FAVICON */}
+          <title>Lasvit Tennis</title>{/* TODO: Make dynamic in future. */}
+          <meta property="og:title" content="Lasvit Tennis" key="title" />{/* TODO: Make dynamic in future. */}
         </Head>
         <Component {...pageProps} />
       </Provider>
