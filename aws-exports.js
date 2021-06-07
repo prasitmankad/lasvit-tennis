@@ -21,7 +21,7 @@ const awsmobile = {
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
-    "aws_appsync_graphqlEndpoint": "https://sdgqsyalbre47fhlszej3q4tjq.appsync-api.eu-central-1.amazonaws.com/graphql",
+    "aws_appsync_graphqlEndpoint": "https://tnhbs55gofb2tpvxwn6i6gqzvu.appsync-api.eu-central-1.amazonaws.com/graphql",
     "aws_appsync_region": "eu-central-1",
     "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
 };
