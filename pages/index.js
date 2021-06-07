@@ -6,6 +6,8 @@ import RenderHeader from "../components/render/renderHeader";
 import RenderSections from "../components/render/renderSections";
 import RenderFooter from "../components/render/renderFooter";
 
+import RenderNewPages from "../components/render/renderNewPages";
+
 import { pageCollection as query } from "../modules/groq/page";
 
 export async function getStaticProps() {
