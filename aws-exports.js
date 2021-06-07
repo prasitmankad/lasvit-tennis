@@ -3,12 +3,12 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
-    "aws_cognito_identity_pool_id": "eu-central-1:3135e1df-c709-4896-a917-f23530183f3c",
+    "aws_cognito_identity_pool_id": "eu-central-1:243fc9ef-951e-40d9-bd91-e560df8ce647",
     "aws_cognito_region": "eu-central-1",
-    "aws_user_pools_id": "eu-central-1_5gMi7o5vS",
-    "aws_user_pools_web_client_id": "4kges0mn9n2je6v1s30h2ndtg1",
+    "aws_user_pools_id": "eu-central-1_E6uPlhfAk",
+    "aws_user_pools_web_client_id": "3nb6b1h0ji55qk1kdar62l15v9",
     "oauth": {
-        "domain": "lasvittennis-auth-deploy.auth.eu-central-1.amazoncognito.com",
+        "domain": "lasvittennis-auth-live.auth.eu-central-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
