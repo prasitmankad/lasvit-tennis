@@ -52,5 +52,23 @@
         "lasvittennisaead4aab": {}
       }
     }
+  },
+  "live": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-lasvittennis-live-201707-authRole",
+      "UnauthRoleArn": "arn:aws:iam::632544729979:role/amplify-lasvittennis-live-201707-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::632544729979:role/amplify-lasvittennis-live-201707-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-lasvittennis-live-201707-deployment",
+      "UnauthRoleName": "amplify-lasvittennis-live-201707-unauthRole",
+      "StackName": "amplify-lasvittennis-live-201707",
+      "StackId": "arn:aws:cloudformation:eu-central-1:632544729979:stack/amplify-lasvittennis-live-201707/86256520-c779-11eb-bf7c-0288a08f1e2c",
+      "AmplifyAppId": "d12gy4okc0wvqj"
+    },
+    "categories": {
+      "auth": {
+        "lasvittennisaead4aab": {}
+      }
+    }
   }
 }
