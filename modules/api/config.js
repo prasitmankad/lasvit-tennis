@@ -2,7 +2,7 @@ export const config = {
   stripe: {
     currency: "CZK",
     apiKey:
-      "my_PUBLISHABLE_stripekey",
+      "pk_live_B2qUU7cGzBxpxo3FfV6UTGpM00LUqImbQb",
     apiUrl:
       "https://v6djkdnzx0.execute-api.eu-central-1.amazonaws.com/prod/serverless/createCharge",
   },
