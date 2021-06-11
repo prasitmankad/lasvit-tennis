@@ -18,7 +18,8 @@
     "media-library",
     "color-list",
     "autocomplete-tags",
-    "intl-input"
+    "intl-input",
+    "order-documents"
   ],
   "env": {
     "development": {

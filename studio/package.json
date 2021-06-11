@@ -37,6 +37,7 @@
     "sanity-plugin-color-list": "^2.0.1",
     "sanity-plugin-intl-input": "^5.1.0",
     "sanity-plugin-media-library": "^1.0.7",
+    "sanity-plugin-order-documents": "^0.0.19",
     "vercel": "^23.0.0"
   },
   "optionalDependencies": {

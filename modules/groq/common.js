@@ -4,8 +4,8 @@ export const globalPageQuery = `*[(_type == "globalSettings" && !(_id in path('d
     tagline, 
     siteDescription, 
     contact,
-    'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
-      name, position, shortDescription, image[], longDescription
+    'teamMembers': *[(_type == "teamMember" && !(_id in path('drafts.**')))] | order(order asc) {
+      order,name, position, shortDescription, image[], longDescription
     },      
   },
   branding,

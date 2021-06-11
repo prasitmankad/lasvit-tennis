@@ -10,8 +10,8 @@ export const pageDataQuery = `*[(_type == "page" && slug["current"]==$slug && !(
       links {...,route->{slug}}
     },
     link {...,text,link->{slug}},
-    'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] {
-      name, position, shortDescription, image[], longDescription
+    'team': *[(_type == "teamMember" && !(_id in path('drafts.**')))] | order(order asc) {
+      order,name, position, shortDescription, image[], longDescription
     }, 
     body{
       ...,

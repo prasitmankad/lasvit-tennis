@@ -8,6 +8,12 @@ export default {
   title: "Team Member",
   icon: icoTeam,
   fields: [
+    { // hidden order field required by order-documents sanity plugin that allows for ordering documents
+      name: "order",
+      title: "Order",
+      type: "number",
+      hidden: true,
+    },
     {
       name: "name",
       type: "object",
