@@ -102,7 +102,7 @@ export const getDefaultDocumentNode = (props) => {
     return S.document().views([
       S.view.form(),
       S.view.component(PagePreview).title("Preview Mode"),
-    ]);
+    ]); 
   }
   return S.document().views([S.view.form()]);
 };
