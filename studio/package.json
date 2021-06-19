@@ -33,6 +33,7 @@
     "react-moveable": "^0.27.7",
     "react-player": "^2.9.0",
     "resize-observer": "^1.0.2",
+    "sanity-mobile-preview": "^1.0.8",
     "sanity-plugin-autocomplete-tags": "^1.0.1",
     "sanity-plugin-color-list": "^2.0.1",
     "sanity-plugin-intl-input": "^5.1.0",
