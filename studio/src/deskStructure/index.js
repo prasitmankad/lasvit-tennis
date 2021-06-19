@@ -98,6 +98,11 @@ export const getDefaultDocumentNode = (props) => {
       S.view.component(PostPreview).title("Preview Mode"),
     ]);
   }
-
+  if (schemaType === "page") {
+    return S.document().views([
+      S.view.form(),
+      S.view.component(PagePreview).title("Preview Mode"),
+    ]);
+  }
   return S.document().views([S.view.form()]);
 };
